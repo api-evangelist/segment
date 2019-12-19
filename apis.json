@@ -1,0 +1,82 @@
+{
+    "name": "Segment",
+    "description": "Segment is trusted by thousands of companies as their Customer Data Platform. Collect user data with one API and send it to hundreds of tools or a data warehouse.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/116-segment.jpg",
+    "tags": [
+        "aggregation",
+        "analysis",
+        "have api",
+        "webhook implementations"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/segment\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Segment",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/116-segment.jpg",
+            "humanURL": "https:\/\/segment.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/segment-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/segment-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Blog",
+            "url": "https:\/\/segment.com\/blog\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "https:\/\/segment.com\/blog\/atom.xml"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/segment-io"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/segment-io"
+        },
+        {
+            "type": "Email",
+            "url": "privacy@segment.com"
+        },
+        {
+            "type": "Email",
+            "url": "security@segment.com"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/segmentio"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/segment"
+        },
+        {
+            "type": "Webhooks",
+            "url": "https:\/\/segment.com\/docs\/destinations\/webhooks\/"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/segment.com"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/segment.io\/"
+        }
+    ]
+}

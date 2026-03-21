@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://segment.com/schemas/segment/source.json",
+  "title": "Segment Source",
+  "description": "A Segment source represents a data collection point that captures analytics events from a website, mobile app, server, or cloud application and sends them to Segment for routing to configured destinations.",
+  "type": "object",
+  "required": ["id", "slug"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the source."
+    },
+    "slug": {
+      "type": "string",
+      "description": "The URL-friendly slug of the source.",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the source."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the source is currently enabled and collecting data."
+    },
+    "writeKeys": {
+      "type": "array",
+      "description": "The write keys used to authenticate data sent to this source.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "metadata": {
+      "$ref": "#/$defs/SourceMetadata"
+    },
+    "settings": {
+      "type": "object",
+      "description": "Configuration settings specific to the source type.",
+      "additionalProperties": true
+    },
+    "labels": {
+      "type": "array",
+      "description": "Labels applied to the source for organization and access control.",
+      "items": {
+        "$ref": "#/$defs/Label"
+      }
+    },
+    "workspaceId": {
+      "type": "string",
+      "description": "The ID of the workspace this source belongs to."
+    }
+  },
+  "$defs": {
+    "SourceMetadata": {
+      "type": "object",
+      "description": "Metadata about the source type from the Segment catalog.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The metadata ID from the catalog."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the source type."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug of the source type."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the source type."
+        },
+        "logos": {
+          "type": "object",
+          "description": "Logo URLs for the source.",
+          "properties": {
+            "default": {
+              "type": "string",
+              "format": "uri",
+              "description": "Default logo URL."
+            }
+          }
+        },
+        "categories": {
+          "type": "array",
+          "description": "Categories the source belongs to.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Label": {
+      "type": "object",
+      "description": "A label used to organize and control access to workspace resources.",
+      "required": ["key", "value"],
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "The label key.",
+          "minLength": 1
+        },
+        "value": {
+          "type": "string",
+          "description": "The label value.",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the label."
+        }
+      }
+    }
+  }
+}

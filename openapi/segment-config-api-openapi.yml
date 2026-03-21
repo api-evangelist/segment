@@ -1,0 +1,652 @@
+openapi: 3.1.0
+info:
+  title: Segment Config API
+  description: >-
+    The Segment Config API allows programmatic management of Segment
+    workspaces, sources, destinations, and other configuration resources.
+    It provides endpoints to list workspace sources and destinations,
+    create or delete destinations, and manage tracking plans. As of
+    early 2024, Segment has stopped issuing new Config API tokens and
+    recommends migrating to the Public API for access to the latest
+    features. The Config API remains functional for existing users but
+    is no longer actively developed.
+  version: '1.0.0'
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/
+servers:
+  - url: https://platform.segmentapis.com/v1beta
+    description: Production Server (v1beta)
+tags:
+  - name: Workspaces
+    description: >-
+      Operations for retrieving workspace information and
+      configuration.
+  - name: Sources
+    description: >-
+      Operations for managing data collection sources within a
+      workspace.
+  - name: Destinations
+    description: >-
+      Operations for managing destinations where collected data
+      is sent.
+  - name: Tracking Plans
+    description: >-
+      Operations for managing tracking plans that enforce data
+      schemas.
+security:
+  - bearerAuth: []
+paths:
+  /workspaces/{workspaceName}:
+    get:
+      operationId: getWorkspace
+      summary: Get workspace
+      description: >-
+        Returns the workspace details for the specified workspace name.
+      tags:
+        - Workspaces
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+      responses:
+        '200':
+          description: Workspace retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspace'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workspaces/{workspaceName}/sources:
+    get:
+      operationId: listSources
+      summary: List sources
+      description: >-
+        Returns a list of all sources in the specified workspace.
+      tags:
+        - Sources
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+      responses:
+        '200':
+          description: Sources retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sources:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Source'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSource
+      summary: Create source
+      description: >-
+        Creates a new source in the specified workspace.
+      tags:
+        - Sources
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - source
+              properties:
+                source:
+                  type: object
+                  required:
+                    - name
+                    - catalog_name
+                  properties:
+                    name:
+                      type: string
+                      description: >-
+                        The fully qualified name of the source.
+                    catalog_name:
+                      type: string
+                      description: >-
+                        The catalog name of the source type.
+      responses:
+        '200':
+          description: Source created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Source'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /workspaces/{workspaceName}/sources/{sourceName}:
+    get:
+      operationId: getSource
+      summary: Get source
+      description: >-
+        Returns a single source by name within the specified workspace.
+      tags:
+        - Sources
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+        - $ref: '#/components/parameters/SourceName'
+      responses:
+        '200':
+          description: Source retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Source'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteSource
+      summary: Delete source
+      description: >-
+        Deletes a source from the workspace by name.
+      tags:
+        - Sources
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+        - $ref: '#/components/parameters/SourceName'
+      responses:
+        '200':
+          description: Source deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workspaces/{workspaceName}/sources/{sourceName}/destinations:
+    get:
+      operationId: listDestinations
+      summary: List destinations
+      description: >-
+        Returns a list of all destinations for a specific source
+        in the workspace.
+      tags:
+        - Destinations
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+        - $ref: '#/components/parameters/SourceName'
+      responses:
+        '200':
+          description: Destinations retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  destinations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Destination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDestination
+      summary: Create destination
+      description: >-
+        Creates a new destination for a specific source in the workspace.
+      tags:
+        - Destinations
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+        - $ref: '#/components/parameters/SourceName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - destination
+              properties:
+                destination:
+                  type: object
+                  required:
+                    - name
+                    - connection_mode
+                  properties:
+                    name:
+                      type: string
+                      description: >-
+                        The fully qualified name of the destination.
+                    connection_mode:
+                      type: string
+                      description: >-
+                        The connection mode for the destination.
+                      enum:
+                        - CLOUD
+                        - DEVICE
+                        - UNSPECIFIED
+                    enabled:
+                      type: boolean
+                      description: >-
+                        Whether the destination is enabled.
+                    config:
+                      type: array
+                      description: >-
+                        Configuration settings for the destination.
+                      items:
+                        $ref: '#/components/schemas/DestinationConfig'
+      responses:
+        '200':
+          description: Destination created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /workspaces/{workspaceName}/sources/{sourceName}/destinations/{destinationName}:
+    get:
+      operationId: getDestination
+      summary: Get destination
+      description: >-
+        Returns a single destination by name for a specific source.
+      tags:
+        - Destinations
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+        - $ref: '#/components/parameters/SourceName'
+        - $ref: '#/components/parameters/DestinationName'
+      responses:
+        '200':
+          description: Destination retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateDestination
+      summary: Update destination
+      description: >-
+        Updates a destination's configuration, including enabling or
+        disabling it.
+      tags:
+        - Destinations
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+        - $ref: '#/components/parameters/SourceName'
+        - $ref: '#/components/parameters/DestinationName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destination:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: >-
+                        Whether the destination is enabled.
+                    config:
+                      type: array
+                      description: >-
+                        Updated configuration settings.
+                      items:
+                        $ref: '#/components/schemas/DestinationConfig'
+      responses:
+        '200':
+          description: Destination updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteDestination
+      summary: Delete destination
+      description: >-
+        Deletes a destination from a source in the workspace.
+      tags:
+        - Destinations
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+        - $ref: '#/components/parameters/SourceName'
+        - $ref: '#/components/parameters/DestinationName'
+      responses:
+        '200':
+          description: Destination deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workspaces/{workspaceName}/tracking-plans:
+    get:
+      operationId: listTrackingPlans
+      summary: List tracking plans
+      description: >-
+        Returns a list of all tracking plans in the workspace.
+      tags:
+        - Tracking Plans
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+      responses:
+        '200':
+          description: Tracking plans retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tracking_plans:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TrackingPlan'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTrackingPlan
+      summary: Create tracking plan
+      description: >-
+        Creates a new tracking plan in the workspace.
+      tags:
+        - Tracking Plans
+      parameters:
+        - $ref: '#/components/parameters/WorkspaceName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - tracking_plan
+              properties:
+                tracking_plan:
+                  type: object
+                  required:
+                    - display_name
+                  properties:
+                    display_name:
+                      type: string
+                      description: >-
+                        The display name of the tracking plan.
+                    rules:
+                      type: object
+                      description: >-
+                        The rules for the tracking plan.
+                      properties:
+                        events:
+                          type: array
+                          description: >-
+                            Event rules for the tracking plan.
+                          items:
+                            $ref: '#/components/schemas/TrackingPlanRule'
+      responses:
+        '200':
+          description: Tracking plan created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackingPlan'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Segment Config API access token. Note that as of early 2024,
+        Segment has stopped issuing new Config API tokens.
+  parameters:
+    WorkspaceName:
+      name: workspaceName
+      in: path
+      required: true
+      description: >-
+        The name of the workspace.
+      schema:
+        type: string
+    SourceName:
+      name: sourceName
+      in: path
+      required: true
+      description: >-
+        The name of the source.
+      schema:
+        type: string
+    DestinationName:
+      name: destinationName
+      in: path
+      required: true
+      description: >-
+        The name of the destination.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: >-
+        The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: >-
+        Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: >-
+        The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: >-
+            The error type.
+        message:
+          type: string
+          description: >-
+            A human-readable error message.
+    Workspace:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The fully qualified name of the workspace.
+        display_name:
+          type: string
+          description: >-
+            The display name of the workspace.
+        id:
+          type: string
+          description: >-
+            The unique identifier of the workspace.
+        create_time:
+          type: string
+          format: date-time
+          description: >-
+            When the workspace was created.
+    Source:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The fully qualified name of the source.
+        catalog_name:
+          type: string
+          description: >-
+            The catalog name of the source type.
+        parent:
+          type: string
+          description: >-
+            The parent workspace name.
+        write_keys:
+          type: array
+          items:
+            type: string
+          description: >-
+            The write keys for the source.
+        library_config:
+          type: object
+          description: >-
+            Library configuration settings.
+          additionalProperties: true
+        create_time:
+          type: string
+          format: date-time
+          description: >-
+            When the source was created.
+    Destination:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The fully qualified name of the destination.
+        parent:
+          type: string
+          description: >-
+            The parent source name.
+        display_name:
+          type: string
+          description: >-
+            The display name of the destination.
+        enabled:
+          type: boolean
+          description: >-
+            Whether the destination is enabled.
+        connection_mode:
+          type: string
+          description: >-
+            The connection mode.
+          enum:
+            - CLOUD
+            - DEVICE
+            - UNSPECIFIED
+        config:
+          type: array
+          description: >-
+            Configuration settings for the destination.
+          items:
+            $ref: '#/components/schemas/DestinationConfig'
+        create_time:
+          type: string
+          format: date-time
+          description: >-
+            When the destination was created.
+        update_time:
+          type: string
+          format: date-time
+          description: >-
+            When the destination was last updated.
+    DestinationConfig:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The fully qualified name of the config setting.
+        display_name:
+          type: string
+          description: >-
+            The display name of the setting.
+        value:
+          description: >-
+            The value of the setting. Can be any JSON type.
+        type:
+          type: string
+          description: >-
+            The data type of the setting.
+          enum:
+            - boolean
+            - string
+            - number
+            - list
+            - map
+            - mixed
+    TrackingPlan:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The fully qualified name of the tracking plan.
+        display_name:
+          type: string
+          description: >-
+            The display name of the tracking plan.
+        rules:
+          type: object
+          description: >-
+            The rules of the tracking plan.
+          properties:
+            events:
+              type: array
+              description: >-
+                Event rules.
+              items:
+                $ref: '#/components/schemas/TrackingPlanRule'
+        create_time:
+          type: string
+          format: date-time
+          description: >-
+            When the tracking plan was created.
+        update_time:
+          type: string
+          format: date-time
+          description: >-
+            When the tracking plan was last updated.
+    TrackingPlanRule:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The event name this rule applies to.
+        description:
+          type: string
+          description: >-
+            A description of the event.
+        rules:
+          type: object
+          description: >-
+            The JSON Schema rules for the event properties.
+          additionalProperties: true
+        version:
+          type: number
+          description: >-
+            The version of the rule.

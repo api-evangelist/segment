@@ -1,0 +1,737 @@
+openapi: 3.1.0
+info:
+  title: Segment HTTP Tracking API
+  description: >-
+    The Segment HTTP Tracking API enables developers to record analytics
+    data from any website or application by sending HTTP requests directly
+    to Segment servers. It supports identify, track, page, screen, group,
+    alias, and batch calls, and Segment routes the collected data to
+    configured destinations. The API accepts batch requests up to 500 KB
+    and requires each payload to include a userId or anonymousId. It is
+    a server-side alternative to Segment's client-side SDKs.
+  version: '1.0.0'
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+externalDocs:
+  description: Segment HTTP Tracking API Documentation
+  url: https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/
+servers:
+  - url: https://api.segment.io/v1
+    description: Production Server (US)
+  - url: https://events.eu1.segmentapis.com/v1
+    description: Production Server (EU)
+tags:
+  - name: Identify
+    description: >-
+      Operations for identifying users and associating traits with them.
+  - name: Track
+    description: >-
+      Operations for tracking events and actions performed by users.
+  - name: Page
+    description: >-
+      Operations for recording page views on websites.
+  - name: Screen
+    description: >-
+      Operations for recording screen views in mobile applications.
+  - name: Group
+    description: >-
+      Operations for associating users with groups or organizations.
+  - name: Alias
+    description: >-
+      Operations for merging two user identities together.
+  - name: Batch
+    description: >-
+      Operations for sending multiple calls in a single request.
+security:
+  - basicAuth: []
+paths:
+  /identify:
+    post:
+      operationId: identify
+      summary: Identify a user
+      description: >-
+        Associates a user with their traits. An identify call lets you
+        tie a user to their actions and record traits about them. It
+        includes a unique user ID and any optional traits you know
+        about them, like their email, name, or role.
+      tags:
+        - Identify
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentifyCall'
+      responses:
+        '200':
+          description: Event accepted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid or missing write key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /track:
+    post:
+      operationId: track
+      summary: Track an event
+      description: >-
+        Records an action that a user performs. A track call requires
+        an event name and can include properties that describe the
+        event, such as revenue, product details, or other contextual
+        information.
+      tags:
+        - Track
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrackCall'
+      responses:
+        '200':
+          description: Event accepted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid or missing write key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /page:
+    post:
+      operationId: page
+      summary: Record a page view
+      description: >-
+        Records a page view on a website. A page call lets you record
+        whenever a user sees a page of your website, along with any
+        optional properties about the page.
+      tags:
+        - Page
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageCall'
+      responses:
+        '200':
+          description: Event accepted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid or missing write key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /screen:
+    post:
+      operationId: screen
+      summary: Record a screen view
+      description: >-
+        Records a screen view in a mobile application. A screen call
+        lets you record whenever a user sees a screen of your mobile
+        app, along with optional properties about the screen.
+      tags:
+        - Screen
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScreenCall'
+      responses:
+        '200':
+          description: Event accepted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid or missing write key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /group:
+    post:
+      operationId: group
+      summary: Associate user with a group
+      description: >-
+        Associates an identified user with a group such as a company,
+        organization, or account. A group call lets you record which
+        group a user belongs to and set traits on the group.
+      tags:
+        - Group
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupCall'
+      responses:
+        '200':
+          description: Event accepted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid or missing write key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /alias:
+    post:
+      operationId: alias
+      summary: Merge two user identities
+      description: >-
+        Merges two user identities by connecting a previous ID to a
+        new user ID. This is an advanced method that is useful when
+        you want to associate an anonymous user with an identified
+        user after they sign up or log in.
+      tags:
+        - Alias
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AliasCall'
+      responses:
+        '200':
+          description: Event accepted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid or missing write key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /batch:
+    post:
+      operationId: batch
+      summary: Send a batch of events
+      description: >-
+        Sends multiple identify, track, page, screen, group, and alias
+        calls in a single request. The batch endpoint accepts up to
+        500 KB per request and a maximum of 2500 events per batch.
+        Each individual event must be less than 32 KB.
+      tags:
+        - Batch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchCall'
+      responses:
+        '200':
+          description: Batch accepted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid or missing write key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic authentication using the source write key as the
+        username and an empty password. The write key is found in the
+        Segment source settings.
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: >-
+            Whether the request was accepted.
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: >-
+            Always false for error responses.
+        message:
+          type: string
+          description: >-
+            A human-readable error message.
+    Context:
+      type: object
+      description: >-
+        Dictionary of extra context for the call. Context is a
+        dictionary of extra information that provides useful context
+        about a data point, such as the user's IP address, locale,
+        or device information.
+      properties:
+        active:
+          type: boolean
+          description: >-
+            Whether the user is active.
+        ip:
+          type: string
+          description: >-
+            The IP address of the user.
+        locale:
+          type: string
+          description: >-
+            The locale string for the user.
+        userAgent:
+          type: string
+          description: >-
+            The user agent string of the client.
+        library:
+          type: object
+          description: >-
+            Information about the library making the call.
+          properties:
+            name:
+              type: string
+              description: >-
+                The name of the library.
+            version:
+              type: string
+              description: >-
+                The version of the library.
+        page:
+          type: object
+          description: >-
+            Information about the current page.
+          properties:
+            path:
+              type: string
+              description: >-
+                The path of the page.
+            referrer:
+              type: string
+              format: uri
+              description: >-
+                The referrer URL.
+            search:
+              type: string
+              description: >-
+                The search query string.
+            title:
+              type: string
+              description: >-
+                The page title.
+            url:
+              type: string
+              format: uri
+              description: >-
+                The full URL of the page.
+        device:
+          type: object
+          description: >-
+            Information about the user's device.
+          properties:
+            id:
+              type: string
+              description: >-
+                The device ID.
+            manufacturer:
+              type: string
+              description: >-
+                The device manufacturer.
+            model:
+              type: string
+              description: >-
+                The device model.
+            name:
+              type: string
+              description: >-
+                The device name.
+            type:
+              type: string
+              description: >-
+                The device type.
+    Integrations:
+      type: object
+      description: >-
+        Dictionary of destinations to enable or disable. Pass a
+        destination name as key and true/false as the value to
+        control which destinations receive the data.
+      additionalProperties:
+        oneOf:
+          - type: boolean
+          - type: object
+    IdentifyCall:
+      type: object
+      description: >-
+        An identify call associates a user with their traits.
+      properties:
+        userId:
+          type: string
+          description: >-
+            Unique identifier for the user in your database.
+        anonymousId:
+          type: string
+          description: >-
+            A pseudo-unique substitute for a user ID for cases when
+            you do not have an absolutely unique identifier.
+        traits:
+          type: object
+          description: >-
+            Free-form dictionary of traits of the user, like email
+            or name.
+          additionalProperties: true
+        context:
+          $ref: '#/components/schemas/Context'
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+        timestamp:
+          type: string
+          format: date-time
+          description: >-
+            ISO 8601 date string when the message was originally sent.
+        messageId:
+          type: string
+          description: >-
+            Unique identifier for the message to deduplicate.
+    TrackCall:
+      type: object
+      required:
+        - event
+      description: >-
+        A track call records an action that a user performs.
+      properties:
+        userId:
+          type: string
+          description: >-
+            Unique identifier for the user in your database.
+        anonymousId:
+          type: string
+          description: >-
+            A pseudo-unique substitute for a user ID.
+        event:
+          type: string
+          description: >-
+            Name of the action that a user has performed.
+        properties:
+          type: object
+          description: >-
+            Free-form dictionary of properties of the event, like
+            revenue or product details.
+          additionalProperties: true
+        context:
+          $ref: '#/components/schemas/Context'
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+        timestamp:
+          type: string
+          format: date-time
+          description: >-
+            ISO 8601 date string when the message was originally sent.
+        messageId:
+          type: string
+          description: >-
+            Unique identifier for the message to deduplicate.
+    PageCall:
+      type: object
+      description: >-
+        A page call records a page view on a website.
+      properties:
+        userId:
+          type: string
+          description: >-
+            Unique identifier for the user in your database.
+        anonymousId:
+          type: string
+          description: >-
+            A pseudo-unique substitute for a user ID.
+        name:
+          type: string
+          description: >-
+            Name of the page.
+        properties:
+          type: object
+          description: >-
+            Free-form dictionary of properties of the page.
+          properties:
+            path:
+              type: string
+              description: >-
+                The path portion of the page URL.
+            referrer:
+              type: string
+              format: uri
+              description: >-
+                The referrer URL.
+            search:
+              type: string
+              description: >-
+                The search query string of the URL.
+            title:
+              type: string
+              description: >-
+                The page title.
+            url:
+              type: string
+              format: uri
+              description: >-
+                The full URL of the page.
+          additionalProperties: true
+        context:
+          $ref: '#/components/schemas/Context'
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+        timestamp:
+          type: string
+          format: date-time
+          description: >-
+            ISO 8601 date string when the message was originally sent.
+        messageId:
+          type: string
+          description: >-
+            Unique identifier for the message to deduplicate.
+    ScreenCall:
+      type: object
+      description: >-
+        A screen call records a screen view in a mobile application.
+      properties:
+        userId:
+          type: string
+          description: >-
+            Unique identifier for the user in your database.
+        anonymousId:
+          type: string
+          description: >-
+            A pseudo-unique substitute for a user ID.
+        name:
+          type: string
+          description: >-
+            Name of the screen.
+        properties:
+          type: object
+          description: >-
+            Free-form dictionary of properties of the screen.
+          additionalProperties: true
+        context:
+          $ref: '#/components/schemas/Context'
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+        timestamp:
+          type: string
+          format: date-time
+          description: >-
+            ISO 8601 date string when the message was originally sent.
+        messageId:
+          type: string
+          description: >-
+            Unique identifier for the message to deduplicate.
+    GroupCall:
+      type: object
+      required:
+        - groupId
+      description: >-
+        A group call associates an identified user with a group.
+      properties:
+        userId:
+          type: string
+          description: >-
+            Unique identifier for the user in your database.
+        anonymousId:
+          type: string
+          description: >-
+            A pseudo-unique substitute for a user ID.
+        groupId:
+          type: string
+          description: >-
+            A unique identifier for the group.
+        traits:
+          type: object
+          description: >-
+            Free-form dictionary of traits of the group, like name,
+            industry, or number of employees.
+          additionalProperties: true
+        context:
+          $ref: '#/components/schemas/Context'
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+        timestamp:
+          type: string
+          format: date-time
+          description: >-
+            ISO 8601 date string when the message was originally sent.
+        messageId:
+          type: string
+          description: >-
+            Unique identifier for the message to deduplicate.
+    AliasCall:
+      type: object
+      required:
+        - previousId
+        - userId
+      description: >-
+        An alias call merges two user identities.
+      properties:
+        userId:
+          type: string
+          description: >-
+            The new user ID to associate.
+        previousId:
+          type: string
+          description: >-
+            The previous ID to be merged with the user ID.
+        context:
+          $ref: '#/components/schemas/Context'
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+        timestamp:
+          type: string
+          format: date-time
+          description: >-
+            ISO 8601 date string when the message was originally sent.
+        messageId:
+          type: string
+          description: >-
+            Unique identifier for the message to deduplicate.
+    BatchCall:
+      type: object
+      required:
+        - batch
+      description: >-
+        A batch call sends multiple events in a single request.
+      properties:
+        batch:
+          type: array
+          description: >-
+            An array of identify, track, page, screen, group, or alias
+            call objects. Maximum 2500 events per batch. Each event
+            must be less than 32 KB.
+          maxItems: 2500
+          items:
+            type: object
+            required:
+              - type
+            properties:
+              type:
+                type: string
+                description: >-
+                  The type of call.
+                enum:
+                  - identify
+                  - track
+                  - page
+                  - screen
+                  - group
+                  - alias
+              userId:
+                type: string
+                description: >-
+                  Unique identifier for the user.
+              anonymousId:
+                type: string
+                description: >-
+                  A pseudo-unique substitute for a user ID.
+              event:
+                type: string
+                description: >-
+                  Event name, required for track calls.
+              properties:
+                type: object
+                description: >-
+                  Event or page/screen properties.
+                additionalProperties: true
+              traits:
+                type: object
+                description: >-
+                  User or group traits.
+                additionalProperties: true
+              groupId:
+                type: string
+                description: >-
+                  Group ID, required for group calls.
+              previousId:
+                type: string
+                description: >-
+                  Previous ID, required for alias calls.
+              name:
+                type: string
+                description: >-
+                  Page or screen name.
+              context:
+                $ref: '#/components/schemas/Context'
+              integrations:
+                $ref: '#/components/schemas/Integrations'
+              timestamp:
+                type: string
+                format: date-time
+                description: >-
+                  ISO 8601 date string.
+              messageId:
+                type: string
+                description: >-
+                  Unique identifier for the message.
+        context:
+          $ref: '#/components/schemas/Context'
+        integrations:
+          $ref: '#/components/schemas/Integrations'

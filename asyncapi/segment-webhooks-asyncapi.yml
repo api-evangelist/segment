@@ -1,0 +1,312 @@
+asyncapi: 2.6.0
+info:
+  title: Segment Webhook Events
+  description: >-
+    Segment Webhooks submit real-time user data to HTTP endpoints as
+    POST requests. When configured as a destination, Segment forwards
+    identify, track, page, screen, group, and alias events to up to
+    five webhook URLs. Each event is delivered as a JSON payload via
+    HTTP POST with a configurable shared secret for authentication.
+    The receiving service must respond within 5 seconds. If no response
+    is received, Segment logs a timeout error and retries the event.
+  version: '1.0.0'
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  externalDocs:
+    description: Segment Webhooks Destination Documentation
+    url: https://segment.com/docs/connections/destinations/catalog/webhooks/
+servers:
+  webhookEndpoint:
+    url: '{webhookUrl}'
+    protocol: https
+    description: >-
+      Your webhook endpoint URL configured in the Segment Webhooks
+      destination settings. Up to five webhook URLs can be configured.
+    variables:
+      webhookUrl:
+        description: >-
+          The URL of your webhook endpoint.
+    security:
+      - sharedSecret: []
+channels:
+  /webhook:
+    description: >-
+      The webhook endpoint that receives Segment events. Segment
+      sends each event as an HTTP POST request with a JSON body.
+    publish:
+      operationId: receiveSegmentEvent
+      summary: Receive Segment event
+      description: >-
+        Receives a Segment event via HTTP POST. The event payload
+        matches one of the Segment spec types: identify, track, page,
+        screen, group, or alias. Your service must respond within
+        5 seconds with a 2xx status code.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/IdentifyEvent'
+          - $ref: '#/components/messages/TrackEvent'
+          - $ref: '#/components/messages/PageEvent'
+          - $ref: '#/components/messages/ScreenEvent'
+          - $ref: '#/components/messages/GroupEvent'
+          - $ref: '#/components/messages/AliasEvent'
+components:
+  securitySchemes:
+    sharedSecret:
+      type: httpApiKey
+      name: x-signature
+      in: header
+      description: >-
+        A shared secret configured in the Segment Webhooks destination
+        settings. Segment includes a signature header that your service
+        can use to verify the authenticity of incoming webhook requests.
+  messages:
+    IdentifyEvent:
+      name: IdentifyEvent
+      title: Identify Event
+      summary: >-
+        An identify event that associates a user with their traits.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/IdentifyPayload'
+    TrackEvent:
+      name: TrackEvent
+      title: Track Event
+      summary: >-
+        A track event that records an action performed by a user.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/TrackPayload'
+    PageEvent:
+      name: PageEvent
+      title: Page Event
+      summary: >-
+        A page event that records a page view on a website.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/PagePayload'
+    ScreenEvent:
+      name: ScreenEvent
+      title: Screen Event
+      summary: >-
+        A screen event that records a screen view in a mobile app.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ScreenPayload'
+    GroupEvent:
+      name: GroupEvent
+      title: Group Event
+      summary: >-
+        A group event that associates a user with a group or account.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/GroupPayload'
+    AliasEvent:
+      name: AliasEvent
+      title: Alias Event
+      summary: >-
+        An alias event that merges two user identities.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/AliasPayload'
+  schemas:
+    CommonFields:
+      type: object
+      properties:
+        type:
+          type: string
+          description: >-
+            The type of Segment event.
+          enum:
+            - identify
+            - track
+            - page
+            - screen
+            - group
+            - alias
+        userId:
+          type: string
+          description: >-
+            The unique user identifier.
+        anonymousId:
+          type: string
+          description: >-
+            A pseudo-unique substitute for a user ID.
+        messageId:
+          type: string
+          description: >-
+            Unique identifier for the message.
+        timestamp:
+          type: string
+          format: date-time
+          description: >-
+            ISO 8601 timestamp of when the event occurred.
+        sentAt:
+          type: string
+          format: date-time
+          description: >-
+            ISO 8601 timestamp of when the event was sent.
+        receivedAt:
+          type: string
+          format: date-time
+          description: >-
+            ISO 8601 timestamp of when Segment received the event.
+        context:
+          type: object
+          description: >-
+            Contextual information about the event.
+          additionalProperties: true
+        integrations:
+          type: object
+          description: >-
+            Destination-specific settings.
+          additionalProperties: true
+    IdentifyPayload:
+      allOf:
+        - $ref: '#/components/schemas/CommonFields'
+        - type: object
+          required:
+            - type
+          properties:
+            type:
+              type: string
+              const: identify
+            traits:
+              type: object
+              description: >-
+                User traits such as email, name, or custom attributes.
+              additionalProperties: true
+    TrackPayload:
+      allOf:
+        - $ref: '#/components/schemas/CommonFields'
+        - type: object
+          required:
+            - type
+            - event
+          properties:
+            type:
+              type: string
+              const: track
+            event:
+              type: string
+              description: >-
+                The name of the tracked event.
+            properties:
+              type: object
+              description: >-
+                Properties of the event, such as revenue or product
+                details.
+              additionalProperties: true
+    PagePayload:
+      allOf:
+        - $ref: '#/components/schemas/CommonFields'
+        - type: object
+          required:
+            - type
+          properties:
+            type:
+              type: string
+              const: page
+            name:
+              type: string
+              description: >-
+                The name of the page.
+            properties:
+              type: object
+              description: >-
+                Page properties.
+              properties:
+                path:
+                  type: string
+                  description: >-
+                    The path of the page URL.
+                referrer:
+                  type: string
+                  description: >-
+                    The referrer URL.
+                title:
+                  type: string
+                  description: >-
+                    The page title.
+                url:
+                  type: string
+                  format: uri
+                  description: >-
+                    The full URL of the page.
+                search:
+                  type: string
+                  description: >-
+                    The search query string.
+              additionalProperties: true
+    ScreenPayload:
+      allOf:
+        - $ref: '#/components/schemas/CommonFields'
+        - type: object
+          required:
+            - type
+          properties:
+            type:
+              type: string
+              const: screen
+            name:
+              type: string
+              description: >-
+                The name of the screen.
+            properties:
+              type: object
+              description: >-
+                Screen properties.
+              additionalProperties: true
+    GroupPayload:
+      allOf:
+        - $ref: '#/components/schemas/CommonFields'
+        - type: object
+          required:
+            - type
+            - groupId
+          properties:
+            type:
+              type: string
+              const: group
+            groupId:
+              type: string
+              description: >-
+                A unique identifier for the group.
+            traits:
+              type: object
+              description: >-
+                Group traits such as name, industry, or employee count.
+              properties:
+                name:
+                  type: string
+                  description: >-
+                    The name of the group or company.
+                industry:
+                  type: string
+                  description: >-
+                    The industry of the group.
+                employees:
+                  type: integer
+                  description: >-
+                    The number of employees.
+                plan:
+                  type: string
+                  description: >-
+                    The plan the group is on.
+              additionalProperties: true
+    AliasPayload:
+      allOf:
+        - $ref: '#/components/schemas/CommonFields'
+        - type: object
+          required:
+            - type
+            - previousId
+            - userId
+          properties:
+            type:
+              type: string
+              const: alias
+            previousId:
+              type: string
+              description: >-
+                The previous user ID to merge.

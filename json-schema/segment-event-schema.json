@@ -1,0 +1,309 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://segment.com/schemas/segment/event.json",
+  "title": "Segment Event",
+  "description": "A Segment analytics event conforming to the Segment spec. Events flow through the Segment platform and are delivered to configured destinations. Every event must include a type and either a userId or anonymousId.",
+  "type": "object",
+  "required": ["type"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of Segment call. Determines the structure and semantics of the event.",
+      "enum": ["identify", "track", "page", "screen", "group", "alias"]
+    },
+    "userId": {
+      "type": "string",
+      "description": "Unique identifier for the user in your database. Required unless anonymousId is provided.",
+      "minLength": 1
+    },
+    "anonymousId": {
+      "type": "string",
+      "description": "A pseudo-unique substitute for a user ID, typically assigned by the Segment library before a user is identified.",
+      "minLength": 1
+    },
+    "event": {
+      "type": "string",
+      "description": "The name of the action a user performed. Required for track calls.",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the page or screen. Used in page and screen calls."
+    },
+    "groupId": {
+      "type": "string",
+      "description": "A unique identifier for the group or account. Required for group calls.",
+      "minLength": 1
+    },
+    "previousId": {
+      "type": "string",
+      "description": "The previous user ID to merge with userId. Required for alias calls.",
+      "minLength": 1
+    },
+    "properties": {
+      "type": "object",
+      "description": "A free-form dictionary of properties for the event. Used with track, page, and screen calls.",
+      "additionalProperties": true
+    },
+    "traits": {
+      "type": "object",
+      "description": "A free-form dictionary of traits for the user or group. Used with identify and group calls.",
+      "additionalProperties": true
+    },
+    "context": {
+      "$ref": "#/$defs/Context"
+    },
+    "integrations": {
+      "type": "object",
+      "description": "A dictionary of destination names to boolean or object values that control which destinations receive this event.",
+      "additionalProperties": true
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 date string for when the event originally occurred."
+    },
+    "sentAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 date string for when the event was sent from the client."
+    },
+    "receivedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 date string for when Segment received the event."
+    },
+    "messageId": {
+      "type": "string",
+      "description": "A unique identifier for the message, used for deduplication."
+    },
+    "writeKey": {
+      "type": "string",
+      "description": "The source write key. Included in pixel tracking API calls."
+    }
+  },
+  "anyOf": [
+    { "required": ["userId"] },
+    { "required": ["anonymousId"] }
+  ],
+  "if": {
+    "properties": { "type": { "const": "track" } }
+  },
+  "then": {
+    "required": ["event"]
+  },
+  "$defs": {
+    "Context": {
+      "type": "object",
+      "description": "Contextual information that provides extra details about the event, such as device information, IP address, locale, and library version.",
+      "properties": {
+        "active": {
+          "type": "boolean",
+          "description": "Whether the user is currently active."
+        },
+        "ip": {
+          "type": "string",
+          "format": "ipv4",
+          "description": "The IP address of the user."
+        },
+        "locale": {
+          "type": "string",
+          "description": "The locale of the user, such as en-US.",
+          "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+        },
+        "userAgent": {
+          "type": "string",
+          "description": "The user agent string of the client."
+        },
+        "library": {
+          "$ref": "#/$defs/Library"
+        },
+        "page": {
+          "$ref": "#/$defs/PageContext"
+        },
+        "device": {
+          "$ref": "#/$defs/Device"
+        },
+        "os": {
+          "$ref": "#/$defs/OperatingSystem"
+        },
+        "screen": {
+          "$ref": "#/$defs/Screen"
+        },
+        "campaign": {
+          "$ref": "#/$defs/Campaign"
+        },
+        "referrer": {
+          "type": "object",
+          "description": "Referrer information.",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "The referrer type."
+            },
+            "name": {
+              "type": "string",
+              "description": "The referrer name."
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "The referrer URL."
+            },
+            "link": {
+              "type": "string",
+              "format": "uri",
+              "description": "The referrer link."
+            }
+          }
+        },
+        "timezone": {
+          "type": "string",
+          "description": "The user's timezone, such as America/New_York."
+        }
+      },
+      "additionalProperties": true
+    },
+    "Library": {
+      "type": "object",
+      "description": "Information about the Segment library that generated the event.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the Segment library."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the Segment library."
+        }
+      }
+    },
+    "PageContext": {
+      "type": "object",
+      "description": "Information about the current web page.",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "The path of the page URL."
+        },
+        "referrer": {
+          "type": "string",
+          "format": "uri",
+          "description": "The referrer URL."
+        },
+        "search": {
+          "type": "string",
+          "description": "The search query string."
+        },
+        "title": {
+          "type": "string",
+          "description": "The page title."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The full page URL."
+        }
+      }
+    },
+    "Device": {
+      "type": "object",
+      "description": "Information about the user's device.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The device ID."
+        },
+        "advertisingId": {
+          "type": "string",
+          "description": "The advertising ID."
+        },
+        "adTrackingEnabled": {
+          "type": "boolean",
+          "description": "Whether ad tracking is enabled."
+        },
+        "manufacturer": {
+          "type": "string",
+          "description": "The device manufacturer."
+        },
+        "model": {
+          "type": "string",
+          "description": "The device model."
+        },
+        "name": {
+          "type": "string",
+          "description": "The device name."
+        },
+        "type": {
+          "type": "string",
+          "description": "The device type, such as ios or android."
+        },
+        "token": {
+          "type": "string",
+          "description": "The push notification token."
+        }
+      }
+    },
+    "OperatingSystem": {
+      "type": "object",
+      "description": "Information about the device operating system.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The OS name."
+        },
+        "version": {
+          "type": "string",
+          "description": "The OS version."
+        }
+      }
+    },
+    "Screen": {
+      "type": "object",
+      "description": "Information about the device screen.",
+      "properties": {
+        "width": {
+          "type": "integer",
+          "description": "The screen width in pixels.",
+          "minimum": 0
+        },
+        "height": {
+          "type": "integer",
+          "description": "The screen height in pixels.",
+          "minimum": 0
+        },
+        "density": {
+          "type": "number",
+          "description": "The screen pixel density.",
+          "minimum": 0
+        }
+      }
+    },
+    "Campaign": {
+      "type": "object",
+      "description": "Campaign attribution information from UTM parameters.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The campaign name (utm_campaign)."
+        },
+        "source": {
+          "type": "string",
+          "description": "The campaign source (utm_source)."
+        },
+        "medium": {
+          "type": "string",
+          "description": "The campaign medium (utm_medium)."
+        },
+        "term": {
+          "type": "string",
+          "description": "The campaign term (utm_term)."
+        },
+        "content": {
+          "type": "string",
+          "description": "The campaign content (utm_content)."
+        }
+      }
+    }
+  }
+}

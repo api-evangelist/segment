@@ -1,0 +1,233 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "segment": "https://segment.com/schemas/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Workspace": {
+      "@id": "segment:Workspace",
+      "@context": {
+        "name": "schema:name",
+        "slug": "segment:slug",
+        "workspaceId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Source": {
+      "@id": "segment:Source",
+      "@context": {
+        "name": "schema:name",
+        "slug": "segment:slug",
+        "sourceId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "enabled": {
+          "@id": "segment:enabled",
+          "@type": "xsd:boolean"
+        },
+        "writeKeys": {
+          "@id": "segment:writeKeys",
+          "@container": "@set"
+        },
+        "workspace": {
+          "@id": "segment:workspace",
+          "@type": "@id"
+        },
+        "catalogEntry": {
+          "@id": "segment:catalogEntry",
+          "@type": "@id"
+        },
+        "labels": {
+          "@id": "segment:labels",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "Destination": {
+      "@id": "segment:Destination",
+      "@context": {
+        "name": "schema:name",
+        "destinationId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "enabled": {
+          "@id": "segment:enabled",
+          "@type": "xsd:boolean"
+        },
+        "source": {
+          "@id": "segment:source",
+          "@type": "@id"
+        },
+        "catalogEntry": {
+          "@id": "segment:catalogEntry",
+          "@type": "@id"
+        },
+        "connectionMode": {
+          "@id": "segment:connectionMode",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Warehouse": {
+      "@id": "segment:Warehouse",
+      "@context": {
+        "warehouseId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "enabled": {
+          "@id": "segment:enabled",
+          "@type": "xsd:boolean"
+        },
+        "warehouseType": {
+          "@id": "segment:warehouseType",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "TrackingPlan": {
+      "@id": "segment:TrackingPlan",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "trackingPlanId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "planType": {
+          "@id": "segment:planType",
+          "@type": "xsd:string"
+        },
+        "rules": {
+          "@id": "segment:rules",
+          "@container": "@set"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updatedAt": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Event": {
+      "@id": "segment:Event",
+      "@context": {
+        "eventType": {
+          "@id": "segment:eventType",
+          "@type": "xsd:string"
+        },
+        "eventName": "schema:name",
+        "userId": {
+          "@id": "segment:userId",
+          "@type": "xsd:string"
+        },
+        "anonymousId": {
+          "@id": "segment:anonymousId",
+          "@type": "xsd:string"
+        },
+        "messageId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "timestamp": {
+          "@id": "dcterms:date",
+          "@type": "xsd:dateTime"
+        },
+        "properties": {
+          "@id": "segment:properties"
+        },
+        "traits": {
+          "@id": "segment:traits"
+        },
+        "context": {
+          "@id": "segment:context"
+        }
+      }
+    },
+
+    "UserProfile": {
+      "@id": "segment:UserProfile",
+      "@context": {
+        "segmentId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "traits": {
+          "@id": "segment:traits"
+        },
+        "externalIds": {
+          "@id": "segment:externalIds",
+          "@container": "@set"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updatedAt": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Function": {
+      "@id": "segment:Function",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "functionId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "resourceType": {
+          "@id": "segment:resourceType",
+          "@type": "xsd:string"
+        },
+        "code": {
+          "@id": "segment:code",
+          "@type": "xsd:string"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Regulation": {
+      "@id": "segment:Regulation",
+      "@context": {
+        "regulationId": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "regulationType": {
+          "@id": "segment:regulationType",
+          "@type": "xsd:string"
+        },
+        "status": {
+          "@id": "segment:status",
+          "@type": "xsd:string"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    }
+  }
+}

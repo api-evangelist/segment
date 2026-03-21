@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://segment.com/schemas/segment/destination.json",
+  "title": "Segment Destination",
+  "description": "A Segment destination represents a configured integration that receives analytics data routed from Segment sources. Destinations can be analytics tools, data warehouses, marketing platforms, or custom webhook endpoints.",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the destination."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the destination."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the destination is currently enabled and receiving data."
+    },
+    "sourceId": {
+      "type": "string",
+      "description": "The ID of the source this destination is connected to."
+    },
+    "metadata": {
+      "$ref": "#/$defs/DestinationMetadata"
+    },
+    "settings": {
+      "type": "object",
+      "description": "Configuration settings specific to the destination type, such as API keys, account IDs, or mapping options.",
+      "additionalProperties": true
+    },
+    "labels": {
+      "type": "array",
+      "description": "Labels applied to the destination for organization and access control.",
+      "items": {
+        "type": "object",
+        "required": ["key", "value"],
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "The label key."
+          },
+          "value": {
+            "type": "string",
+            "description": "The label value."
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "DestinationMetadata": {
+      "type": "object",
+      "description": "Metadata about the destination type from the Segment catalog.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The metadata ID from the catalog."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the destination integration."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug of the destination integration."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the destination integration."
+        },
+        "logos": {
+          "type": "object",
+          "description": "Logo URLs for the destination.",
+          "properties": {
+            "default": {
+              "type": "string",
+              "format": "uri",
+              "description": "Default logo URL."
+            }
+          }
+        },
+        "categories": {
+          "type": "array",
+          "description": "Categories the destination belongs to.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "supportedMethods": {
+          "type": "object",
+          "description": "Which Segment call types this destination supports.",
+          "properties": {
+            "track": {
+              "type": "boolean",
+              "description": "Whether track calls are supported."
+            },
+            "identify": {
+              "type": "boolean",
+              "description": "Whether identify calls are supported."
+            },
+            "page": {
+              "type": "boolean",
+              "description": "Whether page calls are supported."
+            },
+            "screen": {
+              "type": "boolean",
+              "description": "Whether screen calls are supported."
+            },
+            "group": {
+              "type": "boolean",
+              "description": "Whether group calls are supported."
+            },
+            "alias": {
+              "type": "boolean",
+              "description": "Whether alias calls are supported."
+            }
+          }
+        }
+      }
+    }
+  }
+}

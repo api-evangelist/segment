@@ -1,0 +1,173 @@
+openapi: 3.1.0
+info:
+  title: Segment Pixel Tracking API
+  description: >-
+    The Segment Pixel Tracking API provides a way to collect analytics
+    data using image pixel requests, which is useful in environments where
+    JavaScript cannot execute, such as email clients. It supports identify,
+    track, page, screen, group, and alias calls through pixel endpoints
+    under the api.segment.io domain. Each endpoint responds with a 200
+    status code and an empty GIF image. This API is particularly suited
+    for tracking email opens, ad impressions, and other contexts where
+    embedding a tracking pixel is the only viable data collection method.
+  version: '1.0.0'
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+externalDocs:
+  description: Segment Pixel Tracking API Documentation
+  url: https://segment.com/docs/connections/sources/catalog/libraries/server/pixel-tracking-api/
+servers:
+  - url: https://api.segment.io/v1
+    description: Production Server
+tags:
+  - name: Pixel Tracking
+    description: >-
+      Pixel-based tracking endpoints that accept data via query
+      parameters and return a transparent 1x1 GIF image. All data
+      is passed as a base64-encoded JSON object in the data query
+      parameter.
+paths:
+  /pixel/identify:
+    get:
+      operationId: pixelIdentify
+      summary: Identify via pixel
+      description: >-
+        Associates a user with traits via a tracking pixel request.
+        The data parameter should contain a base64-encoded JSON object
+        with the identify payload. Always returns a 200 response with
+        a transparent GIF, even on errors.
+      tags:
+        - Pixel Tracking
+      parameters:
+        - $ref: '#/components/parameters/Data'
+      responses:
+        '200':
+          description: >-
+            Returns a transparent 1x1 GIF image. The response is
+            always 200 regardless of whether the data was valid.
+          content:
+            image/gif:
+              schema:
+                type: string
+                format: binary
+  /pixel/track:
+    get:
+      operationId: pixelTrack
+      summary: Track via pixel
+      description: >-
+        Records an event via a tracking pixel request. The data
+        parameter should contain a base64-encoded JSON object with
+        the track payload including the required event field.
+      tags:
+        - Pixel Tracking
+      parameters:
+        - $ref: '#/components/parameters/Data'
+      responses:
+        '200':
+          description: >-
+            Returns a transparent 1x1 GIF image.
+          content:
+            image/gif:
+              schema:
+                type: string
+                format: binary
+  /pixel/page:
+    get:
+      operationId: pixelPage
+      summary: Page via pixel
+      description: >-
+        Records a page view via a tracking pixel request. The data
+        parameter should contain a base64-encoded JSON object with
+        the page payload.
+      tags:
+        - Pixel Tracking
+      parameters:
+        - $ref: '#/components/parameters/Data'
+      responses:
+        '200':
+          description: >-
+            Returns a transparent 1x1 GIF image.
+          content:
+            image/gif:
+              schema:
+                type: string
+                format: binary
+  /pixel/screen:
+    get:
+      operationId: pixelScreen
+      summary: Screen via pixel
+      description: >-
+        Records a screen view via a tracking pixel request. The data
+        parameter should contain a base64-encoded JSON object with
+        the screen payload.
+      tags:
+        - Pixel Tracking
+      parameters:
+        - $ref: '#/components/parameters/Data'
+      responses:
+        '200':
+          description: >-
+            Returns a transparent 1x1 GIF image.
+          content:
+            image/gif:
+              schema:
+                type: string
+                format: binary
+  /pixel/group:
+    get:
+      operationId: pixelGroup
+      summary: Group via pixel
+      description: >-
+        Associates a user with a group via a tracking pixel request.
+        The data parameter should contain a base64-encoded JSON object
+        with the group payload including the required groupId field.
+      tags:
+        - Pixel Tracking
+      parameters:
+        - $ref: '#/components/parameters/Data'
+      responses:
+        '200':
+          description: >-
+            Returns a transparent 1x1 GIF image.
+          content:
+            image/gif:
+              schema:
+                type: string
+                format: binary
+  /pixel/alias:
+    get:
+      operationId: pixelAlias
+      summary: Alias via pixel
+      description: >-
+        Merges two user identities via a tracking pixel request.
+        The data parameter should contain a base64-encoded JSON
+        object with the alias payload including previousId and userId.
+      tags:
+        - Pixel Tracking
+      parameters:
+        - $ref: '#/components/parameters/Data'
+      responses:
+        '200':
+          description: >-
+            Returns a transparent 1x1 GIF image.
+          content:
+            image/gif:
+              schema:
+                type: string
+                format: binary
+components:
+  parameters:
+    Data:
+      name: data
+      in: query
+      required: true
+      description: >-
+        A base64-encoded JSON object containing the call payload.
+        Base64 encoding is optional but recommended to prevent special
+        character manipulation by browsers or intermediaries. The
+        JSON object must include a writeKey field for authentication
+        and either a userId or anonymousId for user identification.
+      schema:
+        type: string

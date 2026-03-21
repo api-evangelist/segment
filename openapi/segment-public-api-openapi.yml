@@ -1,0 +1,2281 @@
+openapi: 3.1.0
+info:
+  title: Segment Public API
+  description: >-
+    The Segment Public API allows developers to programmatically manage
+    Segment workspaces and their resources. It supports full CRUD operations
+    for sources, destinations, warehouses, tracking plans, functions,
+    transformations, and catalog entries. The API follows REST conventions
+    with standard HTTP methods and predictable resource-oriented URLs. It
+    is available for Team and Business tier customers and is the recommended
+    API going forward, replacing the older Config API.
+  version: '1.0.0'
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+externalDocs:
+  description: Segment Public API Documentation
+  url: https://docs.segmentapis.com/
+servers:
+  - url: https://api.segmentapis.com
+    description: Production Server
+tags:
+  - name: Workspaces
+    description: >-
+      Operations for managing Segment workspaces, including retrieving
+      workspace details and configuration.
+  - name: Sources
+    description: >-
+      Operations for creating, reading, updating, and deleting data
+      collection sources within a workspace.
+  - name: Destinations
+    description: >-
+      Operations for managing destinations where collected data is
+      sent, including configuration and connection settings.
+  - name: Warehouses
+    description: >-
+      Operations for managing data warehouse connections, including
+      creating and configuring warehouse destinations.
+  - name: Tracking Plans
+    description: >-
+      Operations for managing tracking plans that define and enforce
+      data schemas for event tracking.
+  - name: Catalog
+    description: >-
+      Operations for browsing the Segment catalog of available sources
+      and destination integrations.
+  - name: Functions
+    description: >-
+      Operations for managing custom functions that transform or
+      enrich data flowing through Segment.
+  - name: Transformations
+    description: >-
+      Operations for managing transformations that modify event data
+      before it reaches destinations.
+  - name: Computed Traits
+    description: >-
+      Operations for managing computed traits that derive user
+      attributes from event data.
+  - name: Audiences
+    description: >-
+      Operations for managing audiences that define user segments
+      based on traits and behaviors.
+  - name: Spaces
+    description: >-
+      Operations for managing Segment Unify spaces.
+  - name: Regulations
+    description: >-
+      Operations for managing data privacy regulations and
+      suppression requests.
+  - name: Labels
+    description: >-
+      Operations for managing labels used to organize and control
+      access to workspace resources.
+security:
+  - bearerAuth: []
+paths:
+  /workspace:
+    get:
+      operationId: getWorkspace
+      summary: Get workspace
+      description: >-
+        Returns the workspace associated with the access token used
+        to make the request, including the workspace name, ID, and slug.
+      tags:
+        - Workspaces
+      responses:
+        '200':
+          description: Workspace retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      workspace:
+                        $ref: '#/components/schemas/Workspace'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /sources:
+    get:
+      operationId: listSources
+      summary: List sources
+      description: >-
+        Returns a list of all sources in the workspace, including their
+        configuration, write keys, and metadata.
+      tags:
+        - Sources
+      parameters:
+        - $ref: '#/components/parameters/PaginationCursor'
+        - $ref: '#/components/parameters/PaginationCount'
+      responses:
+        '200':
+          description: Sources retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      sources:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Source'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSource
+      summary: Create source
+      description: >-
+        Creates a new source in the workspace with the specified
+        configuration and metadata.
+      tags:
+        - Sources
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - slug
+                - metadataId
+              properties:
+                slug:
+                  type: string
+                  description: >-
+                    URL-friendly name for the source.
+                metadataId:
+                  type: string
+                  description: >-
+                    The ID of the source metadata from the catalog.
+                enabled:
+                  type: boolean
+                  description: >-
+                    Whether the source is enabled.
+                settings:
+                  type: object
+                  description: >-
+                    Configuration settings for the source.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Source created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      source:
+                        $ref: '#/components/schemas/Source'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sources/{sourceId}:
+    get:
+      operationId: getSource
+      summary: Get source
+      description: >-
+        Returns a single source by its ID, including its configuration,
+        write key, and metadata.
+      tags:
+        - Sources
+      parameters:
+        - $ref: '#/components/parameters/SourceId'
+      responses:
+        '200':
+          description: Source retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      source:
+                        $ref: '#/components/schemas/Source'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateSource
+      summary: Update source
+      description: >-
+        Updates an existing source with the provided configuration changes.
+      tags:
+        - Sources
+      parameters:
+        - $ref: '#/components/parameters/SourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: >-
+                    Updated name for the source.
+                enabled:
+                  type: boolean
+                  description: >-
+                    Whether the source is enabled.
+                slug:
+                  type: string
+                  description: >-
+                    Updated URL-friendly name.
+                settings:
+                  type: object
+                  description: >-
+                    Updated configuration settings.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Source updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      source:
+                        $ref: '#/components/schemas/Source'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteSource
+      summary: Delete source
+      description: >-
+        Deletes a source from the workspace by its ID. This action
+        is irreversible.
+      tags:
+        - Sources
+      parameters:
+        - $ref: '#/components/parameters/SourceId'
+      responses:
+        '200':
+          description: Source deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: >-
+                          Status of the delete operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /destinations:
+    get:
+      operationId: listDestinations
+      summary: List destinations
+      description: >-
+        Returns a list of all destinations in the workspace, including
+        their configuration and connection status.
+      tags:
+        - Destinations
+      parameters:
+        - $ref: '#/components/parameters/PaginationCursor'
+        - $ref: '#/components/parameters/PaginationCount'
+      responses:
+        '200':
+          description: Destinations retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      destinations:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Destination'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDestination
+      summary: Create destination
+      description: >-
+        Creates a new destination connected to a source in the workspace.
+      tags:
+        - Destinations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - sourceId
+                - metadataId
+              properties:
+                sourceId:
+                  type: string
+                  description: >-
+                    The ID of the source to connect.
+                metadataId:
+                  type: string
+                  description: >-
+                    The ID of the destination metadata from the catalog.
+                enabled:
+                  type: boolean
+                  description: >-
+                    Whether the destination is enabled.
+                name:
+                  type: string
+                  description: >-
+                    Optional display name for the destination.
+                settings:
+                  type: object
+                  description: >-
+                    Configuration settings for the destination.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Destination created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      destination:
+                        $ref: '#/components/schemas/Destination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /destinations/{destinationId}:
+    get:
+      operationId: getDestination
+      summary: Get destination
+      description: >-
+        Returns a single destination by its ID, including its configuration
+        and connection status.
+      tags:
+        - Destinations
+      parameters:
+        - $ref: '#/components/parameters/DestinationId'
+      responses:
+        '200':
+          description: Destination retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      destination:
+                        $ref: '#/components/schemas/Destination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateDestination
+      summary: Update destination
+      description: >-
+        Updates an existing destination with the provided changes.
+      tags:
+        - Destinations
+      parameters:
+        - $ref: '#/components/parameters/DestinationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: >-
+                    Updated display name.
+                enabled:
+                  type: boolean
+                  description: >-
+                    Whether the destination is enabled.
+                settings:
+                  type: object
+                  description: >-
+                    Updated configuration settings.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Destination updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      destination:
+                        $ref: '#/components/schemas/Destination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteDestination
+      summary: Delete destination
+      description: >-
+        Deletes a destination from the workspace by its ID.
+      tags:
+        - Destinations
+      parameters:
+        - $ref: '#/components/parameters/DestinationId'
+      responses:
+        '200':
+          description: Destination deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: >-
+                          Status of the delete operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /warehouses:
+    get:
+      operationId: listWarehouses
+      summary: List warehouses
+      description: >-
+        Returns a list of all warehouses in the workspace.
+      tags:
+        - Warehouses
+      parameters:
+        - $ref: '#/components/parameters/PaginationCursor'
+        - $ref: '#/components/parameters/PaginationCount'
+      responses:
+        '200':
+          description: Warehouses retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      warehouses:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Warehouse'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createWarehouse
+      summary: Create warehouse
+      description: >-
+        Creates a new warehouse connection in the workspace.
+      tags:
+        - Warehouses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - metadataId
+              properties:
+                metadataId:
+                  type: string
+                  description: >-
+                    The ID of the warehouse metadata from the catalog.
+                enabled:
+                  type: boolean
+                  description: >-
+                    Whether the warehouse is enabled.
+                settings:
+                  type: object
+                  description: >-
+                    Configuration settings for the warehouse connection.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Warehouse created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      warehouse:
+                        $ref: '#/components/schemas/Warehouse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /warehouses/{warehouseId}:
+    get:
+      operationId: getWarehouse
+      summary: Get warehouse
+      description: >-
+        Returns a single warehouse by its ID.
+      tags:
+        - Warehouses
+      parameters:
+        - $ref: '#/components/parameters/WarehouseId'
+      responses:
+        '200':
+          description: Warehouse retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      warehouse:
+                        $ref: '#/components/schemas/Warehouse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateWarehouse
+      summary: Update warehouse
+      description: >-
+        Updates an existing warehouse with the provided changes.
+      tags:
+        - Warehouses
+      parameters:
+        - $ref: '#/components/parameters/WarehouseId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: >-
+                    Whether the warehouse is enabled.
+                settings:
+                  type: object
+                  description: >-
+                    Updated configuration settings.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Warehouse updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      warehouse:
+                        $ref: '#/components/schemas/Warehouse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteWarehouse
+      summary: Delete warehouse
+      description: >-
+        Deletes a warehouse connection from the workspace.
+      tags:
+        - Warehouses
+      parameters:
+        - $ref: '#/components/parameters/WarehouseId'
+      responses:
+        '200':
+          description: Warehouse deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: >-
+                          Status of the delete operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /tracking-plans:
+    get:
+      operationId: listTrackingPlans
+      summary: List tracking plans
+      description: >-
+        Returns a list of all tracking plans in the workspace.
+      tags:
+        - Tracking Plans
+      parameters:
+        - $ref: '#/components/parameters/PaginationCursor'
+        - $ref: '#/components/parameters/PaginationCount'
+      responses:
+        '200':
+          description: Tracking plans retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      trackingPlans:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/TrackingPlan'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTrackingPlan
+      summary: Create tracking plan
+      description: >-
+        Creates a new tracking plan in the workspace with the specified
+        rules and configuration.
+      tags:
+        - Tracking Plans
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: >-
+                    The name of the tracking plan.
+                description:
+                  type: string
+                  description: >-
+                    A description of the tracking plan.
+                type:
+                  type: string
+                  description: >-
+                    The type of tracking plan.
+                  enum:
+                    - ENGAGE
+                    - LIVE
+                    - PROPERTY_LIBRARY
+                    - RULE_LIBRARY
+                    - TEMPLATE
+                rules:
+                  type: array
+                  description: >-
+                    The rules that define the tracking plan.
+                  items:
+                    $ref: '#/components/schemas/TrackingPlanRule'
+      responses:
+        '200':
+          description: Tracking plan created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      trackingPlan:
+                        $ref: '#/components/schemas/TrackingPlan'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /tracking-plans/{trackingPlanId}:
+    get:
+      operationId: getTrackingPlan
+      summary: Get tracking plan
+      description: >-
+        Returns a single tracking plan by its ID.
+      tags:
+        - Tracking Plans
+      parameters:
+        - $ref: '#/components/parameters/TrackingPlanId'
+      responses:
+        '200':
+          description: Tracking plan retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      trackingPlan:
+                        $ref: '#/components/schemas/TrackingPlan'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateTrackingPlan
+      summary: Update tracking plan
+      description: >-
+        Updates an existing tracking plan with the provided changes.
+      tags:
+        - Tracking Plans
+      parameters:
+        - $ref: '#/components/parameters/TrackingPlanId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: >-
+                    Updated name for the tracking plan.
+                description:
+                  type: string
+                  description: >-
+                    Updated description.
+      responses:
+        '200':
+          description: Tracking plan updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      trackingPlan:
+                        $ref: '#/components/schemas/TrackingPlan'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteTrackingPlan
+      summary: Delete tracking plan
+      description: >-
+        Deletes a tracking plan from the workspace.
+      tags:
+        - Tracking Plans
+      parameters:
+        - $ref: '#/components/parameters/TrackingPlanId'
+      responses:
+        '200':
+          description: Tracking plan deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: >-
+                          Status of the delete operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /catalog/sources:
+    get:
+      operationId: listCatalogSources
+      summary: List catalog sources
+      description: >-
+        Returns a list of all available source integrations in the
+        Segment catalog.
+      tags:
+        - Catalog
+      parameters:
+        - $ref: '#/components/parameters/PaginationCursor'
+        - $ref: '#/components/parameters/PaginationCount'
+      responses:
+        '200':
+          description: Catalog sources retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      sourcesCatalog:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CatalogSource'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /catalog/sources/{sourceMetadataId}:
+    get:
+      operationId: getCatalogSource
+      summary: Get catalog source
+      description: >-
+        Returns a single source integration from the catalog by its
+        metadata ID.
+      tags:
+        - Catalog
+      parameters:
+        - name: sourceMetadataId
+          in: path
+          required: true
+          description: >-
+            The ID of the source metadata.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Catalog source retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      sourceCatalog:
+                        $ref: '#/components/schemas/CatalogSource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /catalog/destinations:
+    get:
+      operationId: listCatalogDestinations
+      summary: List catalog destinations
+      description: >-
+        Returns a list of all available destination integrations in the
+        Segment catalog.
+      tags:
+        - Catalog
+      parameters:
+        - $ref: '#/components/parameters/PaginationCursor'
+        - $ref: '#/components/parameters/PaginationCount'
+      responses:
+        '200':
+          description: Catalog destinations retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      destinationsCatalog:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CatalogDestination'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /catalog/destinations/{destinationMetadataId}:
+    get:
+      operationId: getCatalogDestination
+      summary: Get catalog destination
+      description: >-
+        Returns a single destination integration from the catalog by its
+        metadata ID.
+      tags:
+        - Catalog
+      parameters:
+        - name: destinationMetadataId
+          in: path
+          required: true
+          description: >-
+            The ID of the destination metadata.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Catalog destination retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      destinationCatalog:
+                        $ref: '#/components/schemas/CatalogDestination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /functions:
+    get:
+      operationId: listFunctions
+      summary: List functions
+      description: >-
+        Returns a list of all custom functions in the workspace.
+      tags:
+        - Functions
+      parameters:
+        - $ref: '#/components/parameters/PaginationCursor'
+        - $ref: '#/components/parameters/PaginationCount'
+        - name: resourceType
+          in: query
+          description: >-
+            Filter functions by resource type.
+          schema:
+            type: string
+            enum:
+              - DESTINATION
+              - INSERT_DESTINATION
+              - INSERT_SOURCE
+              - SOURCE
+      responses:
+        '200':
+          description: Functions retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      functions:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Function'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createFunction
+      summary: Create function
+      description: >-
+        Creates a new custom function in the workspace.
+      tags:
+        - Functions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - code
+                - resourceType
+              properties:
+                code:
+                  type: string
+                  description: >-
+                    The JavaScript code for the function.
+                displayName:
+                  type: string
+                  description: >-
+                    A display name for the function.
+                logoUrl:
+                  type: string
+                  format: uri
+                  description: >-
+                    URL of a logo image for the function.
+                resourceType:
+                  type: string
+                  description: >-
+                    The type of resource this function applies to.
+                  enum:
+                    - DESTINATION
+                    - INSERT_DESTINATION
+                    - INSERT_SOURCE
+                    - SOURCE
+                description:
+                  type: string
+                  description: >-
+                    A description of the function.
+                settings:
+                  type: array
+                  description: >-
+                    Settings definitions for the function.
+                  items:
+                    $ref: '#/components/schemas/FunctionSetting'
+      responses:
+        '200':
+          description: Function created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      function:
+                        $ref: '#/components/schemas/Function'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /functions/{functionId}:
+    get:
+      operationId: getFunction
+      summary: Get function
+      description: >-
+        Returns a single function by its ID.
+      tags:
+        - Functions
+      parameters:
+        - $ref: '#/components/parameters/FunctionId'
+      responses:
+        '200':
+          description: Function retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      function:
+                        $ref: '#/components/schemas/Function'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateFunction
+      summary: Update function
+      description: >-
+        Updates an existing function with the provided changes.
+      tags:
+        - Functions
+      parameters:
+        - $ref: '#/components/parameters/FunctionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: >-
+                    Updated JavaScript code.
+                displayName:
+                  type: string
+                  description: >-
+                    Updated display name.
+                description:
+                  type: string
+                  description: >-
+                    Updated description.
+                settings:
+                  type: array
+                  description: >-
+                    Updated settings definitions.
+                  items:
+                    $ref: '#/components/schemas/FunctionSetting'
+      responses:
+        '200':
+          description: Function updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      function:
+                        $ref: '#/components/schemas/Function'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteFunction
+      summary: Delete function
+      description: >-
+        Deletes a function from the workspace.
+      tags:
+        - Functions
+      parameters:
+        - $ref: '#/components/parameters/FunctionId'
+      responses:
+        '200':
+          description: Function deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: >-
+                          Status of the delete operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /transformations:
+    get:
+      operationId: listTransformations
+      summary: List transformations
+      description: >-
+        Returns a list of all transformations in the workspace. Requires
+        the Protocols feature to be enabled.
+      tags:
+        - Transformations
+      parameters:
+        - $ref: '#/components/parameters/PaginationCursor'
+        - $ref: '#/components/parameters/PaginationCount'
+      responses:
+        '200':
+          description: Transformations retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      transformations:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Transformation'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTransformation
+      summary: Create transformation
+      description: >-
+        Creates a new transformation in the workspace.
+      tags:
+        - Transformations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - sourceId
+              properties:
+                name:
+                  type: string
+                  description: >-
+                    The name of the transformation.
+                sourceId:
+                  type: string
+                  description: >-
+                    The ID of the source to apply the transformation to.
+                destinationMetadataId:
+                  type: string
+                  description: >-
+                    The ID of the destination metadata if destination-scoped.
+                enabled:
+                  type: boolean
+                  description: >-
+                    Whether the transformation is enabled.
+                if:
+                  type: string
+                  description: >-
+                    FQL condition that determines when the transformation runs.
+                newEventName:
+                  type: string
+                  description: >-
+                    New event name to rename the event to.
+                propertyRenames:
+                  type: array
+                  description: >-
+                    List of property renames to apply.
+                  items:
+                    type: object
+                    properties:
+                      oldName:
+                        type: string
+                        description: >-
+                          The original property name.
+                      newName:
+                        type: string
+                        description: >-
+                          The new property name.
+                propertyValueTransformations:
+                  type: array
+                  description: >-
+                    List of property value transformations to apply.
+                  items:
+                    type: object
+                    properties:
+                      propertyPaths:
+                        type: array
+                        items:
+                          type: string
+                        description: >-
+                          The property paths to transform.
+                      propertyValue:
+                        type: string
+                        description: >-
+                          The new value.
+      responses:
+        '200':
+          description: Transformation created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      transformation:
+                        $ref: '#/components/schemas/Transformation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /transformations/{transformationId}:
+    get:
+      operationId: getTransformation
+      summary: Get transformation
+      description: >-
+        Returns a single transformation by its ID.
+      tags:
+        - Transformations
+      parameters:
+        - $ref: '#/components/parameters/TransformationId'
+      responses:
+        '200':
+          description: Transformation retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      transformation:
+                        $ref: '#/components/schemas/Transformation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateTransformation
+      summary: Update transformation
+      description: >-
+        Updates an existing transformation with the provided changes.
+      tags:
+        - Transformations
+      parameters:
+        - $ref: '#/components/parameters/TransformationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: >-
+                    Updated name.
+                enabled:
+                  type: boolean
+                  description: >-
+                    Whether the transformation is enabled.
+                if:
+                  type: string
+                  description: >-
+                    Updated FQL condition.
+                newEventName:
+                  type: string
+                  description: >-
+                    Updated new event name.
+      responses:
+        '200':
+          description: Transformation updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      transformation:
+                        $ref: '#/components/schemas/Transformation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteTransformation
+      summary: Delete transformation
+      description: >-
+        Deletes a transformation from the workspace.
+      tags:
+        - Transformations
+      parameters:
+        - $ref: '#/components/parameters/TransformationId'
+      responses:
+        '200':
+          description: Transformation deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: >-
+                          Status of the delete operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /regulations:
+    get:
+      operationId: listRegulations
+      summary: List regulations
+      description: >-
+        Returns a list of data privacy regulation requests in the workspace.
+      tags:
+        - Regulations
+      parameters:
+        - $ref: '#/components/parameters/PaginationCursor'
+        - $ref: '#/components/parameters/PaginationCount'
+        - name: status
+          in: query
+          description: >-
+            Filter by regulation status.
+          schema:
+            type: string
+            enum:
+              - FAILED
+              - FINISHED
+              - INITIALIZED
+              - INVALID
+              - NOT_SUPPORTED
+              - PARTIAL_SUCCESS
+              - RUNNING
+      responses:
+        '200':
+          description: Regulations retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      regulations:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Regulation'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createRegulation
+      summary: Create regulation
+      description: >-
+        Creates a new data privacy regulation request, such as a
+        suppression or deletion request.
+      tags:
+        - Regulations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - regulationType
+                - subjectType
+                - subjectIds
+              properties:
+                regulationType:
+                  type: string
+                  description: >-
+                    The type of regulation request.
+                  enum:
+                    - DELETE_INTERNAL
+                    - DELETE_ONLY
+                    - SUPPRESS_AND_DELETE
+                    - SUPPRESS_ONLY
+                    - UNSUPPRESS
+                subjectType:
+                  type: string
+                  description: >-
+                    The type of subject being regulated.
+                  enum:
+                    - OBJECT_ID
+                    - USER_ID
+                subjectIds:
+                  type: array
+                  description: >-
+                    The IDs of the subjects to regulate.
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Regulation created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      regulateId:
+                        type: string
+                        description: >-
+                          The ID of the regulation request.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /labels:
+    get:
+      operationId: listLabels
+      summary: List labels
+      description: >-
+        Returns a list of all labels in the workspace.
+      tags:
+        - Labels
+      responses:
+        '200':
+          description: Labels retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      labels:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Label'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createLabel
+      summary: Create label
+      description: >-
+        Creates a new label in the workspace for organizing resources.
+      tags:
+        - Labels
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - key
+                - value
+              properties:
+                key:
+                  type: string
+                  description: >-
+                    The label key.
+                value:
+                  type: string
+                  description: >-
+                    The label value.
+                description:
+                  type: string
+                  description: >-
+                    A description of the label.
+      responses:
+        '200':
+          description: Label created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      labels:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Label'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /labels/{labelKey}/{labelValue}:
+    delete:
+      operationId: deleteLabel
+      summary: Delete label
+      description: >-
+        Deletes a label from the workspace by key and value.
+      tags:
+        - Labels
+      parameters:
+        - name: labelKey
+          in: path
+          required: true
+          description: >-
+            The label key.
+          schema:
+            type: string
+        - name: labelValue
+          in: path
+          required: true
+          description: >-
+            The label value.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Label deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Segment Public API access token. Generate tokens from the
+        Segment workspace settings.
+  parameters:
+    PaginationCursor:
+      name: pagination[cursor]
+      in: query
+      description: >-
+        Cursor for pagination. Use the cursor returned in a previous
+        response to fetch the next page.
+      schema:
+        type: string
+    PaginationCount:
+      name: pagination[count]
+      in: query
+      description: >-
+        Number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 10
+    SourceId:
+      name: sourceId
+      in: path
+      required: true
+      description: >-
+        The unique identifier of the source.
+      schema:
+        type: string
+    DestinationId:
+      name: destinationId
+      in: path
+      required: true
+      description: >-
+        The unique identifier of the destination.
+      schema:
+        type: string
+    WarehouseId:
+      name: warehouseId
+      in: path
+      required: true
+      description: >-
+        The unique identifier of the warehouse.
+      schema:
+        type: string
+    TrackingPlanId:
+      name: trackingPlanId
+      in: path
+      required: true
+      description: >-
+        The unique identifier of the tracking plan.
+      schema:
+        type: string
+    FunctionId:
+      name: functionId
+      in: path
+      required: true
+      description: >-
+        The unique identifier of the function.
+      schema:
+        type: string
+    TransformationId:
+      name: transformationId
+      in: path
+      required: true
+      description: >-
+        The unique identifier of the transformation.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: >-
+        The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: >-
+        Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: >-
+        The authenticated user does not have permission to access
+        this resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: >-
+        The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: >-
+                  The error type.
+              message:
+                type: string
+                description: >-
+                  A human-readable error message.
+              field:
+                type: string
+                description: >-
+                  The field that caused the error, if applicable.
+              data:
+                type: object
+                description: >-
+                  Additional error data.
+                additionalProperties: true
+    Pagination:
+      type: object
+      properties:
+        current:
+          type: string
+          description: >-
+            Cursor pointing to the current page.
+        next:
+          type: string
+          description: >-
+            Cursor pointing to the next page. Null if no more pages.
+        totalEntries:
+          type: integer
+          description: >-
+            Total number of entries across all pages.
+    Workspace:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier of the workspace.
+        slug:
+          type: string
+          description: >-
+            The URL-friendly slug of the workspace.
+        name:
+          type: string
+          description: >-
+            The display name of the workspace.
+    Source:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier of the source.
+        slug:
+          type: string
+          description: >-
+            The URL-friendly slug of the source.
+        name:
+          type: string
+          description: >-
+            The display name of the source.
+        enabled:
+          type: boolean
+          description: >-
+            Whether the source is enabled.
+        writeKeys:
+          type: array
+          items:
+            type: string
+          description: >-
+            The write keys associated with the source.
+        metadata:
+          $ref: '#/components/schemas/CatalogSource'
+        settings:
+          type: object
+          description: >-
+            Configuration settings for the source.
+          additionalProperties: true
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Label'
+          description: >-
+            Labels applied to the source.
+    Destination:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier of the destination.
+        name:
+          type: string
+          description: >-
+            The display name of the destination.
+        enabled:
+          type: boolean
+          description: >-
+            Whether the destination is enabled.
+        sourceId:
+          type: string
+          description: >-
+            The ID of the connected source.
+        metadata:
+          $ref: '#/components/schemas/CatalogDestination'
+        settings:
+          type: object
+          description: >-
+            Configuration settings for the destination.
+          additionalProperties: true
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Label'
+          description: >-
+            Labels applied to the destination.
+    Warehouse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier of the warehouse.
+        enabled:
+          type: boolean
+          description: >-
+            Whether the warehouse is enabled.
+        metadata:
+          type: object
+          description: >-
+            Metadata about the warehouse type.
+          properties:
+            id:
+              type: string
+              description: >-
+                The metadata ID.
+            name:
+              type: string
+              description: >-
+                The name of the warehouse type.
+            slug:
+              type: string
+              description: >-
+                The slug of the warehouse type.
+            description:
+              type: string
+              description: >-
+                A description of the warehouse type.
+        settings:
+          type: object
+          description: >-
+            Configuration settings for the warehouse.
+          additionalProperties: true
+    TrackingPlan:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier of the tracking plan.
+        name:
+          type: string
+          description: >-
+            The name of the tracking plan.
+        slug:
+          type: string
+          description: >-
+            The URL-friendly slug of the tracking plan.
+        description:
+          type: string
+          description: >-
+            A description of the tracking plan.
+        type:
+          type: string
+          description: >-
+            The type of tracking plan.
+          enum:
+            - ENGAGE
+            - LIVE
+            - PROPERTY_LIBRARY
+            - RULE_LIBRARY
+            - TEMPLATE
+        createdAt:
+          type: string
+          format: date-time
+          description: >-
+            When the tracking plan was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: >-
+            When the tracking plan was last updated.
+    TrackingPlanRule:
+      type: object
+      properties:
+        type:
+          type: string
+          description: >-
+            The type of event this rule applies to.
+          enum:
+            - COMMON
+            - GROUP
+            - IDENTIFY
+            - PAGE
+            - SCREEN
+            - TRACK
+        key:
+          type: string
+          description: >-
+            The event name this rule matches, for track events.
+        jsonSchema:
+          type: object
+          description: >-
+            The JSON Schema that defines the expected properties.
+          additionalProperties: true
+        version:
+          type: number
+          description: >-
+            The version of the rule.
+    CatalogSource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The metadata ID of the catalog source.
+        name:
+          type: string
+          description: >-
+            The name of the source integration.
+        slug:
+          type: string
+          description: >-
+            The URL-friendly slug.
+        description:
+          type: string
+          description: >-
+            A description of the source integration.
+        logos:
+          type: object
+          description: >-
+            Logo URLs for the integration.
+          properties:
+            default:
+              type: string
+              format: uri
+              description: >-
+                Default logo URL.
+            alt:
+              type: string
+              format: uri
+              description: >-
+                Alternative logo URL.
+            mark:
+              type: string
+              format: uri
+              description: >-
+                Mark logo URL.
+        categories:
+          type: array
+          items:
+            type: string
+          description: >-
+            Categories this source belongs to.
+    CatalogDestination:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The metadata ID of the catalog destination.
+        name:
+          type: string
+          description: >-
+            The name of the destination integration.
+        slug:
+          type: string
+          description: >-
+            The URL-friendly slug.
+        description:
+          type: string
+          description: >-
+            A description of the destination integration.
+        logos:
+          type: object
+          description: >-
+            Logo URLs for the integration.
+          properties:
+            default:
+              type: string
+              format: uri
+              description: >-
+                Default logo URL.
+            alt:
+              type: string
+              format: uri
+              description: >-
+                Alternative logo URL.
+            mark:
+              type: string
+              format: uri
+              description: >-
+                Mark logo URL.
+        categories:
+          type: array
+          items:
+            type: string
+          description: >-
+            Categories this destination belongs to.
+        supportedMethods:
+          type: object
+          description: >-
+            Which Segment methods this destination supports.
+          properties:
+            track:
+              type: boolean
+              description: >-
+                Whether track calls are supported.
+            identify:
+              type: boolean
+              description: >-
+                Whether identify calls are supported.
+            page:
+              type: boolean
+              description: >-
+                Whether page calls are supported.
+            screen:
+              type: boolean
+              description: >-
+                Whether screen calls are supported.
+            group:
+              type: boolean
+              description: >-
+                Whether group calls are supported.
+            alias:
+              type: boolean
+              description: >-
+                Whether alias calls are supported.
+    Function:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier of the function.
+        resourceType:
+          type: string
+          description: >-
+            The type of resource this function applies to.
+          enum:
+            - DESTINATION
+            - INSERT_DESTINATION
+            - INSERT_SOURCE
+            - SOURCE
+        createdAt:
+          type: string
+          format: date-time
+          description: >-
+            When the function was created.
+        createdBy:
+          type: string
+          description: >-
+            The user who created the function.
+        code:
+          type: string
+          description: >-
+            The JavaScript code of the function.
+        displayName:
+          type: string
+          description: >-
+            The display name of the function.
+        description:
+          type: string
+          description: >-
+            A description of the function.
+        logoUrl:
+          type: string
+          format: uri
+          description: >-
+            URL of the function logo.
+        settings:
+          type: array
+          description: >-
+            Settings definitions for the function.
+          items:
+            $ref: '#/components/schemas/FunctionSetting'
+    FunctionSetting:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The name of the setting.
+        label:
+          type: string
+          description: >-
+            A human-readable label for the setting.
+        description:
+          type: string
+          description: >-
+            A description of the setting.
+        type:
+          type: string
+          description: >-
+            The data type of the setting.
+          enum:
+            - BOOLEAN
+            - STRING
+            - TEXT_MAP
+        required:
+          type: boolean
+          description: >-
+            Whether this setting is required.
+        sensitive:
+          type: boolean
+          description: >-
+            Whether this setting contains sensitive data.
+    Transformation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier of the transformation.
+        name:
+          type: string
+          description: >-
+            The name of the transformation.
+        sourceId:
+          type: string
+          description: >-
+            The ID of the source this transformation applies to.
+        destinationMetadataId:
+          type: string
+          description: >-
+            The destination metadata ID if destination-scoped.
+        enabled:
+          type: boolean
+          description: >-
+            Whether the transformation is enabled.
+        if:
+          type: string
+          description: >-
+            The FQL condition that determines when the transformation runs.
+        newEventName:
+          type: string
+          description: >-
+            The new event name if renaming.
+        propertyRenames:
+          type: array
+          description: >-
+            Property renames applied by this transformation.
+          items:
+            type: object
+            properties:
+              oldName:
+                type: string
+                description: >-
+                  The original property name.
+              newName:
+                type: string
+                description: >-
+                  The new property name.
+        propertyValueTransformations:
+          type: array
+          description: >-
+            Property value transformations applied.
+          items:
+            type: object
+            properties:
+              propertyPaths:
+                type: array
+                items:
+                  type: string
+                description: >-
+                  The property paths to transform.
+              propertyValue:
+                type: string
+                description: >-
+                  The new value.
+    Regulation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: >-
+            The unique identifier of the regulation request.
+        workspaceId:
+          type: string
+          description: >-
+            The workspace ID this regulation belongs to.
+        overallStatus:
+          type: string
+          description: >-
+            The overall status of the regulation request.
+          enum:
+            - FAILED
+            - FINISHED
+            - INITIALIZED
+            - INVALID
+            - NOT_SUPPORTED
+            - PARTIAL_SUCCESS
+            - RUNNING
+        regulateType:
+          type: string
+          description: >-
+            The type of regulation.
+          enum:
+            - DELETE_INTERNAL
+            - DELETE_ONLY
+            - SUPPRESS_AND_DELETE
+            - SUPPRESS_ONLY
+            - UNSUPPRESS
+        subjectType:
+          type: string
+          description: >-
+            The type of subject regulated.
+          enum:
+            - OBJECT_ID
+            - USER_ID
+        createdAt:
+          type: string
+          format: date-time
+          description: >-
+            When the regulation was created.
+    Label:
+      type: object
+      properties:
+        key:
+          type: string
+          description: >-
+            The label key.
+        value:
+          type: string
+          description: >-
+            The label value.
+        description:
+          type: string
+          description: >-
+            A description of the label.

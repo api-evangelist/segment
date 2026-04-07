@@ -23,27 +23,27 @@ servers:
   - url: https://events.eu1.segmentapis.com/v1
     description: Production Server (EU)
 tags:
-  - name: Identify
-    description: >-
-      Operations for identifying users and associating traits with them.
-  - name: Track
-    description: >-
-      Operations for tracking events and actions performed by users.
-  - name: Page
-    description: >-
-      Operations for recording page views on websites.
-  - name: Screen
-    description: >-
-      Operations for recording screen views in mobile applications.
-  - name: Group
-    description: >-
-      Operations for associating users with groups or organizations.
   - name: Alias
     description: >-
       Operations for merging two user identities together.
   - name: Batch
     description: >-
       Operations for sending multiple calls in a single request.
+  - name: Group
+    description: >-
+      Operations for associating users with groups or organizations.
+  - name: Identify
+    description: >-
+      Operations for identifying users and associating traits with them.
+  - name: Page
+    description: >-
+      Operations for recording page views on websites.
+  - name: Screen
+    description: >-
+      Operations for recording screen views in mobile applications.
+  - name: Track
+    description: >-
+      Operations for tracking events and actions performed by users.
 security:
   - basicAuth: []
 paths:

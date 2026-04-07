@@ -21,57 +21,46 @@ servers:
   - url: https://api.segmentapis.com
     description: Production Server
 tags:
-  - name: Workspaces
-    description: >-
-      Operations for managing Segment workspaces, including retrieving
-      workspace details and configuration.
-  - name: Sources
-    description: >-
-      Operations for creating, reading, updating, and deleting data
-      collection sources within a workspace.
-  - name: Destinations
-    description: >-
-      Operations for managing destinations where collected data is
-      sent, including configuration and connection settings.
-  - name: Warehouses
-    description: >-
-      Operations for managing data warehouse connections, including
-      creating and configuring warehouse destinations.
-  - name: Tracking Plans
-    description: >-
-      Operations for managing tracking plans that define and enforce
-      data schemas for event tracking.
   - name: Catalog
     description: >-
       Operations for browsing the Segment catalog of available sources
       and destination integrations.
+  - name: Destinations
+    description: >-
+      Operations for managing destinations where collected data is
+      sent, including configuration and connection settings.
   - name: Functions
     description: >-
       Operations for managing custom functions that transform or
       enrich data flowing through Segment.
-  - name: Transformations
-    description: >-
-      Operations for managing transformations that modify event data
-      before it reaches destinations.
-  - name: Computed Traits
-    description: >-
-      Operations for managing computed traits that derive user
-      attributes from event data.
-  - name: Audiences
-    description: >-
-      Operations for managing audiences that define user segments
-      based on traits and behaviors.
-  - name: Spaces
-    description: >-
-      Operations for managing Segment Unify spaces.
-  - name: Regulations
-    description: >-
-      Operations for managing data privacy regulations and
-      suppression requests.
   - name: Labels
     description: >-
       Operations for managing labels used to organize and control
       access to workspace resources.
+  - name: Regulations
+    description: >-
+      Operations for managing data privacy regulations and
+      suppression requests.
+  - name: Sources
+    description: >-
+      Operations for creating, reading, updating, and deleting data
+      collection sources within a workspace.
+  - name: Tracking Plans
+    description: >-
+      Operations for managing tracking plans that define and enforce
+      data schemas for event tracking.
+  - name: Transformations
+    description: >-
+      Operations for managing transformations that modify event data
+      before it reaches destinations.
+  - name: Warehouses
+    description: >-
+      Operations for managing data warehouse connections, including
+      creating and configuring warehouse destinations.
+  - name: Workspaces
+    description: >-
+      Operations for managing Segment workspaces, including retrieving
+      workspace details and configuration.
 security:
   - bearerAuth: []
 paths:

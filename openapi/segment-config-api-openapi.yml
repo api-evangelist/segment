@@ -23,22 +23,22 @@ servers:
   - url: https://platform.segmentapis.com/v1beta
     description: Production Server (v1beta)
 tags:
-  - name: Workspaces
-    description: >-
-      Operations for retrieving workspace information and
-      configuration.
-  - name: Sources
-    description: >-
-      Operations for managing data collection sources within a
-      workspace.
   - name: Destinations
     description: >-
       Operations for managing destinations where collected data
       is sent.
+  - name: Sources
+    description: >-
+      Operations for managing data collection sources within a
+      workspace.
   - name: Tracking Plans
     description: >-
       Operations for managing tracking plans that enforce data
       schemas.
+  - name: Workspaces
+    description: >-
+      Operations for retrieving workspace information and
+      configuration.
 security:
   - bearerAuth: []
 paths:

@@ -1,18 +1,16 @@
 aid: segment
-url: 
-  https://raw.githubusercontent.com/api-evangelist/segment/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/segment/refs/heads/main/apis.yml
 modified: '2026-03-20'
 apis:
   - aid: segment:public-api
     name: Segment Public API
     tags:
-      - Customer Data
       - Analytics
-      - Workspace Management
-      - Sources
+      - Customer Data
       - Destinations
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Sources
+      - Workspace Management
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.segmentapis.com
     humanURL: https://docs.segmentapis.com/
     properties:
@@ -32,17 +30,14 @@ apis:
     name: Segment HTTP Tracking API
     tags:
       - Analytics
-      - Tracking
-      - Events
       - Customer Data
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Events
+      - Tracking
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.segment.io
-    humanURL: 
-      https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
+    humanURL: https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
     properties:
-      - url: 
-          https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
+      - url: https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
         type: Documentation
       - url: openapi/segment-http-tracking-api-openapi.yml
         type: OpenAPI
@@ -60,11 +55,10 @@ apis:
     name: Segment Profile API
     tags:
       - Customer Data
-      - Profiles
       - Identity Resolution
+      - Profiles
       - Unify
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://profiles.segment.com
     humanURL: https://www.twilio.com/docs/segment/unify/profile-api
     properties:
@@ -84,12 +78,11 @@ apis:
     name: Segment Config API
     tags:
       - Configuration
-      - Workspace Management
-      - Sources
       - Destinations
       - Legacy
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Sources
+      - Workspace Management
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://platform.segmentapis.com
     humanURL: https://www.twilio.com/docs/segment/api/config-api
     properties:
@@ -109,18 +102,15 @@ apis:
   - aid: segment:pixel-tracking-api
     name: Segment Pixel Tracking API
     tags:
-      - Tracking
       - Analytics
-      - Pixel
       - Email
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Pixel
+      - Tracking
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.segment.io
-    humanURL: 
-      https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/pixel-tracking-api
+    humanURL: https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/pixel-tracking-api
     properties:
-      - url: 
-          https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/pixel-tracking-api
+      - url: https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/pixel-tracking-api
         type: Documentation
       - url: openapi/segment-pixel-tracking-api-openapi.yml
         type: OpenAPI

@@ -26,14 +26,6 @@ servers:
           The ID of the Segment Unify space.
         default: ''
 tags:
-  - name: Profiles
-    description: >-
-      Operations for retrieving user and account profile data from
-      Segment Unify.
-  - name: Traits
-    description: >-
-      Operations for retrieving computed and custom traits for
-      user and account profiles.
   - name: Events
     description: >-
       Operations for retrieving events associated with a user
@@ -45,6 +37,14 @@ tags:
   - name: Links
     description: >-
       Operations for retrieving linked profiles and relationships.
+  - name: Profiles
+    description: >-
+      Operations for retrieving user and account profile data from
+      Segment Unify.
+  - name: Traits
+    description: >-
+      Operations for retrieving computed and custom traits for
+      user and account profiles.
 security:
   - basicAuth: []
 paths:

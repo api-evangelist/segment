@@ -1,0 +1,60 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Twilio Segment
+providerId: segment
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Customer Data Platform
+description: FOCUS-aligned FinOps for Twilio Segment.
+sources:
+  - https://www.twilio.com/en-us/pricing/customer-data
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Twilio Segment
+serviceCategory: Customer Data Platform
+billingModel:
+  pricingCategory: MTU + Event-Based (custom contract)
+  billingFrequency: Monthly
+  billingCurrency: USD
+focusColumns:
+  ServiceName: Twilio Segment
+  ServiceCategory: Customer Data Platform
+  ProviderName: Twilio Segment
+  PublisherName: Twilio Segment
+  BillingCurrency: USD
+meters:
+  - name: monthly_tracked_users
+    unit: MTU
+    aggregation: max
+  - name: tracked_events
+    unit: event
+    aggregation: sum
+    dimensions:
+      - source
+  - name: destinations_active
+    unit: destination-month
+    aggregation: max
+  - name: function_invocations
+    unit: invocation
+    aggregation: sum
+  - name: reverse_etl_rows
+    unit: row
+    aggregation: sum
+principles:
+  - name: Visibility
+    description: Track Twilio Segment consumption monthly via admin/billing exports.
+  - name: Allocation
+    description: Tag seats/usage to teams or cost centers for chargeback.
+  - name: Optimization
+    description: Right-size tier and seat count quarterly; reclaim inactive seats.
+  - name: Accountability
+    description: Set spend alerts and renew at observed active utilization.

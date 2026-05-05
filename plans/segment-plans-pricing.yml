@@ -1,0 +1,97 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Twilio Segment
+providerId: segment
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - CDP
+  - Customer Data
+  - Analytics
+description: Twilio Segment Customer Data Pipeline and CDP plans — both quoted via sales.
+sources:
+  - https://www.twilio.com/en-us/pricing/customer-data
+plans:
+  - id: segment-free
+    name: Free Developer
+    type: freemium
+    description: Free for up to ~1,000 visitors/month and 2 sources.
+    entries:
+      - label: Per user
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: true
+      - label: MTUs
+        name: mtus
+        type: quota
+        metric: MTU
+        limit: 1000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Sources
+        name: sources
+        type: quota
+        metric: source
+        limit: 2
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Up to ~1,000 visitors/mo
+      - name: 2 sources
+      - name: Connections to 700+ destinations
+  - id: segment-cdp-business
+    name: Customer Data Pipeline (Business)
+    type: enterprise
+    description: Custom pricing — contact sales.
+    entries:
+      - label: Annual contract (custom)
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: true
+    elements:
+      - name: Real-time event collection
+      - name: Functions, Reverse ETL, Public API
+      - name: Protocols available as add-on
+      - name: Email/web support
+  - id: segment-cdp
+    name: Customer Data Platform (CDP)
+    type: enterprise
+    description: Custom pricing including Connections, Unify, Engage.
+    entries:
+      - label: Annual contract (custom)
+        name: seat
+        type: subscription
+        metric: user
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: true
+    elements:
+      - name: Identity-resolved unified profiles
+      - name: AI-powered audiences and predictions
+      - name: Warehouse data integration
+      - name: Generative audiences
+      - name: Dedicated support + CSM
+      - name: HIPAA-eligible regional options

@@ -108,7 +108,7 @@ apis:
       the api.segment.io domain. This API is particularly suited for tracking email opens, ad impressions,
       and other contexts where embedding a tracking pixel is the only viable data collection method.
 common:
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/segment-context.jsonld
   - type: JSONSchema
     url: json-schema/segment-event-schema.json

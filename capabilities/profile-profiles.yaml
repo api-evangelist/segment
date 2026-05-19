@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Profile API — Profiles
+  description: 'Segment Profile API — Profiles. 1 operations. Lead operation: Get user metadata. Self-contained Naftiko capability
+    covering one Segment business surface.'
+  tags:
+  - Segment
+  - Profiles
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: profile-profiles
+    baseUri: https://profiles.segment.com/v1/spaces/{spaceId}
+    description: Segment Profile API — Profiles business capability. Self-contained, no shared references.
+    resources:
+    - name: collections-users-profiles-externalId-metadata
+      path: /collections/users/profiles/{externalId}/metadata
+      operations:
+      - name: getusermetadata
+        method: GET
+        description: Get user metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.SEGMENT_USER}}'
+      password: '{{env.SEGMENT_PASS}}'
+  exposes:
+  - type: rest
+    namespace: profile-profiles-rest
+    port: 8080
+    description: REST adapter for Segment Profile API — Profiles. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/collections/users/profiles/{externalid}/metadata
+      name: collections-users-profiles-externalid-metadata
+      description: REST surface for collections-users-profiles-externalId-metadata.
+      operations:
+      - method: GET
+        name: getusermetadata
+        description: Get user metadata
+        call: profile-profiles.getusermetadata
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: profile-profiles-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Profile API — Profiles. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-user-metadata
+      description: Get user metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: profile-profiles.getusermetadata
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,103 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Profile API — External IDs
+  description: 'Segment Profile API — External IDs. 2 operations. Lead operation: Get account external IDs. Self-contained
+    Naftiko capability covering one Segment business surface.'
+  tags:
+  - Segment
+  - External IDs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: profile-external-ids
+    baseUri: https://profiles.segment.com/v1/spaces/{spaceId}
+    description: Segment Profile API — External IDs business capability. Self-contained, no shared references.
+    resources:
+    - name: collections-accounts-profiles-externalId-external_ids
+      path: /collections/accounts/profiles/{externalId}/external_ids
+      operations:
+      - name: getaccountexternalids
+        method: GET
+        description: Get account external IDs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: collections-users-profiles-externalId-external_ids
+      path: /collections/users/profiles/{externalId}/external_ids
+      operations:
+      - name: getuserexternalids
+        method: GET
+        description: Get user external IDs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.SEGMENT_USER}}'
+      password: '{{env.SEGMENT_PASS}}'
+  exposes:
+  - type: rest
+    namespace: profile-external-ids-rest
+    port: 8080
+    description: REST adapter for Segment Profile API — External IDs. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/collections/accounts/profiles/{externalid}/external-ids
+      name: collections-accounts-profiles-externalid-external-ids
+      description: REST surface for collections-accounts-profiles-externalId-external_ids.
+      operations:
+      - method: GET
+        name: getaccountexternalids
+        description: Get account external IDs
+        call: profile-external-ids.getaccountexternalids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/collections/users/profiles/{externalid}/external-ids
+      name: collections-users-profiles-externalid-external-ids
+      description: REST surface for collections-users-profiles-externalId-external_ids.
+      operations:
+      - method: GET
+        name: getuserexternalids
+        description: Get user external IDs
+        call: profile-external-ids.getuserexternalids
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: profile-external-ids-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Profile API — External IDs. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-account-external-ids
+      description: Get account external IDs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: profile-external-ids.getaccountexternalids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-external-ids
+      description: Get user external IDs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: profile-external-ids.getuserexternalids
+      outputParameters:
+      - type: object
+        mapping: $.

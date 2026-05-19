@@ -1,0 +1,162 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Config API — Sources
+  description: 'Segment Config API — Sources. 4 operations. Lead operation: List sources. Self-contained Naftiko capability
+    covering one Segment business surface.'
+  tags:
+  - Segment
+  - Sources
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: config-sources
+    baseUri: https://platform.segmentapis.com/v1beta
+    description: Segment Config API — Sources business capability. Self-contained, no shared references.
+    resources:
+    - name: workspaces-workspaceName-sources
+      path: /workspaces/{workspaceName}/sources
+      operations:
+      - name: listsources
+        method: GET
+        description: List sources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createsource
+        method: POST
+        description: Create source
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: workspaces-workspaceName-sources-sourceName
+      path: /workspaces/{workspaceName}/sources/{sourceName}
+      operations:
+      - name: getsource
+        method: GET
+        description: Get source
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletesource
+        method: DELETE
+        description: Delete source
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SEGMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: config-sources-rest
+    port: 8080
+    description: REST adapter for Segment Config API — Sources. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/workspaces/{workspacename}/sources
+      name: workspaces-workspacename-sources
+      description: REST surface for workspaces-workspaceName-sources.
+      operations:
+      - method: GET
+        name: listsources
+        description: List sources
+        call: config-sources.listsources
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsource
+        description: Create source
+        call: config-sources.createsource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/workspaces/{workspacename}/sources/{sourcename}
+      name: workspaces-workspacename-sources-sourcename
+      description: REST surface for workspaces-workspaceName-sources-sourceName.
+      operations:
+      - method: GET
+        name: getsource
+        description: Get source
+        call: config-sources.getsource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesource
+        description: Delete source
+        call: config-sources.deletesource
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: config-sources-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Config API — Sources. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-sources
+      description: List sources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: config-sources.listsources
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-source
+      description: Create source
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: config-sources.createsource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-source
+      description: Get source
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: config-sources.getsource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-source
+      description: Delete source
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: config-sources.deletesource
+      outputParameters:
+      - type: object
+        mapping: $.

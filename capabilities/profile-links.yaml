@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Profile API — Links
+  description: 'Segment Profile API — Links. 1 operations. Lead operation: Get user links. Self-contained Naftiko capability
+    covering one Segment business surface.'
+  tags:
+  - Segment
+  - Links
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: profile-links
+    baseUri: https://profiles.segment.com/v1/spaces/{spaceId}
+    description: Segment Profile API — Links business capability. Self-contained, no shared references.
+    resources:
+    - name: collections-users-profiles-externalId-links
+      path: /collections/users/profiles/{externalId}/links
+      operations:
+      - name: getuserlinks
+        method: GET
+        description: Get user links
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.SEGMENT_USER}}'
+      password: '{{env.SEGMENT_PASS}}'
+  exposes:
+  - type: rest
+    namespace: profile-links-rest
+    port: 8080
+    description: REST adapter for Segment Profile API — Links. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/collections/users/profiles/{externalid}/links
+      name: collections-users-profiles-externalid-links
+      description: REST surface for collections-users-profiles-externalId-links.
+      operations:
+      - method: GET
+        name: getuserlinks
+        description: Get user links
+        call: profile-links.getuserlinks
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: profile-links-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Profile API — Links. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-user-links
+      description: Get user links
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: profile-links.getuserlinks
+      outputParameters:
+      - type: object
+        mapping: $.

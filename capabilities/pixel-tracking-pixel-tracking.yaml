@@ -1,0 +1,227 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Pixel Tracking API — Pixel Tracking
+  description: 'Segment Pixel Tracking API — Pixel Tracking. 6 operations. Lead operation: Alias via pixel. Self-contained
+    Naftiko capability covering one Segment business surface.'
+  tags:
+  - Segment
+  - Pixel Tracking
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: pixel-tracking-pixel-tracking
+    baseUri: https://api.segment.io/v1
+    description: Segment Pixel Tracking API — Pixel Tracking business capability. Self-contained, no shared references.
+    resources:
+    - name: pixel-alias
+      path: /pixel/alias
+      operations:
+      - name: pixelalias
+        method: GET
+        description: Alias via pixel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: pixel-group
+      path: /pixel/group
+      operations:
+      - name: pixelgroup
+        method: GET
+        description: Group via pixel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: pixel-identify
+      path: /pixel/identify
+      operations:
+      - name: pixelidentify
+        method: GET
+        description: Identify via pixel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: pixel-page
+      path: /pixel/page
+      operations:
+      - name: pixelpage
+        method: GET
+        description: Page via pixel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: pixel-screen
+      path: /pixel/screen
+      operations:
+      - name: pixelscreen
+        method: GET
+        description: Screen via pixel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: pixel-track
+      path: /pixel/track
+      operations:
+      - name: pixeltrack
+        method: GET
+        description: Track via pixel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: pixel-tracking-pixel-tracking-rest
+    port: 8080
+    description: REST adapter for Segment Pixel Tracking API — Pixel Tracking. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/pixel/alias
+      name: pixel-alias
+      description: REST surface for pixel-alias.
+      operations:
+      - method: GET
+        name: pixelalias
+        description: Alias via pixel
+        call: pixel-tracking-pixel-tracking.pixelalias
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pixel/group
+      name: pixel-group
+      description: REST surface for pixel-group.
+      operations:
+      - method: GET
+        name: pixelgroup
+        description: Group via pixel
+        call: pixel-tracking-pixel-tracking.pixelgroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pixel/identify
+      name: pixel-identify
+      description: REST surface for pixel-identify.
+      operations:
+      - method: GET
+        name: pixelidentify
+        description: Identify via pixel
+        call: pixel-tracking-pixel-tracking.pixelidentify
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pixel/page
+      name: pixel-page
+      description: REST surface for pixel-page.
+      operations:
+      - method: GET
+        name: pixelpage
+        description: Page via pixel
+        call: pixel-tracking-pixel-tracking.pixelpage
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pixel/screen
+      name: pixel-screen
+      description: REST surface for pixel-screen.
+      operations:
+      - method: GET
+        name: pixelscreen
+        description: Screen via pixel
+        call: pixel-tracking-pixel-tracking.pixelscreen
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pixel/track
+      name: pixel-track
+      description: REST surface for pixel-track.
+      operations:
+      - method: GET
+        name: pixeltrack
+        description: Track via pixel
+        call: pixel-tracking-pixel-tracking.pixeltrack
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: pixel-tracking-pixel-tracking-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Pixel Tracking API — Pixel Tracking. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: alias-pixel
+      description: Alias via pixel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pixel-tracking-pixel-tracking.pixelalias
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: group-pixel
+      description: Group via pixel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pixel-tracking-pixel-tracking.pixelgroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: identify-pixel
+      description: Identify via pixel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pixel-tracking-pixel-tracking.pixelidentify
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: page-pixel
+      description: Page via pixel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pixel-tracking-pixel-tracking.pixelpage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: screen-pixel
+      description: Screen via pixel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pixel-tracking-pixel-tracking.pixelscreen
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: track-pixel
+      description: Track via pixel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pixel-tracking-pixel-tracking.pixeltrack
+      outputParameters:
+      - type: object
+        mapping: $.

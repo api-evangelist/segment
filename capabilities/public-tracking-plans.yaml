@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Public API — Tracking Plans
+  description: 'Segment Public API — Tracking Plans. 5 operations. Lead operation: List tracking plans. Self-contained Naftiko
+    capability covering one Segment business surface.'
+  tags:
+  - Segment
+  - Tracking Plans
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: public-tracking-plans
+    baseUri: https://api.segmentapis.com
+    description: Segment Public API — Tracking Plans business capability. Self-contained, no shared references.
+    resources:
+    - name: tracking-plans
+      path: /tracking-plans
+      operations:
+      - name: listtrackingplans
+        method: GET
+        description: List tracking plans
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createtrackingplan
+        method: POST
+        description: Create tracking plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: tracking-plans-trackingPlanId
+      path: /tracking-plans/{trackingPlanId}
+      operations:
+      - name: gettrackingplan
+        method: GET
+        description: Get tracking plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetrackingplan
+        method: PATCH
+        description: Update tracking plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetrackingplan
+        method: DELETE
+        description: Delete tracking plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SEGMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: public-tracking-plans-rest
+    port: 8080
+    description: REST adapter for Segment Public API — Tracking Plans. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/tracking-plans
+      name: tracking-plans
+      description: REST surface for tracking-plans.
+      operations:
+      - method: GET
+        name: listtrackingplans
+        description: List tracking plans
+        call: public-tracking-plans.listtrackingplans
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createtrackingplan
+        description: Create tracking plan
+        call: public-tracking-plans.createtrackingplan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tracking-plans/{trackingplanid}
+      name: tracking-plans-trackingplanid
+      description: REST surface for tracking-plans-trackingPlanId.
+      operations:
+      - method: GET
+        name: gettrackingplan
+        description: Get tracking plan
+        call: public-tracking-plans.gettrackingplan
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetrackingplan
+        description: Update tracking plan
+        call: public-tracking-plans.updatetrackingplan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetrackingplan
+        description: Delete tracking plan
+        call: public-tracking-plans.deletetrackingplan
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: public-tracking-plans-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Public API — Tracking Plans. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-tracking-plans
+      description: List tracking plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-tracking-plans.listtrackingplans
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-tracking-plan
+      description: Create tracking plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: public-tracking-plans.createtrackingplan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-tracking-plan
+      description: Get tracking plan
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-tracking-plans.gettrackingplan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-tracking-plan
+      description: Update tracking plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: public-tracking-plans.updatetrackingplan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-tracking-plan
+      description: Delete tracking plan
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: public-tracking-plans.deletetrackingplan
+      outputParameters:
+      - type: object
+        mapping: $.

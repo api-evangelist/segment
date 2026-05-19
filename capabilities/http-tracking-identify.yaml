@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment HTTP Tracking API — Identify
+  description: 'Segment HTTP Tracking API — Identify. 1 operations. Lead operation: Identify a user. Self-contained Naftiko
+    capability covering one Segment business surface.'
+  tags:
+  - Segment
+  - Identify
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: http-tracking-identify
+    baseUri: https://api.segment.io/v1
+    description: Segment HTTP Tracking API — Identify business capability. Self-contained, no shared references.
+    resources:
+    - name: identify
+      path: /identify
+      operations:
+      - name: identify
+        method: POST
+        description: Identify a user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.SEGMENT_USER}}'
+      password: '{{env.SEGMENT_PASS}}'
+  exposes:
+  - type: rest
+    namespace: http-tracking-identify-rest
+    port: 8080
+    description: REST adapter for Segment HTTP Tracking API — Identify. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/identify
+      name: identify
+      description: REST surface for identify.
+      operations:
+      - method: POST
+        name: identify
+        description: Identify a user
+        call: http-tracking-identify.identify
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: http-tracking-identify-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment HTTP Tracking API — Identify. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: identify-user
+      description: Identify a user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: http-tracking-identify.identify
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

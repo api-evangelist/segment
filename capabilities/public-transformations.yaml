@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Public API — Transformations
+  description: 'Segment Public API — Transformations. 5 operations. Lead operation: List transformations. Self-contained Naftiko
+    capability covering one Segment business surface.'
+  tags:
+  - Segment
+  - Transformations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: public-transformations
+    baseUri: https://api.segmentapis.com
+    description: Segment Public API — Transformations business capability. Self-contained, no shared references.
+    resources:
+    - name: transformations
+      path: /transformations
+      operations:
+      - name: listtransformations
+        method: GET
+        description: List transformations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createtransformation
+        method: POST
+        description: Create transformation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: transformations-transformationId
+      path: /transformations/{transformationId}
+      operations:
+      - name: gettransformation
+        method: GET
+        description: Get transformation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetransformation
+        method: PATCH
+        description: Update transformation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletetransformation
+        method: DELETE
+        description: Delete transformation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SEGMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: public-transformations-rest
+    port: 8080
+    description: REST adapter for Segment Public API — Transformations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/transformations
+      name: transformations
+      description: REST surface for transformations.
+      operations:
+      - method: GET
+        name: listtransformations
+        description: List transformations
+        call: public-transformations.listtransformations
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createtransformation
+        description: Create transformation
+        call: public-transformations.createtransformation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transformations/{transformationid}
+      name: transformations-transformationid
+      description: REST surface for transformations-transformationId.
+      operations:
+      - method: GET
+        name: gettransformation
+        description: Get transformation
+        call: public-transformations.gettransformation
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatetransformation
+        description: Update transformation
+        call: public-transformations.updatetransformation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletetransformation
+        description: Delete transformation
+        call: public-transformations.deletetransformation
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: public-transformations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Public API — Transformations. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-transformations
+      description: List transformations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-transformations.listtransformations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-transformation
+      description: Create transformation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: public-transformations.createtransformation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-transformation
+      description: Get transformation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-transformations.gettransformation
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-transformation
+      description: Update transformation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: public-transformations.updatetransformation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-transformation
+      description: Delete transformation
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: public-transformations.deletetransformation
+      outputParameters:
+      - type: object
+        mapping: $.

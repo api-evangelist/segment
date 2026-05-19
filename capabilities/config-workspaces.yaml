@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Config API — Workspaces
+  description: 'Segment Config API — Workspaces. 1 operations. Lead operation: Get workspace. Self-contained Naftiko capability
+    covering one Segment business surface.'
+  tags:
+  - Segment
+  - Workspaces
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: config-workspaces
+    baseUri: https://platform.segmentapis.com/v1beta
+    description: Segment Config API — Workspaces business capability. Self-contained, no shared references.
+    resources:
+    - name: workspaces-workspaceName
+      path: /workspaces/{workspaceName}
+      operations:
+      - name: getworkspace
+        method: GET
+        description: Get workspace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SEGMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: config-workspaces-rest
+    port: 8080
+    description: REST adapter for Segment Config API — Workspaces. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/workspaces/{workspacename}
+      name: workspaces-workspacename
+      description: REST surface for workspaces-workspaceName.
+      operations:
+      - method: GET
+        name: getworkspace
+        description: Get workspace
+        call: config-workspaces.getworkspace
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: config-workspaces-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Config API — Workspaces. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-workspace
+      description: Get workspace
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: config-workspaces.getworkspace
+      outputParameters:
+      - type: object
+        mapping: $.

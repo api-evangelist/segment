@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment HTTP Tracking API — Batch
+  description: 'Segment HTTP Tracking API — Batch. 1 operations. Lead operation: Send a batch of events. Self-contained Naftiko
+    capability covering one Segment business surface.'
+  tags:
+  - Segment
+  - Batch
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: http-tracking-batch
+    baseUri: https://api.segment.io/v1
+    description: Segment HTTP Tracking API — Batch business capability. Self-contained, no shared references.
+    resources:
+    - name: batch
+      path: /batch
+      operations:
+      - name: batch
+        method: POST
+        description: Send a batch of events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.SEGMENT_USER}}'
+      password: '{{env.SEGMENT_PASS}}'
+  exposes:
+  - type: rest
+    namespace: http-tracking-batch-rest
+    port: 8080
+    description: REST adapter for Segment HTTP Tracking API — Batch. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/batch
+      name: batch
+      description: REST surface for batch.
+      operations:
+      - method: POST
+        name: batch
+        description: Send a batch of events
+        call: http-tracking-batch.batch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: http-tracking-batch-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment HTTP Tracking API — Batch. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: send-batch-events
+      description: Send a batch of events
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: http-tracking-batch.batch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

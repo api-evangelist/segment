@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Public API — Workspaces
+  description: 'Segment Public API — Workspaces. 1 operations. Lead operation: Get workspace. Self-contained Naftiko capability
+    covering one Segment business surface.'
+  tags:
+  - Segment
+  - Workspaces
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: public-workspaces
+    baseUri: https://api.segmentapis.com
+    description: Segment Public API — Workspaces business capability. Self-contained, no shared references.
+    resources:
+    - name: workspace
+      path: /workspace
+      operations:
+      - name: getworkspace
+        method: GET
+        description: Get workspace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SEGMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: public-workspaces-rest
+    port: 8080
+    description: REST adapter for Segment Public API — Workspaces. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/workspace
+      name: workspace
+      description: REST surface for workspace.
+      operations:
+      - method: GET
+        name: getworkspace
+        description: Get workspace
+        call: public-workspaces.getworkspace
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: public-workspaces-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Public API — Workspaces. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-workspace
+      description: Get workspace
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-workspaces.getworkspace
+      outputParameters:
+      - type: object
+        mapping: $.

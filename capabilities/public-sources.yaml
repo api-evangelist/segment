@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Public API — Sources
+  description: 'Segment Public API — Sources. 5 operations. Lead operation: List sources. Self-contained Naftiko capability
+    covering one Segment business surface.'
+  tags:
+  - Segment
+  - Sources
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: public-sources
+    baseUri: https://api.segmentapis.com
+    description: Segment Public API — Sources business capability. Self-contained, no shared references.
+    resources:
+    - name: sources
+      path: /sources
+      operations:
+      - name: listsources
+        method: GET
+        description: List sources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createsource
+        method: POST
+        description: Create source
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sources-sourceId
+      path: /sources/{sourceId}
+      operations:
+      - name: getsource
+        method: GET
+        description: Get source
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatesource
+        method: PATCH
+        description: Update source
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletesource
+        method: DELETE
+        description: Delete source
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SEGMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: public-sources-rest
+    port: 8080
+    description: REST adapter for Segment Public API — Sources. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/sources
+      name: sources
+      description: REST surface for sources.
+      operations:
+      - method: GET
+        name: listsources
+        description: List sources
+        call: public-sources.listsources
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsource
+        description: Create source
+        call: public-sources.createsource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sources/{sourceid}
+      name: sources-sourceid
+      description: REST surface for sources-sourceId.
+      operations:
+      - method: GET
+        name: getsource
+        description: Get source
+        call: public-sources.getsource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatesource
+        description: Update source
+        call: public-sources.updatesource
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesource
+        description: Delete source
+        call: public-sources.deletesource
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: public-sources-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Public API — Sources. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-sources
+      description: List sources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-sources.listsources
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-source
+      description: Create source
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: public-sources.createsource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-source
+      description: Get source
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-sources.getsource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-source
+      description: Update source
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: public-sources.updatesource
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-source
+      description: Delete source
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: public-sources.deletesource
+      outputParameters:
+      - type: object
+        mapping: $.

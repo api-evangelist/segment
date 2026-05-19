@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Public API — Warehouses
+  description: 'Segment Public API — Warehouses. 5 operations. Lead operation: List warehouses. Self-contained Naftiko capability
+    covering one Segment business surface.'
+  tags:
+  - Segment
+  - Warehouses
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: public-warehouses
+    baseUri: https://api.segmentapis.com
+    description: Segment Public API — Warehouses business capability. Self-contained, no shared references.
+    resources:
+    - name: warehouses
+      path: /warehouses
+      operations:
+      - name: listwarehouses
+        method: GET
+        description: List warehouses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createwarehouse
+        method: POST
+        description: Create warehouse
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: warehouses-warehouseId
+      path: /warehouses/{warehouseId}
+      operations:
+      - name: getwarehouse
+        method: GET
+        description: Get warehouse
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatewarehouse
+        method: PATCH
+        description: Update warehouse
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletewarehouse
+        method: DELETE
+        description: Delete warehouse
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SEGMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: public-warehouses-rest
+    port: 8080
+    description: REST adapter for Segment Public API — Warehouses. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/warehouses
+      name: warehouses
+      description: REST surface for warehouses.
+      operations:
+      - method: GET
+        name: listwarehouses
+        description: List warehouses
+        call: public-warehouses.listwarehouses
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createwarehouse
+        description: Create warehouse
+        call: public-warehouses.createwarehouse
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/warehouses/{warehouseid}
+      name: warehouses-warehouseid
+      description: REST surface for warehouses-warehouseId.
+      operations:
+      - method: GET
+        name: getwarehouse
+        description: Get warehouse
+        call: public-warehouses.getwarehouse
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatewarehouse
+        description: Update warehouse
+        call: public-warehouses.updatewarehouse
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletewarehouse
+        description: Delete warehouse
+        call: public-warehouses.deletewarehouse
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: public-warehouses-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Public API — Warehouses. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-warehouses
+      description: List warehouses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-warehouses.listwarehouses
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-warehouse
+      description: Create warehouse
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: public-warehouses.createwarehouse
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-warehouse
+      description: Get warehouse
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-warehouses.getwarehouse
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-warehouse
+      description: Update warehouse
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: public-warehouses.updatewarehouse
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-warehouse
+      description: Delete warehouse
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: public-warehouses.deletewarehouse
+      outputParameters:
+      - type: object
+        mapping: $.

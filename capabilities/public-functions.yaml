@@ -1,0 +1,206 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Public API — Functions
+  description: 'Segment Public API — Functions. 5 operations. Lead operation: List functions. Self-contained Naftiko capability
+    covering one Segment business surface.'
+  tags:
+  - Segment
+  - Functions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: public-functions
+    baseUri: https://api.segmentapis.com
+    description: Segment Public API — Functions business capability. Self-contained, no shared references.
+    resources:
+    - name: functions
+      path: /functions
+      operations:
+      - name: listfunctions
+        method: GET
+        description: List functions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceType
+          in: query
+          type: string
+          description: Filter functions by resource type.
+      - name: createfunction
+        method: POST
+        description: Create function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: functions-functionId
+      path: /functions/{functionId}
+      operations:
+      - name: getfunction
+        method: GET
+        description: Get function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatefunction
+        method: PATCH
+        description: Update function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletefunction
+        method: DELETE
+        description: Delete function
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SEGMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: public-functions-rest
+    port: 8080
+    description: REST adapter for Segment Public API — Functions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/functions
+      name: functions
+      description: REST surface for functions.
+      operations:
+      - method: GET
+        name: listfunctions
+        description: List functions
+        call: public-functions.listfunctions
+        with:
+          resourceType: rest.resourceType
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createfunction
+        description: Create function
+        call: public-functions.createfunction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/functions/{functionid}
+      name: functions-functionid
+      description: REST surface for functions-functionId.
+      operations:
+      - method: GET
+        name: getfunction
+        description: Get function
+        call: public-functions.getfunction
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatefunction
+        description: Update function
+        call: public-functions.updatefunction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletefunction
+        description: Delete function
+        call: public-functions.deletefunction
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: public-functions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Public API — Functions. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-functions
+      description: List functions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-functions.listfunctions
+      with:
+        resourceType: tools.resourceType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-function
+      description: Create function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: public-functions.createfunction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-function
+      description: Get function
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: public-functions.getfunction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-function
+      description: Update function
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: public-functions.updatefunction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-function
+      description: Delete function
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: public-functions.deletefunction
+      outputParameters:
+      - type: object
+        mapping: $.

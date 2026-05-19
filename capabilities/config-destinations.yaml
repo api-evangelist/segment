@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Segment Config API — Destinations
+  description: 'Segment Config API — Destinations. 5 operations. Lead operation: List destinations. Self-contained Naftiko
+    capability covering one Segment business surface.'
+  tags:
+  - Segment
+  - Destinations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SEGMENT_API_KEY: SEGMENT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: config-destinations
+    baseUri: https://platform.segmentapis.com/v1beta
+    description: Segment Config API — Destinations business capability. Self-contained, no shared references.
+    resources:
+    - name: workspaces-workspaceName-sources-sourceName-destinations
+      path: /workspaces/{workspaceName}/sources/{sourceName}/destinations
+      operations:
+      - name: listdestinations
+        method: GET
+        description: List destinations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdestination
+        method: POST
+        description: Create destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: workspaces-workspaceName-sources-sourceName-destinations-destinationName
+      path: /workspaces/{workspaceName}/sources/{sourceName}/destinations/{destinationName}
+      operations:
+      - name: getdestination
+        method: GET
+        description: Get destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatedestination
+        method: PATCH
+        description: Update destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletedestination
+        method: DELETE
+        description: Delete destination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SEGMENT_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: config-destinations-rest
+    port: 8080
+    description: REST adapter for Segment Config API — Destinations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/workspaces/{workspacename}/sources/{sourcename}/destinations
+      name: workspaces-workspacename-sources-sourcename-destinations
+      description: REST surface for workspaces-workspaceName-sources-sourceName-destinations.
+      operations:
+      - method: GET
+        name: listdestinations
+        description: List destinations
+        call: config-destinations.listdestinations
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdestination
+        description: Create destination
+        call: config-destinations.createdestination
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/workspaces/{workspacename}/sources/{sourcename}/destinations/{destinationname}
+      name: workspaces-workspacename-sources-sourcename-destinations-destinationname
+      description: REST surface for workspaces-workspaceName-sources-sourceName-destinations-destinationName.
+      operations:
+      - method: GET
+        name: getdestination
+        description: Get destination
+        call: config-destinations.getdestination
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatedestination
+        description: Update destination
+        call: config-destinations.updatedestination
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedestination
+        description: Delete destination
+        call: config-destinations.deletedestination
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: config-destinations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Segment Config API — Destinations. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-destinations
+      description: List destinations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: config-destinations.listdestinations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-destination
+      description: Create destination
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: config-destinations.createdestination
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-destination
+      description: Get destination
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: config-destinations.getdestination
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-destination
+      description: Update destination
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: config-destinations.updatedestination
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-destination
+      description: Delete destination
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: config-destinations.deletedestination
+      outputParameters:
+      - type: object
+        mapping: $.

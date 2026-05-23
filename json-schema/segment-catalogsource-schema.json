@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CatalogSource",
+  "title": "CatalogSource",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The metadata ID of the catalog source."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the source integration."
+    },
+    "slug": {
+      "type": "string",
+      "description": "The URL-friendly slug."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the source integration."
+    },
+    "logos": {
+      "type": "object",
+      "description": "Logo URLs for the integration.",
+      "properties": {
+        "default": {
+          "type": "string",
+          "format": "uri",
+          "description": "Default logo URL."
+        },
+        "alt": {
+          "type": "string",
+          "format": "uri",
+          "description": "Alternative logo URL."
+        },
+        "mark": {
+          "type": "string",
+          "format": "uri",
+          "description": "Mark logo URL."
+        }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Categories this source belongs to."
+    }
+  }
+}

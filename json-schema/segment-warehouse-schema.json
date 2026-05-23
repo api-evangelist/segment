@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Warehouse",
+  "title": "Warehouse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the warehouse."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the warehouse is enabled."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Metadata about the warehouse type.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The metadata ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the warehouse type."
+        },
+        "slug": {
+          "type": "string",
+          "description": "The slug of the warehouse type."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the warehouse type."
+        }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "description": "Configuration settings for the warehouse.",
+      "additionalProperties": true
+    }
+  }
+}

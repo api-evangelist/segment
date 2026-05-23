@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GroupCall",
+  "title": "GroupCall",
+  "type": "object",
+  "required": [
+    "groupId"
+  ],
+  "description": "A group call associates an identified user with a group.",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "description": "Unique identifier for the user in your database."
+    },
+    "anonymousId": {
+      "type": "string",
+      "description": "A pseudo-unique substitute for a user ID."
+    },
+    "groupId": {
+      "type": "string",
+      "description": "A unique identifier for the group."
+    },
+    "traits": {
+      "type": "object",
+      "description": "Free-form dictionary of traits of the group, like name, industry, or number of employees.",
+      "additionalProperties": true
+    },
+    "context": {
+      "$ref": "#/components/schemas/Context"
+    },
+    "integrations": {
+      "$ref": "#/components/schemas/Integrations"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 date string when the message was originally sent."
+    },
+    "messageId": {
+      "type": "string",
+      "description": "Unique identifier for the message to deduplicate."
+    }
+  }
+}

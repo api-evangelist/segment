@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Context",
+  "title": "Context",
+  "type": "object",
+  "description": "Dictionary of extra context for the call. Context is a dictionary of extra information that provides useful context about a data point, such as the user's IP address, locale, or device information.",
+  "properties": {
+    "active": {
+      "type": "boolean",
+      "description": "Whether the user is active."
+    },
+    "ip": {
+      "type": "string",
+      "description": "The IP address of the user."
+    },
+    "locale": {
+      "type": "string",
+      "description": "The locale string for the user."
+    },
+    "userAgent": {
+      "type": "string",
+      "description": "The user agent string of the client."
+    },
+    "library": {
+      "type": "object",
+      "description": "Information about the library making the call.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the library."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the library."
+        }
+      }
+    },
+    "page": {
+      "type": "object",
+      "description": "Information about the current page.",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "The path of the page."
+        },
+        "referrer": {
+          "type": "string",
+          "format": "uri",
+          "description": "The referrer URL."
+        },
+        "search": {
+          "type": "string",
+          "description": "The search query string."
+        },
+        "title": {
+          "type": "string",
+          "description": "The page title."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The full URL of the page."
+        }
+      }
+    },
+    "device": {
+      "type": "object",
+      "description": "Information about the user's device.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The device ID."
+        },
+        "manufacturer": {
+          "type": "string",
+          "description": "The device manufacturer."
+        },
+        "model": {
+          "type": "string",
+          "description": "The device model."
+        },
+        "name": {
+          "type": "string",
+          "description": "The device name."
+        },
+        "type": {
+          "type": "string",
+          "description": "The device type."
+        }
+      }
+    }
+  }
+}

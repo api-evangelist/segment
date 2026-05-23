@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Transformation",
+  "title": "Transformation",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the transformation."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the transformation."
+    },
+    "sourceId": {
+      "type": "string",
+      "description": "The ID of the source this transformation applies to."
+    },
+    "destinationMetadataId": {
+      "type": "string",
+      "description": "The destination metadata ID if destination-scoped."
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether the transformation is enabled."
+    },
+    "if": {
+      "type": "string",
+      "description": "The FQL condition that determines when the transformation runs."
+    },
+    "newEventName": {
+      "type": "string",
+      "description": "The new event name if renaming."
+    },
+    "propertyRenames": {
+      "type": "array",
+      "description": "Property renames applied by this transformation.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "oldName": {
+            "type": "string",
+            "description": "The original property name."
+          },
+          "newName": {
+            "type": "string",
+            "description": "The new property name."
+          }
+        }
+      }
+    },
+    "propertyValueTransformations": {
+      "type": "array",
+      "description": "Property value transformations applied.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "propertyPaths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The property paths to transform."
+          },
+          "propertyValue": {
+            "type": "string",
+            "description": "The new value."
+          }
+        }
+      }
+    }
+  }
+}

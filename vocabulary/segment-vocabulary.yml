@@ -1,0 +1,25 @@
+name: Segment Domain Vocabulary
+provider: Segment
+providerId: segment
+description: Tag-derived vocabulary for the Segment API surface; sourced from openapi/ tags.
+terms:
+- term: Catalog
+  description: Operations for browsing the Segment catalog of available sources and destination integrations.
+- term: Destinations
+  description: Operations for managing destinations where collected data is sent, including configuration and connection settings.
+- term: Functions
+  description: Operations for managing custom functions that transform or enrich data flowing through Segment.
+- term: Labels
+  description: Operations for managing labels used to organize and control access to workspace resources.
+- term: Regulations
+  description: Operations for managing data privacy regulations and suppression requests.
+- term: Sources
+  description: Operations for creating, reading, updating, and deleting data collection sources within a workspace.
+- term: Tracking Plans
+  description: Operations for managing tracking plans that define and enforce data schemas for event tracking.
+- term: Transformations
+  description: Operations for managing transformations that modify event data before it reaches destinations.
+- term: Warehouses
+  description: Operations for managing data warehouse connections, including creating and configuring warehouse destinations.
+- term: Workspaces
+  description: Operations for managing Segment workspaces, including retrieving workspace details and configuration.

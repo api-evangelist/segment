@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CatalogDestination",
+  "title": "CatalogDestination",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The metadata ID of the catalog destination."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the destination integration."
+    },
+    "slug": {
+      "type": "string",
+      "description": "The URL-friendly slug."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the destination integration."
+    },
+    "logos": {
+      "type": "object",
+      "description": "Logo URLs for the integration.",
+      "properties": {
+        "default": {
+          "type": "string",
+          "format": "uri",
+          "description": "Default logo URL."
+        },
+        "alt": {
+          "type": "string",
+          "format": "uri",
+          "description": "Alternative logo URL."
+        },
+        "mark": {
+          "type": "string",
+          "format": "uri",
+          "description": "Mark logo URL."
+        }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Categories this destination belongs to."
+    },
+    "supportedMethods": {
+      "type": "object",
+      "description": "Which Segment methods this destination supports.",
+      "properties": {
+        "track": {
+          "type": "boolean",
+          "description": "Whether track calls are supported."
+        },
+        "identify": {
+          "type": "boolean",
+          "description": "Whether identify calls are supported."
+        },
+        "page": {
+          "type": "boolean",
+          "description": "Whether page calls are supported."
+        },
+        "screen": {
+          "type": "boolean",
+          "description": "Whether screen calls are supported."
+        },
+        "group": {
+          "type": "boolean",
+          "description": "Whether group calls are supported."
+        },
+        "alias": {
+          "type": "boolean",
+          "description": "Whether alias calls are supported."
+        }
+      }
+    }
+  }
+}

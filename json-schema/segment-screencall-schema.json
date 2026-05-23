@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScreenCall",
+  "title": "ScreenCall",
+  "type": "object",
+  "description": "A screen call records a screen view in a mobile application.",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "description": "Unique identifier for the user in your database."
+    },
+    "anonymousId": {
+      "type": "string",
+      "description": "A pseudo-unique substitute for a user ID."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the screen."
+    },
+    "properties": {
+      "type": "object",
+      "description": "Free-form dictionary of properties of the screen.",
+      "additionalProperties": true
+    },
+    "context": {
+      "$ref": "#/components/schemas/Context"
+    },
+    "integrations": {
+      "$ref": "#/components/schemas/Integrations"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 date string when the message was originally sent."
+    },
+    "messageId": {
+      "type": "string",
+      "description": "Unique identifier for the message to deduplicate."
+    }
+  }
+}

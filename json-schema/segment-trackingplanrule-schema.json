@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrackingPlanRule",
+  "title": "TrackingPlanRule",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The event name this rule applies to."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the event."
+    },
+    "rules": {
+      "type": "object",
+      "description": "The JSON Schema rules for the event properties.",
+      "additionalProperties": true
+    },
+    "version": {
+      "type": "number",
+      "description": "The version of the rule."
+    }
+  }
+}

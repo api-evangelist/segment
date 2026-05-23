@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Integrations",
+  "title": "Integrations",
+  "type": "object",
+  "description": "Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.",
+  "additionalProperties": {
+    "oneOf": [
+      {
+        "type": "boolean"
+      },
+      {
+        "type": "object"
+      }
+    ]
+  }
+}

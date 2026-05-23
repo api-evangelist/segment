@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ExternalId",
+  "title": "ExternalId",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The value of the external ID."
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of external ID.",
+      "enum": [
+        "user_id",
+        "anonymous_id",
+        "email",
+        "phone",
+        "cross_domain_id",
+        "android.id",
+        "android.idfa",
+        "ios.id",
+        "ios.idfa"
+      ]
+    },
+    "source_id": {
+      "type": "string",
+      "description": "The source that provided this external ID."
+    },
+    "collection": {
+      "type": "string",
+      "description": "The collection this external ID belongs to."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this external ID was first seen."
+    },
+    "encoding": {
+      "type": "string",
+      "description": "The encoding of the ID value."
+    }
+  }
+}

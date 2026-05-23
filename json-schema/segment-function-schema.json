@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Function",
+  "title": "Function",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the function."
+    },
+    "resourceType": {
+      "type": "string",
+      "description": "The type of resource this function applies to.",
+      "enum": [
+        "DESTINATION",
+        "INSERT_DESTINATION",
+        "INSERT_SOURCE",
+        "SOURCE"
+      ]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the function was created."
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "The user who created the function."
+    },
+    "code": {
+      "type": "string",
+      "description": "The JavaScript code of the function."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the function."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the function."
+    },
+    "logoUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the function logo."
+    },
+    "settings": {
+      "type": "array",
+      "description": "Settings definitions for the function.",
+      "items": {
+        "$ref": "#/components/schemas/FunctionSetting"
+      }
+    }
+  }
+}

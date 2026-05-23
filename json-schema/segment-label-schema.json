@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Label",
+  "title": "Label",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "description": "The label key."
+    },
+    "value": {
+      "type": "string",
+      "description": "The label value."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the label."
+    }
+  }
+}

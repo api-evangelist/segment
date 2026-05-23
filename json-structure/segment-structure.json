@@ -1,0 +1,462 @@
+{
+  "provider": "Segment",
+  "providerId": "segment",
+  "kind": "json-structure",
+  "description": "Structural overview of the Segment API surface; extracted from openapi/.",
+  "schemaCount": 15,
+  "operationCount": 40,
+  "schemas": [
+    {
+      "name": "Error",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Pagination",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Workspace",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Source",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Destination",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "Warehouse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "TrackingPlan",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "TrackingPlanRule",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "CatalogSource",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "CatalogDestination",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "Function",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "FunctionSetting",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Transformation",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "Regulation",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "Label",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/workspace",
+      "operationId": "getWorkspace",
+      "summary": "Get workspace",
+      "tags": [
+        "Workspaces"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sources",
+      "operationId": "listSources",
+      "summary": "List sources",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sources",
+      "operationId": "createSource",
+      "summary": "Create source",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sources/{sourceId}",
+      "operationId": "getSource",
+      "summary": "Get source",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/sources/{sourceId}",
+      "operationId": "deleteSource",
+      "summary": "Delete source",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/sources/{sourceId}",
+      "operationId": "updateSource",
+      "summary": "Update source",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/destinations",
+      "operationId": "listDestinations",
+      "summary": "List destinations",
+      "tags": [
+        "Destinations"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/destinations",
+      "operationId": "createDestination",
+      "summary": "Create destination",
+      "tags": [
+        "Destinations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/destinations/{destinationId}",
+      "operationId": "getDestination",
+      "summary": "Get destination",
+      "tags": [
+        "Destinations"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/destinations/{destinationId}",
+      "operationId": "deleteDestination",
+      "summary": "Delete destination",
+      "tags": [
+        "Destinations"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/destinations/{destinationId}",
+      "operationId": "updateDestination",
+      "summary": "Update destination",
+      "tags": [
+        "Destinations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/warehouses",
+      "operationId": "listWarehouses",
+      "summary": "List warehouses",
+      "tags": [
+        "Warehouses"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/warehouses",
+      "operationId": "createWarehouse",
+      "summary": "Create warehouse",
+      "tags": [
+        "Warehouses"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/warehouses/{warehouseId}",
+      "operationId": "getWarehouse",
+      "summary": "Get warehouse",
+      "tags": [
+        "Warehouses"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/warehouses/{warehouseId}",
+      "operationId": "deleteWarehouse",
+      "summary": "Delete warehouse",
+      "tags": [
+        "Warehouses"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/warehouses/{warehouseId}",
+      "operationId": "updateWarehouse",
+      "summary": "Update warehouse",
+      "tags": [
+        "Warehouses"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/tracking-plans",
+      "operationId": "listTrackingPlans",
+      "summary": "List tracking plans",
+      "tags": [
+        "Tracking Plans"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/tracking-plans",
+      "operationId": "createTrackingPlan",
+      "summary": "Create tracking plan",
+      "tags": [
+        "Tracking Plans"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/tracking-plans/{trackingPlanId}",
+      "operationId": "getTrackingPlan",
+      "summary": "Get tracking plan",
+      "tags": [
+        "Tracking Plans"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/tracking-plans/{trackingPlanId}",
+      "operationId": "deleteTrackingPlan",
+      "summary": "Delete tracking plan",
+      "tags": [
+        "Tracking Plans"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/tracking-plans/{trackingPlanId}",
+      "operationId": "updateTrackingPlan",
+      "summary": "Update tracking plan",
+      "tags": [
+        "Tracking Plans"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/catalog/sources",
+      "operationId": "listCatalogSources",
+      "summary": "List catalog sources",
+      "tags": [
+        "Catalog"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/catalog/sources/{sourceMetadataId}",
+      "operationId": "getCatalogSource",
+      "summary": "Get catalog source",
+      "tags": [
+        "Catalog"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/catalog/destinations",
+      "operationId": "listCatalogDestinations",
+      "summary": "List catalog destinations",
+      "tags": [
+        "Catalog"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/catalog/destinations/{destinationMetadataId}",
+      "operationId": "getCatalogDestination",
+      "summary": "Get catalog destination",
+      "tags": [
+        "Catalog"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/functions",
+      "operationId": "listFunctions",
+      "summary": "List functions",
+      "tags": [
+        "Functions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/functions",
+      "operationId": "createFunction",
+      "summary": "Create function",
+      "tags": [
+        "Functions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/functions/{functionId}",
+      "operationId": "getFunction",
+      "summary": "Get function",
+      "tags": [
+        "Functions"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/functions/{functionId}",
+      "operationId": "deleteFunction",
+      "summary": "Delete function",
+      "tags": [
+        "Functions"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/functions/{functionId}",
+      "operationId": "updateFunction",
+      "summary": "Update function",
+      "tags": [
+        "Functions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/transformations",
+      "operationId": "listTransformations",
+      "summary": "List transformations",
+      "tags": [
+        "Transformations"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/transformations",
+      "operationId": "createTransformation",
+      "summary": "Create transformation",
+      "tags": [
+        "Transformations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/transformations/{transformationId}",
+      "operationId": "getTransformation",
+      "summary": "Get transformation",
+      "tags": [
+        "Transformations"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/transformations/{transformationId}",
+      "operationId": "deleteTransformation",
+      "summary": "Delete transformation",
+      "tags": [
+        "Transformations"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/transformations/{transformationId}",
+      "operationId": "updateTransformation",
+      "summary": "Update transformation",
+      "tags": [
+        "Transformations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/regulations",
+      "operationId": "listRegulations",
+      "summary": "List regulations",
+      "tags": [
+        "Regulations"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/regulations",
+      "operationId": "createRegulation",
+      "summary": "Create regulation",
+      "tags": [
+        "Regulations"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/labels",
+      "operationId": "listLabels",
+      "summary": "List labels",
+      "tags": [
+        "Labels"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/labels",
+      "operationId": "createLabel",
+      "summary": "Create label",
+      "tags": [
+        "Labels"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/labels/{labelKey}/{labelValue}",
+      "operationId": "deleteLabel",
+      "summary": "Delete label",
+      "tags": [
+        "Labels"
+      ]
+    }
+  ]
+}

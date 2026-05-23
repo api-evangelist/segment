@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrackingPlan",
+  "title": "TrackingPlan",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The fully qualified name of the tracking plan."
+    },
+    "display_name": {
+      "type": "string",
+      "description": "The display name of the tracking plan."
+    },
+    "rules": {
+      "type": "object",
+      "description": "The rules of the tracking plan.",
+      "properties": {
+        "events": {
+          "type": "array",
+          "description": "Event rules.",
+          "items": {
+            "$ref": "#/components/schemas/TrackingPlanRule"
+          }
+        }
+      }
+    },
+    "create_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the tracking plan was created."
+    },
+    "update_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the tracking plan was last updated."
+    }
+  }
+}

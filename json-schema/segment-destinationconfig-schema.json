@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DestinationConfig",
+  "title": "DestinationConfig",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The fully qualified name of the config setting."
+    },
+    "display_name": {
+      "type": "string",
+      "description": "The display name of the setting."
+    },
+    "value": {
+      "description": "The value of the setting. Can be any JSON type."
+    },
+    "type": {
+      "type": "string",
+      "description": "The data type of the setting.",
+      "enum": [
+        "boolean",
+        "string",
+        "number",
+        "list",
+        "map",
+        "mixed"
+      ]
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BatchCall",
+  "title": "BatchCall",
+  "type": "object",
+  "required": [
+    "batch"
+  ],
+  "description": "A batch call sends multiple events in a single request.",
+  "properties": {
+    "batch": {
+      "type": "array",
+      "description": "An array of identify, track, page, screen, group, or alias call objects. Maximum 2500 events per batch. Each event must be less than 32 KB.",
+      "maxItems": 2500,
+      "items": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of call.",
+            "enum": [
+              "identify",
+              "track",
+              "page",
+              "screen",
+              "group",
+              "alias"
+            ]
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier for the user."
+          },
+          "anonymousId": {
+            "type": "string",
+            "description": "A pseudo-unique substitute for a user ID."
+          },
+          "event": {
+            "type": "string",
+            "description": "Event name, required for track calls."
+          },
+          "properties": {
+            "type": "object",
+            "description": "Event or page/screen properties.",
+            "additionalProperties": true
+          },
+          "traits": {
+            "type": "object",
+            "description": "User or group traits.",
+            "additionalProperties": true
+          },
+          "groupId": {
+            "type": "string",
+            "description": "Group ID, required for group calls."
+          },
+          "previousId": {
+            "type": "string",
+            "description": "Previous ID, required for alias calls."
+          },
+          "name": {
+            "type": "string",
+            "description": "Page or screen name."
+          },
+          "context": {
+            "$ref": "#/components/schemas/Context"
+          },
+          "integrations": {
+            "$ref": "#/components/schemas/Integrations"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 date string."
+          },
+          "messageId": {
+            "type": "string",
+            "description": "Unique identifier for the message."
+          }
+        }
+      }
+    },
+    "context": {
+      "$ref": "#/components/schemas/Context"
+    },
+    "integrations": {
+      "$ref": "#/components/schemas/Integrations"
+    }
+  }
+}

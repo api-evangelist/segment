@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Regulation",
+  "title": "Regulation",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the regulation request."
+    },
+    "workspaceId": {
+      "type": "string",
+      "description": "The workspace ID this regulation belongs to."
+    },
+    "overallStatus": {
+      "type": "string",
+      "description": "The overall status of the regulation request.",
+      "enum": [
+        "FAILED",
+        "FINISHED",
+        "INITIALIZED",
+        "INVALID",
+        "NOT_SUPPORTED",
+        "PARTIAL_SUCCESS",
+        "RUNNING"
+      ]
+    },
+    "regulateType": {
+      "type": "string",
+      "description": "The type of regulation.",
+      "enum": [
+        "DELETE_INTERNAL",
+        "DELETE_ONLY",
+        "SUPPRESS_AND_DELETE",
+        "SUPPRESS_ONLY",
+        "UNSUPPRESS"
+      ]
+    },
+    "subjectType": {
+      "type": "string",
+      "description": "The type of subject regulated.",
+      "enum": [
+        "OBJECT_ID",
+        "USER_ID"
+      ]
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the regulation was created."
+    }
+  }
+}

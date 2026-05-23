@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Cursor",
+  "title": "Cursor",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "The URL to retrieve the next page."
+    },
+    "has_more": {
+      "type": "boolean",
+      "description": "Whether there are more results."
+    },
+    "next": {
+      "type": "string",
+      "description": "The cursor value for the next page."
+    },
+    "limit": {
+      "type": "integer",
+      "description": "The number of items per page."
+    }
+  }
+}

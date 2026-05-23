@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Workspace",
+  "title": "Workspace",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The fully qualified name of the workspace."
+    },
+    "display_name": {
+      "type": "string",
+      "description": "The display name of the workspace."
+    },
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the workspace."
+    },
+    "create_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the workspace was created."
+    }
+  }
+}

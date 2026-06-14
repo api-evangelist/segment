@@ -1,0 +1,1124 @@
+"""
+Segment GraphQL Schema (Conceptual)
+
+Derived from Segment's REST API surface: Public API, HTTP Tracking API,
+Profile API, and Config API. No native GraphQL endpoint exists; this schema
+represents the Segment data model for tooling and catalog enrichment purposes.
+
+Sources:
+  - https://docs.segmentapis.com/
+  - https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
+  - https://www.twilio.com/docs/segment/unify/profile-api
+  - https://www.twilio.com/docs/segment/api/config-api
+"""
+
+scalar DateTime
+scalar JSON
+
+# ---------------------------------------------------------------------------
+# Workspace & Authentication
+# ---------------------------------------------------------------------------
+
+"""
+A Segment workspace — the top-level organizational unit.
+"""
+type Workspace {
+  id: ID!
+  slug: String!
+  name: String!
+  displayName: String
+  settings: WorkspaceSettings
+  sources: [Source!]!
+  destinations: [Destination!]!
+  warehouses: [Warehouse!]!
+  trackingPlans: [TrackingPlan!]!
+  functions: [Function!]!
+  apiKeys: [APIKey!]!
+  environments: [Environment!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type WorkspaceSettings {
+  defaultSourceId: String
+  dataRetentionDays: Int
+  hipaaEnabled: Boolean
+  dataResidencyRegion: String
+}
+
+"""
+An API key scoped to a workspace.
+"""
+type APIKey {
+  id: ID!
+  label: String!
+  description: String
+  scopes: [String!]!
+  createdAt: DateTime!
+  expiresAt: DateTime
+  workspace: Workspace!
+}
+
+"""
+A named deployment environment within a workspace (e.g. production, staging).
+"""
+type Environment {
+  id: ID!
+  name: String!
+  slug: String!
+  workspaceId: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ---------------------------------------------------------------------------
+# Sources
+# ---------------------------------------------------------------------------
+
+"""
+A Segment source — the origin of event data (website, mobile app, server, etc.).
+"""
+type Source {
+  id: ID!
+  slug: String!
+  name: String!
+  description: String
+  enabled: Boolean!
+  writeKey: String!
+  metadata: SourceMetadata
+  workspaceId: ID!
+  catalogEntry: CatalogEntry
+  destinations: [Destination!]!
+  settings: JSON
+  labels: [Label!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type SourceMetadata {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String
+  logos: Logos
+  categories: [String!]!
+  isCloudEventSource: Boolean!
+}
+
+# ---------------------------------------------------------------------------
+# Destinations
+# ---------------------------------------------------------------------------
+
+"""
+A Segment destination — a tool or warehouse that receives event data.
+"""
+type Destination {
+  id: ID!
+  name: String!
+  description: String
+  enabled: Boolean!
+  sourceId: ID!
+  metadata: DestinationMetadata
+  settings: JSON
+  catalogEntry: CatalogEntry
+  subscriptions: [DestinationSubscription!]!
+  labels: [Label!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type DestinationMetadata {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String
+  logos: Logos
+  categories: [String!]!
+  supportedRegions: [String!]!
+  isCloudEventSource: Boolean!
+}
+
+type DestinationSubscription {
+  id: ID!
+  name: String!
+  enabled: Boolean!
+  trigger: String!
+  actionId: String!
+  settings: JSON
+}
+
+# ---------------------------------------------------------------------------
+# Warehouses
+# ---------------------------------------------------------------------------
+
+"""
+A data warehouse destination that stores Segment events for analysis.
+"""
+type Warehouse {
+  id: ID!
+  name: String!
+  enabled: Boolean!
+  metadata: WarehouseMetadata
+  settings: JSON
+  workspaceId: ID!
+  connections: [Connection!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type WarehouseMetadata {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String
+  logos: Logos
+  categories: [String!]!
+}
+
+"""
+A connection between a source and a warehouse.
+"""
+type Connection {
+  id: ID!
+  sourceId: ID!
+  warehouseId: ID!
+  enabled: Boolean!
+  settings: JSON
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ---------------------------------------------------------------------------
+# Tracking & Events (HTTP Tracking API)
+# ---------------------------------------------------------------------------
+
+"""
+A Track call — records a user action or event.
+"""
+type Track {
+  messageId: ID!
+  anonymousId: String
+  userId: String
+  event: String!
+  properties: [Property!]!
+  context: Context
+  integrations: Integrations
+  timestamp: DateTime!
+  sentAt: DateTime
+  receivedAt: DateTime
+  type: String!
+  version: Int
+}
+
+"""
+An Identify call — associates traits with a user.
+"""
+type Identify {
+  messageId: ID!
+  anonymousId: String
+  userId: String
+  traits: [Trait!]!
+  context: Context
+  integrations: Integrations
+  timestamp: DateTime!
+  sentAt: DateTime
+  receivedAt: DateTime
+  type: String!
+  version: Int
+}
+
+"""
+A Page call — records a page view in a web application.
+"""
+type Page {
+  messageId: ID!
+  anonymousId: String
+  userId: String
+  name: String
+  category: String
+  properties: [Property!]!
+  context: Context
+  integrations: Integrations
+  timestamp: DateTime!
+  sentAt: DateTime
+  receivedAt: DateTime
+  type: String!
+  version: Int
+}
+
+"""
+A Screen call — records a screen view in a mobile application.
+"""
+type Screen {
+  messageId: ID!
+  anonymousId: String
+  userId: String
+  name: String
+  properties: [Property!]!
+  context: Context
+  integrations: Integrations
+  timestamp: DateTime!
+  sentAt: DateTime
+  receivedAt: DateTime
+  type: String!
+  version: Int
+}
+
+"""
+A Group call — associates a user with an account or organization.
+"""
+type Group {
+  messageId: ID!
+  anonymousId: String
+  userId: String
+  groupId: String!
+  traits: [Trait!]!
+  context: Context
+  integrations: Integrations
+  timestamp: DateTime!
+  sentAt: DateTime
+  receivedAt: DateTime
+  type: String!
+  version: Int
+}
+
+"""
+An Alias call — merges two user identities.
+"""
+type Alias {
+  messageId: ID!
+  previousId: String!
+  userId: String!
+  context: Context
+  integrations: Integrations
+  timestamp: DateTime!
+  sentAt: DateTime
+  receivedAt: DateTime
+  type: String!
+  version: Int
+}
+
+"""
+A Batch payload — wraps multiple event calls in a single HTTP request.
+"""
+type Batch {
+  batch: [Event!]!
+  context: Context
+  integrations: Integrations
+  sentAt: DateTime!
+}
+
+"""
+A polymorphic union of all Segment event call types.
+"""
+union Event = Track | Identify | Page | Screen | Group | Alias
+
+"""
+Key/value property attached to a Track, Page, or Screen call.
+"""
+type Property {
+  key: String!
+  value: JSON
+}
+
+"""
+Key/value trait attached to an Identify or Group call.
+"""
+type Trait {
+  key: String!
+  value: JSON
+}
+
+"""
+Contextual metadata sent alongside every Segment event.
+"""
+type Context {
+  ip: String
+  locale: String
+  timezone: String
+  userAgent: String
+  library: Library
+  page: PageContext
+  screen: ScreenContext
+  app: AppContext
+  device: DeviceContext
+  os: OSContext
+  network: NetworkContext
+  location: LocationContext
+  referrer: ReferrerContext
+  campaign: CampaignContext
+  groupId: String
+  traits: JSON
+  active: Boolean
+}
+
+type Library {
+  name: String
+  version: String
+}
+
+type PageContext {
+  path: String
+  referrer: String
+  search: String
+  title: String
+  url: String
+}
+
+type ScreenContext {
+  width: Int
+  height: Int
+  density: Float
+}
+
+type AppContext {
+  name: String
+  version: String
+  build: String
+  namespace: String
+}
+
+type DeviceContext {
+  id: String
+  advertisingId: String
+  manufacturer: String
+  model: String
+  name: String
+  type: String
+  version: String
+  token: String
+}
+
+type OSContext {
+  name: String
+  version: String
+}
+
+type NetworkContext {
+  bluetooth: Boolean
+  carrier: String
+  cellular: Boolean
+  wifi: Boolean
+}
+
+type LocationContext {
+  city: String
+  country: String
+  latitude: Float
+  longitude: Float
+  region: String
+  speed: Float
+}
+
+type ReferrerContext {
+  id: String
+  type: String
+  name: String
+  url: String
+  link: String
+}
+
+type CampaignContext {
+  name: String
+  source: String
+  medium: String
+  content: String
+  term: String
+}
+
+"""
+Destination-level routing overrides for a Segment event.
+"""
+type Integrations {
+  all: Boolean
+  overrides: JSON
+}
+
+# ---------------------------------------------------------------------------
+# Profile API (Unify)
+# ---------------------------------------------------------------------------
+
+"""
+A unified customer profile resolved by Segment Unify.
+"""
+type Profile {
+  id: ID!
+  anonymousId: String
+  userId: String
+  externalIds: [ExternalId!]!
+  traits: [Trait!]!
+  events: [Track!]!
+  audiences: [Audience!]!
+  computedTraits: [ComputedTrait!]!
+  metadata: ProfileMetadata
+}
+
+type ProfileMetadata {
+  createdAt: DateTime
+  updatedAt: DateTime
+  firstSeenAt: DateTime
+  lastSeenAt: DateTime
+}
+
+"""
+An external identifier (e.g. email, phone, CRM ID) linked to a profile.
+"""
+type ExternalId {
+  id: String!
+  type: String!
+  sourceId: String
+  collectionId: String
+  createdAt: DateTime
+  firstMessageId: String
+}
+
+"""
+A computed trait derived from event history (e.g. total_spend, days_since_last_purchase).
+"""
+type ComputedTrait {
+  id: ID!
+  name: String!
+  description: String
+  type: String!
+  value: JSON
+  enabled: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+An audience — a segment of profiles matching defined conditions.
+"""
+type Audience {
+  id: ID!
+  name: String!
+  description: String
+  enabled: Boolean!
+  memberCount: Int
+  conditions: JSON
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ---------------------------------------------------------------------------
+# Tracking Plans & Protocols
+# ---------------------------------------------------------------------------
+
+"""
+A tracking plan — defines the expected events, properties, and traits for a workspace.
+"""
+type TrackingPlan {
+  id: ID!
+  slug: String!
+  name: String!
+  description: String
+  type: TrackingPlanType!
+  rules: [Rule!]!
+  workspaceId: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum TrackingPlanType {
+  LIVE
+  PROPERTY_LIBRARY
+  TEMPLATE
+  PREDEFINED
+}
+
+"""
+A rule within a tracking plan, specifying expected schema for an event or identify call.
+"""
+type Rule {
+  id: ID!
+  type: RuleType!
+  name: String!
+  description: String
+  version: Int!
+  jsonSchema: JSON
+  violations: [Violation!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum RuleType {
+  TRACK
+  IDENTIFY
+  GROUP
+  PAGE
+  SCREEN
+}
+
+"""
+A protocol violation — a mismatch between observed events and the tracking plan.
+"""
+type Violation {
+  id: ID!
+  ruleId: ID!
+  type: ViolationType!
+  field: String
+  description: String
+  count: Int
+  detectedAt: DateTime!
+}
+
+enum ViolationType {
+  MISSING_REQUIRED_PROPERTY
+  UNEXPECTED_PROPERTY
+  INVALID_TYPE
+  ENUM_MISMATCH
+  PATTERN_MISMATCH
+  MIN_LENGTH_VIOLATION
+  MAX_LENGTH_VIOLATION
+  MIN_VALUE_VIOLATION
+  MAX_VALUE_VIOLATION
+}
+
+"""
+A Protocols transformation — a server-side payload mutation rule.
+"""
+type Transformation {
+  id: ID!
+  name: String!
+  description: String
+  enabled: Boolean!
+  sourceId: ID!
+  destinationId: ID
+  eventType: String
+  eventName: String
+  conditions: JSON
+  actions: JSON
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A protocol schema — the combined set of tracking plan rules for a source.
+"""
+type Protocol {
+  id: ID!
+  name: String!
+  sourceId: ID!
+  trackingPlanId: ID!
+  enabled: Boolean!
+  blockingEnabled: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+# ---------------------------------------------------------------------------
+# Functions
+# ---------------------------------------------------------------------------
+
+"""
+A Segment Function — custom JavaScript code for source or destination logic.
+"""
+type Function {
+  id: ID!
+  slug: String!
+  displayName: String!
+  description: String
+  code: String
+  type: FunctionType!
+  settings: [FunctionSetting!]!
+  catalogId: String
+  isLatestVersion: Boolean
+  workspaceId: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum FunctionType {
+  SOURCE
+  DESTINATION
+  INSERT_DESTINATION
+  INSERT_SOURCE
+}
+
+type FunctionSetting {
+  name: String!
+  label: String!
+  description: String
+  type: String!
+  required: Boolean!
+  sensitive: Boolean!
+}
+
+# ---------------------------------------------------------------------------
+# Catalog
+# ---------------------------------------------------------------------------
+
+"""
+A catalog entry — describes an available source or destination integration.
+"""
+type CatalogEntry {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String
+  type: CatalogEntryType!
+  logos: Logos
+  categories: [String!]!
+  website: String
+  status: CatalogStatus!
+  supportedMethods: [String!]!
+  supportedFeatures: JSON
+  supportedRegions: [String!]!
+  partnerOwned: Boolean!
+  actions: [CatalogAction!]!
+}
+
+enum CatalogEntryType {
+  SOURCE
+  DESTINATION
+  WAREHOUSE
+}
+
+enum CatalogStatus {
+  PUBLIC
+  PRIVATE
+  BETA
+  DEPRECATED
+}
+
+type CatalogAction {
+  id: ID!
+  slug: String!
+  name: String!
+  description: String
+  hidden: Boolean!
+  defaultTrigger: String
+  fields: [ActionField!]!
+}
+
+type ActionField {
+  id: ID!
+  sortOrder: Float!
+  fieldKey: String!
+  label: String!
+  description: String
+  type: String!
+  required: Boolean!
+  multiple: Boolean!
+  choices: JSON
+  dynamic: Boolean!
+  allowNull: Boolean!
+}
+
+type Logos {
+  default: String
+  alt: String
+  mark: String
+}
+
+type Label {
+  key: String!
+  value: String!
+}
+
+# ---------------------------------------------------------------------------
+# Privacy & Regulations
+# ---------------------------------------------------------------------------
+
+"""
+A Segment privacy regulation — a GDPR/CCPA deletion or suppression request.
+"""
+type Regulation {
+  id: ID!
+  workspaceId: ID!
+  regulateType: RegulationType!
+  status: RegulationStatus!
+  attributes: [RegulationAttribute!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum RegulationType {
+  SUPPRESS_WITH_DELETE
+  DELETE_ONLY
+  SUPPRESS_ONLY
+  UNSUPPRESS
+  DELETE_INTERNAL
+}
+
+enum RegulationStatus {
+  RUNNING
+  FINISHED
+  FAILED
+  INITIALIZED
+}
+
+type RegulationAttribute {
+  name: String!
+  values: [String!]!
+}
+
+"""
+A suppressed user — a user identity excluded from data collection by a regulation.
+"""
+type SuppressedUser {
+  userId: String!
+  workspaceId: ID!
+  suppressedAt: DateTime!
+  regulationId: ID
+}
+
+"""
+Top-level privacy settings for a workspace.
+"""
+type Privacy {
+  workspaceId: ID!
+  dataRetentionDays: Int
+  defaultSourceDataRetentionDays: Int
+  regulations: [Regulation!]!
+  suppressedUsers: [SuppressedUser!]!
+}
+
+# ---------------------------------------------------------------------------
+# Queries
+# ---------------------------------------------------------------------------
+
+type Query {
+  """Get the current workspace."""
+  workspace(slug: String!): Workspace
+
+  """List all sources in a workspace."""
+  sources(workspaceId: ID!, pagination: PaginationInput): SourceConnection!
+
+  """Get a single source by ID."""
+  source(id: ID!): Source
+
+  """List all destinations in a workspace."""
+  destinations(workspaceId: ID!, pagination: PaginationInput): DestinationConnection!
+
+  """Get a single destination by ID."""
+  destination(id: ID!): Destination
+
+  """List all warehouses in a workspace."""
+  warehouses(workspaceId: ID!, pagination: PaginationInput): WarehouseConnection!
+
+  """Get a single warehouse by ID."""
+  warehouse(id: ID!): Warehouse
+
+  """List all tracking plans in a workspace."""
+  trackingPlans(workspaceId: ID!, pagination: PaginationInput): TrackingPlanConnection!
+
+  """Get a single tracking plan by ID."""
+  trackingPlan(id: ID!): TrackingPlan
+
+  """Get a user profile from the Profile API."""
+  profile(spaceId: ID!, userId: String, anonymousId: String, externalId: String): Profile
+
+  """Get profile events."""
+  profileEvents(spaceId: ID!, userId: String!, pagination: PaginationInput): TrackConnection!
+
+  """Get profile traits."""
+  profileTraits(spaceId: ID!, userId: String!): [Trait!]!
+
+  """List all functions in a workspace."""
+  functions(workspaceId: ID!, pagination: PaginationInput): FunctionConnection!
+
+  """Get a single function by ID."""
+  function(id: ID!): Function
+
+  """List catalog sources."""
+  catalogSources(pagination: PaginationInput): CatalogEntryConnection!
+
+  """List catalog destinations."""
+  catalogDestinations(pagination: PaginationInput): CatalogEntryConnection!
+
+  """List regulations in a workspace."""
+  regulations(workspaceId: ID!, pagination: PaginationInput): RegulationConnection!
+
+  """List suppressed users in a workspace."""
+  suppressedUsers(workspaceId: ID!, pagination: PaginationInput): SuppressedUserConnection!
+
+  """List API keys for a workspace."""
+  apiKeys(workspaceId: ID!): [APIKey!]!
+
+  """List audiences for a space."""
+  audiences(spaceId: ID!, pagination: PaginationInput): AudienceConnection!
+
+  """List transformations for a workspace."""
+  transformations(workspaceId: ID!, pagination: PaginationInput): TransformationConnection!
+}
+
+# ---------------------------------------------------------------------------
+# Mutations
+# ---------------------------------------------------------------------------
+
+type Mutation {
+  """Create a new source."""
+  createSource(input: CreateSourceInput!): Source!
+
+  """Update an existing source."""
+  updateSource(id: ID!, input: UpdateSourceInput!): Source!
+
+  """Delete a source."""
+  deleteSource(id: ID!): Boolean!
+
+  """Create a new destination."""
+  createDestination(input: CreateDestinationInput!): Destination!
+
+  """Update an existing destination."""
+  updateDestination(id: ID!, input: UpdateDestinationInput!): Destination!
+
+  """Delete a destination."""
+  deleteDestination(id: ID!): Boolean!
+
+  """Create a warehouse connection."""
+  createWarehouse(input: CreateWarehouseInput!): Warehouse!
+
+  """Update a warehouse."""
+  updateWarehouse(id: ID!, input: UpdateWarehouseInput!): Warehouse!
+
+  """Delete a warehouse."""
+  deleteWarehouse(id: ID!): Boolean!
+
+  """Create a tracking plan."""
+  createTrackingPlan(input: CreateTrackingPlanInput!): TrackingPlan!
+
+  """Update a tracking plan."""
+  updateTrackingPlan(id: ID!, input: UpdateTrackingPlanInput!): TrackingPlan!
+
+  """Delete a tracking plan."""
+  deleteTrackingPlan(id: ID!): Boolean!
+
+  """Add a rule to a tracking plan."""
+  createTrackingPlanRule(trackingPlanId: ID!, input: CreateRuleInput!): Rule!
+
+  """Update a rule in a tracking plan."""
+  updateTrackingPlanRule(trackingPlanId: ID!, ruleId: ID!, input: UpdateRuleInput!): Rule!
+
+  """Delete a rule from a tracking plan."""
+  deleteTrackingPlanRule(trackingPlanId: ID!, ruleId: ID!): Boolean!
+
+  """Create a function."""
+  createFunction(input: CreateFunctionInput!): Function!
+
+  """Update a function."""
+  updateFunction(id: ID!, input: UpdateFunctionInput!): Function!
+
+  """Delete a function."""
+  deleteFunction(id: ID!): Boolean!
+
+  """Submit a privacy regulation request."""
+  createRegulation(input: CreateRegulationInput!): Regulation!
+
+  """Add a suppressed user."""
+  createSuppressedUser(workspaceId: ID!, userId: String!): SuppressedUser!
+
+  """Remove a suppressed user."""
+  deleteSuppressedUser(workspaceId: ID!, userId: String!): Boolean!
+
+  """Create a transformation."""
+  createTransformation(input: CreateTransformationInput!): Transformation!
+
+  """Update a transformation."""
+  updateTransformation(id: ID!, input: UpdateTransformationInput!): Transformation!
+
+  """Delete a transformation."""
+  deleteTransformation(id: ID!): Boolean!
+}
+
+# ---------------------------------------------------------------------------
+# Pagination
+# ---------------------------------------------------------------------------
+
+input PaginationInput {
+  count: Int
+  cursor: String
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  endCursor: String
+  totalCount: Int
+}
+
+type SourceConnection {
+  nodes: [Source!]!
+  pageInfo: PageInfo!
+}
+
+type DestinationConnection {
+  nodes: [Destination!]!
+  pageInfo: PageInfo!
+}
+
+type WarehouseConnection {
+  nodes: [Warehouse!]!
+  pageInfo: PageInfo!
+}
+
+type TrackingPlanConnection {
+  nodes: [TrackingPlan!]!
+  pageInfo: PageInfo!
+}
+
+type TrackConnection {
+  nodes: [Track!]!
+  pageInfo: PageInfo!
+}
+
+type FunctionConnection {
+  nodes: [Function!]!
+  pageInfo: PageInfo!
+}
+
+type CatalogEntryConnection {
+  nodes: [CatalogEntry!]!
+  pageInfo: PageInfo!
+}
+
+type RegulationConnection {
+  nodes: [Regulation!]!
+  pageInfo: PageInfo!
+}
+
+type SuppressedUserConnection {
+  nodes: [SuppressedUser!]!
+  pageInfo: PageInfo!
+}
+
+type AudienceConnection {
+  nodes: [Audience!]!
+  pageInfo: PageInfo!
+}
+
+type TransformationConnection {
+  nodes: [Transformation!]!
+  pageInfo: PageInfo!
+}
+
+# ---------------------------------------------------------------------------
+# Input Types
+# ---------------------------------------------------------------------------
+
+input CreateSourceInput {
+  workspaceId: ID!
+  slug: String!
+  name: String!
+  catalogId: String!
+  enabled: Boolean
+  settings: JSON
+}
+
+input UpdateSourceInput {
+  name: String
+  enabled: Boolean
+  settings: JSON
+}
+
+input CreateDestinationInput {
+  sourceId: ID!
+  catalogId: String!
+  name: String!
+  enabled: Boolean
+  settings: JSON
+}
+
+input UpdateDestinationInput {
+  name: String
+  enabled: Boolean
+  settings: JSON
+}
+
+input CreateWarehouseInput {
+  workspaceId: ID!
+  catalogId: String!
+  name: String!
+  settings: JSON
+}
+
+input UpdateWarehouseInput {
+  name: String
+  enabled: Boolean
+  settings: JSON
+}
+
+input CreateTrackingPlanInput {
+  workspaceId: ID!
+  name: String!
+  description: String
+  type: TrackingPlanType!
+}
+
+input UpdateTrackingPlanInput {
+  name: String
+  description: String
+}
+
+input CreateRuleInput {
+  type: RuleType!
+  name: String!
+  description: String
+  version: Int
+  jsonSchema: JSON
+}
+
+input UpdateRuleInput {
+  name: String
+  description: String
+  version: Int
+  jsonSchema: JSON
+}
+
+input CreateFunctionInput {
+  workspaceId: ID!
+  code: String!
+  settings: [FunctionSettingInput!]!
+  displayName: String!
+  description: String
+  type: FunctionType!
+}
+
+input UpdateFunctionInput {
+  code: String
+  settings: [FunctionSettingInput!]
+  displayName: String
+  description: String
+}
+
+input FunctionSettingInput {
+  name: String!
+  label: String!
+  description: String
+  type: String!
+  required: Boolean!
+  sensitive: Boolean!
+}
+
+input CreateRegulationInput {
+  workspaceId: ID!
+  regulateType: RegulationType!
+  attributes: [RegulationAttributeInput!]!
+}
+
+input RegulationAttributeInput {
+  name: String!
+  values: [String!]!
+}
+
+input CreateTransformationInput {
+  workspaceId: ID!
+  sourceId: ID!
+  destinationId: ID
+  name: String!
+  description: String
+  enabled: Boolean
+  eventType: String
+  eventName: String
+  conditions: JSON
+  actions: JSON
+}
+
+input UpdateTransformationInput {
+  name: String
+  description: String
+  enabled: Boolean
+  eventType: String
+  eventName: String
+  conditions: JSON
+  actions: JSON
+}

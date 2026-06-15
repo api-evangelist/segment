@@ -1,0 +1,2515 @@
+{
+  "item": [
+    {
+      "id": "24c4b2b7-2202-4497-8d49-51015def9c05",
+      "name": "Events",
+      "description": {
+        "content": "Operations for retrieving events associated with a user or account profile.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c1bdeda-5544-4e9c-9190-7f9d4d12abb6",
+          "name": "Get user events",
+          "request": {
+            "name": "Get user events",
+            "description": {
+              "content": "Returns the events for a user profile identified by an external ID. Events represent the actions the user has taken and are returned in reverse chronological order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "users",
+                "profiles",
+                ":externalId",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of items to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Pagination cursor to retrieve the next page of results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                },
+                {
+                  "description": "The ID of the Segment Unify space.",
+                  "type": "any",
+                  "value": "{{spaceId}}",
+                  "key": "spaceId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91746570-acc1-45d7-b5df-981c04d74457",
+              "name": "User events retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"type\": \"alias\",\n      \"event\": \"string\",\n      \"properties\": {\n        \"key_0\": 8948.444989366844\n      },\n      \"traits\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": 3037.537624574926\n      },\n      \"context\": {\n        \"key_0\": true,\n        \"key_1\": false\n      },\n      \"timestamp\": \"1974-12-17T23:20:34.647Z\",\n      \"messageId\": \"string\",\n      \"source_id\": \"string\"\n    },\n    {\n      \"type\": \"track\",\n      \"event\": \"string\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": 5942.4854093240965\n      },\n      \"traits\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": 2279\n      },\n      \"context\": {\n        \"key_0\": 198,\n        \"key_1\": 3961,\n        \"key_2\": \"string\"\n      },\n      \"timestamp\": \"2015-12-11T07:00:37.671Z\",\n      \"messageId\": \"string\",\n      \"source_id\": \"string\"\n    }\n  ],\n  \"cursor\": {\n    \"url\": \"string\",\n    \"has_more\": false,\n    \"next\": \"string\",\n    \"limit\": 4891\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa41638d-1503-43d8-9041-67a24781e2f5",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d790105-09bb-4441-a41b-49c78bd3b7f9",
+              "name": "The requested profile was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d037a66a-0473-471c-ac1c-26a70d8216b7",
+              "name": "Too many requests. The Profile API enforces rate limits per space.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6c536a6a-6ddb-4ba1-8955-d8eaee6ab654",
+      "name": "External IDs",
+      "description": {
+        "content": "Operations for retrieving external identifiers linked to a user or account profile.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "714d54e7-2d43-48ef-9b5c-ac20962c188d",
+          "name": "Get user external IDs",
+          "request": {
+            "name": "Get user external IDs",
+            "description": {
+              "content": "Returns the external identifiers linked to a user profile. External IDs include user IDs, anonymous IDs, email addresses, and other identifiers that have been associated with the profile through identity resolution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "users",
+                "profiles",
+                ":externalId",
+                "external_ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of items to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Pagination cursor to retrieve the next page of results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                },
+                {
+                  "description": "The ID of the Segment Unify space.",
+                  "type": "any",
+                  "value": "{{spaceId}}",
+                  "key": "spaceId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f398960-aa9d-4ba5-896d-40140da71bad",
+              "name": "External IDs retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "external_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"email\",\n      \"source_id\": \"string\",\n      \"collection\": \"string\",\n      \"created_at\": \"2003-11-17T04:22:10.791Z\",\n      \"encoding\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"ios.idfa\",\n      \"source_id\": \"string\",\n      \"collection\": \"string\",\n      \"created_at\": \"1962-07-20T09:43:13.725Z\",\n      \"encoding\": \"string\"\n    }\n  ],\n  \"cursor\": {\n    \"url\": \"string\",\n    \"has_more\": false,\n    \"next\": \"string\",\n    \"limit\": 3513\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a055dc4a-a442-476b-9f0a-a61e0e02b271",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "external_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae3b23a8-7f11-4dd8-a983-301dde041f01",
+              "name": "The requested profile was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "external_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ce4fc0b-582d-41d4-8890-edb646d02f28",
+              "name": "Too many requests. The Profile API enforces rate limits per space.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "external_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "383b8a87-93ce-4900-8efe-611877002461",
+          "name": "Get account external IDs",
+          "request": {
+            "name": "Get account external IDs",
+            "description": {
+              "content": "Returns the external identifiers linked to an account profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "accounts",
+                "profiles",
+                ":externalId",
+                "external_ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of items to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Pagination cursor to retrieve the next page of results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                },
+                {
+                  "description": "The ID of the Segment Unify space.",
+                  "type": "any",
+                  "value": "{{spaceId}}",
+                  "key": "spaceId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8030e1b0-ded3-482c-91b4-685b65811dce",
+              "name": "Account external IDs retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "accounts",
+                    "profiles",
+                    ":externalId",
+                    "external_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"email\",\n      \"source_id\": \"string\",\n      \"collection\": \"string\",\n      \"created_at\": \"2003-11-17T04:22:10.791Z\",\n      \"encoding\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"ios.idfa\",\n      \"source_id\": \"string\",\n      \"collection\": \"string\",\n      \"created_at\": \"1962-07-20T09:43:13.725Z\",\n      \"encoding\": \"string\"\n    }\n  ],\n  \"cursor\": {\n    \"url\": \"string\",\n    \"has_more\": false,\n    \"next\": \"string\",\n    \"limit\": 3513\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1399f300-290d-4152-8672-4e5231d3ed6d",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "accounts",
+                    "profiles",
+                    ":externalId",
+                    "external_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdfc8b98-ea35-4b27-a785-4ca28785a768",
+              "name": "The requested profile was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "accounts",
+                    "profiles",
+                    ":externalId",
+                    "external_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c7bcd4b-c2e2-47c6-bbfa-e2c4697bf3c8",
+              "name": "Too many requests. The Profile API enforces rate limits per space.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "accounts",
+                    "profiles",
+                    ":externalId",
+                    "external_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d10d76ec-d576-4172-8f56-bca340375bb5",
+      "name": "Links",
+      "description": {
+        "content": "Operations for retrieving linked profiles and relationships.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "10319ce2-3d0c-4981-9997-ab1aff0e2228",
+          "name": "Get user links",
+          "request": {
+            "name": "Get user links",
+            "description": {
+              "content": "Returns the linked profiles for a user, such as account-level profiles that the user belongs to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "users",
+                "profiles",
+                ":externalId",
+                "links"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of items to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Pagination cursor to retrieve the next page of results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                },
+                {
+                  "description": "The ID of the Segment Unify space.",
+                  "type": "any",
+                  "value": "{{spaceId}}",
+                  "key": "spaceId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eba56534-9b82-4bb5-9dc1-b87c058f5367",
+              "name": "User links retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "links"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"to_collection\": \"string\",\n      \"external_ids\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"anonymous_id\",\n          \"source_id\": \"string\",\n          \"collection\": \"string\",\n          \"created_at\": \"2026-02-04T00:17:53.079Z\",\n          \"encoding\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"user_id\",\n          \"source_id\": \"string\",\n          \"collection\": \"string\",\n          \"created_at\": \"2025-10-25T22:09:30.072Z\",\n          \"encoding\": \"string\"\n        }\n      ]\n    },\n    {\n      \"to_collection\": \"string\",\n      \"external_ids\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"ios.id\",\n          \"source_id\": \"string\",\n          \"collection\": \"string\",\n          \"created_at\": \"1973-05-31T14:07:13.344Z\",\n          \"encoding\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"anonymous_id\",\n          \"source_id\": \"string\",\n          \"collection\": \"string\",\n          \"created_at\": \"2022-02-10T13:43:07.615Z\",\n          \"encoding\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"cursor\": {\n    \"url\": \"string\",\n    \"has_more\": false,\n    \"next\": \"string\",\n    \"limit\": 9680\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31b3c8ed-d336-45af-8f03-4f82c8c49089",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "links"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a43fbab3-3399-4440-aafc-be9a56b587bb",
+              "name": "The requested profile was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "links"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c27274c7-a5cb-4892-91f3-759aa3b099b6",
+              "name": "Too many requests. The Profile API enforces rate limits per space.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "links"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ea8ba370-f426-4f78-b12a-a6a8c672e281",
+      "name": "Profiles",
+      "description": {
+        "content": "Operations for retrieving user and account profile data from Segment Unify.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01049701-e4b6-4844-ba90-abd82fdda35a",
+          "name": "Get user metadata",
+          "request": {
+            "name": "Get user metadata",
+            "description": {
+              "content": "Returns metadata for a user profile, including when the profile was created, last updated, and the total count of events and traits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "users",
+                "profiles",
+                ":externalId",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                },
+                {
+                  "description": "The ID of the Segment Unify space.",
+                  "type": "any",
+                  "value": "{{spaceId}}",
+                  "key": "spaceId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aad4252e-e7b9-4013-9cdd-e53c851573e8",
+              "name": "User metadata retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"segment_id\": \"string\",\n  \"created_at\": \"1990-01-09T03:11:55.051Z\",\n  \"updated_at\": \"2013-12-25T23:40:39.385Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "752a1772-5c2c-4a29-8440-613a3dc435e6",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ff5fb7a-63eb-4881-86ad-66fe8504cb9e",
+              "name": "The requested profile was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fff6ead2-a92e-4ee6-8042-5404dee54f07",
+              "name": "Too many requests. The Profile API enforces rate limits per space.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4dc3d172-b141-42e0-a595-8b9096771089",
+      "name": "Traits",
+      "description": {
+        "content": "Operations for retrieving computed and custom traits for user and account profiles.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d4c0ae13-8b7f-44b2-9d30-8fc6de6dfe46",
+          "name": "Get user traits",
+          "request": {
+            "name": "Get user traits",
+            "description": {
+              "content": "Returns the traits for a user profile identified by an external ID. The external ID format is type:value, such as user_id:abc123 or email:user@example.com. Use the include parameter to specify which traits to retrieve for optimal performance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "users",
+                "profiles",
+                ":externalId",
+                "traits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated list of trait names to include in the response. Recommended for best performance."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of items to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Pagination cursor to retrieve the next page of results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                },
+                {
+                  "description": "The ID of the Segment Unify space.",
+                  "type": "any",
+                  "value": "{{spaceId}}",
+                  "key": "spaceId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8efbbef9-9771-451b-b057-ffbead84b374",
+              "name": "User traits retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"traits\": {\n    \"key_0\": 211.09973494834898,\n    \"key_1\": \"string\"\n  },\n  \"cursor\": {\n    \"url\": \"string\",\n    \"has_more\": false,\n    \"next\": \"string\",\n    \"limit\": 6468\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "859b9c43-44b0-4a99-8c4c-8c7d67b6d15a",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff069779-a6a6-4bce-b2f1-fc19a9685fc1",
+              "name": "The requested profile was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "836c8393-1915-44bc-a592-b663d9698bbb",
+              "name": "Too many requests. The Profile API enforces rate limits per space.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ab02ee3-4fa5-48a2-bf09-38ad20e86bba",
+          "name": "Get account traits",
+          "request": {
+            "name": "Get account traits",
+            "description": {
+              "content": "Returns the traits for an account profile identified by an external ID. Account profiles are group-level profiles that aggregate data across users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "accounts",
+                "profiles",
+                ":externalId",
+                "traits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated list of trait names to include."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "The maximum number of items to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Pagination cursor to retrieve the next page of results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                },
+                {
+                  "description": "The ID of the Segment Unify space.",
+                  "type": "any",
+                  "value": "{{spaceId}}",
+                  "key": "spaceId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df6b8cff-2004-4134-a3bc-9fe75cb06d9a",
+              "name": "Account traits retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "accounts",
+                    "profiles",
+                    ":externalId",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"traits\": {\n    \"key_0\": 211.09973494834898,\n    \"key_1\": \"string\"\n  },\n  \"cursor\": {\n    \"url\": \"string\",\n    \"has_more\": false,\n    \"next\": \"string\",\n    \"limit\": 6468\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13f8235a-fcf9-4534-9025-be207d8fb31e",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "accounts",
+                    "profiles",
+                    ":externalId",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d54ed9ce-e6ba-4cba-a231-aeecb3682c67",
+              "name": "The requested profile was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "accounts",
+                    "profiles",
+                    ":externalId",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7d0fcae-f0ac-4a06-b712-ba8fee85442d",
+              "name": "Too many requests. The Profile API enforces rate limits per space.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "accounts",
+                    "profiles",
+                    ":externalId",
+                    "traits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    },
+                    {
+                      "description": "The ID of the Segment Unify space.",
+                      "type": "any",
+                      "value": "{{spaceId}}",
+                      "key": "spaceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The ID of the Segment Unify space.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "",
+      "key": "spaceId"
+    },
+    {
+      "type": "string",
+      "value": "https://profiles.segment.com/v1/spaces/{{spaceId}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "772b4e2a-0b89-40a3-85b1-5db94e055d65",
+    "name": "Segment Profile API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Segment Profile API provides endpoints to read user-level and account-level customer data from Segment Unify. Developers can query the entire user or account object programmatically, including external IDs, traits, and events that make up a user's journey. The API uses basic authentication and typically delivers p95 response times under 200ms for the traits endpoint. It is commonly used for real-time personalization and customer data retrieval.\n\nContact Support:\n Name: Segment Support",
+      "type": "text/plain"
+    }
+  }
+}

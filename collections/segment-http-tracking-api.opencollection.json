@@ -1,0 +1,178 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment HTTP Tracking API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Identify",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Identify a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segment.io/v1/identify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Associates a user with their traits. An identify call lets you tie a user to their actions and record traits about them. It includes a unique user ID and any optional traits you know about them, like their email, name, or role."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Track",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Track an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segment.io/v1/track",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records an action that a user performs. A track call requires an event name and can include properties that describe the event, such as revenue, product details, or other contextual information."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Page",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Record a page view",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segment.io/v1/page",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records a page view on a website. A page call lets you record whenever a user sees a page of your website, along with any optional properties about the page."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Screen",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Record a screen view",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segment.io/v1/screen",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records a screen view in a mobile application. A screen call lets you record whenever a user sees a screen of your mobile app, along with optional properties about the screen."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Associate user with a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segment.io/v1/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Associates an identified user with a group such as a company, organization, or account. A group call lets you record which group a user belongs to and set traits on the group."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alias",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Merge two user identities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segment.io/v1/alias",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merges two user identities by connecting a previous ID to a new user ID. This is an advanced method that is useful when you want to associate an anonymous user with an identified user after they sign up or log in."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Batch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send a batch of events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segment.io/v1/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends multiple identify, track, page, screen, group, and alias calls in a single request. The batch endpoint accepts up to 500 KB per request and a maximum of 2500 events per batch. Each individual event must be less than 32 KB."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

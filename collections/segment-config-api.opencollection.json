@@ -1,0 +1,352 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workspaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              }
+            ]
+          },
+          "docs": "Returns the workspace details for the specified workspace name."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/sources",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              }
+            ]
+          },
+          "docs": "Returns a list of all sources in the specified workspace."
+        },
+        {
+          "info": {
+            "name": "Create source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/sources",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new source in the specified workspace."
+        },
+        {
+          "info": {
+            "name": "Get source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/sources/:sourceName",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              },
+              {
+                "name": "sourceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the source."
+              }
+            ]
+          },
+          "docs": "Returns a single source by name within the specified workspace."
+        },
+        {
+          "info": {
+            "name": "Delete source",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/sources/:sourceName",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              },
+              {
+                "name": "sourceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the source."
+              }
+            ]
+          },
+          "docs": "Deletes a source from the workspace by name."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Destinations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List destinations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/sources/:sourceName/destinations",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              },
+              {
+                "name": "sourceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the source."
+              }
+            ]
+          },
+          "docs": "Returns a list of all destinations for a specific source in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/sources/:sourceName/destinations",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              },
+              {
+                "name": "sourceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the source."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new destination for a specific source in the workspace."
+        },
+        {
+          "info": {
+            "name": "Get destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/sources/:sourceName/destinations/:destinationName",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              },
+              {
+                "name": "sourceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the source."
+              },
+              {
+                "name": "destinationName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the destination."
+              }
+            ]
+          },
+          "docs": "Returns a single destination by name for a specific source."
+        },
+        {
+          "info": {
+            "name": "Update destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/sources/:sourceName/destinations/:destinationName",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              },
+              {
+                "name": "sourceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the source."
+              },
+              {
+                "name": "destinationName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the destination."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a destination's configuration, including enabling or disabling it."
+        },
+        {
+          "info": {
+            "name": "Delete destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/sources/:sourceName/destinations/:destinationName",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              },
+              {
+                "name": "sourceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the source."
+              },
+              {
+                "name": "destinationName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the destination."
+              }
+            ]
+          },
+          "docs": "Deletes a destination from a source in the workspace."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tracking Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tracking plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/tracking-plans",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              }
+            ]
+          },
+          "docs": "Returns a list of all tracking plans in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create tracking plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/tracking-plans",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new tracking plan in the workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

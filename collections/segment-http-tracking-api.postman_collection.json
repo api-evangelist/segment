@@ -1,0 +1,1518 @@
+{
+  "item": [
+    {
+      "id": "b878cef2-327a-4c84-801a-c544bb0d4c14",
+      "name": "Alias",
+      "description": {
+        "content": "Operations for merging two user identities together.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e5ebc99f-669d-40a4-bb4f-564ce9520d75",
+          "name": "Merge two user identities",
+          "request": {
+            "name": "Merge two user identities",
+            "description": {
+              "content": "Merges two user identities by connecting a previous ID to a new user ID. This is an advanced method that is useful when you want to associate an anonymous user with an identified user after they sign up or log in.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alias"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"previousId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"context\": {\n    \"active\": \"<boolean>\",\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"userAgent\": \"<string>\",\n    \"library\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"page\": {\n      \"path\": \"<string>\",\n      \"referrer\": \"<uri>\",\n      \"search\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    \"device\": {\n      \"id\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": \"<boolean>\",\n    \"key_1\": \"<boolean>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "58f21375-7d8f-4732-84d9-60120782f427",
+              "name": "Event accepted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"previousId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"context\": {\n    \"active\": false,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"https://MviCnTN.task1Gs7DEZkEz\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://fPnsvVMQMonXGeeBB.uvowI.p5tdG\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false,\n    \"key_1\": false,\n    \"key_2\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed33ea2f-20e0-40be-a275-4624653f3c20",
+              "name": "Invalid request payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"previousId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"context\": {\n    \"active\": false,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"https://MviCnTN.task1Gs7DEZkEz\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://fPnsvVMQMonXGeeBB.uvowI.p5tdG\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false,\n    \"key_1\": false,\n    \"key_2\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc3ea456-d322-49fb-91c0-612e9699f4c2",
+              "name": "Invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"previousId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"context\": {\n    \"active\": false,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"https://MviCnTN.task1Gs7DEZkEz\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://fPnsvVMQMonXGeeBB.uvowI.p5tdG\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false,\n    \"key_1\": false,\n    \"key_2\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "15ccd076-f561-45be-8419-bef908f235a5",
+      "name": "Batch",
+      "description": {
+        "content": "Operations for sending multiple calls in a single request.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "615fc967-fb3e-4b3b-950d-cf0bf63d8f2b",
+          "name": "Send a batch of events",
+          "request": {
+            "name": "Send a batch of events",
+            "description": {
+              "content": "Sends multiple identify, track, page, screen, group, and alias calls in a single request. The batch endpoint accepts up to 500 KB per request and a maximum of 2500 events per batch. Each individual event must be less than 32 KB.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batch\": [\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": false,\n        \"key_1\": false\n      },\n      \"traits\": {\n        \"key_0\": 3003\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"userAgent\": \"<string>\",\n        \"library\": {\n          \"name\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        \"page\": {\n          \"path\": \"<string>\",\n          \"referrer\": \"<uri>\",\n          \"search\": \"<string>\",\n          \"title\": \"<string>\",\n          \"url\": \"<uri>\"\n        },\n        \"device\": {\n          \"id\": \"<string>\",\n          \"manufacturer\": \"<string>\",\n          \"model\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\",\n        \"key_2\": \"<boolean>\"\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": 2954.8898479606955,\n        \"key_1\": false\n      },\n      \"traits\": {\n        \"key_0\": 8475.927356818242,\n        \"key_1\": true,\n        \"key_2\": 9218.975723324202\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"userAgent\": \"<string>\",\n        \"library\": {\n          \"name\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        \"page\": {\n          \"path\": \"<string>\",\n          \"referrer\": \"<uri>\",\n          \"search\": \"<string>\",\n          \"title\": \"<string>\",\n          \"url\": \"<uri>\"\n        },\n        \"device\": {\n          \"id\": \"<string>\",\n          \"manufacturer\": \"<string>\",\n          \"model\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": \"<boolean>\"\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    }\n  ],\n  \"context\": {\n    \"active\": \"<boolean>\",\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"userAgent\": \"<string>\",\n    \"library\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"page\": {\n      \"path\": \"<string>\",\n      \"referrer\": \"<uri>\",\n      \"search\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    \"device\": {\n      \"id\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": \"<boolean>\",\n    \"key_1\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "63192fd9-f728-4b4d-871e-642d81c9d335",
+              "name": "Batch accepted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": false,\n        \"key_1\": false\n      },\n      \"traits\": {\n        \"key_0\": 3448.702055193039\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": true,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"https://ByoaUCCiLAYZGYrKidVWOlkRvSLNB.cdW,2d4qjnX-+LGIxgAAYpExrom+viLxbgukxCo2v.M,tZDKoB5Q9okFgYNF7bkuOHkQQFeK\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"https://SiXiFNiRefXuMuvHXEqhRXkg.lgPWpHc0LR8WGAGmhaAx.suqpsWvUYlFq6wlSpuAFYPEbe\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": false,\n        \"key_1\": true\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": true,\n        \"key_2\": 377\n      },\n      \"traits\": {\n        \"key_0\": 3438\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": false,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"https://pfFfCghzgZprXQikXBrdWbABKYH.glZ1NJ\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"https://HCuVGtYmlwBkJQSu.uvmv52L2bn124k9Rz-9srxWKu\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": true,\n        \"key_1\": true,\n        \"key_2\": true\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    }\n  ],\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://wuWSnDsdycbxWYhqEswOxFAh.suvRjUN6uM9ZX-VErwULDhUm6arOmw7mAKPZ4C89PbXchxyw-.f,8etHvw6AvEelMqYhbRl\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://ejlZsjclqvZIJQZb.ezBhB,N9umnBTSb-KCkOKcbpfHeKAwnC3fOb1Jfhr5W,wnxE0GRdTJEMobKilc0aD\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": true,\n    \"key_1\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da79db23-c4b4-4c29-b928-a86d42b2af96",
+              "name": "Invalid request payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": false,\n        \"key_1\": false\n      },\n      \"traits\": {\n        \"key_0\": 3448.702055193039\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": true,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"https://ByoaUCCiLAYZGYrKidVWOlkRvSLNB.cdW,2d4qjnX-+LGIxgAAYpExrom+viLxbgukxCo2v.M,tZDKoB5Q9okFgYNF7bkuOHkQQFeK\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"https://SiXiFNiRefXuMuvHXEqhRXkg.lgPWpHc0LR8WGAGmhaAx.suqpsWvUYlFq6wlSpuAFYPEbe\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": false,\n        \"key_1\": true\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": true,\n        \"key_2\": 377\n      },\n      \"traits\": {\n        \"key_0\": 3438\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": false,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"https://pfFfCghzgZprXQikXBrdWbABKYH.glZ1NJ\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"https://HCuVGtYmlwBkJQSu.uvmv52L2bn124k9Rz-9srxWKu\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": true,\n        \"key_1\": true,\n        \"key_2\": true\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    }\n  ],\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://wuWSnDsdycbxWYhqEswOxFAh.suvRjUN6uM9ZX-VErwULDhUm6arOmw7mAKPZ4C89PbXchxyw-.f,8etHvw6AvEelMqYhbRl\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://ejlZsjclqvZIJQZb.ezBhB,N9umnBTSb-KCkOKcbpfHeKAwnC3fOb1Jfhr5W,wnxE0GRdTJEMobKilc0aD\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": true,\n    \"key_1\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7772827-2a25-41eb-8e44-bbda10c235d2",
+              "name": "Invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": false,\n        \"key_1\": false\n      },\n      \"traits\": {\n        \"key_0\": 3448.702055193039\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": true,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"https://ByoaUCCiLAYZGYrKidVWOlkRvSLNB.cdW,2d4qjnX-+LGIxgAAYpExrom+viLxbgukxCo2v.M,tZDKoB5Q9okFgYNF7bkuOHkQQFeK\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"https://SiXiFNiRefXuMuvHXEqhRXkg.lgPWpHc0LR8WGAGmhaAx.suqpsWvUYlFq6wlSpuAFYPEbe\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": false,\n        \"key_1\": true\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": true,\n        \"key_2\": 377\n      },\n      \"traits\": {\n        \"key_0\": 3438\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": false,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"https://pfFfCghzgZprXQikXBrdWbABKYH.glZ1NJ\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"https://HCuVGtYmlwBkJQSu.uvmv52L2bn124k9Rz-9srxWKu\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": true,\n        \"key_1\": true,\n        \"key_2\": true\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    }\n  ],\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://wuWSnDsdycbxWYhqEswOxFAh.suvRjUN6uM9ZX-VErwULDhUm6arOmw7mAKPZ4C89PbXchxyw-.f,8etHvw6AvEelMqYhbRl\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://ejlZsjclqvZIJQZb.ezBhB,N9umnBTSb-KCkOKcbpfHeKAwnC3fOb1Jfhr5W,wnxE0GRdTJEMobKilc0aD\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": true,\n    \"key_1\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "929753d0-9c55-4036-b4da-c71e65dbac12",
+      "name": "Group",
+      "description": {
+        "content": "Operations for associating users with groups or organizations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3aa32e2c-35a6-46d6-b38d-2aadfab3973c",
+          "name": "Associate user with a group",
+          "request": {
+            "name": "Associate user with a group",
+            "description": {
+              "content": "Associates an identified user with a group such as a company, organization, or account. A group call lets you record which group a user belongs to and set traits on the group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groupId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"traits\": {\n    \"key_0\": \"string\"\n  },\n  \"context\": {\n    \"active\": \"<boolean>\",\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"userAgent\": \"<string>\",\n    \"library\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"page\": {\n      \"path\": \"<string>\",\n      \"referrer\": \"<uri>\",\n      \"search\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    \"device\": {\n      \"id\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": \"<boolean>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c81039bf-c336-4f07-a228-ce5c0b2def46",
+              "name": "Event accepted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"traits\": {\n    \"key_0\": false,\n    \"key_1\": 7012.533017950883,\n    \"key_2\": false\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"https://zYyuMI.jgjSL0D8SG2Qot0pqCheH\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://a.dwTZ4PjASozVWGmn2boqjrg2kbdcDOxuEg2U6+NrEf6\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": true,\n    \"key_1\": false\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7bca70c-1672-4a22-8c55-452da504d75a",
+              "name": "Invalid request payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"traits\": {\n    \"key_0\": false,\n    \"key_1\": 7012.533017950883,\n    \"key_2\": false\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"https://zYyuMI.jgjSL0D8SG2Qot0pqCheH\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://a.dwTZ4PjASozVWGmn2boqjrg2kbdcDOxuEg2U6+NrEf6\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": true,\n    \"key_1\": false\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afdce45f-4fa3-449b-b64a-81f0a8c3cd05",
+              "name": "Invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groupId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"traits\": {\n    \"key_0\": false,\n    \"key_1\": 7012.533017950883,\n    \"key_2\": false\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"https://zYyuMI.jgjSL0D8SG2Qot0pqCheH\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://a.dwTZ4PjASozVWGmn2boqjrg2kbdcDOxuEg2U6+NrEf6\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": true,\n    \"key_1\": false\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3ab18f1c-c4dc-4883-9334-1cdf339df966",
+      "name": "Identify",
+      "description": {
+        "content": "Operations for identifying users and associating traits with them.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9762c69d-54bd-44cc-b210-c2b635c474ac",
+          "name": "Identify a user",
+          "request": {
+            "name": "Identify a user",
+            "description": {
+              "content": "Associates a user with their traits. An identify call lets you tie a user to their actions and record traits about them. It includes a unique user ID and any optional traits you know about them, like their email, name, or role.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "identify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"traits\": {\n    \"key_0\": 6059\n  },\n  \"context\": {\n    \"active\": \"<boolean>\",\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"userAgent\": \"<string>\",\n    \"library\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"page\": {\n      \"path\": \"<string>\",\n      \"referrer\": \"<uri>\",\n      \"search\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    \"device\": {\n      \"id\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": \"<boolean>\",\n    \"key_1\": \"<boolean>\",\n    \"key_2\": \"<boolean>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "89756c23-0b7e-47da-9150-96622d42972e",
+              "name": "Event accepted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"traits\": {\n    \"key_0\": false,\n    \"key_1\": 8346.878831720047\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://dWEaAKyWl.fnahSApOILOgWndd3u47ict4S0TINgwdFMSHVDNlXFYWF6z\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://gCTnNDtxvEeNzkvYztIe.lsR0DNRdU6KkmKYuGrAg2dUV48bWZaZu1ueq\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false,\n    \"key_1\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e6b348b-ca93-447d-be88-c808f4aab53b",
+              "name": "Invalid request payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"traits\": {\n    \"key_0\": false,\n    \"key_1\": 8346.878831720047\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://dWEaAKyWl.fnahSApOILOgWndd3u47ict4S0TINgwdFMSHVDNlXFYWF6z\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://gCTnNDtxvEeNzkvYztIe.lsR0DNRdU6KkmKYuGrAg2dUV48bWZaZu1ueq\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false,\n    \"key_1\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af036f53-0daa-442d-9d39-9e33dd4d4343",
+              "name": "Invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"traits\": {\n    \"key_0\": false,\n    \"key_1\": 8346.878831720047\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://dWEaAKyWl.fnahSApOILOgWndd3u47ict4S0TINgwdFMSHVDNlXFYWF6z\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://gCTnNDtxvEeNzkvYztIe.lsR0DNRdU6KkmKYuGrAg2dUV48bWZaZu1ueq\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false,\n    \"key_1\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c2024c33-a378-4dc1-9311-afe6bf82d536",
+      "name": "Page",
+      "description": {
+        "content": "Operations for recording page views on websites.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c31808dc-3456-4b08-8142-e427eaf9941b",
+          "name": "Record a page view",
+          "request": {
+            "name": "Record a page view",
+            "description": {
+              "content": "Records a page view on a website. A page call lets you record whenever a user sees a page of your website, along with any optional properties about the page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "page"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"path\": \"<string>\",\n    \"referrer\": \"<uri>\",\n    \"search\": \"<string>\",\n    \"title\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"context\": {\n    \"active\": \"<boolean>\",\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"userAgent\": \"<string>\",\n    \"library\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"page\": {\n      \"path\": \"<string>\",\n      \"referrer\": \"<uri>\",\n      \"search\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    \"device\": {\n      \"id\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": \"<boolean>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ca488758-297c-4ca4-8f0c-70d287f945d1",
+              "name": "Event accepted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"path\": \"<string>\",\n    \"referrer\": \"<uri>\",\n    \"search\": \"<string>\",\n    \"title\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://EGNIDWdURPN.yqR6eL6NU7z.P2OjSncxXbxLasX.bsl3\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://dsNjEZjQZOhnrWnfVQuNXghqEI.ivpag2svDtdxAcTXIsT7PVt-PCGCXLqStw-l2KY2TIHN-rV\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b71f84c2-0646-4e29-a265-e1fc2e8f4a00",
+              "name": "Invalid request payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"path\": \"<string>\",\n    \"referrer\": \"<uri>\",\n    \"search\": \"<string>\",\n    \"title\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://EGNIDWdURPN.yqR6eL6NU7z.P2OjSncxXbxLasX.bsl3\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://dsNjEZjQZOhnrWnfVQuNXghqEI.ivpag2svDtdxAcTXIsT7PVt-PCGCXLqStw-l2KY2TIHN-rV\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "edfe84b4-303f-411c-85d1-7977bc8dbd8b",
+              "name": "Invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "page"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"path\": \"<string>\",\n    \"referrer\": \"<uri>\",\n    \"search\": \"<string>\",\n    \"title\": \"<string>\",\n    \"url\": \"<uri>\"\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://EGNIDWdURPN.yqR6eL6NU7z.P2OjSncxXbxLasX.bsl3\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://dsNjEZjQZOhnrWnfVQuNXghqEI.ivpag2svDtdxAcTXIsT7PVt-PCGCXLqStw-l2KY2TIHN-rV\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "354a437e-4651-45b0-992e-975d5d0738a7",
+      "name": "Screen",
+      "description": {
+        "content": "Operations for recording screen views in mobile applications.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "89a7c634-246f-42b0-8066-ac73d8ea89cc",
+          "name": "Record a screen view",
+          "request": {
+            "name": "Record a screen view",
+            "description": {
+              "content": "Records a screen view in a mobile application. A screen call lets you record whenever a user sees a screen of your mobile app, along with optional properties about the screen.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "screen"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"key_0\": 5866\n  },\n  \"context\": {\n    \"active\": \"<boolean>\",\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"userAgent\": \"<string>\",\n    \"library\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"page\": {\n      \"path\": \"<string>\",\n      \"referrer\": \"<uri>\",\n      \"search\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    \"device\": {\n      \"id\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": \"<boolean>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a88da16c-31dc-452d-8e7c-4a182e3eaf94",
+              "name": "Event accepted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"key_0\": 1677\n  },\n  \"context\": {\n    \"active\": false,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://ZMTjgwdqixLkUKoiipMzNyf.nqr+gafXuN8-hUew.fpqgHwzc4OD8fQc0HPen8cTjJstGOggoqmBz7N\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://IuHJbCuPEQZLRpUnwQjKhGus.pqrBO5O7FajWLhxQSK8cfgAJFDL\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d15f8e3b-9ee7-409b-8ec9-3e0b203425c2",
+              "name": "Invalid request payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"key_0\": 1677\n  },\n  \"context\": {\n    \"active\": false,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://ZMTjgwdqixLkUKoiipMzNyf.nqr+gafXuN8-hUew.fpqgHwzc4OD8fQc0HPen8cTjJstGOggoqmBz7N\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://IuHJbCuPEQZLRpUnwQjKhGus.pqrBO5O7FajWLhxQSK8cfgAJFDL\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6a004cc-64b2-4b27-8b71-8a318ea7af68",
+              "name": "Invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"key_0\": 1677\n  },\n  \"context\": {\n    \"active\": false,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://ZMTjgwdqixLkUKoiipMzNyf.nqr+gafXuN8-hUew.fpqgHwzc4OD8fQc0HPen8cTjJstGOggoqmBz7N\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://IuHJbCuPEQZLRpUnwQjKhGus.pqrBO5O7FajWLhxQSK8cfgAJFDL\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0b2f9af4-4e15-4799-a69f-87cfe3dc1437",
+      "name": "Track",
+      "description": {
+        "content": "Operations for tracking events and actions performed by users.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f5a3e83-72db-4bd3-bf1f-2a75e4c21097",
+          "name": "Track an event",
+          "request": {
+            "name": "Track an event",
+            "description": {
+              "content": "Records an action that a user performs. A track call requires an event name and can include properties that describe the event, such as revenue, product details, or other contextual information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "track"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"properties\": {\n    \"key_0\": true\n  },\n  \"context\": {\n    \"active\": \"<boolean>\",\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"userAgent\": \"<string>\",\n    \"library\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"page\": {\n      \"path\": \"<string>\",\n      \"referrer\": \"<uri>\",\n      \"search\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    \"device\": {\n      \"id\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": \"<boolean>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8fed5d5d-34bd-4dcb-afb8-70f149839481",
+              "name": "Event accepted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"properties\": {\n    \"key_0\": 7019.478400669458\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://y.stioVDpC8ASreYmkUAHXbzwdD0e3YJOF516CzaW.E5oAntjZiKS\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://imgDThgIyjkqrdksLnQTRUQzAqSfI.owijCwtZIA18zflnx5A.0ZTl52n+B7hPmYoeNhWU+G,XTSQJ4gRJRUkXU46\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88ace9c4-601d-4e18-8657-76ecb01cb817",
+              "name": "Invalid request payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"properties\": {\n    \"key_0\": 7019.478400669458\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://y.stioVDpC8ASreYmkUAHXbzwdD0e3YJOF516CzaW.E5oAntjZiKS\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://imgDThgIyjkqrdksLnQTRUQzAqSfI.owijCwtZIA18zflnx5A.0ZTl52n+B7hPmYoeNhWU+G,XTSQJ4gRJRUkXU46\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88966fc8-bd42-4763-abd5-ea4e14fd2588",
+              "name": "Invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"properties\": {\n    \"key_0\": 7019.478400669458\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://y.stioVDpC8ASreYmkUAHXbzwdD0e3YJOF516CzaW.E5oAntjZiKS\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"http://imgDThgIyjkqrdksLnQTRUQzAqSfI.owijCwtZIA18zflnx5A.0ZTl52n+B7hPmYoeNhWU+G,XTSQJ4gRJRUkXU46\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.segment.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "be595ffe-049b-4bfa-8869-8c7033bc30b1",
+    "name": "Segment HTTP Tracking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Segment HTTP Tracking API enables developers to record analytics data from any website or application by sending HTTP requests directly to Segment servers. It supports identify, track, page, screen, group, alias, and batch calls, and Segment routes the collected data to configured destinations. The API accepts batch requests up to 500 KB and requires each payload to include a userId or anonymousId. It is a server-side alternative to Segment's client-side SDKs.\n\nContact Support:\n Name: Segment Support",
+      "type": "text/plain"
+    }
+  }
+}

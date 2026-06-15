@@ -1,0 +1,274 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Profile API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Traits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user traits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://profiles.segment.com/v1/spaces/{spaceId}/collections/users/profiles/:externalId/traits",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of trait names to include in the response. Recommended for best performance."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return per page."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the traits for a user profile identified by an external ID. The external ID format is type:value, such as user_id:abc123 or email:user@example.com. Use the include parameter to specify which traits to retrieve for optimal performance."
+        },
+        {
+          "info": {
+            "name": "Get account traits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://profiles.segment.com/v1/spaces/{spaceId}/collections/accounts/profiles/:externalId/traits",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of trait names to include."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return per page."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the traits for an account profile identified by an external ID. Account profiles are group-level profiles that aggregate data across users."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://profiles.segment.com/v1/spaces/{spaceId}/collections/users/profiles/:externalId/events",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return per page."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the events for a user profile identified by an external ID. Events represent the actions the user has taken and are returned in reverse chronological order."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "External IDs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user external IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://profiles.segment.com/v1/spaces/{spaceId}/collections/users/profiles/:externalId/external_ids",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return per page."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the external identifiers linked to a user profile. External IDs include user IDs, anonymous IDs, email addresses, and other identifiers that have been associated with the profile through identity resolution."
+        },
+        {
+          "info": {
+            "name": "Get account external IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://profiles.segment.com/v1/spaces/{spaceId}/collections/accounts/profiles/:externalId/external_ids",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return per page."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the external identifiers linked to an account profile."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://profiles.segment.com/v1/spaces/{spaceId}/collections/users/profiles/:externalId/metadata",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              }
+            ]
+          },
+          "docs": "Returns metadata for a user profile, including when the profile was created, last updated, and the total count of events and traits."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user links",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://profiles.segment.com/v1/spaces/{spaceId}/collections/users/profiles/:externalId/links",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return per page."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the linked profiles for a user, such as account-level profiles that the user belongs to."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

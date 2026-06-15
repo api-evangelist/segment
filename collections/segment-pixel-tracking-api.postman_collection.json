@@ -1,0 +1,536 @@
+{
+  "item": [
+    {
+      "id": "90648178-876a-4667-9c7e-a8f7f1a28ae6",
+      "name": "Pixel Tracking",
+      "description": {
+        "content": "Pixel-based tracking endpoints that accept data via query parameters and return a transparent 1x1 GIF image. All data is passed as a base64-encoded JSON object in the data query parameter.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e502cf3a-b8b3-466d-8443-b03e5c66c844",
+          "name": "Identify via pixel",
+          "request": {
+            "name": "Identify via pixel",
+            "description": {
+              "content": "Associates a user with traits via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the identify payload. Always returns a 200 response with a transparent GIF, even on errors.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pixel",
+                "identify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<string>",
+                  "description": "(Required) A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/gif"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63bb90cf-c6aa-4051-a56f-725743714c41",
+              "name": "Returns a transparent 1x1 GIF image. The response is always 200 regardless of whether the data was valid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pixel",
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "data",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/gif"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/gif"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8930cf40-2d6b-45dd-b372-f8c3eb6da389",
+          "name": "Track via pixel",
+          "request": {
+            "name": "Track via pixel",
+            "description": {
+              "content": "Records an event via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the track payload including the required event field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pixel",
+                "track"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<string>",
+                  "description": "(Required) A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/gif"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "360a6bdd-8531-4afd-a34f-4872de4ed7c8",
+              "name": "Returns a transparent 1x1 GIF image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pixel",
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "data",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/gif"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/gif"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eef38ebb-c5d6-47b2-b10e-838f5aa7245c",
+          "name": "Page via pixel",
+          "request": {
+            "name": "Page via pixel",
+            "description": {
+              "content": "Records a page view via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the page payload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pixel",
+                "page"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<string>",
+                  "description": "(Required) A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/gif"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3bda9b6d-683c-487b-97a6-b664e4e0db06",
+              "name": "Returns a transparent 1x1 GIF image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pixel",
+                    "page"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "data",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/gif"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/gif"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb4ea2bb-fa7d-4963-8a23-bb46867234e9",
+          "name": "Screen via pixel",
+          "request": {
+            "name": "Screen via pixel",
+            "description": {
+              "content": "Records a screen view via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the screen payload.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pixel",
+                "screen"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<string>",
+                  "description": "(Required) A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/gif"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "316af2f9-e902-480f-bef0-4f90766764d7",
+              "name": "Returns a transparent 1x1 GIF image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pixel",
+                    "screen"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "data",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/gif"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/gif"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0272b910-593c-4927-ae2a-88b99ad55b62",
+          "name": "Group via pixel",
+          "request": {
+            "name": "Group via pixel",
+            "description": {
+              "content": "Associates a user with a group via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the group payload including the required groupId field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pixel",
+                "group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<string>",
+                  "description": "(Required) A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/gif"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1114134b-93a4-4c62-8935-3d695a23112b",
+              "name": "Returns a transparent 1x1 GIF image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pixel",
+                    "group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "data",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/gif"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/gif"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "805a2f14-9c81-4d53-bee4-f33c9d749bef",
+          "name": "Alias via pixel",
+          "request": {
+            "name": "Alias via pixel",
+            "description": {
+              "content": "Merges two user identities via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the alias payload including previousId and userId.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pixel",
+                "alias"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "data",
+                  "value": "<string>",
+                  "description": "(Required) A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/gif"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb95d532-3376-49c1-89a5-8fa5b8a30f58",
+              "name": "Returns a transparent 1x1 GIF image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pixel",
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "data",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/gif"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/gif"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.segment.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "212aa405-9ec8-452e-bf5a-1c32db47d132",
+    "name": "Segment Pixel Tracking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Segment Pixel Tracking API provides a way to collect analytics data using image pixel requests, which is useful in environments where JavaScript cannot execute, such as email clients. It supports identify, track, page, screen, group, and alias calls through pixel endpoints under the api.segment.io domain. Each endpoint responds with a 200 status code and an empty GIF image. This API is particularly suited for tracking email opens, ad impressions, and other contexts where embedding a tracking pixel is the only viable data collection method.\n\nContact Support:\n Name: Segment Support",
+      "type": "text/plain"
+    }
+  }
+}

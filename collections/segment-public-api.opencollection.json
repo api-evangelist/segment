@@ -1,0 +1,904 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Public API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workspaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/workspace"
+          },
+          "docs": "Returns the workspace associated with the access token used to make the request, including the workspace name, ID, and slug."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/sources",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all sources in the workspace, including their configuration, write keys, and metadata."
+        },
+        {
+          "info": {
+            "name": "Create source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segmentapis.com/sources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new source in the workspace with the specified configuration and metadata."
+        },
+        {
+          "info": {
+            "name": "Get source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/sources/:sourceId",
+            "params": [
+              {
+                "name": "sourceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the source."
+              }
+            ]
+          },
+          "docs": "Returns a single source by its ID, including its configuration, write key, and metadata."
+        },
+        {
+          "info": {
+            "name": "Update source",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.segmentapis.com/sources/:sourceId",
+            "params": [
+              {
+                "name": "sourceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the source."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing source with the provided configuration changes."
+        },
+        {
+          "info": {
+            "name": "Delete source",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.segmentapis.com/sources/:sourceId",
+            "params": [
+              {
+                "name": "sourceId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the source."
+              }
+            ]
+          },
+          "docs": "Deletes a source from the workspace by its ID. This action is irreversible."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Destinations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List destinations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/destinations",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all destinations in the workspace, including their configuration and connection status."
+        },
+        {
+          "info": {
+            "name": "Create destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segmentapis.com/destinations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new destination connected to a source in the workspace."
+        },
+        {
+          "info": {
+            "name": "Get destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/destinations/:destinationId",
+            "params": [
+              {
+                "name": "destinationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the destination."
+              }
+            ]
+          },
+          "docs": "Returns a single destination by its ID, including its configuration and connection status."
+        },
+        {
+          "info": {
+            "name": "Update destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.segmentapis.com/destinations/:destinationId",
+            "params": [
+              {
+                "name": "destinationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the destination."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing destination with the provided changes."
+        },
+        {
+          "info": {
+            "name": "Delete destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.segmentapis.com/destinations/:destinationId",
+            "params": [
+              {
+                "name": "destinationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the destination."
+              }
+            ]
+          },
+          "docs": "Deletes a destination from the workspace by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Warehouses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List warehouses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/warehouses",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all warehouses in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create warehouse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segmentapis.com/warehouses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new warehouse connection in the workspace."
+        },
+        {
+          "info": {
+            "name": "Get warehouse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/warehouses/:warehouseId",
+            "params": [
+              {
+                "name": "warehouseId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the warehouse."
+              }
+            ]
+          },
+          "docs": "Returns a single warehouse by its ID."
+        },
+        {
+          "info": {
+            "name": "Update warehouse",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.segmentapis.com/warehouses/:warehouseId",
+            "params": [
+              {
+                "name": "warehouseId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the warehouse."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing warehouse with the provided changes."
+        },
+        {
+          "info": {
+            "name": "Delete warehouse",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.segmentapis.com/warehouses/:warehouseId",
+            "params": [
+              {
+                "name": "warehouseId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the warehouse."
+              }
+            ]
+          },
+          "docs": "Deletes a warehouse connection from the workspace."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tracking Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tracking plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/tracking-plans",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all tracking plans in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create tracking plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segmentapis.com/tracking-plans",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new tracking plan in the workspace with the specified rules and configuration."
+        },
+        {
+          "info": {
+            "name": "Get tracking plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/tracking-plans/:trackingPlanId",
+            "params": [
+              {
+                "name": "trackingPlanId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the tracking plan."
+              }
+            ]
+          },
+          "docs": "Returns a single tracking plan by its ID."
+        },
+        {
+          "info": {
+            "name": "Update tracking plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.segmentapis.com/tracking-plans/:trackingPlanId",
+            "params": [
+              {
+                "name": "trackingPlanId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the tracking plan."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing tracking plan with the provided changes."
+        },
+        {
+          "info": {
+            "name": "Delete tracking plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.segmentapis.com/tracking-plans/:trackingPlanId",
+            "params": [
+              {
+                "name": "trackingPlanId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the tracking plan."
+              }
+            ]
+          },
+          "docs": "Deletes a tracking plan from the workspace."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List catalog sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/catalog/sources",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all available source integrations in the Segment catalog."
+        },
+        {
+          "info": {
+            "name": "Get catalog source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/catalog/sources/:sourceMetadataId",
+            "params": [
+              {
+                "name": "sourceMetadataId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the source metadata."
+              }
+            ]
+          },
+          "docs": "Returns a single source integration from the catalog by its metadata ID."
+        },
+        {
+          "info": {
+            "name": "List catalog destinations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/catalog/destinations",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all available destination integrations in the Segment catalog."
+        },
+        {
+          "info": {
+            "name": "Get catalog destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/catalog/destinations/:destinationMetadataId",
+            "params": [
+              {
+                "name": "destinationMetadataId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the destination metadata."
+              }
+            ]
+          },
+          "docs": "Returns a single destination integration from the catalog by its metadata ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/functions",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              },
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "query",
+                "description": "Filter functions by resource type."
+              }
+            ]
+          },
+          "docs": "Returns a list of all custom functions in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segmentapis.com/functions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new custom function in the workspace."
+        },
+        {
+          "info": {
+            "name": "Get function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/functions/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Returns a single function by its ID."
+        },
+        {
+          "info": {
+            "name": "Update function",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.segmentapis.com/functions/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing function with the provided changes."
+        },
+        {
+          "info": {
+            "name": "Delete function",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.segmentapis.com/functions/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Deletes a function from the workspace."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transformations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List transformations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/transformations",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all transformations in the workspace. Requires the Protocols feature to be enabled."
+        },
+        {
+          "info": {
+            "name": "Create transformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segmentapis.com/transformations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new transformation in the workspace."
+        },
+        {
+          "info": {
+            "name": "Get transformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/transformations/:transformationId",
+            "params": [
+              {
+                "name": "transformationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the transformation."
+              }
+            ]
+          },
+          "docs": "Returns a single transformation by its ID."
+        },
+        {
+          "info": {
+            "name": "Update transformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.segmentapis.com/transformations/:transformationId",
+            "params": [
+              {
+                "name": "transformationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the transformation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing transformation with the provided changes."
+        },
+        {
+          "info": {
+            "name": "Delete transformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.segmentapis.com/transformations/:transformationId",
+            "params": [
+              {
+                "name": "transformationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the transformation."
+              }
+            ]
+          },
+          "docs": "Deletes a transformation from the workspace."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Regulations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List regulations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/regulations",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by regulation status."
+              }
+            ]
+          },
+          "docs": "Returns a list of data privacy regulation requests in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create regulation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segmentapis.com/regulations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new data privacy regulation request, such as a suppression or deletion request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Labels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segmentapis.com/labels"
+          },
+          "docs": "Returns a list of all labels in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create label",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.segmentapis.com/labels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new label in the workspace for organizing resources."
+        },
+        {
+          "info": {
+            "name": "Delete label",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.segmentapis.com/labels/:labelKey/:labelValue",
+            "params": [
+              {
+                "name": "labelKey",
+                "value": "",
+                "type": "path",
+                "description": "The label key."
+              },
+              {
+                "name": "labelValue",
+                "value": "",
+                "type": "path",
+                "description": "The label value."
+              }
+            ]
+          },
+          "docs": "Deletes a label from the workspace by key and value."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

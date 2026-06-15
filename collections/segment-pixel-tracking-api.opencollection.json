@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Pixel Tracking API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pixel Tracking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Identify via pixel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segment.io/v1/pixel/identify",
+            "params": [
+              {
+                "name": "data",
+                "value": "",
+                "type": "query",
+                "description": "A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+              }
+            ]
+          },
+          "docs": "Associates a user with traits via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the identify payload. Always returns a 200 response with a transparent GIF, even on errors."
+        },
+        {
+          "info": {
+            "name": "Track via pixel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segment.io/v1/pixel/track",
+            "params": [
+              {
+                "name": "data",
+                "value": "",
+                "type": "query",
+                "description": "A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+              }
+            ]
+          },
+          "docs": "Records an event via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the track payload including the required event field."
+        },
+        {
+          "info": {
+            "name": "Page via pixel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segment.io/v1/pixel/page",
+            "params": [
+              {
+                "name": "data",
+                "value": "",
+                "type": "query",
+                "description": "A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+              }
+            ]
+          },
+          "docs": "Records a page view via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the page payload."
+        },
+        {
+          "info": {
+            "name": "Screen via pixel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segment.io/v1/pixel/screen",
+            "params": [
+              {
+                "name": "data",
+                "value": "",
+                "type": "query",
+                "description": "A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+              }
+            ]
+          },
+          "docs": "Records a screen view via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the screen payload."
+        },
+        {
+          "info": {
+            "name": "Group via pixel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segment.io/v1/pixel/group",
+            "params": [
+              {
+                "name": "data",
+                "value": "",
+                "type": "query",
+                "description": "A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+              }
+            ]
+          },
+          "docs": "Associates a user with a group via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the group payload including the required groupId field."
+        },
+        {
+          "info": {
+            "name": "Alias via pixel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.segment.io/v1/pixel/alias",
+            "params": [
+              {
+                "name": "data",
+                "value": "",
+                "type": "query",
+                "description": "A base64-encoded JSON object containing the call payload. Base64 encoding is optional but recommended to prevent special character manipulation by browsers or intermediaries. The JSON object must include a writeKey field for authentication and either a userId or anonymousId for user identification."
+              }
+            ]
+          },
+          "docs": "Merges two user identities via a tracking pixel request. The data parameter should contain a base64-encoded JSON object with the alias payload including previousId and userId."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -10,7 +10,7 @@ apis:
   - Destinations
   - Sources
   - Workspace Management
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.segmentapis.com
   humanURL: https://docs.segmentapis.com/
   properties:
@@ -33,7 +33,7 @@ apis:
   - Customer Data
   - Events
   - Tracking
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.segment.io
   humanURL: https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
   properties:
@@ -56,7 +56,7 @@ apis:
   - Identity Resolution
   - Profiles
   - Unify
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://profiles.segment.com
   humanURL: https://www.twilio.com/docs/segment/unify/profile-api
   properties:
@@ -78,7 +78,7 @@ apis:
   - Legacy
   - Sources
   - Workspace Management
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://platform.segmentapis.com
   humanURL: https://www.twilio.com/docs/segment/api/config-api
   properties:
@@ -100,7 +100,7 @@ apis:
   - Email
   - Pixel
   - Tracking
-  image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   baseURL: https://api.segment.io
   humanURL: https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/pixel-tracking-api
   properties:

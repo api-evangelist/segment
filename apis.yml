@@ -116,6 +116,10 @@ apis:
     other contexts where embedding a tracking pixel is the only viable data collection
     method.
 common:
+- type: DomainSecurity
+  url: security/segment-domain-security.yml
+- type: Authentication
+  url: authentication/segment-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/segmentio
 - type: LinkedIn

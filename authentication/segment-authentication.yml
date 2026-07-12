@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/segment-config-api-openapi.yml, openapi/segment-http-tracking-api-openapi.yml,
+  openapi/segment-profile-api-openapi.yml, openapi/segment-public-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Segment Config API access token. Note that as of early 2024, Segment has stopped
+    issuing new Config API tokens.
+  sources:
+  - openapi/segment-config-api-openapi.yml
+  - openapi/segment-public-api-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication using the source write key as the username and an empty
+    password. The write key is found in the Segment source settings.
+  sources:
+  - openapi/segment-http-tracking-api-openapi.yml
+  - openapi/segment-profile-api-openapi.yml

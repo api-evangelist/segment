@@ -116,6 +116,8 @@ apis:
     other contexts where embedding a tracking pixel is the only viable data collection
     method.
 common:
+- type: AgenticAccess
+  url: agentic-access/segment-agentic-access.yml
 - type: DomainSecurity
   url: security/segment-domain-security.yml
 - type: Authentication

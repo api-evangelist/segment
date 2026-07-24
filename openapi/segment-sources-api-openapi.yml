@@ -1,0 +1,484 @@
+openapi: 3.1.0
+info:
+  title: Segment Config Alias Sources API
+  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  version: 1.0.0
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+servers:
+- url: https://platform.segmentapis.com/v1beta
+  description: Production Server (v1beta)
+security:
+- bearerAuth: []
+tags:
+- name: Sources
+  description: Operations for managing data collection sources within a workspace.
+paths:
+  /workspaces/{workspaceName}/sources:
+    get:
+      operationId: listSources
+      summary: List sources
+      description: Returns a list of all sources in the specified workspace.
+      tags:
+      - Sources
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceName'
+      responses:
+        '200':
+          description: Sources retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sources:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Source'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSource
+      summary: Create source
+      description: Creates a new source in the specified workspace.
+      tags:
+      - Sources
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - source
+              properties:
+                source:
+                  type: object
+                  required:
+                  - name
+                  - catalog_name
+                  properties:
+                    name:
+                      type: string
+                      description: The fully qualified name of the source.
+                    catalog_name:
+                      type: string
+                      description: The catalog name of the source type.
+      responses:
+        '200':
+          description: Source created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Source'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /workspaces/{workspaceName}/sources/{sourceName}:
+    get:
+      operationId: getSource
+      summary: Get source
+      description: Returns a single source by name within the specified workspace.
+      tags:
+      - Sources
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceName'
+      - $ref: '#/components/parameters/SourceName'
+      responses:
+        '200':
+          description: Source retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Source'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteSource
+      summary: Delete source
+      description: Deletes a source from the workspace by name.
+      tags:
+      - Sources
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceName'
+      - $ref: '#/components/parameters/SourceName'
+      responses:
+        '200':
+          description: Source deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /sources:
+    get:
+      operationId: listSources
+      summary: List sources
+      description: Returns a list of all sources in the workspace, including their configuration, write keys, and metadata.
+      tags:
+      - Sources
+      parameters:
+      - $ref: '#/components/parameters/PaginationCursor'
+      - $ref: '#/components/parameters/PaginationCount'
+      responses:
+        '200':
+          description: Sources retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      sources:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Source_2'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createSource
+      summary: Create source
+      description: Creates a new source in the workspace with the specified configuration and metadata.
+      tags:
+      - Sources
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - slug
+              - metadataId
+              properties:
+                slug:
+                  type: string
+                  description: URL-friendly name for the source.
+                metadataId:
+                  type: string
+                  description: The ID of the source metadata from the catalog.
+                enabled:
+                  type: boolean
+                  description: Whether the source is enabled.
+                settings:
+                  type: object
+                  description: Configuration settings for the source.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Source created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      source:
+                        $ref: '#/components/schemas/Source_2'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /sources/{sourceId}:
+    get:
+      operationId: getSource
+      summary: Get source
+      description: Returns a single source by its ID, including its configuration, write key, and metadata.
+      tags:
+      - Sources
+      parameters:
+      - $ref: '#/components/parameters/SourceId'
+      responses:
+        '200':
+          description: Source retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      source:
+                        $ref: '#/components/schemas/Source_2'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateSource
+      summary: Update source
+      description: Updates an existing source with the provided configuration changes.
+      tags:
+      - Sources
+      parameters:
+      - $ref: '#/components/parameters/SourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Updated name for the source.
+                enabled:
+                  type: boolean
+                  description: Whether the source is enabled.
+                slug:
+                  type: string
+                  description: Updated URL-friendly name.
+                settings:
+                  type: object
+                  description: Updated configuration settings.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Source updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      source:
+                        $ref: '#/components/schemas/Source_2'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteSource
+      summary: Delete source
+      description: Deletes a source from the workspace by its ID. This action is irreversible.
+      tags:
+      - Sources
+      parameters:
+      - $ref: '#/components/parameters/SourceId'
+      responses:
+        '200':
+          description: Source deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Status of the delete operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    CatalogSource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The metadata ID of the catalog source.
+        name:
+          type: string
+          description: The name of the source integration.
+        slug:
+          type: string
+          description: The URL-friendly slug.
+        description:
+          type: string
+          description: A description of the source integration.
+        logos:
+          type: object
+          description: Logo URLs for the integration.
+          properties:
+            default:
+              type: string
+              format: uri
+              description: Default logo URL.
+            alt:
+              type: string
+              format: uri
+              description: Alternative logo URL.
+            mark:
+              type: string
+              format: uri
+              description: Mark logo URL.
+        categories:
+          type: array
+          items:
+            type: string
+          description: Categories this source belongs to.
+    Source:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The fully qualified name of the source.
+        catalog_name:
+          type: string
+          description: The catalog name of the source type.
+        parent:
+          type: string
+          description: The parent workspace name.
+        write_keys:
+          type: array
+          items:
+            type: string
+          description: The write keys for the source.
+        library_config:
+          type: object
+          description: Library configuration settings.
+          additionalProperties: true
+        create_time:
+          type: string
+          format: date-time
+          description: When the source was created.
+    Label:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The label key.
+        value:
+          type: string
+          description: The label value.
+        description:
+          type: string
+          description: A description of the label.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error type.
+        message:
+          type: string
+          description: A human-readable error message.
+    Source_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the source.
+        slug:
+          type: string
+          description: The URL-friendly slug of the source.
+        name:
+          type: string
+          description: The display name of the source.
+        enabled:
+          type: boolean
+          description: Whether the source is enabled.
+        writeKeys:
+          type: array
+          items:
+            type: string
+          description: The write keys associated with the source.
+        metadata:
+          $ref: '#/components/schemas/CatalogSource'
+        settings:
+          type: object
+          description: Configuration settings for the source.
+          additionalProperties: true
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Label'
+          description: Labels applied to the source.
+    Pagination:
+      type: object
+      properties:
+        current:
+          type: string
+          description: Cursor pointing to the current page.
+        next:
+          type: string
+          description: Cursor pointing to the next page. Null if no more pages.
+        totalEntries:
+          type: integer
+          description: Total number of entries across all pages.
+  parameters:
+    WorkspaceName:
+      name: workspaceName
+      in: path
+      required: true
+      description: The name of the workspace.
+      schema:
+        type: string
+    PaginationCursor:
+      name: pagination[cursor]
+      in: query
+      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
+      schema:
+        type: string
+    SourceName:
+      name: sourceName
+      in: path
+      required: true
+      description: The name of the source.
+      schema:
+        type: string
+    PaginationCount:
+      name: pagination[count]
+      in: query
+      description: Number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 10
+    SourceId:
+      name: sourceId
+      in: path
+      required: true
+      description: The unique identifier of the source.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/

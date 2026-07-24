@@ -1,0 +1,158 @@
+openapi: 3.1.0
+info:
+  title: Segment Config Alias Workspaces API
+  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  version: 1.0.0
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+servers:
+- url: https://platform.segmentapis.com/v1beta
+  description: Production Server (v1beta)
+security:
+- bearerAuth: []
+tags:
+- name: Workspaces
+  description: Operations for retrieving workspace information and configuration.
+paths:
+  /workspaces/{workspaceName}:
+    get:
+      operationId: getWorkspace
+      summary: Get workspace
+      description: Returns the workspace details for the specified workspace name.
+      tags:
+      - Workspaces
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceName'
+      responses:
+        '200':
+          description: Workspace retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspace'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workspace:
+    get:
+      operationId: getWorkspace
+      summary: Get workspace
+      description: Returns the workspace associated with the access token used to make the request, including the workspace name, ID, and slug.
+      tags:
+      - Workspaces
+      responses:
+        '200':
+          description: Workspace retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      workspace:
+                        $ref: '#/components/schemas/Workspace_2'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+components:
+  schemas:
+    Workspace_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the workspace.
+        slug:
+          type: string
+          description: The URL-friendly slug of the workspace.
+        name:
+          type: string
+          description: The display name of the workspace.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error type.
+        message:
+          type: string
+          description: A human-readable error message.
+    Workspace:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The fully qualified name of the workspace.
+        display_name:
+          type: string
+          description: The display name of the workspace.
+        id:
+          type: string
+          description: The unique identifier of the workspace.
+        create_time:
+          type: string
+          format: date-time
+          description: When the workspace was created.
+    Error_2:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The error type.
+              message:
+                type: string
+                description: A human-readable error message.
+              field:
+                type: string
+                description: The field that caused the error, if applicable.
+              data:
+                type: object
+                description: Additional error data.
+                additionalProperties: true
+  parameters:
+    WorkspaceName:
+      name: workspaceName
+      in: path
+      required: true
+      description: The name of the workspace.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: The authenticated user does not have permission to access this resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error_2'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/

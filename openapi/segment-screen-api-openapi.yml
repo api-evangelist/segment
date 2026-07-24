@@ -1,0 +1,177 @@
+openapi: 3.1.0
+info:
+  title: Segment Config Alias Screen API
+  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  version: 1.0.0
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+servers:
+- url: https://platform.segmentapis.com/v1beta
+  description: Production Server (v1beta)
+security:
+- bearerAuth: []
+tags:
+- name: Screen
+  description: Operations for recording screen views in mobile applications.
+paths:
+  /screen:
+    post:
+      operationId: screen
+      summary: Record a screen view
+      description: Records a screen view in a mobile application. A screen call lets you record whenever a user sees a screen of your mobile app, along with optional properties about the screen.
+      tags:
+      - Screen
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScreenCall'
+      responses:
+        '200':
+          description: Event accepted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid or missing write key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    Context:
+      type: object
+      description: Dictionary of extra context for the call. Context is a dictionary of extra information that provides useful context about a data point, such as the user's IP address, locale, or device information.
+      properties:
+        active:
+          type: boolean
+          description: Whether the user is active.
+        ip:
+          type: string
+          description: The IP address of the user.
+        locale:
+          type: string
+          description: The locale string for the user.
+        userAgent:
+          type: string
+          description: The user agent string of the client.
+        library:
+          type: object
+          description: Information about the library making the call.
+          properties:
+            name:
+              type: string
+              description: The name of the library.
+            version:
+              type: string
+              description: The version of the library.
+        page:
+          type: object
+          description: Information about the current page.
+          properties:
+            path:
+              type: string
+              description: The path of the page.
+            referrer:
+              type: string
+              format: uri
+              description: The referrer URL.
+            search:
+              type: string
+              description: The search query string.
+            title:
+              type: string
+              description: The page title.
+            url:
+              type: string
+              format: uri
+              description: The full URL of the page.
+        device:
+          type: object
+          description: Information about the user's device.
+          properties:
+            id:
+              type: string
+              description: The device ID.
+            manufacturer:
+              type: string
+              description: The device manufacturer.
+            model:
+              type: string
+              description: The device model.
+            name:
+              type: string
+              description: The device name.
+            type:
+              type: string
+              description: The device type.
+    ScreenCall:
+      type: object
+      description: A screen call records a screen view in a mobile application.
+      properties:
+        userId:
+          type: string
+          description: Unique identifier for the user in your database.
+        anonymousId:
+          type: string
+          description: A pseudo-unique substitute for a user ID.
+        name:
+          type: string
+          description: Name of the screen.
+        properties:
+          type: object
+          description: Free-form dictionary of properties of the screen.
+          additionalProperties: true
+        context:
+          $ref: '#/components/schemas/Context'
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 date string when the message was originally sent.
+        messageId:
+          type: string
+          description: Unique identifier for the message to deduplicate.
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Always false for error responses.
+        message:
+          type: string
+          description: A human-readable error message.
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was accepted.
+    Integrations:
+      type: object
+      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
+      additionalProperties:
+        oneOf:
+        - type: boolean
+        - type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/

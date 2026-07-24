@@ -1,0 +1,358 @@
+openapi: 3.1.0
+info:
+  title: Segment Config Alias Transformations API
+  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  version: 1.0.0
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+servers:
+- url: https://platform.segmentapis.com/v1beta
+  description: Production Server (v1beta)
+security:
+- bearerAuth: []
+tags:
+- name: Transformations
+  description: Operations for managing transformations that modify event data before it reaches destinations.
+paths:
+  /transformations:
+    get:
+      operationId: listTransformations
+      summary: List transformations
+      description: Returns a list of all transformations in the workspace. Requires the Protocols feature to be enabled.
+      tags:
+      - Transformations
+      parameters:
+      - $ref: '#/components/parameters/PaginationCursor'
+      - $ref: '#/components/parameters/PaginationCount'
+      responses:
+        '200':
+          description: Transformations retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      transformations:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Transformation'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTransformation
+      summary: Create transformation
+      description: Creates a new transformation in the workspace.
+      tags:
+      - Transformations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - sourceId
+              properties:
+                name:
+                  type: string
+                  description: The name of the transformation.
+                sourceId:
+                  type: string
+                  description: The ID of the source to apply the transformation to.
+                destinationMetadataId:
+                  type: string
+                  description: The ID of the destination metadata if destination-scoped.
+                enabled:
+                  type: boolean
+                  description: Whether the transformation is enabled.
+                if:
+                  type: string
+                  description: FQL condition that determines when the transformation runs.
+                newEventName:
+                  type: string
+                  description: New event name to rename the event to.
+                propertyRenames:
+                  type: array
+                  description: List of property renames to apply.
+                  items:
+                    type: object
+                    properties:
+                      oldName:
+                        type: string
+                        description: The original property name.
+                      newName:
+                        type: string
+                        description: The new property name.
+                propertyValueTransformations:
+                  type: array
+                  description: List of property value transformations to apply.
+                  items:
+                    type: object
+                    properties:
+                      propertyPaths:
+                        type: array
+                        items:
+                          type: string
+                        description: The property paths to transform.
+                      propertyValue:
+                        type: string
+                        description: The new value.
+      responses:
+        '200':
+          description: Transformation created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      transformation:
+                        $ref: '#/components/schemas/Transformation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /transformations/{transformationId}:
+    get:
+      operationId: getTransformation
+      summary: Get transformation
+      description: Returns a single transformation by its ID.
+      tags:
+      - Transformations
+      parameters:
+      - $ref: '#/components/parameters/TransformationId'
+      responses:
+        '200':
+          description: Transformation retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      transformation:
+                        $ref: '#/components/schemas/Transformation'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateTransformation
+      summary: Update transformation
+      description: Updates an existing transformation with the provided changes.
+      tags:
+      - Transformations
+      parameters:
+      - $ref: '#/components/parameters/TransformationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Updated name.
+                enabled:
+                  type: boolean
+                  description: Whether the transformation is enabled.
+                if:
+                  type: string
+                  description: Updated FQL condition.
+                newEventName:
+                  type: string
+                  description: Updated new event name.
+      responses:
+        '200':
+          description: Transformation updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      transformation:
+                        $ref: '#/components/schemas/Transformation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteTransformation
+      summary: Delete transformation
+      description: Deletes a transformation from the workspace.
+      tags:
+      - Transformations
+      parameters:
+      - $ref: '#/components/parameters/TransformationId'
+      responses:
+        '200':
+          description: Transformation deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Status of the delete operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    TransformationId:
+      name: transformationId
+      in: path
+      required: true
+      description: The unique identifier of the transformation.
+      schema:
+        type: string
+    PaginationCursor:
+      name: pagination[cursor]
+      in: query
+      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
+      schema:
+        type: string
+    PaginationCount:
+      name: pagination[count]
+      in: query
+      description: Number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 10
+  schemas:
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The error type.
+              message:
+                type: string
+                description: A human-readable error message.
+              field:
+                type: string
+                description: The field that caused the error, if applicable.
+              data:
+                type: object
+                description: Additional error data.
+                additionalProperties: true
+    Transformation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the transformation.
+        name:
+          type: string
+          description: The name of the transformation.
+        sourceId:
+          type: string
+          description: The ID of the source this transformation applies to.
+        destinationMetadataId:
+          type: string
+          description: The destination metadata ID if destination-scoped.
+        enabled:
+          type: boolean
+          description: Whether the transformation is enabled.
+        if:
+          type: string
+          description: The FQL condition that determines when the transformation runs.
+        newEventName:
+          type: string
+          description: The new event name if renaming.
+        propertyRenames:
+          type: array
+          description: Property renames applied by this transformation.
+          items:
+            type: object
+            properties:
+              oldName:
+                type: string
+                description: The original property name.
+              newName:
+                type: string
+                description: The new property name.
+        propertyValueTransformations:
+          type: array
+          description: Property value transformations applied.
+          items:
+            type: object
+            properties:
+              propertyPaths:
+                type: array
+                items:
+                  type: string
+                description: The property paths to transform.
+              propertyValue:
+                type: string
+                description: The new value.
+    Pagination:
+      type: object
+      properties:
+        current:
+          type: string
+          description: Cursor pointing to the current page.
+        next:
+          type: string
+          description: Cursor pointing to the next page. Null if no more pages.
+        totalEntries:
+          type: integer
+          description: Total number of entries across all pages.
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/

@@ -1,0 +1,176 @@
+openapi: 3.1.0
+info:
+  title: Segment Config Alias Labels API
+  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  version: 1.0.0
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+servers:
+- url: https://platform.segmentapis.com/v1beta
+  description: Production Server (v1beta)
+security:
+- bearerAuth: []
+tags:
+- name: Labels
+  description: Operations for managing labels used to organize and control access to workspace resources.
+paths:
+  /labels:
+    get:
+      operationId: listLabels
+      summary: List labels
+      description: Returns a list of all labels in the workspace.
+      tags:
+      - Labels
+      responses:
+        '200':
+          description: Labels retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      labels:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Label'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createLabel
+      summary: Create label
+      description: Creates a new label in the workspace for organizing resources.
+      tags:
+      - Labels
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - key
+              - value
+              properties:
+                key:
+                  type: string
+                  description: The label key.
+                value:
+                  type: string
+                  description: The label value.
+                description:
+                  type: string
+                  description: A description of the label.
+      responses:
+        '200':
+          description: Label created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      labels:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Label'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /labels/{labelKey}/{labelValue}:
+    delete:
+      operationId: deleteLabel
+      summary: Delete label
+      description: Deletes a label from the workspace by key and value.
+      tags:
+      - Labels
+      parameters:
+      - name: labelKey
+        in: path
+        required: true
+        description: The label key.
+        schema:
+          type: string
+      - name: labelValue
+        in: path
+        required: true
+        description: The label value.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Label deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Label:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The label key.
+        value:
+          type: string
+          description: The label value.
+        description:
+          type: string
+          description: A description of the label.
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The error type.
+              message:
+                type: string
+                description: A human-readable error message.
+              field:
+                type: string
+                description: The field that caused the error, if applicable.
+              data:
+                type: object
+                description: Additional error data.
+                additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/

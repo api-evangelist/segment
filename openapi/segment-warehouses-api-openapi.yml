@@ -1,0 +1,297 @@
+openapi: 3.1.0
+info:
+  title: Segment Config Alias Warehouses API
+  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  version: 1.0.0
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+servers:
+- url: https://platform.segmentapis.com/v1beta
+  description: Production Server (v1beta)
+security:
+- bearerAuth: []
+tags:
+- name: Warehouses
+  description: Operations for managing data warehouse connections, including creating and configuring warehouse destinations.
+paths:
+  /warehouses:
+    get:
+      operationId: listWarehouses
+      summary: List warehouses
+      description: Returns a list of all warehouses in the workspace.
+      tags:
+      - Warehouses
+      parameters:
+      - $ref: '#/components/parameters/PaginationCursor'
+      - $ref: '#/components/parameters/PaginationCount'
+      responses:
+        '200':
+          description: Warehouses retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      warehouses:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Warehouse'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createWarehouse
+      summary: Create warehouse
+      description: Creates a new warehouse connection in the workspace.
+      tags:
+      - Warehouses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - metadataId
+              properties:
+                metadataId:
+                  type: string
+                  description: The ID of the warehouse metadata from the catalog.
+                enabled:
+                  type: boolean
+                  description: Whether the warehouse is enabled.
+                settings:
+                  type: object
+                  description: Configuration settings for the warehouse connection.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Warehouse created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      warehouse:
+                        $ref: '#/components/schemas/Warehouse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /warehouses/{warehouseId}:
+    get:
+      operationId: getWarehouse
+      summary: Get warehouse
+      description: Returns a single warehouse by its ID.
+      tags:
+      - Warehouses
+      parameters:
+      - $ref: '#/components/parameters/WarehouseId'
+      responses:
+        '200':
+          description: Warehouse retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      warehouse:
+                        $ref: '#/components/schemas/Warehouse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateWarehouse
+      summary: Update warehouse
+      description: Updates an existing warehouse with the provided changes.
+      tags:
+      - Warehouses
+      parameters:
+      - $ref: '#/components/parameters/WarehouseId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                  description: Whether the warehouse is enabled.
+                settings:
+                  type: object
+                  description: Updated configuration settings.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Warehouse updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      warehouse:
+                        $ref: '#/components/schemas/Warehouse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteWarehouse
+      summary: Delete warehouse
+      description: Deletes a warehouse connection from the workspace.
+      tags:
+      - Warehouses
+      parameters:
+      - $ref: '#/components/parameters/WarehouseId'
+      responses:
+        '200':
+          description: Warehouse deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Status of the delete operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The error type.
+              message:
+                type: string
+                description: A human-readable error message.
+              field:
+                type: string
+                description: The field that caused the error, if applicable.
+              data:
+                type: object
+                description: Additional error data.
+                additionalProperties: true
+    Warehouse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the warehouse.
+        enabled:
+          type: boolean
+          description: Whether the warehouse is enabled.
+        metadata:
+          type: object
+          description: Metadata about the warehouse type.
+          properties:
+            id:
+              type: string
+              description: The metadata ID.
+            name:
+              type: string
+              description: The name of the warehouse type.
+            slug:
+              type: string
+              description: The slug of the warehouse type.
+            description:
+              type: string
+              description: A description of the warehouse type.
+        settings:
+          type: object
+          description: Configuration settings for the warehouse.
+          additionalProperties: true
+    Pagination:
+      type: object
+      properties:
+        current:
+          type: string
+          description: Cursor pointing to the current page.
+        next:
+          type: string
+          description: Cursor pointing to the next page. Null if no more pages.
+        totalEntries:
+          type: integer
+          description: Total number of entries across all pages.
+  parameters:
+    PaginationCursor:
+      name: pagination[cursor]
+      in: query
+      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
+      schema:
+        type: string
+    WarehouseId:
+      name: warehouseId
+      in: path
+      required: true
+      description: The unique identifier of the warehouse.
+      schema:
+        type: string
+    PaginationCount:
+      name: pagination[count]
+      in: query
+      description: Number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 10
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/

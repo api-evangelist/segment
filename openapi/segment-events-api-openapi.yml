@@ -1,0 +1,186 @@
+openapi: 3.1.0
+info:
+  title: Segment Config Alias Events API
+  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  version: 1.0.0
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+servers:
+- url: https://platform.segmentapis.com/v1beta
+  description: Production Server (v1beta)
+security:
+- bearerAuth: []
+tags:
+- name: Events
+  description: Operations for retrieving events associated with a user or account profile.
+paths:
+  /collections/users/profiles/{externalId}/events:
+    get:
+      operationId: getUserEvents
+      summary: Get user events
+      description: Returns the events for a user profile identified by an external ID. Events represent the actions the user has taken and are returned in reverse chronological order.
+      tags:
+      - Events
+      parameters:
+      - $ref: '#/components/parameters/ExternalId'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Next'
+      responses:
+        '200':
+          description: User events retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Event'
+                    description: An array of event objects.
+                  cursor:
+                    $ref: '#/components/schemas/Cursor'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  schemas:
+    Cursor:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL to retrieve the next page.
+        has_more:
+          type: boolean
+          description: Whether there are more results.
+        next:
+          type: string
+          description: The cursor value for the next page.
+        limit:
+          type: integer
+          description: The number of items per page.
+    Event:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of event.
+          enum:
+          - identify
+          - track
+          - page
+          - screen
+          - group
+          - alias
+        event:
+          type: string
+          description: The name of the event, for track events.
+        properties:
+          type: object
+          description: Properties associated with the event.
+          additionalProperties: true
+        traits:
+          type: object
+          description: Traits associated with the event, for identify events.
+          additionalProperties: true
+        context:
+          type: object
+          description: Context information for the event.
+          additionalProperties: true
+        timestamp:
+          type: string
+          format: date-time
+          description: When the event occurred.
+        messageId:
+          type: string
+          description: Unique identifier for the event.
+        source_id:
+          type: string
+          description: The ID of the source that sent the event.
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 100
+    ExternalId:
+      name: externalId
+      in: path
+      required: true
+      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
+      schema:
+        type: string
+    Next:
+      name: next
+      in: query
+      description: Pagination cursor to retrieve the next page of results.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+    NotFound:
+      description: The requested profile was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+    RateLimited:
+      description: Too many requests. The Profile API enforces rate limits per space.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/

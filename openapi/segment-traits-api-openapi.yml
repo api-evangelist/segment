@@ -1,0 +1,188 @@
+openapi: 3.1.0
+info:
+  title: Segment Config Alias Traits API
+  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  version: 1.0.0
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+servers:
+- url: https://platform.segmentapis.com/v1beta
+  description: Production Server (v1beta)
+security:
+- bearerAuth: []
+tags:
+- name: Traits
+  description: Operations for retrieving computed and custom traits for user and account profiles.
+paths:
+  /collections/users/profiles/{externalId}/traits:
+    get:
+      operationId: getUserTraits
+      summary: Get user traits
+      description: Returns the traits for a user profile identified by an external ID. The external ID format is type:value, such as user_id:abc123 or email:user@example.com. Use the include parameter to specify which traits to retrieve for optimal performance.
+      tags:
+      - Traits
+      parameters:
+      - $ref: '#/components/parameters/ExternalId'
+      - name: include
+        in: query
+        description: Comma-separated list of trait names to include in the response. Recommended for best performance.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Next'
+      responses:
+        '200':
+          description: User traits retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  traits:
+                    type: object
+                    description: A map of trait names to their values.
+                    additionalProperties: true
+                  cursor:
+                    $ref: '#/components/schemas/Cursor'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /collections/accounts/profiles/{externalId}/traits:
+    get:
+      operationId: getAccountTraits
+      summary: Get account traits
+      description: Returns the traits for an account profile identified by an external ID. Account profiles are group-level profiles that aggregate data across users.
+      tags:
+      - Traits
+      parameters:
+      - $ref: '#/components/parameters/ExternalId'
+      - name: include
+        in: query
+        description: Comma-separated list of trait names to include.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Next'
+      responses:
+        '200':
+          description: Account traits retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  traits:
+                    type: object
+                    description: A map of trait names to their values.
+                    additionalProperties: true
+                  cursor:
+                    $ref: '#/components/schemas/Cursor'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  schemas:
+    Cursor:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL to retrieve the next page.
+        has_more:
+          type: boolean
+          description: Whether there are more results.
+        next:
+          type: string
+          description: The cursor value for the next page.
+        limit:
+          type: integer
+          description: The number of items per page.
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 100
+    ExternalId:
+      name: externalId
+      in: path
+      required: true
+      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
+      schema:
+        type: string
+    Next:
+      name: next
+      in: query
+      description: Pagination cursor to retrieve the next page of results.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+    NotFound:
+      description: The requested profile was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+    RateLimited:
+      description: Too many requests. The Profile API enforces rate limits per space.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/

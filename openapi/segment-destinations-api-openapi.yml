@@ -1,0 +1,596 @@
+openapi: 3.1.0
+info:
+  title: Segment Config Alias Destinations API
+  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  version: 1.0.0
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+servers:
+- url: https://platform.segmentapis.com/v1beta
+  description: Production Server (v1beta)
+security:
+- bearerAuth: []
+tags:
+- name: Destinations
+  description: Operations for managing destinations where collected data is sent.
+paths:
+  /workspaces/{workspaceName}/sources/{sourceName}/destinations:
+    get:
+      operationId: listDestinations
+      summary: List destinations
+      description: Returns a list of all destinations for a specific source in the workspace.
+      tags:
+      - Destinations
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceName'
+      - $ref: '#/components/parameters/SourceName'
+      responses:
+        '200':
+          description: Destinations retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  destinations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Destination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDestination
+      summary: Create destination
+      description: Creates a new destination for a specific source in the workspace.
+      tags:
+      - Destinations
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceName'
+      - $ref: '#/components/parameters/SourceName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - destination
+              properties:
+                destination:
+                  type: object
+                  required:
+                  - name
+                  - connection_mode
+                  properties:
+                    name:
+                      type: string
+                      description: The fully qualified name of the destination.
+                    connection_mode:
+                      type: string
+                      description: The connection mode for the destination.
+                      enum:
+                      - CLOUD
+                      - DEVICE
+                      - UNSPECIFIED
+                    enabled:
+                      type: boolean
+                      description: Whether the destination is enabled.
+                    config:
+                      type: array
+                      description: Configuration settings for the destination.
+                      items:
+                        $ref: '#/components/schemas/DestinationConfig'
+      responses:
+        '200':
+          description: Destination created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /workspaces/{workspaceName}/sources/{sourceName}/destinations/{destinationName}:
+    get:
+      operationId: getDestination
+      summary: Get destination
+      description: Returns a single destination by name for a specific source.
+      tags:
+      - Destinations
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceName'
+      - $ref: '#/components/parameters/SourceName'
+      - $ref: '#/components/parameters/DestinationName'
+      responses:
+        '200':
+          description: Destination retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateDestination
+      summary: Update destination
+      description: Updates a destination's configuration, including enabling or disabling it.
+      tags:
+      - Destinations
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceName'
+      - $ref: '#/components/parameters/SourceName'
+      - $ref: '#/components/parameters/DestinationName'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                destination:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: Whether the destination is enabled.
+                    config:
+                      type: array
+                      description: Updated configuration settings.
+                      items:
+                        $ref: '#/components/schemas/DestinationConfig'
+      responses:
+        '200':
+          description: Destination updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteDestination
+      summary: Delete destination
+      description: Deletes a destination from a source in the workspace.
+      tags:
+      - Destinations
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceName'
+      - $ref: '#/components/parameters/SourceName'
+      - $ref: '#/components/parameters/DestinationName'
+      responses:
+        '200':
+          description: Destination deleted successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /destinations:
+    get:
+      operationId: listDestinations
+      summary: List destinations
+      description: Returns a list of all destinations in the workspace, including their configuration and connection status.
+      tags:
+      - Destinations
+      parameters:
+      - $ref: '#/components/parameters/PaginationCursor'
+      - $ref: '#/components/parameters/PaginationCount'
+      responses:
+        '200':
+          description: Destinations retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      destinations:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Destination_2'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDestination
+      summary: Create destination
+      description: Creates a new destination connected to a source in the workspace.
+      tags:
+      - Destinations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - sourceId
+              - metadataId
+              properties:
+                sourceId:
+                  type: string
+                  description: The ID of the source to connect.
+                metadataId:
+                  type: string
+                  description: The ID of the destination metadata from the catalog.
+                enabled:
+                  type: boolean
+                  description: Whether the destination is enabled.
+                name:
+                  type: string
+                  description: Optional display name for the destination.
+                settings:
+                  type: object
+                  description: Configuration settings for the destination.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Destination created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      destination:
+                        $ref: '#/components/schemas/Destination_2'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /destinations/{destinationId}:
+    get:
+      operationId: getDestination
+      summary: Get destination
+      description: Returns a single destination by its ID, including its configuration and connection status.
+      tags:
+      - Destinations
+      parameters:
+      - $ref: '#/components/parameters/DestinationId'
+      responses:
+        '200':
+          description: Destination retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      destination:
+                        $ref: '#/components/schemas/Destination_2'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateDestination
+      summary: Update destination
+      description: Updates an existing destination with the provided changes.
+      tags:
+      - Destinations
+      parameters:
+      - $ref: '#/components/parameters/DestinationId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Updated display name.
+                enabled:
+                  type: boolean
+                  description: Whether the destination is enabled.
+                settings:
+                  type: object
+                  description: Updated configuration settings.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Destination updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      destination:
+                        $ref: '#/components/schemas/Destination_2'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteDestination
+      summary: Delete destination
+      description: Deletes a destination from the workspace by its ID.
+      tags:
+      - Destinations
+      parameters:
+      - $ref: '#/components/parameters/DestinationId'
+      responses:
+        '200':
+          description: Destination deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Status of the delete operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    CatalogDestination:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The metadata ID of the catalog destination.
+        name:
+          type: string
+          description: The name of the destination integration.
+        slug:
+          type: string
+          description: The URL-friendly slug.
+        description:
+          type: string
+          description: A description of the destination integration.
+        logos:
+          type: object
+          description: Logo URLs for the integration.
+          properties:
+            default:
+              type: string
+              format: uri
+              description: Default logo URL.
+            alt:
+              type: string
+              format: uri
+              description: Alternative logo URL.
+            mark:
+              type: string
+              format: uri
+              description: Mark logo URL.
+        categories:
+          type: array
+          items:
+            type: string
+          description: Categories this destination belongs to.
+        supportedMethods:
+          type: object
+          description: Which Segment methods this destination supports.
+          properties:
+            track:
+              type: boolean
+              description: Whether track calls are supported.
+            identify:
+              type: boolean
+              description: Whether identify calls are supported.
+            page:
+              type: boolean
+              description: Whether page calls are supported.
+            screen:
+              type: boolean
+              description: Whether screen calls are supported.
+            group:
+              type: boolean
+              description: Whether group calls are supported.
+            alias:
+              type: boolean
+              description: Whether alias calls are supported.
+    Destination_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the destination.
+        name:
+          type: string
+          description: The display name of the destination.
+        enabled:
+          type: boolean
+          description: Whether the destination is enabled.
+        sourceId:
+          type: string
+          description: The ID of the connected source.
+        metadata:
+          $ref: '#/components/schemas/CatalogDestination'
+        settings:
+          type: object
+          description: Configuration settings for the destination.
+          additionalProperties: true
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Label'
+          description: Labels applied to the destination.
+    DestinationConfig:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The fully qualified name of the config setting.
+        display_name:
+          type: string
+          description: The display name of the setting.
+        value:
+          description: The value of the setting. Can be any JSON type.
+        type:
+          type: string
+          description: The data type of the setting.
+          enum:
+          - boolean
+          - string
+          - number
+          - list
+          - map
+          - mixed
+    Label:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The label key.
+        value:
+          type: string
+          description: The label value.
+        description:
+          type: string
+          description: A description of the label.
+    Destination:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The fully qualified name of the destination.
+        parent:
+          type: string
+          description: The parent source name.
+        display_name:
+          type: string
+          description: The display name of the destination.
+        enabled:
+          type: boolean
+          description: Whether the destination is enabled.
+        connection_mode:
+          type: string
+          description: The connection mode.
+          enum:
+          - CLOUD
+          - DEVICE
+          - UNSPECIFIED
+        config:
+          type: array
+          description: Configuration settings for the destination.
+          items:
+            $ref: '#/components/schemas/DestinationConfig'
+        create_time:
+          type: string
+          format: date-time
+          description: When the destination was created.
+        update_time:
+          type: string
+          format: date-time
+          description: When the destination was last updated.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error type.
+        message:
+          type: string
+          description: A human-readable error message.
+    Pagination:
+      type: object
+      properties:
+        current:
+          type: string
+          description: Cursor pointing to the current page.
+        next:
+          type: string
+          description: Cursor pointing to the next page. Null if no more pages.
+        totalEntries:
+          type: integer
+          description: Total number of entries across all pages.
+  parameters:
+    WorkspaceName:
+      name: workspaceName
+      in: path
+      required: true
+      description: The name of the workspace.
+      schema:
+        type: string
+    DestinationName:
+      name: destinationName
+      in: path
+      required: true
+      description: The name of the destination.
+      schema:
+        type: string
+    PaginationCursor:
+      name: pagination[cursor]
+      in: query
+      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
+      schema:
+        type: string
+    SourceName:
+      name: sourceName
+      in: path
+      required: true
+      description: The name of the source.
+      schema:
+        type: string
+    PaginationCount:
+      name: pagination[count]
+      in: query
+      description: Number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 10
+    DestinationId:
+      name: destinationId
+      in: path
+      required: true
+      description: The unique identifier of the destination.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/

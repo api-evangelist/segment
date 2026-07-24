@@ -1,0 +1,366 @@
+openapi: 3.1.0
+info:
+  title: Segment Config Alias Functions API
+  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  version: 1.0.0
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+servers:
+- url: https://platform.segmentapis.com/v1beta
+  description: Production Server (v1beta)
+security:
+- bearerAuth: []
+tags:
+- name: Functions
+  description: Operations for managing custom functions that transform or enrich data flowing through Segment.
+paths:
+  /functions:
+    get:
+      operationId: listFunctions
+      summary: List functions
+      description: Returns a list of all custom functions in the workspace.
+      tags:
+      - Functions
+      parameters:
+      - $ref: '#/components/parameters/PaginationCursor'
+      - $ref: '#/components/parameters/PaginationCount'
+      - name: resourceType
+        in: query
+        description: Filter functions by resource type.
+        schema:
+          type: string
+          enum:
+          - DESTINATION
+          - INSERT_DESTINATION
+          - INSERT_SOURCE
+          - SOURCE
+      responses:
+        '200':
+          description: Functions retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      functions:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Function'
+                      pagination:
+                        $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createFunction
+      summary: Create function
+      description: Creates a new custom function in the workspace.
+      tags:
+      - Functions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - code
+              - resourceType
+              properties:
+                code:
+                  type: string
+                  description: The JavaScript code for the function.
+                displayName:
+                  type: string
+                  description: A display name for the function.
+                logoUrl:
+                  type: string
+                  format: uri
+                  description: URL of a logo image for the function.
+                resourceType:
+                  type: string
+                  description: The type of resource this function applies to.
+                  enum:
+                  - DESTINATION
+                  - INSERT_DESTINATION
+                  - INSERT_SOURCE
+                  - SOURCE
+                description:
+                  type: string
+                  description: A description of the function.
+                settings:
+                  type: array
+                  description: Settings definitions for the function.
+                  items:
+                    $ref: '#/components/schemas/FunctionSetting'
+      responses:
+        '200':
+          description: Function created successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      function:
+                        $ref: '#/components/schemas/Function'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /functions/{functionId}:
+    get:
+      operationId: getFunction
+      summary: Get function
+      description: Returns a single function by its ID.
+      tags:
+      - Functions
+      parameters:
+      - $ref: '#/components/parameters/FunctionId'
+      responses:
+        '200':
+          description: Function retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      function:
+                        $ref: '#/components/schemas/Function'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateFunction
+      summary: Update function
+      description: Updates an existing function with the provided changes.
+      tags:
+      - Functions
+      parameters:
+      - $ref: '#/components/parameters/FunctionId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: Updated JavaScript code.
+                displayName:
+                  type: string
+                  description: Updated display name.
+                description:
+                  type: string
+                  description: Updated description.
+                settings:
+                  type: array
+                  description: Updated settings definitions.
+                  items:
+                    $ref: '#/components/schemas/FunctionSetting'
+      responses:
+        '200':
+          description: Function updated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      function:
+                        $ref: '#/components/schemas/Function'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteFunction
+      summary: Delete function
+      description: Deletes a function from the workspace.
+      tags:
+      - Functions
+      parameters:
+      - $ref: '#/components/parameters/FunctionId'
+      responses:
+        '200':
+          description: Function deleted successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: Status of the delete operation.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    FunctionId:
+      name: functionId
+      in: path
+      required: true
+      description: The unique identifier of the function.
+      schema:
+        type: string
+    PaginationCursor:
+      name: pagination[cursor]
+      in: query
+      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
+      schema:
+        type: string
+    PaginationCount:
+      name: pagination[count]
+      in: query
+      description: Number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 10
+  schemas:
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The error type.
+              message:
+                type: string
+                description: A human-readable error message.
+              field:
+                type: string
+                description: The field that caused the error, if applicable.
+              data:
+                type: object
+                description: Additional error data.
+                additionalProperties: true
+    Function:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the function.
+        resourceType:
+          type: string
+          description: The type of resource this function applies to.
+          enum:
+          - DESTINATION
+          - INSERT_DESTINATION
+          - INSERT_SOURCE
+          - SOURCE
+        createdAt:
+          type: string
+          format: date-time
+          description: When the function was created.
+        createdBy:
+          type: string
+          description: The user who created the function.
+        code:
+          type: string
+          description: The JavaScript code of the function.
+        displayName:
+          type: string
+          description: The display name of the function.
+        description:
+          type: string
+          description: A description of the function.
+        logoUrl:
+          type: string
+          format: uri
+          description: URL of the function logo.
+        settings:
+          type: array
+          description: Settings definitions for the function.
+          items:
+            $ref: '#/components/schemas/FunctionSetting'
+    Pagination:
+      type: object
+      properties:
+        current:
+          type: string
+          description: Cursor pointing to the current page.
+        next:
+          type: string
+          description: Cursor pointing to the next page. Null if no more pages.
+        totalEntries:
+          type: integer
+          description: Total number of entries across all pages.
+    FunctionSetting:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the setting.
+        label:
+          type: string
+          description: A human-readable label for the setting.
+        description:
+          type: string
+          description: A description of the setting.
+        type:
+          type: string
+          description: The data type of the setting.
+          enum:
+          - BOOLEAN
+          - STRING
+          - TEXT_MAP
+        required:
+          type: boolean
+          description: Whether this setting is required.
+        sensitive:
+          type: boolean
+          description: Whether this setting contains sensitive data.
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/

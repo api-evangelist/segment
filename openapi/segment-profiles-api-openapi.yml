@@ -1,0 +1,119 @@
+openapi: 3.1.0
+info:
+  title: Segment Config Alias Profiles API
+  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  version: 1.0.0
+  contact:
+    name: Segment Support
+    url: https://segment.com/help/
+  termsOfService: https://segment.com/legal/terms/
+  x-status: deprecated
+servers:
+- url: https://platform.segmentapis.com/v1beta
+  description: Production Server (v1beta)
+security:
+- bearerAuth: []
+tags:
+- name: Profiles
+  description: Operations for retrieving user and account profile data from Segment Unify.
+paths:
+  /collections/users/profiles/{externalId}/metadata:
+    get:
+      operationId: getUserMetadata
+      summary: Get user metadata
+      description: Returns metadata for a user profile, including when the profile was created, last updated, and the total count of events and traits.
+      tags:
+      - Profiles
+      parameters:
+      - $ref: '#/components/parameters/ExternalId'
+      responses:
+        '200':
+          description: User metadata retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  segment_id:
+                    type: string
+                    description: The internal Segment profile ID.
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: When the profile was first created.
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: When the profile was last updated.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  parameters:
+    ExternalId:
+      name: externalId
+      in: path
+      required: true
+      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
+      schema:
+        type: string
+  responses:
+    RateLimited:
+      description: Too many requests. The Profile API enforces rate limits per space.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+    NotFound:
+      description: The requested profile was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+externalDocs:
+  description: Segment Config API Documentation
+  url: https://segment.com/docs/api/config-api/

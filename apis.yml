@@ -1,4 +1,25 @@
 aid: segment
+name: Twilio Segment
+x-type: company
+x-source: vc-portfolio
+specificationVersion: '0.20'
+created: '2026-05-19'
+tags:
+- Company
+- Customer Data Platform
+- CDP
+- Identity Resolution
+- Event Streaming
+- Reverse ETL
+- Data Pipeline
+- Customer Data
+- Analytics
+- Acquired
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+- FN: APIs.json
+  email: info@apis.io
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -551,6 +572,28 @@ apis:
   - type: Documentation
     url: https://www.twilio.com/docs/segment/api/config-api
 common:
+- type: Website
+  url: https://segment.com
+- type: DeveloperPortal
+  url: https://www.twilio.com/docs/segment
+- type: Documentation
+  url: https://www.twilio.com/docs/segment
+- type: APIReference
+  url: https://docs.segmentapis.com
+- type: GettingStarted
+  url: https://www.twilio.com/docs/segment/api
+- type: Pricing
+  url: https://segment.com/pricing
+- type: Login
+  url: https://app.segment.com/login
+- type: TermsOfService
+  url: https://segment.com/legal/terms
+- type: PrivacyPolicy
+  url: https://segment.com/legal/privacy
+- type: Blog
+  url: https://segment.com/blog
+- type: StatusPage
+  url: https://status.segment.com
 - type: AgenticAccess
   url: agentic-access/segment-agentic-access.yml
 - type: DomainSecurity
@@ -590,6 +633,67 @@ common:
   sources:
   - https://www.twilio.com/en-us/pricing/customer-data
   updated: '2026-05-04'
-description: Segment is a customer data platform that helps companies collect, clean,
-  and route customer data to hundreds of tools used for analytics, marketing, and
-  data warehousing.
+description: >-
+  Twilio Segment is a customer data platform that collects, cleans, and routes customer data to
+  hundreds of downstream tools for analytics, marketing, and data warehousing. Its surface spans
+  event collection (the HTTP Tracking API with identify, track, page, screen, group and alias
+  calls, plus a pixel endpoint for environments where JavaScript cannot run), a Public API for
+  programmatic management of workspaces, sources, destinations, warehouses, tracking plans,
+  functions and transformations, Unify for identity resolution, Engage for audiences, Protocols
+  for tracking-plan governance, Reverse ETL for warehouse-to-tool syncs, and connections to 90+
+  warehouses including BigQuery, Snowflake and Databricks. Segment was acquired by Twilio in a
+  $3.2B all-stock deal completed in 2020 and now sits inside Twilio's platform; Twilio completed
+  an operational review in March 2024 and retained the business despite activist-investor pressure
+  to divest. The docs, pricing and legal pages have moved onto twilio.com, and the legacy Segment
+  Analytics libraries for iOS and Android reached full sunset on 2026-03-31. The older Config API
+  is deprecated — no new tokens have been issued since early 2024 — with the Public API as the
+  recommended replacement. The Public API host is authenticated: api.segmentapis.com returns 401
+  anonymously, and no OpenAPI is publicly fetchable (see x-evidence).
+x-evidence:
+  harvested: '2026-08-04'
+  request: >-
+    Surfaced by the graph8 / Thomas Cornelius call 2026-08-04. graph8's data-pipeline product is
+    built as a Segment/RudderStack equivalent, but all/segment carried NO name, NO tags, NO
+    maintainers, NO created date and NO x-type — so a CDP central to the revenue cohort was
+    invisible to every tag index on apis.io.
+  probes:
+  - https://segment.com -> HTTP 200, "Twilio Segment Customer Data Platform"
+  - https://segment.com/pricing -> HTTP 200, real (814,905 bytes)
+  - https://segment.com/blog -> HTTP 200, real
+  - https://segment.com/legal/terms -> HTTP 200, real
+  - https://segment.com/legal/privacy -> HTTP 200, real
+  - https://status.segment.com -> HTTP 200, real
+  - https://app.segment.com/login -> HTTP 200, real
+  - https://www.twilio.com/docs/segment -> HTTP 200, real
+  - https://www.twilio.com/docs/segment/api -> HTTP 200, real
+  - https://docs.segmentapis.com -> HTTP 200, Public API reference
+  - https://github.com/segmentio -> HTTP 200
+  - https://api.segmentapis.com -> HTTP 401 (auth-gated; the API host is real but closed)
+  - https://api.segmentapis.com/openapi.json -> HTTP 401
+  - https://docs.segmentapis.com/openapi.json -> HTTP 404
+  - https://docs.segmentapis.com/openapi.yaml -> HTTP 404
+  - https://segment.com/docs/ -> HTTP 403
+  - https://segment.com/zzz-control-nonsense-xyz789 -> HTTP 200, 608,838 bytes (CATCH-ALL)
+  findings:
+    llms_txt_false_positive: >-
+      segment.com/llms.txt returns HTTP 200 but serves Twilio's HTML "Page not found" page,
+      608,837 bytes, content-type text/html — one byte off a control path that returns the same
+      shell. Segment does NOT publish an llms.txt. Any scoring pass that trusts the 200 will
+      award agent-readiness points that were never earned. Same defect class as graph8's
+      /api/openapi.json.
+    twilio_soft_404_catch_all: >-
+      segment.com serves HTTP 200 with the Twilio 404 shell for ANY unknown path. Every probe
+      against this host must be diffed against a control path; status code alone is meaningless.
+    no_public_openapi: >-
+      No OpenAPI is publicly fetchable. The Public API host is authenticated (401) and the docs
+      host serves a rendered reference, not a spec document.
+    unlabeled_generated_specs: >-
+      The 23 refined OpenAPIs under openapi/ plus the 4 under openapi/_original/ carry NO
+      provenance markers — no x-generated, no x-method, no x-origin — and read as though Segment
+      published them. Given no spec is fetchable from Segment, these are pipeline-derived from
+      documentation. They need provenance stamps before any score built on them is defensible.
+      NOT relabeled in this pass: it changes contract-quality scoring and is very likely a
+      catalog-wide pattern, so it belongs in the kin-score ROADMAP, not a one-provider edit.
+    config_api_deprecated: >-
+      The Config API (platform.segmentapis.com/v1beta) is deprecated; no new tokens since early
+      2024. Legacy Segment Analytics iOS/Android libraries fully sunset 2026-03-31.

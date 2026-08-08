@@ -1,0 +1,14 @@
+{
+  "repo": "segment",
+  "feeds": [
+    {
+      "source": "https://segment.com/legal/privacy",
+      "feed_url": "https://segment.com/legal/privacy",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-06T14:08:46Z"
+}

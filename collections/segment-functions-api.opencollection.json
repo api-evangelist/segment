@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Functions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List functions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/functions",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              },
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "query",
+                "description": "Filter functions by resource type."
+              }
+            ]
+          },
+          "docs": "Returns a list of all custom functions in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create function",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/functions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new custom function in the workspace."
+        },
+        {
+          "info": {
+            "name": "Get function",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/functions/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Returns a single function by its ID."
+        },
+        {
+          "info": {
+            "name": "Update function",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://platform.segmentapis.com/v1beta/functions/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing function with the provided changes."
+        },
+        {
+          "info": {
+            "name": "Delete function",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.segmentapis.com/v1beta/functions/:functionId",
+            "params": [
+              {
+                "name": "functionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the function."
+              }
+            ]
+          },
+          "docs": "Deletes a function from the workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

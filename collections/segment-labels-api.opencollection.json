@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Labels API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Labels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/labels"
+          },
+          "docs": "Returns a list of all labels in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create label",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/labels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new label in the workspace for organizing resources."
+        },
+        {
+          "info": {
+            "name": "Delete label",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.segmentapis.com/v1beta/labels/:labelKey/:labelValue",
+            "params": [
+              {
+                "name": "labelKey",
+                "value": "",
+                "type": "path",
+                "description": "The label key."
+              },
+              {
+                "name": "labelValue",
+                "value": "",
+                "type": "path",
+                "description": "The label value."
+              }
+            ]
+          },
+          "docs": "Deletes a label from the workspace by key and value."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

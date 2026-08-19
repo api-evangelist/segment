@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Batch API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Batch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send a batch of events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends multiple identify, track, page, screen, group, and alias calls in a single request. The batch endpoint accepts up to 500 KB per request and a maximum of 2500 events per batch. Each individual event must be less than 32 KB."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

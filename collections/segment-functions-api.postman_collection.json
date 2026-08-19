@@ -1,0 +1,1105 @@
+{
+  "item": [
+    {
+      "id": "858c2700-6620-48c8-bdb5-198c31ae4c22",
+      "name": "Functions",
+      "description": {
+        "content": "Operations for managing custom functions that transform or enrich data flowing through Segment.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8888ffe-d33b-417e-a9d8-d05bb134bc9d",
+          "name": "List functions",
+          "request": {
+            "name": "List functions",
+            "description": {
+              "content": "Returns a list of all custom functions in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "functions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pagination[cursor]",
+                  "value": "<string>",
+                  "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pagination[count]",
+                  "value": "10",
+                  "description": "Number of items to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "resourceType",
+                  "value": "<string>",
+                  "description": "Filter functions by resource type."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2d0607a-2b5f-4820-8954-975e822f6890",
+              "name": "Functions retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination[cursor]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pagination[count]",
+                      "value": "10"
+                    },
+                    {
+                      "key": "resourceType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"functions\": [\n      {\n        \"id\": \"string\",\n        \"resourceType\": \"INSERT_DESTINATION\",\n        \"createdAt\": \"1959-04-23T02:19:48.746Z\",\n        \"createdBy\": \"string\",\n        \"code\": \"string\",\n        \"displayName\": \"string\",\n        \"description\": \"string\",\n        \"logoUrl\": \"http://WdSejPY.yfnsFQMOfXaNhkJiSnGV,NJeDx4nicxL3h4g7qDRxN6w6vYEkM\",\n        \"settings\": [\n          {\n            \"name\": \"string\",\n            \"label\": \"string\",\n            \"description\": \"string\",\n            \"type\": \"TEXT_MAP\",\n            \"required\": true,\n            \"sensitive\": true\n          },\n          {\n            \"name\": \"string\",\n            \"label\": \"string\",\n            \"description\": \"string\",\n            \"type\": \"TEXT_MAP\",\n            \"required\": true,\n            \"sensitive\": true\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"resourceType\": \"INSERT_SOURCE\",\n        \"createdAt\": \"2011-07-27T02:04:33.956Z\",\n        \"createdBy\": \"string\",\n        \"code\": \"string\",\n        \"displayName\": \"string\",\n        \"description\": \"string\",\n        \"logoUrl\": \"https://rzPbpiFaxS.nopf8Tr84drIzUZTDsS8lt9HiUdE.mICjQ.DWaQWHbhl6TcKt\",\n        \"settings\": [\n          {\n            \"name\": \"string\",\n            \"label\": \"string\",\n            \"description\": \"string\",\n            \"type\": \"TEXT_MAP\",\n            \"required\": false,\n            \"sensitive\": true\n          },\n          {\n            \"name\": \"string\",\n            \"label\": \"string\",\n            \"description\": \"string\",\n            \"type\": \"TEXT_MAP\",\n            \"required\": true,\n            \"sensitive\": true\n          }\n        ]\n      }\n    ],\n    \"pagination\": {\n      \"current\": \"string\",\n      \"next\": \"string\",\n      \"totalEntries\": 3643\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "490b32ad-0f68-4789-b5a0-e2ae5dcf82ec",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination[cursor]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pagination[count]",
+                      "value": "10"
+                    },
+                    {
+                      "key": "resourceType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 4011.6549602581977,\n        \"key_1\": true,\n        \"key_2\": 1665.4340026976622,\n        \"key_3\": 1410,\n        \"key_4\": 3485\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eac46677-0cb5-45f9-9c89-f0c238421bb2",
+          "name": "Create function",
+          "request": {
+            "name": "Create function",
+            "description": {
+              "content": "Creates a new custom function in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "functions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"resourceType\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"logoUrl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sensitive\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sensitive\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9f3e82be-b870-448b-8b39-a313b9f7cc7b",
+              "name": "Function created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"resourceType\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"logoUrl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"BOOLEAN\",\n      \"required\": false,\n      \"sensitive\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"BOOLEAN\",\n      \"required\": true,\n      \"sensitive\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"function\": {\n      \"id\": \"string\",\n      \"resourceType\": \"DESTINATION\",\n      \"createdAt\": \"2007-10-04T06:03:23.519Z\",\n      \"createdBy\": \"string\",\n      \"code\": \"string\",\n      \"displayName\": \"string\",\n      \"description\": \"string\",\n      \"logoUrl\": \"http://pEurJohxtNoqO.cnnoxJO1pkFtFZpImNQyas4XKeDjbSN0Yrtd.\",\n      \"settings\": [\n        {\n          \"name\": \"string\",\n          \"label\": \"string\",\n          \"description\": \"string\",\n          \"type\": \"BOOLEAN\",\n          \"required\": false,\n          \"sensitive\": true\n        },\n        {\n          \"name\": \"string\",\n          \"label\": \"string\",\n          \"description\": \"string\",\n          \"type\": \"STRING\",\n          \"required\": false,\n          \"sensitive\": true\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "052e3642-f24b-480d-aa61-ec7c089f16da",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"resourceType\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"logoUrl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"BOOLEAN\",\n      \"required\": false,\n      \"sensitive\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"BOOLEAN\",\n      \"required\": true,\n      \"sensitive\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 4011.6549602581977,\n        \"key_1\": true,\n        \"key_2\": 1665.4340026976622,\n        \"key_3\": 1410,\n        \"key_4\": 3485\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e14ec33-260d-42ac-80af-b317fdf5b1ad",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"resourceType\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"logoUrl\": \"<uri>\",\n  \"description\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"BOOLEAN\",\n      \"required\": false,\n      \"sensitive\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"BOOLEAN\",\n      \"required\": true,\n      \"sensitive\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 973.4955821558843\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93be9575-9c8f-4fd5-bdc5-6df458429ec6",
+          "name": "Get function",
+          "request": {
+            "name": "Get function",
+            "description": {
+              "content": "Returns a single function by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "functions",
+                ":functionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionId",
+                  "description": "(Required) The unique identifier of the function."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18bb45b1-c124-4e91-b0d3-d257daed1a3e",
+              "name": "Function retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions",
+                    ":functionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionId",
+                      "description": "(Required) The unique identifier of the function."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"function\": {\n      \"id\": \"string\",\n      \"resourceType\": \"DESTINATION\",\n      \"createdAt\": \"2007-10-04T06:03:23.519Z\",\n      \"createdBy\": \"string\",\n      \"code\": \"string\",\n      \"displayName\": \"string\",\n      \"description\": \"string\",\n      \"logoUrl\": \"http://pEurJohxtNoqO.cnnoxJO1pkFtFZpImNQyas4XKeDjbSN0Yrtd.\",\n      \"settings\": [\n        {\n          \"name\": \"string\",\n          \"label\": \"string\",\n          \"description\": \"string\",\n          \"type\": \"BOOLEAN\",\n          \"required\": false,\n          \"sensitive\": true\n        },\n        {\n          \"name\": \"string\",\n          \"label\": \"string\",\n          \"description\": \"string\",\n          \"type\": \"STRING\",\n          \"required\": false,\n          \"sensitive\": true\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d84afa8a-1f18-476c-b0bb-41acf42da522",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions",
+                    ":functionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionId",
+                      "description": "(Required) The unique identifier of the function."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 973.4955821558843\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d12a700-6ac0-4f89-86fa-1f66f67c2a12",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions",
+                    ":functionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionId",
+                      "description": "(Required) The unique identifier of the function."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 4011.6549602581977,\n        \"key_1\": true,\n        \"key_2\": 1665.4340026976622,\n        \"key_3\": 1410,\n        \"key_4\": 3485\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0c69a6f-b041-4509-b052-4cc9586e8581",
+          "name": "Update function",
+          "request": {
+            "name": "Update function",
+            "description": {
+              "content": "Updates an existing function with the provided changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "functions",
+                ":functionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionId",
+                  "description": "(Required) The unique identifier of the function."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sensitive\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"label\": \"<string>\",\n      \"description\": \"<string>\",\n      \"type\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"sensitive\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fc0c709d-1fae-4ac6-a179-93207e622e9e",
+              "name": "Function updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions",
+                    ":functionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionId",
+                      "description": "(Required) The unique identifier of the function."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"TEXT_MAP\",\n      \"required\": false,\n      \"sensitive\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"TEXT_MAP\",\n      \"required\": false,\n      \"sensitive\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"function\": {\n      \"id\": \"string\",\n      \"resourceType\": \"DESTINATION\",\n      \"createdAt\": \"2007-10-04T06:03:23.519Z\",\n      \"createdBy\": \"string\",\n      \"code\": \"string\",\n      \"displayName\": \"string\",\n      \"description\": \"string\",\n      \"logoUrl\": \"http://pEurJohxtNoqO.cnnoxJO1pkFtFZpImNQyas4XKeDjbSN0Yrtd.\",\n      \"settings\": [\n        {\n          \"name\": \"string\",\n          \"label\": \"string\",\n          \"description\": \"string\",\n          \"type\": \"BOOLEAN\",\n          \"required\": false,\n          \"sensitive\": true\n        },\n        {\n          \"name\": \"string\",\n          \"label\": \"string\",\n          \"description\": \"string\",\n          \"type\": \"STRING\",\n          \"required\": false,\n          \"sensitive\": true\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "167550a7-c856-4821-8283-fe9c729ab056",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions",
+                    ":functionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionId",
+                      "description": "(Required) The unique identifier of the function."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"TEXT_MAP\",\n      \"required\": false,\n      \"sensitive\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"TEXT_MAP\",\n      \"required\": false,\n      \"sensitive\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 973.4955821558843\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7b71aeb-3c56-4253-b37a-90414afd6d16",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions",
+                    ":functionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionId",
+                      "description": "(Required) The unique identifier of the function."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"TEXT_MAP\",\n      \"required\": false,\n      \"sensitive\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"TEXT_MAP\",\n      \"required\": false,\n      \"sensitive\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 973.4955821558843\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfd44013-432d-4571-b107-d7a2b625a895",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions",
+                    ":functionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionId",
+                      "description": "(Required) The unique identifier of the function."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"settings\": [\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"TEXT_MAP\",\n      \"required\": false,\n      \"sensitive\": false\n    },\n    {\n      \"name\": \"string\",\n      \"label\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"TEXT_MAP\",\n      \"required\": false,\n      \"sensitive\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 973.4955821558843\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a0d051e-e8ab-4120-9426-5eee2f723249",
+          "name": "Delete function",
+          "request": {
+            "name": "Delete function",
+            "description": {
+              "content": "Deletes a function from the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "functions",
+                ":functionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionId",
+                  "description": "(Required) The unique identifier of the function."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e53cc1a7-e7b6-44f4-b1d8-fb059955ffe9",
+              "name": "Function deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions",
+                    ":functionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionId",
+                      "description": "(Required) The unique identifier of the function."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f10ee7e7-0cb1-4ca5-859f-a60e3cea4119",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions",
+                    ":functionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionId",
+                      "description": "(Required) The unique identifier of the function."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 973.4955821558843\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1986c2f1-98f2-4450-a9f3-3eb76be2c257",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "functions",
+                    ":functionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionId",
+                      "description": "(Required) The unique identifier of the function."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": \"string\",\n        \"key_1\": 973.4955821558843\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.segmentapis.com/v1beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ce4c960e-673d-4e95-bfb4-e02441dcc7e8",
+    "name": "Segment Config Alias Functions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.\n\nContact Support:\n Name: Segment Support",
+      "type": "text/plain"
+    }
+  }
+}

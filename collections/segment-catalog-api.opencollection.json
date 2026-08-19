@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Catalog API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List catalog sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/catalog/sources",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all available source integrations in the Segment catalog."
+        },
+        {
+          "info": {
+            "name": "Get catalog source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/catalog/sources/:sourceMetadataId",
+            "params": [
+              {
+                "name": "sourceMetadataId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the source metadata."
+              }
+            ]
+          },
+          "docs": "Returns a single source integration from the catalog by its metadata ID."
+        },
+        {
+          "info": {
+            "name": "List catalog destinations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/catalog/destinations",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all available destination integrations in the Segment catalog."
+        },
+        {
+          "info": {
+            "name": "Get catalog destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/catalog/destinations/:destinationMetadataId",
+            "params": [
+              {
+                "name": "destinationMetadataId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the destination metadata."
+              }
+            ]
+          },
+          "docs": "Returns a single destination integration from the catalog by its metadata ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

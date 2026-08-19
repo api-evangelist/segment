@@ -1,0 +1,308 @@
+{
+  "item": [
+    {
+      "id": "08c698d4-c77b-4abc-a670-c5dd8454b422",
+      "name": "Profiles",
+      "description": {
+        "content": "Operations for retrieving user and account profile data from Segment Unify.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e6c5de9c-ed61-4e3f-93e5-74fb51010ae3",
+          "name": "Get user metadata",
+          "request": {
+            "name": "Get user metadata",
+            "description": {
+              "content": "Returns metadata for a user profile, including when the profile was created, last updated, and the total count of events and traits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                "users",
+                "profiles",
+                ":externalId",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "238bc033-3c5a-4fe8-a6f1-625787a93080",
+              "name": "User metadata retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"segment_id\": \"string\",\n  \"created_at\": \"1954-07-29T12:06:44.267Z\",\n  \"updated_at\": \"2024-06-18T01:37:04.568Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "364149ec-700f-46cd-af98-e21ff888a27a",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d4ece0e-919f-4a53-b1da-5561442d8b23",
+              "name": "The requested profile was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a138cf67-58f3-4345-968c-6b06e76ef3d6",
+              "name": "Too many requests. The Profile API enforces rate limits per space.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    "users",
+                    "profiles",
+                    ":externalId",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.segmentapis.com/v1beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dccf3d2a-e4a1-4682-9398-83c32c3a1634",
+    "name": "Segment Config Alias Profiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.\n\nContact Support:\n Name: Segment Support",
+      "type": "text/plain"
+    }
+  }
+}

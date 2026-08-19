@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Events API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/collections/users/profiles/:externalId/events",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return per page."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the events for a user profile identified by an external ID. Events represent the actions the user has taken and are returned in reverse chronological order."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

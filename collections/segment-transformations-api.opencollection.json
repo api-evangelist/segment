@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Transformations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transformations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List transformations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/transformations",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all transformations in the workspace. Requires the Protocols feature to be enabled."
+        },
+        {
+          "info": {
+            "name": "Create transformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/transformations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new transformation in the workspace."
+        },
+        {
+          "info": {
+            "name": "Get transformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/transformations/:transformationId",
+            "params": [
+              {
+                "name": "transformationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the transformation."
+              }
+            ]
+          },
+          "docs": "Returns a single transformation by its ID."
+        },
+        {
+          "info": {
+            "name": "Update transformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://platform.segmentapis.com/v1beta/transformations/:transformationId",
+            "params": [
+              {
+                "name": "transformationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the transformation."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing transformation with the provided changes."
+        },
+        {
+          "info": {
+            "name": "Delete transformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.segmentapis.com/v1beta/transformations/:transformationId",
+            "params": [
+              {
+                "name": "transformationId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the transformation."
+              }
+            ]
+          },
+          "docs": "Deletes a transformation from the workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

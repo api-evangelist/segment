@@ -1,0 +1,1091 @@
+{
+  "item": [
+    {
+      "id": "a9f0d2e8-f668-4a30-b2a6-6581cb4772ad",
+      "name": "Transformations",
+      "description": {
+        "content": "Operations for managing transformations that modify event data before it reaches destinations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ebfd18a8-dcba-4e38-a217-ddb26a356a9c",
+          "name": "List transformations",
+          "request": {
+            "name": "List transformations",
+            "description": {
+              "content": "Returns a list of all transformations in the workspace. Requires the Protocols feature to be enabled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transformations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pagination[cursor]",
+                  "value": "<string>",
+                  "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pagination[count]",
+                  "value": "10",
+                  "description": "Number of items to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ecf68c4-e252-46c5-9afe-81e6c47202ff",
+              "name": "Transformations retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination[cursor]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pagination[count]",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"transformations\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"sourceId\": \"string\",\n        \"destinationMetadataId\": \"string\",\n        \"enabled\": false,\n        \"if\": \"string\",\n        \"newEventName\": \"string\",\n        \"propertyRenames\": [\n          {\n            \"oldName\": \"string\",\n            \"newName\": \"string\"\n          },\n          {\n            \"oldName\": \"string\",\n            \"newName\": \"string\"\n          }\n        ],\n        \"propertyValueTransformations\": [\n          {\n            \"propertyPaths\": [\n              \"string\",\n              \"string\"\n            ],\n            \"propertyValue\": \"string\"\n          },\n          {\n            \"propertyPaths\": [\n              \"string\",\n              \"string\"\n            ],\n            \"propertyValue\": \"string\"\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"sourceId\": \"string\",\n        \"destinationMetadataId\": \"string\",\n        \"enabled\": true,\n        \"if\": \"string\",\n        \"newEventName\": \"string\",\n        \"propertyRenames\": [\n          {\n            \"oldName\": \"string\",\n            \"newName\": \"string\"\n          },\n          {\n            \"oldName\": \"string\",\n            \"newName\": \"string\"\n          }\n        ],\n        \"propertyValueTransformations\": [\n          {\n            \"propertyPaths\": [\n              \"string\",\n              \"string\"\n            ],\n            \"propertyValue\": \"string\"\n          },\n          {\n            \"propertyPaths\": [\n              \"string\",\n              \"string\"\n            ],\n            \"propertyValue\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"pagination\": {\n      \"current\": \"string\",\n      \"next\": \"string\",\n      \"totalEntries\": 1895\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed64d7bb-4710-46b8-a660-cd3c78214ab3",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination[cursor]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pagination[count]",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 8453\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": 2233.2257677779135,\n        \"key_2\": 4368.957487273486\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e10c8a6a-abdd-4633-b01c-fea0dc5c886e",
+          "name": "Create transformation",
+          "request": {
+            "name": "Create transformation",
+            "description": {
+              "content": "Creates a new transformation in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transformations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"destinationMetadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"if\": \"<string>\",\n  \"newEventName\": \"<string>\",\n  \"propertyRenames\": [\n    {\n      \"oldName\": \"<string>\",\n      \"newName\": \"<string>\"\n    },\n    {\n      \"oldName\": \"<string>\",\n      \"newName\": \"<string>\"\n    }\n  ],\n  \"propertyValueTransformations\": [\n    {\n      \"propertyPaths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"propertyValue\": \"<string>\"\n    },\n    {\n      \"propertyPaths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"propertyValue\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0baa04ea-7697-4c76-aae8-539f2ae3069c",
+              "name": "Transformation created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"destinationMetadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"if\": \"<string>\",\n  \"newEventName\": \"<string>\",\n  \"propertyRenames\": [\n    {\n      \"oldName\": \"<string>\",\n      \"newName\": \"<string>\"\n    },\n    {\n      \"oldName\": \"<string>\",\n      \"newName\": \"<string>\"\n    }\n  ],\n  \"propertyValueTransformations\": [\n    {\n      \"propertyPaths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"propertyValue\": \"<string>\"\n    },\n    {\n      \"propertyPaths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"propertyValue\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"transformation\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"sourceId\": \"string\",\n      \"destinationMetadataId\": \"string\",\n      \"enabled\": true,\n      \"if\": \"string\",\n      \"newEventName\": \"string\",\n      \"propertyRenames\": [\n        {\n          \"oldName\": \"string\",\n          \"newName\": \"string\"\n        },\n        {\n          \"oldName\": \"string\",\n          \"newName\": \"string\"\n        }\n      ],\n      \"propertyValueTransformations\": [\n        {\n          \"propertyPaths\": [\n            \"string\",\n            \"string\"\n          ],\n          \"propertyValue\": \"string\"\n        },\n        {\n          \"propertyPaths\": [\n            \"string\",\n            \"string\"\n          ],\n          \"propertyValue\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04411712-2aaa-4fea-a221-ce14d1bd1a0c",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"destinationMetadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"if\": \"<string>\",\n  \"newEventName\": \"<string>\",\n  \"propertyRenames\": [\n    {\n      \"oldName\": \"<string>\",\n      \"newName\": \"<string>\"\n    },\n    {\n      \"oldName\": \"<string>\",\n      \"newName\": \"<string>\"\n    }\n  ],\n  \"propertyValueTransformations\": [\n    {\n      \"propertyPaths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"propertyValue\": \"<string>\"\n    },\n    {\n      \"propertyPaths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"propertyValue\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 8453\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": 2233.2257677779135,\n        \"key_2\": 4368.957487273486\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aeb030a4-5650-42d3-87a7-75131e0749ed",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sourceId\": \"<string>\",\n  \"destinationMetadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"if\": \"<string>\",\n  \"newEventName\": \"<string>\",\n  \"propertyRenames\": [\n    {\n      \"oldName\": \"<string>\",\n      \"newName\": \"<string>\"\n    },\n    {\n      \"oldName\": \"<string>\",\n      \"newName\": \"<string>\"\n    }\n  ],\n  \"propertyValueTransformations\": [\n    {\n      \"propertyPaths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"propertyValue\": \"<string>\"\n    },\n    {\n      \"propertyPaths\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"propertyValue\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": true\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9defed0d-a4a1-41fe-be59-2f1b91a7c97a",
+          "name": "Get transformation",
+          "request": {
+            "name": "Get transformation",
+            "description": {
+              "content": "Returns a single transformation by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transformations",
+                ":transformationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transformationId",
+                  "description": "(Required) The unique identifier of the transformation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "33bc512f-e511-41fc-9352-ad744c12dc51",
+              "name": "Transformation retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations",
+                    ":transformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transformationId",
+                      "description": "(Required) The unique identifier of the transformation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"transformation\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"sourceId\": \"string\",\n      \"destinationMetadataId\": \"string\",\n      \"enabled\": true,\n      \"if\": \"string\",\n      \"newEventName\": \"string\",\n      \"propertyRenames\": [\n        {\n          \"oldName\": \"string\",\n          \"newName\": \"string\"\n        },\n        {\n          \"oldName\": \"string\",\n          \"newName\": \"string\"\n        }\n      ],\n      \"propertyValueTransformations\": [\n        {\n          \"propertyPaths\": [\n            \"string\",\n            \"string\"\n          ],\n          \"propertyValue\": \"string\"\n        },\n        {\n          \"propertyPaths\": [\n            \"string\",\n            \"string\"\n          ],\n          \"propertyValue\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c03640ed-06a4-4280-b88c-e52336f61044",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations",
+                    ":transformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transformationId",
+                      "description": "(Required) The unique identifier of the transformation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": true\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78d8b9d5-f836-4847-888c-904d13eeb5d3",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations",
+                    ":transformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transformationId",
+                      "description": "(Required) The unique identifier of the transformation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 8453\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": 2233.2257677779135,\n        \"key_2\": 4368.957487273486\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0dbaca8-72ca-4f0e-96fe-38329cdbd817",
+          "name": "Update transformation",
+          "request": {
+            "name": "Update transformation",
+            "description": {
+              "content": "Updates an existing transformation with the provided changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transformations",
+                ":transformationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transformationId",
+                  "description": "(Required) The unique identifier of the transformation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"if\": \"<string>\",\n  \"newEventName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e45a624d-18c5-4eb5-8327-498d4537988b",
+              "name": "Transformation updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations",
+                    ":transformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transformationId",
+                      "description": "(Required) The unique identifier of the transformation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"if\": \"<string>\",\n  \"newEventName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"transformation\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"sourceId\": \"string\",\n      \"destinationMetadataId\": \"string\",\n      \"enabled\": true,\n      \"if\": \"string\",\n      \"newEventName\": \"string\",\n      \"propertyRenames\": [\n        {\n          \"oldName\": \"string\",\n          \"newName\": \"string\"\n        },\n        {\n          \"oldName\": \"string\",\n          \"newName\": \"string\"\n        }\n      ],\n      \"propertyValueTransformations\": [\n        {\n          \"propertyPaths\": [\n            \"string\",\n            \"string\"\n          ],\n          \"propertyValue\": \"string\"\n        },\n        {\n          \"propertyPaths\": [\n            \"string\",\n            \"string\"\n          ],\n          \"propertyValue\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "225b0064-d7a0-4ebf-be79-514fb732ee88",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations",
+                    ":transformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transformationId",
+                      "description": "(Required) The unique identifier of the transformation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"if\": \"<string>\",\n  \"newEventName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": true\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e5a9c72-4878-46a6-9731-9b7584a4180a",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations",
+                    ":transformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transformationId",
+                      "description": "(Required) The unique identifier of the transformation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"if\": \"<string>\",\n  \"newEventName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": true\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff55dc53-2fc5-4b08-9730-62a8c71c4930",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations",
+                    ":transformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transformationId",
+                      "description": "(Required) The unique identifier of the transformation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"if\": \"<string>\",\n  \"newEventName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": true\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "164f302e-a14b-40f9-819a-33d3cde655ff",
+          "name": "Delete transformation",
+          "request": {
+            "name": "Delete transformation",
+            "description": {
+              "content": "Deletes a transformation from the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transformations",
+                ":transformationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transformationId",
+                  "description": "(Required) The unique identifier of the transformation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ebd57b70-1a71-426e-a0ef-b41e95f62f00",
+              "name": "Transformation deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations",
+                    ":transformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transformationId",
+                      "description": "(Required) The unique identifier of the transformation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69aaac42-5073-4ae0-8732-6b9b2014abc3",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations",
+                    ":transformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transformationId",
+                      "description": "(Required) The unique identifier of the transformation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": true\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66cc2cfc-4291-42c6-93d5-6dee1bd2f489",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transformations",
+                    ":transformationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transformationId",
+                      "description": "(Required) The unique identifier of the transformation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": true\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.segmentapis.com/v1beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "233034ff-a34c-428e-a2e8-e413b7c2526c",
+    "name": "Segment Config Alias Transformations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.\n\nContact Support:\n Name: Segment Support",
+      "type": "text/plain"
+    }
+  }
+}

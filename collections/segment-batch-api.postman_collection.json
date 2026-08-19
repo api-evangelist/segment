@@ -1,0 +1,242 @@
+{
+  "item": [
+    {
+      "id": "eec5ec33-506a-4b0a-8f36-cf0d9be637ac",
+      "name": "Batch",
+      "description": {
+        "content": "Operations for sending multiple calls in a single request.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b6956f5d-4079-4362-b900-161c3bc925b3",
+          "name": "Send a batch of events",
+          "request": {
+            "name": "Send a batch of events",
+            "description": {
+              "content": "Sends multiple identify, track, page, screen, group, and alias calls in a single request. The batch endpoint accepts up to 500 KB per request and a maximum of 2500 events per batch. Each individual event must be less than 32 KB.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batch\": [\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": 5326\n      },\n      \"traits\": {\n        \"key_0\": true,\n        \"key_1\": 5592,\n        \"key_2\": 271\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"userAgent\": \"<string>\",\n        \"library\": {\n          \"name\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        \"page\": {\n          \"path\": \"<string>\",\n          \"referrer\": \"<uri>\",\n          \"search\": \"<string>\",\n          \"title\": \"<string>\",\n          \"url\": \"<uri>\"\n        },\n        \"device\": {\n          \"id\": \"<string>\",\n          \"manufacturer\": \"<string>\",\n          \"model\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\",\n        \"key_2\": \"<boolean>\",\n        \"key_3\": \"<boolean>\"\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": false\n      },\n      \"traits\": {\n        \"key_0\": 43,\n        \"key_1\": \"string\"\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": \"<boolean>\",\n        \"ip\": \"<string>\",\n        \"locale\": \"<string>\",\n        \"userAgent\": \"<string>\",\n        \"library\": {\n          \"name\": \"<string>\",\n          \"version\": \"<string>\"\n        },\n        \"page\": {\n          \"path\": \"<string>\",\n          \"referrer\": \"<uri>\",\n          \"search\": \"<string>\",\n          \"title\": \"<string>\",\n          \"url\": \"<uri>\"\n        },\n        \"device\": {\n          \"id\": \"<string>\",\n          \"manufacturer\": \"<string>\",\n          \"model\": \"<string>\",\n          \"name\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": \"<boolean>\",\n        \"key_1\": \"<boolean>\"\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    }\n  ],\n  \"context\": {\n    \"active\": \"<boolean>\",\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"userAgent\": \"<string>\",\n    \"library\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"page\": {\n      \"path\": \"<string>\",\n      \"referrer\": \"<uri>\",\n      \"search\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    \"device\": {\n      \"id\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "89be2fef-2336-41f5-a3bc-4e4923578ef3",
+              "name": "Batch accepted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": true,\n        \"key_1\": 9670.05184201941,\n        \"key_2\": 1700\n      },\n      \"traits\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": 4480,\n        \"key_3\": \"string\"\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": true,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"http://TBRwKJH.jltWJzmGC4AH4BxgVZmoGPO8qgdoyNfm5uDg4xHaD24JulRfcJ\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"http://JPWRselTLBddZUvXrMOfxRUNqp.zez5e5yA5BiCmLEMGIjBTPG\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": true,\n        \"key_1\": false\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": 7188\n      },\n      \"traits\": {\n        \"key_0\": true,\n        \"key_1\": 2885\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": false,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"http://NfdOJkYKZDX.hpnh0mXFxbKsGUb\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"https://VbkiHaXnKPVNpebGEraKnSgLccXTlYZR.nni-zBHvicMKvKMjTlvtSFPYzbbCD\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": true\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    }\n  ],\n  \"context\": {\n    \"active\": false,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://lUGjuPpeZevnXcDe.jycVOiJZ0AtZkkvymxd+DMvRIoNczHwrp0SWcMFL63twqr2wODouuH.tvf6wv2K\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"https://mWUeXaySYhZEAwLV.kohtPippQRS6ELbnDkUpkJvM+rHYcysMKLKdvXbPDkCGGVfFknp8p7jjttxgKIIr\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d07c8771-e1df-486f-9f29-06bf83500292",
+              "name": "Invalid request payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": true,\n        \"key_1\": 9670.05184201941,\n        \"key_2\": 1700\n      },\n      \"traits\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": 4480,\n        \"key_3\": \"string\"\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": true,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"http://TBRwKJH.jltWJzmGC4AH4BxgVZmoGPO8qgdoyNfm5uDg4xHaD24JulRfcJ\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"http://JPWRselTLBddZUvXrMOfxRUNqp.zez5e5yA5BiCmLEMGIjBTPG\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": true,\n        \"key_1\": false\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": 7188\n      },\n      \"traits\": {\n        \"key_0\": true,\n        \"key_1\": 2885\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": false,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"http://NfdOJkYKZDX.hpnh0mXFxbKsGUb\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"https://VbkiHaXnKPVNpebGEraKnSgLccXTlYZR.nni-zBHvicMKvKMjTlvtSFPYzbbCD\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": true\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    }\n  ],\n  \"context\": {\n    \"active\": false,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://lUGjuPpeZevnXcDe.jycVOiJZ0AtZkkvymxd+DMvRIoNczHwrp0SWcMFL63twqr2wODouuH.tvf6wv2K\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"https://mWUeXaySYhZEAwLV.kohtPippQRS6ELbnDkUpkJvM+rHYcysMKLKdvXbPDkCGGVfFknp8p7jjttxgKIIr\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24ef69ff-26e1-4650-a9d8-7881a0b7e0b7",
+              "name": "Invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": true,\n        \"key_1\": 9670.05184201941,\n        \"key_2\": 1700\n      },\n      \"traits\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": 4480,\n        \"key_3\": \"string\"\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": true,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"http://TBRwKJH.jltWJzmGC4AH4BxgVZmoGPO8qgdoyNfm5uDg4xHaD24JulRfcJ\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"http://JPWRselTLBddZUvXrMOfxRUNqp.zez5e5yA5BiCmLEMGIjBTPG\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": true,\n        \"key_1\": false\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"userId\": \"<string>\",\n      \"anonymousId\": \"<string>\",\n      \"event\": \"<string>\",\n      \"properties\": {\n        \"key_0\": 7188\n      },\n      \"traits\": {\n        \"key_0\": true,\n        \"key_1\": 2885\n      },\n      \"groupId\": \"<string>\",\n      \"previousId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"context\": {\n        \"active\": false,\n        \"ip\": \"string\",\n        \"locale\": \"string\",\n        \"userAgent\": \"string\",\n        \"library\": {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        \"page\": {\n          \"path\": \"string\",\n          \"referrer\": \"http://NfdOJkYKZDX.hpnh0mXFxbKsGUb\",\n          \"search\": \"string\",\n          \"title\": \"string\",\n          \"url\": \"https://VbkiHaXnKPVNpebGEraKnSgLccXTlYZR.nni-zBHvicMKvKMjTlvtSFPYzbbCD\"\n        },\n        \"device\": {\n          \"id\": \"string\",\n          \"manufacturer\": \"string\",\n          \"model\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      },\n      \"integrations\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": true\n      },\n      \"timestamp\": \"<dateTime>\",\n      \"messageId\": \"<string>\"\n    }\n  ],\n  \"context\": {\n    \"active\": false,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"http://lUGjuPpeZevnXcDe.jycVOiJZ0AtZkkvymxd+DMvRIoNczHwrp0SWcMFL63twqr2wODouuH.tvf6wv2K\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"https://mWUeXaySYhZEAwLV.kohtPippQRS6ELbnDkUpkJvM+rHYcysMKLKdvXbPDkCGGVfFknp8p7jjttxgKIIr\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.segmentapis.com/v1beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "75442faf-20a0-4b2f-b669-56d25859c9f5",
+    "name": "Segment Config Alias Batch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.\n\nContact Support:\n Name: Segment Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Page API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Page",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Record a page view",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/page",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records a page view on a website. A page call lets you record whenever a user sees a page of your website, along with any optional properties about the page."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

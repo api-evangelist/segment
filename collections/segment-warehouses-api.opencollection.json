@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Warehouses API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Warehouses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List warehouses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/warehouses",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all warehouses in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create warehouse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/warehouses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new warehouse connection in the workspace."
+        },
+        {
+          "info": {
+            "name": "Get warehouse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/warehouses/:warehouseId",
+            "params": [
+              {
+                "name": "warehouseId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the warehouse."
+              }
+            ]
+          },
+          "docs": "Returns a single warehouse by its ID."
+        },
+        {
+          "info": {
+            "name": "Update warehouse",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://platform.segmentapis.com/v1beta/warehouses/:warehouseId",
+            "params": [
+              {
+                "name": "warehouseId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the warehouse."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing warehouse with the provided changes."
+        },
+        {
+          "info": {
+            "name": "Delete warehouse",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.segmentapis.com/v1beta/warehouses/:warehouseId",
+            "params": [
+              {
+                "name": "warehouseId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the warehouse."
+              }
+            ]
+          },
+          "docs": "Deletes a warehouse connection from the workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

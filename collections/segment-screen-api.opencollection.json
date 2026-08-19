@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Screen API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Screen",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Record a screen view",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/screen",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Records a screen view in a mobile application. A screen call lets you record whenever a user sees a screen of your mobile app, along with optional properties about the screen."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

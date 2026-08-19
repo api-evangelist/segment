@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Workspaces API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workspaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              }
+            ]
+          },
+          "docs": "Returns the workspace details for the specified workspace name."
+        },
+        {
+          "info": {
+            "name": "Get workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/workspace"
+          },
+          "docs": "Returns the workspace associated with the access token used to make the request, including the workspace name, ID, and slug."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

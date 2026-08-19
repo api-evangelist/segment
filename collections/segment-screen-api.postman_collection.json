@@ -1,0 +1,242 @@
+{
+  "item": [
+    {
+      "id": "dae87062-19ef-4682-98f4-5c728c7a33cb",
+      "name": "Screen",
+      "description": {
+        "content": "Operations for recording screen views in mobile applications.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01c349f8-5e66-4210-aa63-6110fd780280",
+          "name": "Record a screen view",
+          "request": {
+            "name": "Record a screen view",
+            "description": {
+              "content": "Records a screen view in a mobile application. A screen call lets you record whenever a user sees a screen of your mobile app, along with optional properties about the screen.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "screen"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"string\",\n    \"key_1\": 4473,\n    \"key_2\": false,\n    \"key_3\": \"string\",\n    \"key_4\": \"string\"\n  },\n  \"context\": {\n    \"active\": \"<boolean>\",\n    \"ip\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"userAgent\": \"<string>\",\n    \"library\": {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    \"page\": {\n      \"path\": \"<string>\",\n      \"referrer\": \"<uri>\",\n      \"search\": \"<string>\",\n      \"title\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    \"device\": {\n      \"id\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"model\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": \"<boolean>\"\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6d46f3f6-92d8-47d6-9c7f-5e73d667848f",
+              "name": "Event accepted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"key_0\": 4833\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"https://eXAzSkQFuPCqtPSFVcodDqFgRVw.zcEde7JKQD0\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"https://JabSYcXPEJtv.qpxG\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false,\n    \"key_1\": false,\n    \"key_2\": false,\n    \"key_3\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6388e3de-ee7b-4e5f-821d-b8e37a910d9a",
+              "name": "Invalid request payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"key_0\": 4833\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"https://eXAzSkQFuPCqtPSFVcodDqFgRVw.zcEde7JKQD0\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"https://JabSYcXPEJtv.qpxG\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false,\n    \"key_1\": false,\n    \"key_2\": false,\n    \"key_3\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb114974-a0d1-4bec-9665-ca115fec4d2d",
+              "name": "Invalid or missing write key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"anonymousId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"properties\": {\n    \"key_0\": 4833\n  },\n  \"context\": {\n    \"active\": true,\n    \"ip\": \"string\",\n    \"locale\": \"string\",\n    \"userAgent\": \"string\",\n    \"library\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"page\": {\n      \"path\": \"string\",\n      \"referrer\": \"https://eXAzSkQFuPCqtPSFVcodDqFgRVw.zcEde7JKQD0\",\n      \"search\": \"string\",\n      \"title\": \"string\",\n      \"url\": \"https://JabSYcXPEJtv.qpxG\"\n    },\n    \"device\": {\n      \"id\": \"string\",\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    }\n  },\n  \"integrations\": {\n    \"key_0\": false,\n    \"key_1\": false,\n    \"key_2\": false,\n    \"key_3\": true\n  },\n  \"timestamp\": \"<dateTime>\",\n  \"messageId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.segmentapis.com/v1beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a58c7b1-fcbb-4077-b46c-27e8eb8975e2",
+    "name": "Segment Config Alias Screen API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.\n\nContact Support:\n Name: Segment Support",
+      "type": "text/plain"
+    }
+  }
+}

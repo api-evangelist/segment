@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Tracking Plans API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tracking Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tracking plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/tracking-plans",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              }
+            ]
+          },
+          "docs": "Returns a list of all tracking plans in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create tracking plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/workspaces/:workspaceName/tracking-plans",
+            "params": [
+              {
+                "name": "workspaceName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the workspace."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new tracking plan in the workspace."
+        },
+        {
+          "info": {
+            "name": "List tracking plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/tracking-plans",
+            "params": [
+              {
+                "name": "pagination[cursor]",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+              },
+              {
+                "name": "pagination[count]",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return per page."
+              }
+            ]
+          },
+          "docs": "Returns a list of all tracking plans in the workspace."
+        },
+        {
+          "info": {
+            "name": "Create tracking plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/tracking-plans",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new tracking plan in the workspace with the specified rules and configuration."
+        },
+        {
+          "info": {
+            "name": "Get tracking plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/tracking-plans/:trackingPlanId",
+            "params": [
+              {
+                "name": "trackingPlanId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the tracking plan."
+              }
+            ]
+          },
+          "docs": "Returns a single tracking plan by its ID."
+        },
+        {
+          "info": {
+            "name": "Update tracking plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://platform.segmentapis.com/v1beta/tracking-plans/:trackingPlanId",
+            "params": [
+              {
+                "name": "trackingPlanId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the tracking plan."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing tracking plan with the provided changes."
+        },
+        {
+          "info": {
+            "name": "Delete tracking plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://platform.segmentapis.com/v1beta/tracking-plans/:trackingPlanId",
+            "params": [
+              {
+                "name": "trackingPlanId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the tracking plan."
+              }
+            ]
+          },
+          "docs": "Deletes a tracking plan from the workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

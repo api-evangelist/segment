@@ -1,0 +1,1483 @@
+{
+  "item": [
+    {
+      "id": "4d8a1de5-41ad-4eaa-9fa5-8b8470065851",
+      "name": "Tracking Plans",
+      "description": {
+        "content": "Operations for managing tracking plans that enforce data schemas.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "183b1004-179c-4915-b9a3-95051cc59987",
+          "name": "List tracking plans",
+          "request": {
+            "name": "List tracking plans",
+            "description": {
+              "content": "Returns a list of all tracking plans in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workspaces",
+                ":workspaceName",
+                "tracking-plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceName",
+                  "description": "(Required) The name of the workspace."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "56310faf-805c-4732-b289-28ff895f3219",
+              "name": "Tracking plans retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "tracking-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tracking_plans\": [\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"rules\": {\n        \"events\": [\n          {\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"rules\": {\n              \"key_0\": true\n            },\n            \"version\": 8924.613515647156\n          },\n          {\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"rules\": {\n              \"key_0\": 8302,\n              \"key_1\": 1616,\n              \"key_2\": 1429.2788661202992\n            },\n            \"version\": 1064.0261448914323\n          }\n        ]\n      },\n      \"create_time\": \"2021-05-28T00:38:59.858Z\",\n      \"update_time\": \"1992-01-26T14:25:16.300Z\"\n    },\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"rules\": {\n        \"events\": [\n          {\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"rules\": {\n              \"key_0\": true\n            },\n            \"version\": 6081.455415475587\n          },\n          {\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"rules\": {\n              \"key_0\": 3146\n            },\n            \"version\": 8686.943244499545\n          }\n        ]\n      },\n      \"create_time\": \"2026-01-05T15:20:51.055Z\",\n      \"update_time\": \"2006-07-26T03:20:21.316Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efca133e-1672-4e2b-b0e0-e2afaa370c3d",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "tracking-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b94cfbc9-d613-42a0-8881-5051a7ee13fe",
+          "name": "Create tracking plan",
+          "request": {
+            "name": "Create tracking plan",
+            "description": {
+              "content": "Creates a new tracking plan in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workspaces",
+                ":workspaceName",
+                "tracking-plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceName",
+                  "description": "(Required) The name of the workspace."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracking_plan\": {\n    \"display_name\": \"<string>\",\n    \"rules\": {\n      \"events\": [\n        {\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"rules\": {\n            \"key_0\": 4357\n          },\n          \"version\": \"<number>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"description\": \"<string>\",\n          \"rules\": {\n            \"key_0\": 577,\n            \"key_1\": false,\n            \"key_2\": 684.8323898857877\n          },\n          \"version\": \"<number>\"\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7659669c-1dac-4929-9f6a-57df75d97073",
+              "name": "Tracking plan created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "tracking-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking_plan\": {\n    \"display_name\": \"<string>\",\n    \"rules\": {\n      \"events\": [\n        {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"rules\": {\n            \"key_0\": false\n          },\n          \"version\": 3485.595278232082\n        },\n        {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"rules\": {\n            \"key_0\": false,\n            \"key_1\": 1973\n          },\n          \"version\": 6353.624096174973\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"display_name\": \"string\",\n  \"rules\": {\n    \"events\": [\n      {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"rules\": {\n          \"key_0\": 8951\n        },\n        \"version\": 3580.9450030689836\n      },\n      {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"rules\": {\n          \"key_0\": false,\n          \"key_1\": false\n        },\n        \"version\": 2886.6031890634968\n      }\n    ]\n  },\n  \"create_time\": \"2017-04-06T17:13:08.290Z\",\n  \"update_time\": \"2017-08-08T01:02:19.140Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0df98b8d-aa89-40df-b89f-853b8d7852f8",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "tracking-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking_plan\": {\n    \"display_name\": \"<string>\",\n    \"rules\": {\n      \"events\": [\n        {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"rules\": {\n            \"key_0\": false\n          },\n          \"version\": 3485.595278232082\n        },\n        {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"rules\": {\n            \"key_0\": false,\n            \"key_1\": 1973\n          },\n          \"version\": 6353.624096174973\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87c6c5b7-78f0-45a6-924c-569abf634430",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "tracking-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracking_plan\": {\n    \"display_name\": \"<string>\",\n    \"rules\": {\n      \"events\": [\n        {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"rules\": {\n            \"key_0\": false\n          },\n          \"version\": 3485.595278232082\n        },\n        {\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"rules\": {\n            \"key_0\": false,\n            \"key_1\": 1973\n          },\n          \"version\": 6353.624096174973\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6354a131-d0b5-47bc-8df8-e46bfe61b4bb",
+          "name": "List tracking plans",
+          "request": {
+            "name": "List tracking plans",
+            "description": {
+              "content": "Returns a list of all tracking plans in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tracking-plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pagination[cursor]",
+                  "value": "<string>",
+                  "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pagination[count]",
+                  "value": "10",
+                  "description": "Number of items to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c467fff-d0f6-480c-8c48-bf8dd86c4fa4",
+              "name": "Tracking plans retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination[cursor]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pagination[count]",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"trackingPlans\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"description\": \"string\",\n        \"type\": \"ENGAGE\",\n        \"createdAt\": \"2008-06-21T16:36:35.812Z\",\n        \"updatedAt\": \"1968-10-28T06:54:20.723Z\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"description\": \"string\",\n        \"type\": \"TEMPLATE\",\n        \"createdAt\": \"2026-03-05T07:29:05.531Z\",\n        \"updatedAt\": \"1973-11-14T13:58:37.691Z\"\n      }\n    ],\n    \"pagination\": {\n      \"current\": \"string\",\n      \"next\": \"string\",\n      \"totalEntries\": 8415\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acd4c69c-3b37-4b16-b28c-d373f7ee32c3",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination[cursor]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pagination[count]",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f6eb37c-1189-4e7e-9352-f7455b400f82",
+          "name": "Create tracking plan",
+          "request": {
+            "name": "Create tracking plan",
+            "description": {
+              "content": "Creates a new tracking plan in the workspace with the specified rules and configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tracking-plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"<string>\",\n  \"rules\": [\n    {\n      \"type\": \"<string>\",\n      \"key\": \"<string>\",\n      \"jsonSchema\": {\n        \"key_0\": false,\n        \"key_1\": false\n      },\n      \"version\": \"<number>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"key\": \"<string>\",\n      \"jsonSchema\": {\n        \"key_0\": 1700,\n        \"key_1\": true\n      },\n      \"version\": \"<number>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc2d3e8d-5e58-43e2-9c10-70f50cdf6b21",
+              "name": "Tracking plan created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"<string>\",\n  \"rules\": [\n    {\n      \"type\": \"COMMON\",\n      \"key\": \"string\",\n      \"jsonSchema\": {\n        \"key_0\": true\n      },\n      \"version\": 7662.684780786581\n    },\n    {\n      \"type\": \"COMMON\",\n      \"key\": \"string\",\n      \"jsonSchema\": {\n        \"key_0\": 2819\n      },\n      \"version\": 5952.933259497511\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"trackingPlan\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"LIVE\",\n      \"createdAt\": \"2001-05-25T04:24:29.341Z\",\n      \"updatedAt\": \"1957-10-10T00:14:18.406Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12ef029f-7819-40c3-bf65-e51b958c4917",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"<string>\",\n  \"rules\": [\n    {\n      \"type\": \"COMMON\",\n      \"key\": \"string\",\n      \"jsonSchema\": {\n        \"key_0\": true\n      },\n      \"version\": 7662.684780786581\n    },\n    {\n      \"type\": \"COMMON\",\n      \"key\": \"string\",\n      \"jsonSchema\": {\n        \"key_0\": 2819\n      },\n      \"version\": 5952.933259497511\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa4cb6b2-6f67-4b6f-8c4f-15fd69404cd6",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"<string>\",\n  \"rules\": [\n    {\n      \"type\": \"COMMON\",\n      \"key\": \"string\",\n      \"jsonSchema\": {\n        \"key_0\": true\n      },\n      \"version\": 7662.684780786581\n    },\n    {\n      \"type\": \"COMMON\",\n      \"key\": \"string\",\n      \"jsonSchema\": {\n        \"key_0\": 2819\n      },\n      \"version\": 5952.933259497511\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80800b56-dd3a-409a-9896-08eab0ae5891",
+          "name": "Get tracking plan",
+          "request": {
+            "name": "Get tracking plan",
+            "description": {
+              "content": "Returns a single tracking plan by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tracking-plans",
+                ":trackingPlanId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackingPlanId",
+                  "description": "(Required) The unique identifier of the tracking plan."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df390ec9-6df2-4fd2-8bd5-61109d64325e",
+              "name": "Tracking plan retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans",
+                    ":trackingPlanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackingPlanId",
+                      "description": "(Required) The unique identifier of the tracking plan."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"trackingPlan\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"LIVE\",\n      \"createdAt\": \"2001-05-25T04:24:29.341Z\",\n      \"updatedAt\": \"1957-10-10T00:14:18.406Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77dea5be-228e-4e94-b64c-b3534524c749",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans",
+                    ":trackingPlanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackingPlanId",
+                      "description": "(Required) The unique identifier of the tracking plan."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04a21a44-8602-4079-a2fe-e26e04f19afd",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans",
+                    ":trackingPlanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackingPlanId",
+                      "description": "(Required) The unique identifier of the tracking plan."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": \"string\"\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": true,\n        \"key_1\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe7d7452-7fcc-4e7d-97ce-9bb3d919a404",
+          "name": "Update tracking plan",
+          "request": {
+            "name": "Update tracking plan",
+            "description": {
+              "content": "Updates an existing tracking plan with the provided changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tracking-plans",
+                ":trackingPlanId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackingPlanId",
+                  "description": "(Required) The unique identifier of the tracking plan."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1d317803-b083-4963-bb3c-b620a2a4077c",
+              "name": "Tracking plan updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans",
+                    ":trackingPlanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackingPlanId",
+                      "description": "(Required) The unique identifier of the tracking plan."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"trackingPlan\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"LIVE\",\n      \"createdAt\": \"2001-05-25T04:24:29.341Z\",\n      \"updatedAt\": \"1957-10-10T00:14:18.406Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57acc9c1-a7f9-457f-b934-c7a451f9497b",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans",
+                    ":trackingPlanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackingPlanId",
+                      "description": "(Required) The unique identifier of the tracking plan."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0881d107-de1c-4cf1-a92b-811b37f625db",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans",
+                    ":trackingPlanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackingPlanId",
+                      "description": "(Required) The unique identifier of the tracking plan."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a934084-fcb2-4937-8426-81c3a73f5b00",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans",
+                    ":trackingPlanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackingPlanId",
+                      "description": "(Required) The unique identifier of the tracking plan."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 8683.865288535213,\n        \"key_1\": 7685.242439517028\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae5e8cc6-2a95-4d40-ad28-6c78086df694",
+          "name": "Delete tracking plan",
+          "request": {
+            "name": "Delete tracking plan",
+            "description": {
+              "content": "Deletes a tracking plan from the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tracking-plans",
+                ":trackingPlanId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackingPlanId",
+                  "description": "(Required) The unique identifier of the tracking plan."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3e8d8ee-b0f9-4b61-b1dd-620be2bd9628",
+              "name": "Tracking plan deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans",
+                    ":trackingPlanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackingPlanId",
+                      "description": "(Required) The unique identifier of the tracking plan."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00ac0f3a-66e6-445a-b2e0-4331f7fb6f91",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans",
+                    ":trackingPlanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackingPlanId",
+                      "description": "(Required) The unique identifier of the tracking plan."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd970c08-0914-4c0f-ad35-519e12b245a5",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tracking-plans",
+                    ":trackingPlanId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackingPlanId",
+                      "description": "(Required) The unique identifier of the tracking plan."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 8683.865288535213,\n        \"key_1\": 7685.242439517028\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.segmentapis.com/v1beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "728301ed-11ad-491f-98e1-de4f725c4947",
+    "name": "Segment Config Alias Tracking Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.\n\nContact Support:\n Name: Segment Support",
+      "type": "text/plain"
+    }
+  }
+}

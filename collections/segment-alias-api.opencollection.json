@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alias",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Merge two user identities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://platform.segmentapis.com/v1beta/alias",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Merges two user identities by connecting a previous ID to a new user ID. This is an advanced method that is useful when you want to associate an anonymous user with an identified user after they sign up or log in."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

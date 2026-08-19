@@ -1,0 +1,1091 @@
+{
+  "item": [
+    {
+      "id": "0ce6db32-9cb2-4b7b-a10f-4f16b02bcdaa",
+      "name": "Warehouses",
+      "description": {
+        "content": "Operations for managing data warehouse connections, including creating and configuring warehouse destinations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e1fb89cb-0783-4331-bae1-fb4fbc873e45",
+          "name": "List warehouses",
+          "request": {
+            "name": "List warehouses",
+            "description": {
+              "content": "Returns a list of all warehouses in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "warehouses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pagination[cursor]",
+                  "value": "<string>",
+                  "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pagination[count]",
+                  "value": "10",
+                  "description": "Number of items to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bfac3a6f-bab9-43da-92f0-0d4748d9717f",
+              "name": "Warehouses retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination[cursor]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pagination[count]",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"warehouses\": [\n      {\n        \"id\": \"string\",\n        \"enabled\": true,\n        \"metadata\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"description\": \"string\"\n        },\n        \"settings\": {\n          \"key_0\": \"string\",\n          \"key_1\": true,\n          \"key_2\": false\n        }\n      },\n      {\n        \"id\": \"string\",\n        \"enabled\": false,\n        \"metadata\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"description\": \"string\"\n        },\n        \"settings\": {\n          \"key_0\": false,\n          \"key_1\": true\n        }\n      }\n    ],\n    \"pagination\": {\n      \"current\": \"string\",\n      \"next\": \"string\",\n      \"totalEntries\": 6111\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cec56718-c267-4d55-ae34-1265fc36d6f9",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination[cursor]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pagination[count]",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 9247,\n        \"key_1\": 5336,\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 3909.4470030855923,\n        \"key_1\": \"string\",\n        \"key_2\": 1683,\n        \"key_3\": 8048\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0c1d8a7-d529-47ea-82c5-1c7ae5add147",
+          "name": "Create warehouse",
+          "request": {
+            "name": "Create warehouse",
+            "description": {
+              "content": "Creates a new warehouse connection in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "warehouses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": true\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a58bb69c-bab5-4aff-a646-9915f85e7002",
+              "name": "Warehouse created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"warehouse\": {\n      \"id\": \"string\",\n      \"enabled\": false,\n      \"metadata\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"description\": \"string\"\n      },\n      \"settings\": {\n        \"key_0\": \"string\",\n        \"key_1\": 9914\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2db9c80f-9c8c-4b55-9fe1-6b546d899195",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 9247,\n        \"key_1\": 5336,\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 3909.4470030855923,\n        \"key_1\": \"string\",\n        \"key_2\": 1683,\n        \"key_3\": 8048\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30141554-6b7f-4c9c-be4e-181220eda485",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 7680.369456925108,\n        \"key_1\": 6203.139112721342\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": 360,\n        \"key_3\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "caf36662-8e4a-4d7d-9370-2eb6e1844e6a",
+          "name": "Get warehouse",
+          "request": {
+            "name": "Get warehouse",
+            "description": {
+              "content": "Returns a single warehouse by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "warehouses",
+                ":warehouseId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "warehouseId",
+                  "description": "(Required) The unique identifier of the warehouse."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a47c9d1-7315-4ba7-81fb-21dec86ee8e1",
+              "name": "Warehouse retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses",
+                    ":warehouseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "warehouseId",
+                      "description": "(Required) The unique identifier of the warehouse."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"warehouse\": {\n      \"id\": \"string\",\n      \"enabled\": false,\n      \"metadata\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"description\": \"string\"\n      },\n      \"settings\": {\n        \"key_0\": \"string\",\n        \"key_1\": 9914\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cc5f11b-0c7b-4c81-b4cf-721dcd7d8ac9",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses",
+                    ":warehouseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "warehouseId",
+                      "description": "(Required) The unique identifier of the warehouse."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 7680.369456925108,\n        \"key_1\": 6203.139112721342\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": 360,\n        \"key_3\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82b16502-80f6-45e9-bdca-27ac5e5649cc",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses",
+                    ":warehouseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "warehouseId",
+                      "description": "(Required) The unique identifier of the warehouse."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 9247,\n        \"key_1\": 5336,\n        \"key_2\": \"string\"\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 3909.4470030855923,\n        \"key_1\": \"string\",\n        \"key_2\": 1683,\n        \"key_3\": 8048\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76c50f07-34fb-4495-9713-2e1fe022e4cc",
+          "name": "Update warehouse",
+          "request": {
+            "name": "Update warehouse",
+            "description": {
+              "content": "Updates an existing warehouse with the provided changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "warehouses",
+                ":warehouseId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "warehouseId",
+                  "description": "(Required) The unique identifier of the warehouse."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2052dcfd-a401-4e37-ab6c-bc848253fd29",
+              "name": "Warehouse updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses",
+                    ":warehouseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "warehouseId",
+                      "description": "(Required) The unique identifier of the warehouse."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": \"string\",\n    \"key_1\": 3369.28429090259,\n    \"key_2\": 4274.008547260135\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"warehouse\": {\n      \"id\": \"string\",\n      \"enabled\": false,\n      \"metadata\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"description\": \"string\"\n      },\n      \"settings\": {\n        \"key_0\": \"string\",\n        \"key_1\": 9914\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48b3080d-5206-4cc7-9f70-370203db5dc5",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses",
+                    ":warehouseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "warehouseId",
+                      "description": "(Required) The unique identifier of the warehouse."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": \"string\",\n    \"key_1\": 3369.28429090259,\n    \"key_2\": 4274.008547260135\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 7680.369456925108,\n        \"key_1\": 6203.139112721342\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": 360,\n        \"key_3\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73a1f00d-2156-4213-966f-423e4675acef",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses",
+                    ":warehouseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "warehouseId",
+                      "description": "(Required) The unique identifier of the warehouse."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": \"string\",\n    \"key_1\": 3369.28429090259,\n    \"key_2\": 4274.008547260135\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 7680.369456925108,\n        \"key_1\": 6203.139112721342\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": 360,\n        \"key_3\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd3090e0-b5f1-4742-be34-4cbecd118b6d",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses",
+                    ":warehouseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "warehouseId",
+                      "description": "(Required) The unique identifier of the warehouse."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": \"string\",\n    \"key_1\": 3369.28429090259,\n    \"key_2\": 4274.008547260135\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 7680.369456925108,\n        \"key_1\": 6203.139112721342\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": 360,\n        \"key_3\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c5ce00f-e0a5-4473-8f6b-ed1e115a9631",
+          "name": "Delete warehouse",
+          "request": {
+            "name": "Delete warehouse",
+            "description": {
+              "content": "Deletes a warehouse connection from the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "warehouses",
+                ":warehouseId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "warehouseId",
+                  "description": "(Required) The unique identifier of the warehouse."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b58d77e9-fdc3-4e96-b408-8145dcd197c0",
+              "name": "Warehouse deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses",
+                    ":warehouseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "warehouseId",
+                      "description": "(Required) The unique identifier of the warehouse."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54cf340c-cfca-41fa-9036-13851b1a3962",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses",
+                    ":warehouseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "warehouseId",
+                      "description": "(Required) The unique identifier of the warehouse."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 7680.369456925108,\n        \"key_1\": 6203.139112721342\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": 360,\n        \"key_3\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3bb87be-3470-46c4-bc28-e3cfd7890406",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "warehouses",
+                    ":warehouseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "warehouseId",
+                      "description": "(Required) The unique identifier of the warehouse."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": 7680.369456925108,\n        \"key_1\": 6203.139112721342\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"field\": \"string\",\n      \"data\": {\n        \"key_0\": false,\n        \"key_1\": false,\n        \"key_2\": 360,\n        \"key_3\": false\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.segmentapis.com/v1beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "08cbc57b-add4-47b0-9b8e-ef49b18bc797",
+    "name": "Segment Config Alias Warehouses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.\n\nContact Support:\n Name: Segment Support",
+      "type": "text/plain"
+    }
+  }
+}

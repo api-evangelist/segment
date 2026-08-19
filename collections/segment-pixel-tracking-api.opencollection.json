@@ -1,8 +1,14 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Segment Pixel Tracking API",
+    "name": "Segment Config Alias Pixel Tracking API",
     "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
   },
   "items": [
     {
@@ -18,7 +24,7 @@
           },
           "http": {
             "method": "GET",
-            "url": "https://api.segment.io/v1/pixel/identify",
+            "url": "https://platform.segmentapis.com/v1beta/pixel/identify",
             "params": [
               {
                 "name": "data",
@@ -37,7 +43,7 @@
           },
           "http": {
             "method": "GET",
-            "url": "https://api.segment.io/v1/pixel/track",
+            "url": "https://platform.segmentapis.com/v1beta/pixel/track",
             "params": [
               {
                 "name": "data",
@@ -56,7 +62,7 @@
           },
           "http": {
             "method": "GET",
-            "url": "https://api.segment.io/v1/pixel/page",
+            "url": "https://platform.segmentapis.com/v1beta/pixel/page",
             "params": [
               {
                 "name": "data",
@@ -75,7 +81,7 @@
           },
           "http": {
             "method": "GET",
-            "url": "https://api.segment.io/v1/pixel/screen",
+            "url": "https://platform.segmentapis.com/v1beta/pixel/screen",
             "params": [
               {
                 "name": "data",
@@ -94,7 +100,7 @@
           },
           "http": {
             "method": "GET",
-            "url": "https://api.segment.io/v1/pixel/group",
+            "url": "https://platform.segmentapis.com/v1beta/pixel/group",
             "params": [
               {
                 "name": "data",
@@ -113,7 +119,7 @@
           },
           "http": {
             "method": "GET",
-            "url": "https://api.segment.io/v1/pixel/alias",
+            "url": "https://platform.segmentapis.com/v1beta/pixel/alias",
             "params": [
               {
                 "name": "data",

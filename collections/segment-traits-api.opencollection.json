@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias Traits API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Traits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user traits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/collections/users/profiles/:externalId/traits",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of trait names to include in the response. Recommended for best performance."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return per page."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the traits for a user profile identified by an external ID. The external ID format is type:value, such as user_id:abc123 or email:user@example.com. Use the include parameter to specify which traits to retrieve for optimal performance."
+        },
+        {
+          "info": {
+            "name": "Get account traits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/collections/accounts/profiles/:externalId/traits",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of trait names to include."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return per page."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the traits for an account profile identified by an external ID. Account profiles are group-level profiles that aggregate data across users."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

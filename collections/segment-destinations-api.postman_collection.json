@@ -1,0 +1,2473 @@
+{
+  "item": [
+    {
+      "id": "55e58d05-20ef-4104-b014-d68fd0560ce7",
+      "name": "Destinations",
+      "description": {
+        "content": "Operations for managing destinations where collected data is sent.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f145c20e-77e3-41b8-a8a4-ca8c9ce6f892",
+          "name": "List destinations",
+          "request": {
+            "name": "List destinations",
+            "description": {
+              "content": "Returns a list of all destinations for a specific source in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workspaces",
+                ":workspaceName",
+                "sources",
+                ":sourceName",
+                "destinations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceName",
+                  "description": "(Required) The name of the workspace."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sourceName",
+                  "description": "(Required) The name of the source."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "844bc8e3-3a82-4523-a74a-45c4d5a433ec",
+              "name": "Destinations retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"destinations\": [\n    {\n      \"name\": \"string\",\n      \"parent\": \"string\",\n      \"display_name\": \"string\",\n      \"enabled\": false,\n      \"connection_mode\": \"DEVICE\",\n      \"config\": [\n        {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"value\": {},\n          \"type\": \"boolean\"\n        },\n        {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"value\": {},\n          \"type\": \"mixed\"\n        }\n      ],\n      \"create_time\": \"2002-01-09T18:37:10.103Z\",\n      \"update_time\": \"1966-04-04T15:28:17.975Z\"\n    },\n    {\n      \"name\": \"string\",\n      \"parent\": \"string\",\n      \"display_name\": \"string\",\n      \"enabled\": true,\n      \"connection_mode\": \"CLOUD\",\n      \"config\": [\n        {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"value\": {},\n          \"type\": \"mixed\"\n        },\n        {\n          \"name\": \"string\",\n          \"display_name\": \"string\",\n          \"value\": {},\n          \"type\": \"mixed\"\n        }\n      ],\n      \"create_time\": \"2023-09-17T01:01:34.217Z\",\n      \"update_time\": \"1947-02-03T12:28:43.920Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ce7034c-a103-42ae-ad8e-5a790b45cab3",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "848af273-72d8-4cac-84e4-e8616f0b496b",
+          "name": "Create destination",
+          "request": {
+            "name": "Create destination",
+            "description": {
+              "content": "Creates a new destination for a specific source in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workspaces",
+                ":workspaceName",
+                "sources",
+                ":sourceName",
+                "destinations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceName",
+                  "description": "(Required) The name of the workspace."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sourceName",
+                  "description": "(Required) The name of the source."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destination\": {\n    \"name\": \"<string>\",\n    \"connection_mode\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"config\": [\n      {\n        \"name\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"value\": {},\n        \"type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"value\": {},\n        \"type\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5732a10-9539-4f50-b1a7-691f468a1d1d",
+              "name": "Destination created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"name\": \"<string>\",\n    \"connection_mode\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"config\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"map\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"map\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"parent\": \"string\",\n  \"display_name\": \"string\",\n  \"enabled\": true,\n  \"connection_mode\": \"CLOUD\",\n  \"config\": [\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"value\": {},\n      \"type\": \"mixed\"\n    },\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"value\": {},\n      \"type\": \"boolean\"\n    }\n  ],\n  \"create_time\": \"1990-11-21T00:19:27.365Z\",\n  \"update_time\": \"1998-04-17T06:47:49.883Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "298be46c-dbea-4b70-bb53-e28831ccb65c",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"name\": \"<string>\",\n    \"connection_mode\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"config\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"map\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"map\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a29bf17-506f-4c7f-8296-98e94d3cb545",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"name\": \"<string>\",\n    \"connection_mode\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"config\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"map\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"map\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc367ac2-7fc9-4bd4-9047-89341bfa284c",
+          "name": "Get destination",
+          "request": {
+            "name": "Get destination",
+            "description": {
+              "content": "Returns a single destination by name for a specific source.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workspaces",
+                ":workspaceName",
+                "sources",
+                ":sourceName",
+                "destinations",
+                ":destinationName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceName",
+                  "description": "(Required) The name of the workspace."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sourceName",
+                  "description": "(Required) The name of the source."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "destinationName",
+                  "description": "(Required) The name of the destination."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5547732c-40cc-4237-a181-6e76837ca112",
+              "name": "Destination retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations",
+                    ":destinationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationName",
+                      "description": "(Required) The name of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"parent\": \"string\",\n  \"display_name\": \"string\",\n  \"enabled\": true,\n  \"connection_mode\": \"CLOUD\",\n  \"config\": [\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"value\": {},\n      \"type\": \"mixed\"\n    },\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"value\": {},\n      \"type\": \"boolean\"\n    }\n  ],\n  \"create_time\": \"1990-11-21T00:19:27.365Z\",\n  \"update_time\": \"1998-04-17T06:47:49.883Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bd731a6-2d90-4f12-9bdb-cd57cfb2ebe0",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations",
+                    ":destinationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationName",
+                      "description": "(Required) The name of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de2c805b-9375-427f-81ba-4c8dea4837b4",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations",
+                    ":destinationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationName",
+                      "description": "(Required) The name of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76a48364-fb8d-4015-97c0-d3375ca9a221",
+          "name": "Update destination",
+          "request": {
+            "name": "Update destination",
+            "description": {
+              "content": "Updates a destination's configuration, including enabling or disabling it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workspaces",
+                ":workspaceName",
+                "sources",
+                ":sourceName",
+                "destinations",
+                ":destinationName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceName",
+                  "description": "(Required) The name of the workspace."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sourceName",
+                  "description": "(Required) The name of the source."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "destinationName",
+                  "description": "(Required) The name of the destination."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destination\": {\n    \"enabled\": \"<boolean>\",\n    \"config\": [\n      {\n        \"name\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"value\": {},\n        \"type\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"display_name\": \"<string>\",\n        \"value\": {},\n        \"type\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1f57d16b-9ed6-45cd-8a51-d570dc39cc90",
+              "name": "Destination updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations",
+                    ":destinationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationName",
+                      "description": "(Required) The name of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"enabled\": \"<boolean>\",\n    \"config\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"list\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"mixed\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"parent\": \"string\",\n  \"display_name\": \"string\",\n  \"enabled\": true,\n  \"connection_mode\": \"CLOUD\",\n  \"config\": [\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"value\": {},\n      \"type\": \"mixed\"\n    },\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"value\": {},\n      \"type\": \"boolean\"\n    }\n  ],\n  \"create_time\": \"1990-11-21T00:19:27.365Z\",\n  \"update_time\": \"1998-04-17T06:47:49.883Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05f2060d-6f51-489b-aa0c-6873a256333d",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations",
+                    ":destinationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationName",
+                      "description": "(Required) The name of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"enabled\": \"<boolean>\",\n    \"config\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"list\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"mixed\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a148bbe-4a55-419d-98c1-2317e1817a26",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations",
+                    ":destinationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationName",
+                      "description": "(Required) The name of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"enabled\": \"<boolean>\",\n    \"config\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"list\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"mixed\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a013b6e-1642-4f8d-8954-df62f8380a45",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations",
+                    ":destinationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationName",
+                      "description": "(Required) The name of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"enabled\": \"<boolean>\",\n    \"config\": [\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"list\"\n      },\n      {\n        \"name\": \"string\",\n        \"display_name\": \"string\",\n        \"value\": {},\n        \"type\": \"mixed\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60a78045-343d-459a-ada9-3562f8c2eab7",
+          "name": "Delete destination",
+          "request": {
+            "name": "Delete destination",
+            "description": {
+              "content": "Deletes a destination from a source in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "workspaces",
+                ":workspaceName",
+                "sources",
+                ":sourceName",
+                "destinations",
+                ":destinationName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "workspaceName",
+                  "description": "(Required) The name of the workspace."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sourceName",
+                  "description": "(Required) The name of the source."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "destinationName",
+                  "description": "(Required) The name of the destination."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f7ebd0c9-0a91-473c-ab67-3f36882d2851",
+              "name": "Destination deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations",
+                    ":destinationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationName",
+                      "description": "(Required) The name of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a7429d4-db54-44eb-bc33-e30aa6a105b9",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations",
+                    ":destinationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationName",
+                      "description": "(Required) The name of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92a82db6-031c-409e-bce6-e973f70b6dcd",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspaces",
+                    ":workspaceName",
+                    "sources",
+                    ":sourceName",
+                    "destinations",
+                    ":destinationName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "workspaceName",
+                      "description": "(Required) The name of the workspace."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sourceName",
+                      "description": "(Required) The name of the source."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationName",
+                      "description": "(Required) The name of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5de2ad3a-a2a5-49f6-8be9-a50395d6b567",
+          "name": "List destinations",
+          "request": {
+            "name": "List destinations",
+            "description": {
+              "content": "Returns a list of all destinations in the workspace, including their configuration and connection status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "destinations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pagination[cursor]",
+                  "value": "<string>",
+                  "description": "Cursor for pagination. Use the cursor returned in a previous response to fetch the next page."
+                },
+                {
+                  "disabled": false,
+                  "key": "pagination[count]",
+                  "value": "10",
+                  "description": "Number of items to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d934c8b1-295a-4b33-bc68-2fc72fdf54d1",
+              "name": "Destinations retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination[cursor]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pagination[count]",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"destinations\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"enabled\": true,\n        \"sourceId\": \"string\",\n        \"metadata\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"description\": \"string\",\n          \"logos\": {\n            \"default\": \"https://lReDRxaeqKhPjmueDL.biwtD1bU6BpAKP3LeXLk5tyxW.CTyl1ofSHwXAGwE-xzOLw.5x3m\",\n            \"alt\": \"http://DQfkiYNP.dnsCsV6ldCovAFowTFPFfxuKiw9bix8oc6GTj3MKspTcgP34VdDh\",\n            \"mark\": \"http://pMWWcgcemFtsfyAwHXT.sxbrgL401OrHE7iSmLSm6LffDeAPD\"\n          },\n          \"categories\": [\n            \"string\",\n            \"string\"\n          ],\n          \"supportedMethods\": {\n            \"track\": true,\n            \"identify\": true,\n            \"page\": true,\n            \"screen\": true,\n            \"group\": true,\n            \"alias\": false\n          }\n        },\n        \"settings\": {\n          \"key_0\": \"string\",\n          \"key_1\": true,\n          \"key_2\": 330.2348464953231,\n          \"key_3\": false\n        },\n        \"labels\": [\n          {\n            \"key\": \"string\",\n            \"value\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"key\": \"string\",\n            \"value\": \"string\",\n            \"description\": \"string\"\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"enabled\": true,\n        \"sourceId\": \"string\",\n        \"metadata\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"slug\": \"string\",\n          \"description\": \"string\",\n          \"logos\": {\n            \"default\": \"https://LsfTTZNUNMkYEADtdAtfXlCP.afdmE9Pl3pOPygkY\",\n            \"alt\": \"https://phmMpEovLTPilwkcgsUY.jzwRhp+\",\n            \"mark\": \"http://vfHxZiDzuPaAPyFUkYtqhKLV.bwhhwQ0ml5H2FrHszkDmuH1pc\"\n          },\n          \"categories\": [\n            \"string\",\n            \"string\"\n          ],\n          \"supportedMethods\": {\n            \"track\": false,\n            \"identify\": false,\n            \"page\": true,\n            \"screen\": true,\n            \"group\": true,\n            \"alias\": false\n          }\n        },\n        \"settings\": {\n          \"key_0\": false,\n          \"key_1\": false\n        },\n        \"labels\": [\n          {\n            \"key\": \"string\",\n            \"value\": \"string\",\n            \"description\": \"string\"\n          },\n          {\n            \"key\": \"string\",\n            \"value\": \"string\",\n            \"description\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"pagination\": {\n      \"current\": \"string\",\n      \"next\": \"string\",\n      \"totalEntries\": 9360\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7bc8ba9-404f-4a90-9998-65cfef3cd13b",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination[cursor]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pagination[count]",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "068da1d2-8cfa-4e23-9fa4-a7c8e6b8ab2e",
+          "name": "Create destination",
+          "request": {
+            "name": "Create destination",
+            "description": {
+              "content": "Creates a new destination connected to a source in the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "destinations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceId\": \"<string>\",\n  \"metadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"settings\": {\n    \"key_0\": 8233.222353867677\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c4e6704-dcf3-40d3-ad4b-45308ee484f1",
+              "name": "Destination created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceId\": \"<string>\",\n  \"metadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"settings\": {\n    \"key_0\": \"string\",\n    \"key_1\": true,\n    \"key_2\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"destination\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"enabled\": false,\n      \"sourceId\": \"string\",\n      \"metadata\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"description\": \"string\",\n        \"logos\": {\n          \"default\": \"http://iWtGzZasMXCBJLhKKUNuBcHf.toqzdSY\",\n          \"alt\": \"https://NxFHgHxwjZTrdDpIGgrLRlCUrjNygJr.jmHbQZn1yARV4\",\n          \"mark\": \"https://gLZCGlbPVKmJtyemjEAU.bqxq9pRdZklrF22efCGjImIxpjRyyqzSkuHPZ\"\n        },\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"supportedMethods\": {\n          \"track\": true,\n          \"identify\": true,\n          \"page\": true,\n          \"screen\": true,\n          \"group\": false,\n          \"alias\": true\n        }\n      },\n      \"settings\": {\n        \"key_0\": \"string\"\n      },\n      \"labels\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc3c6bb0-b68a-4e0c-ba80-ce3426d159fd",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceId\": \"<string>\",\n  \"metadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"settings\": {\n    \"key_0\": \"string\",\n    \"key_1\": true,\n    \"key_2\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88e7282c-3040-4b81-b231-c53f2a13a106",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceId\": \"<string>\",\n  \"metadataId\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"settings\": {\n    \"key_0\": \"string\",\n    \"key_1\": true,\n    \"key_2\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cca6226d-8768-4ceb-8da1-bfed8020b50b",
+          "name": "Get destination",
+          "request": {
+            "name": "Get destination",
+            "description": {
+              "content": "Returns a single destination by its ID, including its configuration and connection status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "destinations",
+                ":destinationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "destinationId",
+                  "description": "(Required) The unique identifier of the destination."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "abe0e181-be53-4e5b-95b1-32fd9556a14a",
+              "name": "Destination retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations",
+                    ":destinationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationId",
+                      "description": "(Required) The unique identifier of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"destination\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"enabled\": false,\n      \"sourceId\": \"string\",\n      \"metadata\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"description\": \"string\",\n        \"logos\": {\n          \"default\": \"http://iWtGzZasMXCBJLhKKUNuBcHf.toqzdSY\",\n          \"alt\": \"https://NxFHgHxwjZTrdDpIGgrLRlCUrjNygJr.jmHbQZn1yARV4\",\n          \"mark\": \"https://gLZCGlbPVKmJtyemjEAU.bqxq9pRdZklrF22efCGjImIxpjRyyqzSkuHPZ\"\n        },\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"supportedMethods\": {\n          \"track\": true,\n          \"identify\": true,\n          \"page\": true,\n          \"screen\": true,\n          \"group\": false,\n          \"alias\": true\n        }\n      },\n      \"settings\": {\n        \"key_0\": \"string\"\n      },\n      \"labels\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8a4a96d-1d41-4097-9c63-1e1abd92c76d",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations",
+                    ":destinationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationId",
+                      "description": "(Required) The unique identifier of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe06c3cf-6fa1-431b-b875-64b8aa95e53c",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations",
+                    ":destinationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationId",
+                      "description": "(Required) The unique identifier of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "290add18-304c-422a-b4b9-246ff1a981b4",
+          "name": "Update destination",
+          "request": {
+            "name": "Update destination",
+            "description": {
+              "content": "Updates an existing destination with the provided changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "destinations",
+                ":destinationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "destinationId",
+                  "description": "(Required) The unique identifier of the destination."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": 56.5102058209832,\n    \"key_1\": true,\n    \"key_2\": \"string\",\n    \"key_3\": 5262\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a2fd8262-cbad-4e37-8581-2a30d61b02b7",
+              "name": "Destination updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations",
+                    ":destinationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationId",
+                      "description": "(Required) The unique identifier of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": false,\n    \"key_1\": 883.1732471176479\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"destination\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"enabled\": false,\n      \"sourceId\": \"string\",\n      \"metadata\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"slug\": \"string\",\n        \"description\": \"string\",\n        \"logos\": {\n          \"default\": \"http://iWtGzZasMXCBJLhKKUNuBcHf.toqzdSY\",\n          \"alt\": \"https://NxFHgHxwjZTrdDpIGgrLRlCUrjNygJr.jmHbQZn1yARV4\",\n          \"mark\": \"https://gLZCGlbPVKmJtyemjEAU.bqxq9pRdZklrF22efCGjImIxpjRyyqzSkuHPZ\"\n        },\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"supportedMethods\": {\n          \"track\": true,\n          \"identify\": true,\n          \"page\": true,\n          \"screen\": true,\n          \"group\": false,\n          \"alias\": true\n        }\n      },\n      \"settings\": {\n        \"key_0\": \"string\"\n      },\n      \"labels\": [\n        {\n          \"key\": \"string\",\n          \"value\": \"string\",\n          \"description\": \"string\"\n        },\n        {\n          \"key\": \"string\",\n          \"value\": \"string\",\n          \"description\": \"string\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44f49d74-3460-464a-b580-3ed0ae798618",
+              "name": "The request was invalid or malformed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations",
+                    ":destinationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationId",
+                      "description": "(Required) The unique identifier of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": false,\n    \"key_1\": 883.1732471176479\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1085e7a4-30d3-44cb-8cee-77283b6355aa",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations",
+                    ":destinationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationId",
+                      "description": "(Required) The unique identifier of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": false,\n    \"key_1\": 883.1732471176479\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e325dc13-83e9-4aa4-9f0e-5e2200114f1e",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations",
+                    ":destinationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationId",
+                      "description": "(Required) The unique identifier of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"settings\": {\n    \"key_0\": false,\n    \"key_1\": 883.1732471176479\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3869fa0c-3fc4-48b5-9299-1f47e9581e53",
+          "name": "Delete destination",
+          "request": {
+            "name": "Delete destination",
+            "description": {
+              "content": "Deletes a destination from the workspace by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "destinations",
+                ":destinationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "destinationId",
+                  "description": "(Required) The unique identifier of the destination."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b85db016-434b-4d50-9500-067c23928275",
+              "name": "Destination deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations",
+                    ":destinationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationId",
+                      "description": "(Required) The unique identifier of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae07ce64-6951-46de-acc6-70fd541ef4d9",
+              "name": "Authentication credentials were missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations",
+                    ":destinationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationId",
+                      "description": "(Required) The unique identifier of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "557b44cb-6b05-446b-a0a8-2e1697c5157f",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "destinations",
+                    ":destinationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destinationId",
+                      "description": "(Required) The unique identifier of the destination."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://platform.segmentapis.com/v1beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ddc86ffc-2ed0-404e-87e8-9225aa19d7d9",
+    "name": "Segment Config Alias Destinations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.\n\nContact Support:\n Name: Segment Support",
+      "type": "text/plain"
+    }
+  }
+}

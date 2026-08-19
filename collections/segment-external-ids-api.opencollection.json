@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Segment Config Alias External IDs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "External IDs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user external IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/collections/users/profiles/:externalId/external_ids",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return per page."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the external identifiers linked to a user profile. External IDs include user IDs, anonymous IDs, email addresses, and other identifiers that have been associated with the profile through identity resolution."
+        },
+        {
+          "info": {
+            "name": "Get account external IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://platform.segmentapis.com/v1beta/collections/accounts/profiles/:externalId/external_ids",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "path",
+                "description": "The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of items to return per page."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor to retrieve the next page of results."
+              }
+            ]
+          },
+          "docs": "Returns the external identifiers linked to an account profile."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

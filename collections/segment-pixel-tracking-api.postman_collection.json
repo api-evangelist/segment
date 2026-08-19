@@ -1,7 +1,7 @@
 {
   "item": [
     {
-      "id": "90648178-876a-4667-9c7e-a8f7f1a28ae6",
+      "id": "d7b6a382-24f4-459a-84a4-f118853e13ba",
       "name": "Pixel Tracking",
       "description": {
         "content": "Pixel-based tracking endpoints that accept data via query parameters and return a transparent 1x1 GIF image. All data is passed as a base64-encoded JSON object in the data query parameter.",
@@ -9,7 +9,7 @@
       },
       "item": [
         {
-          "id": "e502cf3a-b8b3-466d-8443-b03e5c66c844",
+          "id": "33a1d526-57ab-4535-bb50-0937a0e9b54a",
           "name": "Identify via pixel",
           "request": {
             "name": "Identify via pixel",
@@ -46,7 +46,7 @@
           },
           "response": [
             {
-              "id": "63bb90cf-c6aa-4051-a56f-725743714c41",
+              "id": "0b521095-06b3-43ee-8542-fd4342e78009",
               "name": "Returns a transparent 1x1 GIF image. The response is always 200 regardless of whether the data was valid.",
               "originalRequest": {
                 "url": {
@@ -66,6 +66,14 @@
                   "variable": []
                 },
                 "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
                   {
                     "key": "Accept",
                     "value": "image/gif"
@@ -93,7 +101,7 @@
           }
         },
         {
-          "id": "8930cf40-2d6b-45dd-b372-f8c3eb6da389",
+          "id": "6c4fffa2-0ec6-435b-823f-1daeef6b448c",
           "name": "Track via pixel",
           "request": {
             "name": "Track via pixel",
@@ -130,7 +138,7 @@
           },
           "response": [
             {
-              "id": "360a6bdd-8531-4afd-a34f-4872de4ed7c8",
+              "id": "46863537-ff4b-4639-a1cf-12a6335bebc7",
               "name": "Returns a transparent 1x1 GIF image.",
               "originalRequest": {
                 "url": {
@@ -150,6 +158,14 @@
                   "variable": []
                 },
                 "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
                   {
                     "key": "Accept",
                     "value": "image/gif"
@@ -177,7 +193,7 @@
           }
         },
         {
-          "id": "eef38ebb-c5d6-47b2-b10e-838f5aa7245c",
+          "id": "ba2ed6fa-7d89-4647-bed8-4a44a283cd63",
           "name": "Page via pixel",
           "request": {
             "name": "Page via pixel",
@@ -214,7 +230,7 @@
           },
           "response": [
             {
-              "id": "3bda9b6d-683c-487b-97a6-b664e4e0db06",
+              "id": "e03e01b6-f1a8-4542-9728-18a36d70c43c",
               "name": "Returns a transparent 1x1 GIF image.",
               "originalRequest": {
                 "url": {
@@ -234,6 +250,14 @@
                   "variable": []
                 },
                 "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
                   {
                     "key": "Accept",
                     "value": "image/gif"
@@ -261,7 +285,7 @@
           }
         },
         {
-          "id": "fb4ea2bb-fa7d-4963-8a23-bb46867234e9",
+          "id": "77a1d1d1-cd37-4bd8-8212-5c8b457cbbdc",
           "name": "Screen via pixel",
           "request": {
             "name": "Screen via pixel",
@@ -298,7 +322,7 @@
           },
           "response": [
             {
-              "id": "316af2f9-e902-480f-bef0-4f90766764d7",
+              "id": "d53da823-116c-44d3-9c02-ae1da0490024",
               "name": "Returns a transparent 1x1 GIF image.",
               "originalRequest": {
                 "url": {
@@ -318,6 +342,14 @@
                   "variable": []
                 },
                 "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
                   {
                     "key": "Accept",
                     "value": "image/gif"
@@ -345,7 +377,7 @@
           }
         },
         {
-          "id": "0272b910-593c-4927-ae2a-88b99ad55b62",
+          "id": "3c389471-0bc3-44e0-94cf-ee03ba75dc36",
           "name": "Group via pixel",
           "request": {
             "name": "Group via pixel",
@@ -382,7 +414,7 @@
           },
           "response": [
             {
-              "id": "1114134b-93a4-4c62-8935-3d695a23112b",
+              "id": "9db444d1-96d4-48c1-9e84-ea9421087f7f",
               "name": "Returns a transparent 1x1 GIF image.",
               "originalRequest": {
                 "url": {
@@ -402,6 +434,14 @@
                   "variable": []
                 },
                 "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
                   {
                     "key": "Accept",
                     "value": "image/gif"
@@ -429,7 +469,7 @@
           }
         },
         {
-          "id": "805a2f14-9c81-4d53-bee4-f33c9d749bef",
+          "id": "5350c98f-36b7-440d-8875-58b27a2870db",
           "name": "Alias via pixel",
           "request": {
             "name": "Alias via pixel",
@@ -466,7 +506,7 @@
           },
           "response": [
             {
-              "id": "bb95d532-3376-49c1-89a5-8fa5b8a30f58",
+              "id": "609f928b-6ead-481a-b1f1-4ff874b9ae18",
               "name": "Returns a transparent 1x1 GIF image.",
               "originalRequest": {
                 "url": {
@@ -486,6 +526,14 @@
                   "variable": []
                 },
                 "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
                   {
                     "key": "Accept",
                     "value": "image/gif"
@@ -520,16 +568,25 @@
   "variable": [
     {
       "type": "string",
-      "value": "https://api.segment.io/v1",
+      "value": "https://platform.segmentapis.com/v1beta",
       "key": "baseUrl"
     }
   ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
   "info": {
-    "_postman_id": "212aa405-9ec8-452e-bf5a-1c32db47d132",
-    "name": "Segment Pixel Tracking API",
+    "_postman_id": "88c504d6-9840-4da1-b323-0abe011fc47b",
+    "name": "Segment Config Alias Pixel Tracking API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "The Segment Pixel Tracking API provides a way to collect analytics data using image pixel requests, which is useful in environments where JavaScript cannot execute, such as email clients. It supports identify, track, page, screen, group, and alias calls through pixel endpoints under the api.segment.io domain. Each endpoint responds with a 200 status code and an empty GIF image. This API is particularly suited for tracking email opens, ad impressions, and other contexts where embedding a tracking pixel is the only viable data collection method.\n\nContact Support:\n Name: Segment Support",
+      "content": "The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.\n\nContact Support:\n Name: Segment Support",
       "type": "text/plain"
     }
   }

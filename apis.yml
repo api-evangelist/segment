@@ -159,6 +159,8 @@ apis:
   humanURL: https://docs.segmentapis.com/
   baseURL: https://api.segmentapis.com
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -507,6 +509,8 @@ apis:
   humanURL: https://docs.segmentapis.com/
   baseURL: https://api.segmentapis.com
   tags:
+  - Transformation
+  tags_raw:
   - Transformations
   properties:
   - type: OpenAPI

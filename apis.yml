@@ -2,6 +2,18 @@ aid: segment
 name: Twilio Segment
 x-type: company
 x-source: vc-portfolio
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 specificationVersion: '0.23'
 created: '2026-05-19'
 tags:
@@ -37,29 +49,6 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/segment.pn
 url: https://raw.githubusercontent.com/api-evangelist/segment/refs/heads/main/apis.yml
 modified: '2026-05-19'
 apis:
-- aid: segment:pixel-tracking-api
-  name: Segment Pixel Tracking API
-  tags:
-  - Analytics
-  - Email
-  - Pixel
-  - Tracking
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  baseURL: https://api.segment.io
-  humanURL: >-
-    https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/pixel-tracking-api
-  properties:
-  - url: >-
-      https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/pixel-tracking-api
-    type: Documentation
-  - url: openapi/segment-pixel-tracking-api-openapi.yml
-    type: OpenAPI
-  description: >-
-    The Segment Pixel Tracking API provides a way to collect analytics data using image pixel requests,
-    which is useful in environments where JavaScript cannot execute, such as email clients. It supports
-    identify, track, page, screen, group, and alias calls through pixel endpoints under the api.segment.io
-    domain. This API is particularly suited for tracking email opens, ad impressions, and other contexts
-    where embedding a tracking pixel is the only viable data collection method.
 - aid: segment:segment-alias-api
   name: segment Alias API
   description: Operations for merging two user identities together.

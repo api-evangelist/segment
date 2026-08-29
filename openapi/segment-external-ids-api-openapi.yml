@@ -1,18 +1,21 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Segment Config Alias External IDs API
-  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  title: Segment Profile External IDs API
+  description: The Segment Profile API provides endpoints to read user-level and account-level customer data from Segment Unify. Developers can query the entire user or account object programmatically, including external IDs, traits, and events that make up a user's journey. The API uses basic authentication and typically delivers p95 response times under 200ms for the traits endpoint. It is commonly used for real-time personalization and customer data retrieval.
   version: 1.0.0
   contact:
     name: Segment Support
     url: https://segment.com/help/
   termsOfService: https://segment.com/legal/terms/
-  x-status: deprecated
 servers:
-- url: https://platform.segmentapis.com/v1beta
-  description: Production Server (v1beta)
+- url: https://profiles.segment.com/v1/spaces/{spaceId}
+  description: Production Server
+  variables:
+    spaceId:
+      description: The ID of the Segment Unify space.
+      default: ''
 security:
-- bearerAuth: []
+- basicAuth: []
 tags:
 - name: External IDs
   description: Operations for retrieving external identifiers linked to a user or account profile.
@@ -82,94 +85,7 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  schemas:
-    Cursor:
-      type: object
-      properties:
-        url:
-          type: string
-          description: The URL to retrieve the next page.
-        has_more:
-          type: boolean
-          description: Whether there are more results.
-        next:
-          type: string
-          description: The cursor value for the next page.
-        limit:
-          type: integer
-          description: The number of items per page.
-    ExternalId:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The value of the external ID.
-        type:
-          type: string
-          description: The type of external ID.
-          enum:
-          - user_id
-          - anonymous_id
-          - email
-          - phone
-          - cross_domain_id
-          - android.id
-          - android.idfa
-          - ios.id
-          - ios.idfa
-        source_id:
-          type: string
-          description: The source that provided this external ID.
-        collection:
-          type: string
-          description: The collection this external ID belongs to.
-        created_at:
-          type: string
-          format: date-time
-          description: When this external ID was first seen.
-        encoding:
-          type: string
-          description: The encoding of the ID value.
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      description: The maximum number of items to return per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        default: 100
-    ExternalId:
-      name: externalId
-      in: path
-      required: true
-      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
-      schema:
-        type: string
-    Next:
-      name: next
-      in: query
-      description: Pagination cursor to retrieve the next page of results.
-      schema:
-        type: string
   responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: The error code.
-                  message:
-                    type: string
-                    description: A human-readable error message.
     NotFound:
       description: The requested profile was not found.
       content:
@@ -202,11 +118,98 @@ components:
                   message:
                     type: string
                     description: A human-readable error message.
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+  parameters:
+    ExternalId:
+      name: externalId
+      in: path
+      required: true
+      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 100
+    Next:
+      name: next
+      in: query
+      description: Pagination cursor to retrieve the next page of results.
+      schema:
+        type: string
+  schemas:
+    ExternalId:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The value of the external ID.
+        type:
+          type: string
+          description: The type of external ID.
+          enum:
+          - user_id
+          - anonymous_id
+          - email
+          - phone
+          - cross_domain_id
+          - android.id
+          - android.idfa
+          - ios.id
+          - ios.idfa
+        source_id:
+          type: string
+          description: The source that provided this external ID.
+        collection:
+          type: string
+          description: The collection this external ID belongs to.
+        created_at:
+          type: string
+          format: date-time
+          description: When this external ID was first seen.
+        encoding:
+          type: string
+          description: The encoding of the ID value.
+    Cursor:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL to retrieve the next page.
+        has_more:
+          type: boolean
+          description: Whether there are more results.
+        next:
+          type: string
+          description: The cursor value for the next page.
+        limit:
+          type: integer
+          description: The number of items per page.
   securitySchemes:
-    bearerAuth:
+    basicAuth:
       type: http
-      scheme: bearer
-      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+      scheme: basic
+      description: HTTP Basic authentication using the Profile API access token as the username and an empty password. Access tokens are generated in the Segment Unify space settings.
 externalDocs:
-  description: Segment Config API Documentation
-  url: https://segment.com/docs/api/config-api/
+  description: Segment Profile API Documentation
+  url: https://segment.com/docs/unify/profile-api/

@@ -1,16 +1,15 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Segment Config Alias Functions API
-  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  title: Segment Public Functions API
+  description: The Segment Public API allows developers to programmatically manage Segment workspaces and their resources. It supports full CRUD operations for sources, destinations, warehouses, tracking plans, functions, transformations, and catalog entries. The API follows REST conventions with standard HTTP methods and predictable resource-oriented URLs. It is available for Team and Business tier customers and is the recommended API going forward, replacing the older Config API.
   version: 1.0.0
   contact:
     name: Segment Support
     url: https://segment.com/help/
   termsOfService: https://segment.com/legal/terms/
-  x-status: deprecated
 servers:
-- url: https://platform.segmentapis.com/v1beta
-  description: Production Server (v1beta)
+- url: https://api.segmentapis.com
+  description: Production Server
 security:
 - bearerAuth: []
 tags:
@@ -216,29 +215,25 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    FunctionId:
-      name: functionId
-      in: path
-      required: true
-      description: The unique identifier of the function.
-      schema:
-        type: string
-    PaginationCursor:
-      name: pagination[cursor]
-      in: query
-      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
-      schema:
-        type: string
-    PaginationCount:
-      name: pagination[count]
-      in: query
-      description: Number of items to return per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        default: 10
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -261,6 +256,43 @@ components:
                 type: object
                 description: Additional error data.
                 additionalProperties: true
+    FunctionSetting:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the setting.
+        label:
+          type: string
+          description: A human-readable label for the setting.
+        description:
+          type: string
+          description: A description of the setting.
+        type:
+          type: string
+          description: The data type of the setting.
+          enum:
+          - BOOLEAN
+          - STRING
+          - TEXT_MAP
+        required:
+          type: boolean
+          description: Whether this setting is required.
+        sensitive:
+          type: boolean
+          description: Whether this setting contains sensitive data.
+    Pagination:
+      type: object
+      properties:
+        current:
+          type: string
+          description: Cursor pointing to the current page.
+        next:
+          type: string
+          description: Cursor pointing to the next page. Null if no more pages.
+        totalEntries:
+          type: integer
+          description: Total number of entries across all pages.
     Function:
       type: object
       properties:
@@ -300,67 +332,34 @@ components:
           description: Settings definitions for the function.
           items:
             $ref: '#/components/schemas/FunctionSetting'
-    Pagination:
-      type: object
-      properties:
-        current:
-          type: string
-          description: Cursor pointing to the current page.
-        next:
-          type: string
-          description: Cursor pointing to the next page. Null if no more pages.
-        totalEntries:
-          type: integer
-          description: Total number of entries across all pages.
-    FunctionSetting:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the setting.
-        label:
-          type: string
-          description: A human-readable label for the setting.
-        description:
-          type: string
-          description: A description of the setting.
-        type:
-          type: string
-          description: The data type of the setting.
-          enum:
-          - BOOLEAN
-          - STRING
-          - TEXT_MAP
-        required:
-          type: boolean
-          description: Whether this setting is required.
-        sensitive:
-          type: boolean
-          description: Whether this setting contains sensitive data.
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    PaginationCount:
+      name: pagination[count]
+      in: query
+      description: Number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 10
+    PaginationCursor:
+      name: pagination[cursor]
+      in: query
+      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
+      schema:
+        type: string
+    FunctionId:
+      name: functionId
+      in: path
+      required: true
+      description: The unique identifier of the function.
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
-      description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
+      description: Segment Public API access token. Generate tokens from the Segment workspace settings.
 externalDocs:
-  description: Segment Config API Documentation
-  url: https://segment.com/docs/api/config-api/
+  description: Segment Public API Documentation
+  url: https://docs.segmentapis.com/

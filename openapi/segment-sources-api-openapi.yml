@@ -1,16 +1,19 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Segment Config Alias Sources API
-  description: The Segment Config API allows programmatic management of Segment workspaces, sources, destinations, and other configuration resources. It provides endpoints to list workspace sources and destinations, create or delete destinations, and manage tracking plans. As of early 2024, Segment has stopped issuing new Config API tokens and recommends migrating to the Public API for access to the latest features. The Config API remains functional for existing users but is no longer actively developed.
+  title: Segment Sources API
   version: 1.0.0
   contact:
     name: Segment Support
     url: https://segment.com/help/
   termsOfService: https://segment.com/legal/terms/
-  x-status: deprecated
+  x-refined-note:
+  - x-status differs across the merged source definitions and was not carried
+  description: 'Operations tagged Sources across 2 of this provider''s published API definitions: segment-config-api-openapi.yml, segment-public-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://platform.segmentapis.com/v1beta
   description: Production Server (v1beta)
+- url: https://api.segmentapis.com
+  description: Production Server
 security:
 - bearerAuth: []
 tags:
@@ -80,6 +83,9 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+    servers:
+    - url: https://platform.segmentapis.com/v1beta
+      description: Production Server (v1beta)
   /workspaces/{workspaceName}/sources/{sourceName}:
     get:
       operationId: getSource
@@ -117,6 +123,9 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+    servers:
+    - url: https://platform.segmentapis.com/v1beta
+      description: Production Server (v1beta)
   /sources:
     get:
       operationId: listSources
@@ -192,6 +201,9 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+    servers:
+    - url: https://api.segmentapis.com
+      description: Production Server
   /sources/{sourceId}:
     get:
       operationId: getSource
@@ -291,8 +303,140 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+    servers:
+    - url: https://api.segmentapis.com
+      description: Production Server
 components:
+  responses:
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error type.
+        message:
+          type: string
+          description: A human-readable error message.
+    Source:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The fully qualified name of the source.
+        catalog_name:
+          type: string
+          description: The catalog name of the source type.
+        parent:
+          type: string
+          description: The parent workspace name.
+        write_keys:
+          type: array
+          items:
+            type: string
+          description: The write keys for the source.
+        library_config:
+          type: object
+          description: Library configuration settings.
+          additionalProperties: true
+        create_time:
+          type: string
+          format: date-time
+          description: When the source was created.
+    Error_2:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The error type.
+              message:
+                type: string
+                description: A human-readable error message.
+              field:
+                type: string
+                description: The field that caused the error, if applicable.
+              data:
+                type: object
+                description: Additional error data.
+                additionalProperties: true
+    Pagination:
+      type: object
+      properties:
+        current:
+          type: string
+          description: Cursor pointing to the current page.
+        next:
+          type: string
+          description: Cursor pointing to the next page. Null if no more pages.
+        totalEntries:
+          type: integer
+          description: Total number of entries across all pages.
+    Label:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The label key.
+        value:
+          type: string
+          description: The label value.
+        description:
+          type: string
+          description: A description of the label.
+    Source_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the source.
+        slug:
+          type: string
+          description: The URL-friendly slug of the source.
+        name:
+          type: string
+          description: The display name of the source.
+        enabled:
+          type: boolean
+          description: Whether the source is enabled.
+        writeKeys:
+          type: array
+          items:
+            type: string
+          description: The write keys associated with the source.
+        metadata:
+          $ref: '#/components/schemas/CatalogSource'
+        settings:
+          type: object
+          description: Configuration settings for the source.
+          additionalProperties: true
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Label'
+          description: Labels applied to the source.
     CatalogSource:
       type: object
       properties:
@@ -329,114 +473,19 @@ components:
           items:
             type: string
           description: Categories this source belongs to.
-    Source:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The fully qualified name of the source.
-        catalog_name:
-          type: string
-          description: The catalog name of the source type.
-        parent:
-          type: string
-          description: The parent workspace name.
-        write_keys:
-          type: array
-          items:
-            type: string
-          description: The write keys for the source.
-        library_config:
-          type: object
-          description: Library configuration settings.
-          additionalProperties: true
-        create_time:
-          type: string
-          format: date-time
-          description: When the source was created.
-    Label:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The label key.
-        value:
-          type: string
-          description: The label value.
-        description:
-          type: string
-          description: A description of the label.
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: The error type.
-        message:
-          type: string
-          description: A human-readable error message.
-    Source_2:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique identifier of the source.
-        slug:
-          type: string
-          description: The URL-friendly slug of the source.
-        name:
-          type: string
-          description: The display name of the source.
-        enabled:
-          type: boolean
-          description: Whether the source is enabled.
-        writeKeys:
-          type: array
-          items:
-            type: string
-          description: The write keys associated with the source.
-        metadata:
-          $ref: '#/components/schemas/CatalogSource'
-        settings:
-          type: object
-          description: Configuration settings for the source.
-          additionalProperties: true
-        labels:
-          type: array
-          items:
-            $ref: '#/components/schemas/Label'
-          description: Labels applied to the source.
-    Pagination:
-      type: object
-      properties:
-        current:
-          type: string
-          description: Cursor pointing to the current page.
-        next:
-          type: string
-          description: Cursor pointing to the next page. Null if no more pages.
-        totalEntries:
-          type: integer
-          description: Total number of entries across all pages.
   parameters:
-    WorkspaceName:
-      name: workspaceName
-      in: path
-      required: true
-      description: The name of the workspace.
-      schema:
-        type: string
-    PaginationCursor:
-      name: pagination[cursor]
-      in: query
-      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
-      schema:
-        type: string
     SourceName:
       name: sourceName
       in: path
       required: true
       description: The name of the source.
+      schema:
+        type: string
+    WorkspaceName:
+      name: workspaceName
+      in: path
+      required: true
+      description: The name of the workspace.
       schema:
         type: string
     PaginationCount:
@@ -448,6 +497,12 @@ components:
         minimum: 1
         maximum: 200
         default: 10
+    PaginationCursor:
+      name: pagination[cursor]
+      in: query
+      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
+      schema:
+        type: string
     SourceId:
       name: sourceId
       in: path
@@ -455,30 +510,11 @@ components:
       description: The unique identifier of the source.
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       description: Segment Config API access token. Note that as of early 2024, Segment has stopped issuing new Config API tokens.
-externalDocs:
-  description: Segment Config API Documentation
-  url: https://segment.com/docs/api/config-api/
+x-refined-from:
+- segment-config-api-openapi.yml
+- segment-public-api-openapi.yml

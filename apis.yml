@@ -498,7 +498,7 @@ apis:
   humanURL: https://docs.segmentapis.com/
   baseURL: https://api.segmentapis.com
   tags:
-  - Transformation
+  - Transformations
   tags_raw:
   - Transformations
   properties:

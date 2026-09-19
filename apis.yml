@@ -127,6 +127,8 @@ apis:
   humanURL: https://docs.segmentapis.com/
   baseURL: https://api.segmentapis.com
   tags:
+  - Destination
+  tags_raw:
   - Destinations
   properties:
   - type: OpenAPI
@@ -526,6 +528,8 @@ apis:
   humanURL: https://docs.segmentapis.com/
   baseURL: https://api.segmentapis.com
   tags:
+  - Warehouse
+  tags_raw:
   - Warehouses
   properties:
   - type: OpenAPI
@@ -549,6 +553,8 @@ apis:
   humanURL: https://docs.segmentapis.com/
   baseURL: https://api.segmentapis.com
   tags:
+  - Workspace
+  tags_raw:
   - Workspaces
   properties:
   - type: OpenAPI
@@ -567,6 +573,16 @@ apis:
   - type: Documentation
     url: https://www.twilio.com/docs/segment/api/config-api
 common:
+
+- type: ParentCompany
+
+  url: https://apis.io/providers/twilio/
+
+  name: Twilio
+
+  x-relationship: acquired
+
+  x-evidence: description names the acquirer and https://segment.com now redirects to twilio.com (roadmap#390, corroborate-dead.py)
 - type: Website
   url: https://segment.com
 - type: DeveloperPortal

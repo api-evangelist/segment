@@ -52,13 +52,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    Integrations:
-      type: object
-      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
-      additionalProperties:
-        oneOf:
-        - type: boolean
-        - type: object
     ErrorResponse:
       type: object
       properties:
@@ -68,6 +61,49 @@ components:
         message:
           type: string
           description: A human-readable error message.
+    Integrations:
+      type: object
+      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
+      additionalProperties:
+        oneOf:
+        - type: boolean
+        - type: object
+    TrackCall:
+      type: object
+      required:
+      - event
+      description: A track call records an action that a user performs.
+      properties:
+        userId:
+          type: string
+          description: Unique identifier for the user in your database.
+        anonymousId:
+          type: string
+          description: A pseudo-unique substitute for a user ID.
+        event:
+          type: string
+          description: Name of the action that a user has performed.
+        properties:
+          type: object
+          description: Free-form dictionary of properties of the event, like revenue or product details.
+          additionalProperties: true
+        context:
+          $ref: '#/components/schemas/Context'
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 date string when the message was originally sent.
+        messageId:
+          type: string
+          description: Unique identifier for the message to deduplicate.
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was accepted.
     Context:
       type: object
       description: Dictionary of extra context for the call. Context is a dictionary of extra information that provides useful context about a data point, such as the user's IP address, locale, or device information.
@@ -134,42 +170,6 @@ components:
             type:
               type: string
               description: The device type.
-    TrackCall:
-      type: object
-      required:
-      - event
-      description: A track call records an action that a user performs.
-      properties:
-        userId:
-          type: string
-          description: Unique identifier for the user in your database.
-        anonymousId:
-          type: string
-          description: A pseudo-unique substitute for a user ID.
-        event:
-          type: string
-          description: Name of the action that a user has performed.
-        properties:
-          type: object
-          description: Free-form dictionary of properties of the event, like revenue or product details.
-          additionalProperties: true
-        context:
-          $ref: '#/components/schemas/Context'
-        integrations:
-          $ref: '#/components/schemas/Integrations'
-        timestamp:
-          type: string
-          format: date-time
-          description: ISO 8601 date string when the message was originally sent.
-        messageId:
-          type: string
-          description: Unique identifier for the message to deduplicate.
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was accepted.
   securitySchemes:
     basicAuth:
       type: http

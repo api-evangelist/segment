@@ -52,13 +52,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    Integrations:
-      type: object
-      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
-      additionalProperties:
-        oneOf:
-        - type: boolean
-        - type: object
     ErrorResponse:
       type: object
       properties:
@@ -68,6 +61,19 @@ components:
         message:
           type: string
           description: A human-readable error message.
+    Integrations:
+      type: object
+      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
+      additionalProperties:
+        oneOf:
+        - type: boolean
+        - type: object
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was accepted.
     PageCall:
       type: object
       description: A page call records a page view on a website.
@@ -180,12 +186,6 @@ components:
             type:
               type: string
               description: The device type.
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was accepted.
   securitySchemes:
     basicAuth:
       type: http

@@ -42,7 +42,8 @@
     "tag 'Destinations' spans 2 source specs (segment-config-api-openapi.yml, segment-public-api-openapi.yml): per-path servers applied",
     "tag 'Sources' spans 2 source specs (segment-config-api-openapi.yml, segment-public-api-openapi.yml): per-path servers applied",
     "tag 'Tracking Plans' spans 2 source specs (segment-config-api-openapi.yml, segment-public-api-openapi.yml): per-path servers applied",
-    "tag 'Workspaces' spans 2 source specs (segment-config-api-openapi.yml, segment-public-api-openapi.yml): per-path servers applied"
+    "tag 'Workspaces' spans 2 source specs (segment-config-api-openapi.yml, segment-public-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "segment-alias-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -57,7 +58,6 @@
     "segment-labels-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "segment-links-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "segment-page-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "segment-pixel-tracking-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "segment-profiles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "segment-regulations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "segment-screen-api-openapi.yml: previously refined output, superseded by openapi/_original/",

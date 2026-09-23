@@ -54,6 +54,22 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
     NotFound:
       description: The requested profile was not found.
       content:
@@ -86,30 +102,7 @@ components:
                   message:
                     type: string
                     description: A human-readable error message.
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: The error code.
-                  message:
-                    type: string
-                    description: A human-readable error message.
   parameters:
-    ExternalId:
-      name: externalId
-      in: path
-      required: true
-      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
-      schema:
-        type: string
     Limit:
       name: limit
       in: query
@@ -125,7 +118,29 @@ components:
       description: Pagination cursor to retrieve the next page of results.
       schema:
         type: string
+    ExternalId:
+      name: externalId
+      in: path
+      required: true
+      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
+      schema:
+        type: string
   schemas:
+    Cursor:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL to retrieve the next page.
+        has_more:
+          type: boolean
+          description: Whether there are more results.
+        next:
+          type: string
+          description: The cursor value for the next page.
+        limit:
+          type: integer
+          description: The number of items per page.
     Event:
       type: object
       properties:
@@ -164,21 +179,6 @@ components:
         source_id:
           type: string
           description: The ID of the source that sent the event.
-    Cursor:
-      type: object
-      properties:
-        url:
-          type: string
-          description: The URL to retrieve the next page.
-        has_more:
-          type: boolean
-          description: Whether there are more results.
-        next:
-          type: string
-          description: The cursor value for the next page.
-        limit:
-          type: integer
-          description: The number of items per page.
   securitySchemes:
     basicAuth:
       type: http

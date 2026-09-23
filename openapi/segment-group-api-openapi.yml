@@ -52,13 +52,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    Integrations:
-      type: object
-      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
-      additionalProperties:
-        oneOf:
-        - type: boolean
-        - type: object
     ErrorResponse:
       type: object
       properties:
@@ -68,6 +61,49 @@ components:
         message:
           type: string
           description: A human-readable error message.
+    GroupCall:
+      type: object
+      required:
+      - groupId
+      description: A group call associates an identified user with a group.
+      properties:
+        userId:
+          type: string
+          description: Unique identifier for the user in your database.
+        anonymousId:
+          type: string
+          description: A pseudo-unique substitute for a user ID.
+        groupId:
+          type: string
+          description: A unique identifier for the group.
+        traits:
+          type: object
+          description: Free-form dictionary of traits of the group, like name, industry, or number of employees.
+          additionalProperties: true
+        context:
+          $ref: '#/components/schemas/Context'
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 date string when the message was originally sent.
+        messageId:
+          type: string
+          description: Unique identifier for the message to deduplicate.
+    Integrations:
+      type: object
+      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
+      additionalProperties:
+        oneOf:
+        - type: boolean
+        - type: object
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was accepted.
     Context:
       type: object
       description: Dictionary of extra context for the call. Context is a dictionary of extra information that provides useful context about a data point, such as the user's IP address, locale, or device information.
@@ -134,42 +170,6 @@ components:
             type:
               type: string
               description: The device type.
-    GroupCall:
-      type: object
-      required:
-      - groupId
-      description: A group call associates an identified user with a group.
-      properties:
-        userId:
-          type: string
-          description: Unique identifier for the user in your database.
-        anonymousId:
-          type: string
-          description: A pseudo-unique substitute for a user ID.
-        groupId:
-          type: string
-          description: A unique identifier for the group.
-        traits:
-          type: object
-          description: Free-form dictionary of traits of the group, like name, industry, or number of employees.
-          additionalProperties: true
-        context:
-          $ref: '#/components/schemas/Context'
-        integrations:
-          $ref: '#/components/schemas/Integrations'
-        timestamp:
-          type: string
-          format: date-time
-          description: ISO 8601 date string when the message was originally sent.
-        messageId:
-          type: string
-          description: Unique identifier for the message to deduplicate.
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was accepted.
   securitySchemes:
     basicAuth:
       type: http

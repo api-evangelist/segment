@@ -113,8 +113,8 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    BadRequest:
-      description: The request was invalid or malformed.
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
       content:
         application/json:
           schema:
@@ -125,13 +125,25 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
+    BadRequest:
+      description: The request was invalid or malformed.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    Label:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The label key.
+        value:
+          type: string
+          description: The label value.
+        description:
+          type: string
+          description: A description of the label.
     Error:
       type: object
       properties:
@@ -153,18 +165,6 @@ components:
                 type: object
                 description: Additional error data.
                 additionalProperties: true
-    Label:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The label key.
-        value:
-          type: string
-          description: The label value.
-        description:
-          type: string
-          description: A description of the label.
   securitySchemes:
     bearerAuth:
       type: http

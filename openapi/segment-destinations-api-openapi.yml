@@ -365,6 +365,12 @@ paths:
       description: Production Server
 components:
   responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     BadRequest:
       description: The request was invalid or malformed.
       content:
@@ -377,22 +383,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: The error type.
-        message:
-          type: string
-          description: A human-readable error message.
     Destination:
       type: object
       properties:
@@ -449,27 +440,15 @@ components:
           - list
           - map
           - mixed
-    Error_2:
+    Error:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                description: The error type.
-              message:
-                type: string
-                description: A human-readable error message.
-              field:
-                type: string
-                description: The field that caused the error, if applicable.
-              data:
-                type: object
-                description: Additional error data.
-                additionalProperties: true
+        error:
+          type: string
+          description: The error type.
+        message:
+          type: string
+          description: A human-readable error message.
     Destination_2:
       type: object
       properties:
@@ -554,18 +533,6 @@ components:
             alias:
               type: boolean
               description: Whether alias calls are supported.
-    Label:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The label key.
-        value:
-          type: string
-          description: The label value.
-        description:
-          type: string
-          description: A description of the label.
     Pagination:
       type: object
       properties:
@@ -578,12 +545,52 @@ components:
         totalEntries:
           type: integer
           description: Total number of entries across all pages.
+    Label:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The label key.
+        value:
+          type: string
+          description: The label value.
+        description:
+          type: string
+          description: A description of the label.
+    Error_2:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The error type.
+              message:
+                type: string
+                description: A human-readable error message.
+              field:
+                type: string
+                description: The field that caused the error, if applicable.
+              data:
+                type: object
+                description: Additional error data.
+                additionalProperties: true
   parameters:
     DestinationName:
       name: destinationName
       in: path
       required: true
       description: The name of the destination.
+      schema:
+        type: string
+    WorkspaceName:
+      name: workspaceName
+      in: path
+      required: true
+      description: The name of the workspace.
       schema:
         type: string
     SourceName:
@@ -593,11 +600,10 @@ components:
       description: The name of the source.
       schema:
         type: string
-    WorkspaceName:
-      name: workspaceName
-      in: path
-      required: true
-      description: The name of the workspace.
+    PaginationCursor:
+      name: pagination[cursor]
+      in: query
+      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
       schema:
         type: string
     PaginationCount:
@@ -609,12 +615,6 @@ components:
         minimum: 1
         maximum: 200
         default: 10
-    PaginationCursor:
-      name: pagination[cursor]
-      in: query
-      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
-      schema:
-        type: string
     DestinationId:
       name: destinationId
       in: path

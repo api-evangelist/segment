@@ -63,8 +63,6 @@ apis:
     url: openapi/segment-alias-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -86,8 +84,6 @@ apis:
     url: openapi/segment-batch-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -110,8 +106,6 @@ apis:
     url: openapi/segment-catalog-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -135,8 +129,6 @@ apis:
     url: openapi/segment-destinations-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -160,8 +152,6 @@ apis:
     url: openapi/segment-events-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -183,8 +173,6 @@ apis:
     url: openapi/segment-external-ids-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -207,8 +195,6 @@ apis:
     url: openapi/segment-functions-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -230,8 +216,6 @@ apis:
     url: openapi/segment-group-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -253,8 +237,6 @@ apis:
     url: openapi/segment-identify-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -277,8 +259,6 @@ apis:
     url: openapi/segment-labels-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -300,8 +280,6 @@ apis:
     url: openapi/segment-links-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -323,8 +301,6 @@ apis:
     url: openapi/segment-page-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -346,8 +322,6 @@ apis:
     url: openapi/segment-profiles-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -369,8 +343,6 @@ apis:
     url: openapi/segment-regulations-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -392,8 +364,6 @@ apis:
     url: openapi/segment-screen-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -415,8 +385,6 @@ apis:
     url: openapi/segment-sources-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -438,8 +406,6 @@ apis:
     url: openapi/segment-track-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -461,8 +427,6 @@ apis:
     url: openapi/segment-tracking-plans-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -484,8 +448,6 @@ apis:
     url: openapi/segment-traits-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -510,8 +472,6 @@ apis:
     url: openapi/segment-transformations-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -536,8 +496,6 @@ apis:
     url: openapi/segment-warehouses-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api
@@ -561,8 +519,6 @@ apis:
     url: openapi/segment-workspaces-api-openapi.yml
   - type: Documentation
     url: https://docs.segmentapis.com/
-  - type: GraphQL
-    url: graphql/segment-graphql.md
   - type: Documentation
     url: >-
       https://www.twilio.com/docs/segment/connections/sources/catalog/libraries/server/http-api

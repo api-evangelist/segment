@@ -71,25 +71,6 @@ paths:
     - url: https://api.segmentapis.com
       description: Production Server
 components:
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: The authenticated user does not have permission to access this resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error_2'
   schemas:
     Workspace:
       type: object
@@ -116,18 +97,6 @@ components:
         message:
           type: string
           description: A human-readable error message.
-    Workspace_2:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique identifier of the workspace.
-        slug:
-          type: string
-          description: The URL-friendly slug of the workspace.
-        name:
-          type: string
-          description: The display name of the workspace.
     Error_2:
       type: object
       properties:
@@ -149,6 +118,37 @@ components:
                 type: object
                 description: Additional error data.
                 additionalProperties: true
+    Workspace_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the workspace.
+        slug:
+          type: string
+          description: The URL-friendly slug of the workspace.
+        name:
+          type: string
+          description: The display name of the workspace.
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: The authenticated user does not have permission to access this resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error_2'
   parameters:
     WorkspaceName:
       name: workspaceName

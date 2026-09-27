@@ -52,6 +52,12 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was accepted.
     ErrorResponse:
       type: object
       properties:
@@ -61,13 +67,6 @@ components:
         message:
           type: string
           description: A human-readable error message.
-    Integrations:
-      type: object
-      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
-      additionalProperties:
-        oneOf:
-        - type: boolean
-        - type: object
     TrackCall:
       type: object
       required:
@@ -98,12 +97,13 @@ components:
         messageId:
           type: string
           description: Unique identifier for the message to deduplicate.
-    SuccessResponse:
+    Integrations:
       type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was accepted.
+      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
+      additionalProperties:
+        oneOf:
+        - type: boolean
+        - type: object
     Context:
       type: object
       description: Dictionary of extra context for the call. Context is a dictionary of extra information that provides useful context about a data point, such as the user's IP address, locale, or device information.

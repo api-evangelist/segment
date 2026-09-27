@@ -61,23 +61,30 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 100
+    ExternalId:
+      name: externalId
+      in: path
+      required: true
+      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
+      schema:
+        type: string
+    Next:
+      name: next
+      in: query
+      description: Pagination cursor to retrieve the next page of results.
+      schema:
+        type: string
   responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: The error code.
-                  message:
-                    type: string
-                    description: A human-readable error message.
     NotFound:
       description: The requested profile was not found.
       content:
@@ -110,29 +117,22 @@ components:
                   message:
                     type: string
                     description: A human-readable error message.
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      description: The maximum number of items to return per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        default: 100
-    Next:
-      name: next
-      in: query
-      description: Pagination cursor to retrieve the next page of results.
-      schema:
-        type: string
-    ExternalId:
-      name: externalId
-      in: path
-      required: true
-      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
-      schema:
-        type: string
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
   schemas:
     Cursor:
       type: object

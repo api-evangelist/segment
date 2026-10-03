@@ -127,27 +127,6 @@ components:
         totalEntries:
           type: integer
           description: Total number of entries across all pages.
-    Error:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                description: The error type.
-              message:
-                type: string
-                description: A human-readable error message.
-              field:
-                type: string
-                description: The field that caused the error, if applicable.
-              data:
-                type: object
-                description: Additional error data.
-                additionalProperties: true
     Regulation:
       type: object
       properties:
@@ -187,6 +166,40 @@ components:
           type: string
           format: date-time
           description: When the regulation was created.
+    Error:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: The error type.
+              message:
+                type: string
+                description: A human-readable error message.
+              field:
+                type: string
+                description: The field that caused the error, if applicable.
+              data:
+                type: object
+                description: Additional error data.
+                additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     PaginationCount:
       name: pagination[count]
@@ -203,19 +216,6 @@ components:
       description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

@@ -82,22 +82,6 @@ components:
         success:
           type: boolean
           description: Whether the request was accepted.
-    ErrorResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Always false for error responses.
-        message:
-          type: string
-          description: A human-readable error message.
-    Integrations:
-      type: object
-      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
-      additionalProperties:
-        oneOf:
-        - type: boolean
-        - type: object
     Context:
       type: object
       description: Dictionary of extra context for the call. Context is a dictionary of extra information that provides useful context about a data point, such as the user's IP address, locale, or device information.
@@ -164,6 +148,22 @@ components:
             type:
               type: string
               description: The device type.
+    Integrations:
+      type: object
+      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
+      additionalProperties:
+        oneOf:
+        - type: boolean
+        - type: object
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Always false for error responses.
+        message:
+          type: string
+          description: A human-readable error message.
   securitySchemes:
     basicAuth:
       type: http

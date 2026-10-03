@@ -55,9 +55,17 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  parameters:
+    ExternalId:
+      name: externalId
+      in: path
+      required: true
+      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
+      schema:
+        type: string
   responses:
-    RateLimited:
-      description: Too many requests. The Profile API enforces rate limits per space.
+    NotFound:
+      description: The requested profile was not found.
       content:
         application/json:
           schema:
@@ -72,8 +80,8 @@ components:
                   message:
                     type: string
                     description: A human-readable error message.
-    NotFound:
-      description: The requested profile was not found.
+    RateLimited:
+      description: Too many requests. The Profile API enforces rate limits per space.
       content:
         application/json:
           schema:
@@ -104,14 +112,6 @@ components:
                   message:
                     type: string
                     description: A human-readable error message.
-  parameters:
-    ExternalId:
-      name: externalId
-      in: path
-      required: true
-      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
-      schema:
-        type: string
   securitySchemes:
     basicAuth:
       type: http

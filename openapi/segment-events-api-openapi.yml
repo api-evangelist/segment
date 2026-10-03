@@ -53,7 +53,69 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  responses:
+    NotFound:
+      description: The requested profile was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
+    RateLimited:
+      description: Too many requests. The Profile API enforces rate limits per space.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code.
+                  message:
+                    type: string
+                    description: A human-readable error message.
   parameters:
+    Next:
+      name: next
+      in: query
+      description: Pagination cursor to retrieve the next page of results.
+      schema:
+        type: string
+    ExternalId:
+      name: externalId
+      in: path
+      required: true
+      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
+      schema:
+        type: string
     Limit:
       name: limit
       in: query
@@ -63,19 +125,6 @@ components:
         minimum: 1
         maximum: 200
         default: 100
-    ExternalId:
-      name: externalId
-      in: path
-      required: true
-      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
-      schema:
-        type: string
-    Next:
-      name: next
-      in: query
-      description: Pagination cursor to retrieve the next page of results.
-      schema:
-        type: string
   schemas:
     Event:
       type: object
@@ -130,55 +179,6 @@ components:
         limit:
           type: integer
           description: The number of items per page.
-  responses:
-    NotFound:
-      description: The requested profile was not found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: The error code.
-                  message:
-                    type: string
-                    description: A human-readable error message.
-    RateLimited:
-      description: Too many requests. The Profile API enforces rate limits per space.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: The error code.
-                  message:
-                    type: string
-                    description: A human-readable error message.
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: The error code.
-                  message:
-                    type: string
-                    description: A human-readable error message.
   securitySchemes:
     basicAuth:
       type: http

@@ -85,6 +85,77 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  parameters:
+    ExternalId:
+      name: externalId
+      in: path
+      required: true
+      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
+      schema:
+        type: string
+    Next:
+      name: next
+      in: query
+      description: Pagination cursor to retrieve the next page of results.
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 100
+  schemas:
+    Cursor:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL to retrieve the next page.
+        has_more:
+          type: boolean
+          description: Whether there are more results.
+        next:
+          type: string
+          description: The cursor value for the next page.
+        limit:
+          type: integer
+          description: The number of items per page.
+    ExternalId:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The value of the external ID.
+        type:
+          type: string
+          description: The type of external ID.
+          enum:
+          - user_id
+          - anonymous_id
+          - email
+          - phone
+          - cross_domain_id
+          - android.id
+          - android.idfa
+          - ios.id
+          - ios.idfa
+        source_id:
+          type: string
+          description: The source that provided this external ID.
+        collection:
+          type: string
+          description: The collection this external ID belongs to.
+        created_at:
+          type: string
+          format: date-time
+          description: When this external ID was first seen.
+        encoding:
+          type: string
+          description: The encoding of the ID value.
   responses:
     NotFound:
       description: The requested profile was not found.
@@ -134,77 +205,6 @@ components:
                   message:
                     type: string
                     description: A human-readable error message.
-  schemas:
-    ExternalId:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The value of the external ID.
-        type:
-          type: string
-          description: The type of external ID.
-          enum:
-          - user_id
-          - anonymous_id
-          - email
-          - phone
-          - cross_domain_id
-          - android.id
-          - android.idfa
-          - ios.id
-          - ios.idfa
-        source_id:
-          type: string
-          description: The source that provided this external ID.
-        collection:
-          type: string
-          description: The collection this external ID belongs to.
-        created_at:
-          type: string
-          format: date-time
-          description: When this external ID was first seen.
-        encoding:
-          type: string
-          description: The encoding of the ID value.
-    Cursor:
-      type: object
-      properties:
-        url:
-          type: string
-          description: The URL to retrieve the next page.
-        has_more:
-          type: boolean
-          description: Whether there are more results.
-        next:
-          type: string
-          description: The cursor value for the next page.
-        limit:
-          type: integer
-          description: The number of items per page.
-  parameters:
-    Next:
-      name: next
-      in: query
-      description: Pagination cursor to retrieve the next page of results.
-      schema:
-        type: string
-    ExternalId:
-      name: externalId
-      in: path
-      required: true
-      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      description: The maximum number of items to return per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        default: 100
   securitySchemes:
     basicAuth:
       type: http

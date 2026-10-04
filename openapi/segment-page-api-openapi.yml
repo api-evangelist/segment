@@ -52,58 +52,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    PageCall:
-      type: object
-      description: A page call records a page view on a website.
-      properties:
-        userId:
-          type: string
-          description: Unique identifier for the user in your database.
-        anonymousId:
-          type: string
-          description: A pseudo-unique substitute for a user ID.
-        name:
-          type: string
-          description: Name of the page.
-        properties:
-          type: object
-          description: Free-form dictionary of properties of the page.
-          properties:
-            path:
-              type: string
-              description: The path portion of the page URL.
-            referrer:
-              type: string
-              format: uri
-              description: The referrer URL.
-            search:
-              type: string
-              description: The search query string of the URL.
-            title:
-              type: string
-              description: The page title.
-            url:
-              type: string
-              format: uri
-              description: The full URL of the page.
-          additionalProperties: true
-        context:
-          $ref: '#/components/schemas/Context'
-        integrations:
-          $ref: '#/components/schemas/Integrations'
-        timestamp:
-          type: string
-          format: date-time
-          description: ISO 8601 date string when the message was originally sent.
-        messageId:
-          type: string
-          description: Unique identifier for the message to deduplicate.
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Whether the request was accepted.
     Context:
       type: object
       description: Dictionary of extra context for the call. Context is a dictionary of extra information that provides useful context about a data point, such as the user's IP address, locale, or device information.
@@ -170,13 +118,6 @@ components:
             type:
               type: string
               description: The device type.
-    Integrations:
-      type: object
-      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
-      additionalProperties:
-        oneOf:
-        - type: boolean
-        - type: object
     ErrorResponse:
       type: object
       properties:
@@ -186,6 +127,65 @@ components:
         message:
           type: string
           description: A human-readable error message.
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Whether the request was accepted.
+    Integrations:
+      type: object
+      description: Dictionary of destinations to enable or disable. Pass a destination name as key and true/false as the value to control which destinations receive the data.
+      additionalProperties:
+        oneOf:
+        - type: boolean
+        - type: object
+    PageCall:
+      type: object
+      description: A page call records a page view on a website.
+      properties:
+        userId:
+          type: string
+          description: Unique identifier for the user in your database.
+        anonymousId:
+          type: string
+          description: A pseudo-unique substitute for a user ID.
+        name:
+          type: string
+          description: Name of the page.
+        properties:
+          type: object
+          description: Free-form dictionary of properties of the page.
+          properties:
+            path:
+              type: string
+              description: The path portion of the page URL.
+            referrer:
+              type: string
+              format: uri
+              description: The referrer URL.
+            search:
+              type: string
+              description: The search query string of the URL.
+            title:
+              type: string
+              description: The page title.
+            url:
+              type: string
+              format: uri
+              description: The full URL of the page.
+          additionalProperties: true
+        context:
+          $ref: '#/components/schemas/Context'
+        integrations:
+          $ref: '#/components/schemas/Integrations'
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 date string when the message was originally sent.
+        messageId:
+          type: string
+          description: Unique identifier for the message to deduplicate.
   securitySchemes:
     basicAuth:
       type: http

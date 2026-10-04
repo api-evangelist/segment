@@ -71,14 +71,6 @@ paths:
     - url: https://api.segmentapis.com
       description: Production Server
 components:
-  parameters:
-    WorkspaceName:
-      name: workspaceName
-      in: path
-      required: true
-      description: The name of the workspace.
-      schema:
-        type: string
   responses:
     NotFound:
       description: The requested resource was not found.
@@ -99,15 +91,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error_2'
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: The error type.
-        message:
-          type: string
-          description: A human-readable error message.
     Workspace:
       type: object
       properties:
@@ -124,6 +107,27 @@ components:
           type: string
           format: date-time
           description: When the workspace was created.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error type.
+        message:
+          type: string
+          description: A human-readable error message.
+    Workspace_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the workspace.
+        slug:
+          type: string
+          description: The URL-friendly slug of the workspace.
+        name:
+          type: string
+          description: The display name of the workspace.
     Error_2:
       type: object
       properties:
@@ -145,18 +149,14 @@ components:
                 type: object
                 description: Additional error data.
                 additionalProperties: true
-    Workspace_2:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique identifier of the workspace.
-        slug:
-          type: string
-          description: The URL-friendly slug of the workspace.
-        name:
-          type: string
-          description: The display name of the workspace.
+  parameters:
+    WorkspaceName:
+      name: workspaceName
+      in: path
+      required: true
+      description: The name of the workspace.
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

@@ -529,6 +529,9 @@ apis:
   - type: Documentation
     url: https://www.twilio.com/docs/segment/api/config-api
 common:
+- type: CapabilityMap
+  url: capabilities/segment-capability-edges.yml
+  name: Twilio Segment Business Capability Map
 
 - type: ParentCompany
 

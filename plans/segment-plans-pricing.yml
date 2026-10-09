@@ -98,3 +98,36 @@ plans:
       - name: Generative audiences
       - name: Dedicated support + CSM
       - name: HIPAA-eligible regional options
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - seat
+  units:
+  - seat
+  plans:
+  - name: Free Developer
+    access: freemium
+    model: seat
+    model_how: derived
+    units:
+    - other
+    - seat
+    periods:
+    - month
+  - name: Customer Data Pipeline (Business)
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Customer Data Platform (CDP)
+    access: enterprise
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month

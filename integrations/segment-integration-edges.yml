@@ -4,11 +4,11 @@ edges:
   partner: ab-tasty
   partner_match: domain
   partner_url: https://www.abtasty.com
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/ab-tasty-client-side
   coverage_role:
   - destination
@@ -31,11 +31,11 @@ edges:
   partner: acoustic
   partner_match: domain
   partner_url: https://acoustic.com/?utm_source=segmentio&utm_medium=docs&utm_Connect=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-acoustic
   coverage_role:
   - destination
@@ -89,11 +89,11 @@ edges:
   partner: airship
   partner_match: domain
   partner_url: https://docs.airship.com/guides/messaging/user-guide/audience/segmentation/named-users/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-airship
   coverage_role:
   - destination
@@ -124,11 +124,11 @@ edges:
   partner: algolia
   partner_match: domain
   partner_url: https://www.algolia.com/doc/guides/sending-events/getting-started/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-algolia-insights
   coverage_role:
   - destination
@@ -225,11 +225,11 @@ edges:
   partner: attio
   partner_match: domain
   partner_url: https://attio.com
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-attio
   coverage_role:
   - destination
@@ -296,11 +296,11 @@ edges:
   partner: canny
   partner_match: domain
   partner_url: https://canny.io?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-canny
   coverage_role:
   - destination
@@ -325,11 +325,11 @@ edges:
   partner: chartmogul
   partner_match: domain
   partner_url: https://chartmogul.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-chartmogul
   coverage_role:
   - destination
@@ -414,11 +414,11 @@ edges:
   partner: contentstack
   partner_match: domain
   partner_url: https://www.contentstack.com/?utm_source=segment&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-contentstack
   coverage_role:
   - destination
@@ -462,11 +462,11 @@ edges:
   partner: criteo
   partner_match: domain+name-among-holders
   partner_url: https://developers.criteo.com/marketing-solutions/docs/onboarding-checklist
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-criteo-audiences
   coverage_role:
   - destination
@@ -494,11 +494,11 @@ edges:
   partner: customer-io
   partner_match: domain
   partner_url: https://customer.io/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-customerio
   coverage_role:
   - destination
@@ -532,11 +532,11 @@ edges:
   partner: dynamic-yield
   partner_match: domain
   partner_url: https://www.dynamicyield.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-dynamic-yield-audiences
   coverage_role:
   - destination
@@ -557,11 +557,11 @@ edges:
   partner: emarsys
   partner_match: domain
   partner_url: https://www.emarsys.com
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-emarsys
   coverage_role:
   - destination
@@ -588,11 +588,11 @@ edges:
   partner: equals
   partner_match: domain
   partner_url: https://equals.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-equals
   coverage_role:
   - destination
@@ -656,11 +656,11 @@ edges:
   partner: friendbuy
   partner_match: domain
   partner_url: https://www.friendbuy.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-friendbuy
   coverage_role:
   - destination
@@ -691,11 +691,11 @@ edges:
   partner: fullstory
   partner_match: domain
   partner_url: https://www.fullstory.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-fullstory
   coverage_role:
   - destination
@@ -723,11 +723,11 @@ edges:
   partner: gainsight
   partner_match: domain
   partner_url: https://www.gainsight.com/product-experience/analytics/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-gainsight-px-cloud
   coverage_role:
   - destination
@@ -758,11 +758,11 @@ edges:
   partner: gameball
   partner_match: domain
   partner_url: https://www.gameball.co
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-gameball
   coverage_role:
   - destination
@@ -961,11 +961,11 @@ edges:
   partner: iterable
   partner_match: domain
   partner_url: https://www.iterable.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-iterable
   coverage_role:
   - destination
@@ -1017,11 +1017,11 @@ edges:
   partner: kameleoon
   partner_match: domain
   partner_url: https://www.kameleoon.com/en?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-kameleoon
   coverage_role:
   - destination
@@ -1046,11 +1046,11 @@ edges:
   partner: launchdarkly
   partner_match: domain
   partner_url: https://launchdarkly.com
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-launchdarkly
   coverage_role:
   - destination
@@ -1108,11 +1108,11 @@ edges:
   partner: listrak
   partner_match: domain
   partner_url: https://www.listrak.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-listrak
   coverage_role:
   - destination
@@ -1141,11 +1141,11 @@ edges:
   partner: livelike
   partner_match: domain
   partner_url: https://livelike.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-livelike-cloud
   coverage_role:
   - destination
@@ -1197,11 +1197,11 @@ edges:
   partner: logrocket
   partner_match: domain
   partner_url: https://www.logrocket.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-logrocket
   coverage_role:
   - destination
@@ -1243,11 +1243,11 @@ edges:
   partner: mixpanel
   partner_match: domain
   partner_url: https://mixpanel.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-mixpanel
   coverage_role:
   - destination
@@ -1284,11 +1284,11 @@ edges:
   partner: moengage
   partner_match: domain
   partner_url: https://help.moengage.com/hc/en-us/articles/360057030512-Data-Centers-in-MoEngage
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-moengage
   coverage_role:
   - destination
@@ -1325,11 +1325,11 @@ edges:
   partner: moloco
   partner_match: domain
   partner_url: https://www.moloco.com/products/moloco-retail-media-platform
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-moloco-rmp
   coverage_role:
   - destination
@@ -1354,11 +1354,11 @@ edges:
   partner: movable-ink
   partner_match: domain
   partner_url: https://movableink.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-movable-ink
   coverage_role:
   - destination
@@ -1383,11 +1383,11 @@ edges:
   partner: optimizely
   partner_match: domain+name-among-holders
   partner_url: https://optimizely.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-optimizely-advanced-audience-targeting
   coverage_role:
   - destination
@@ -1419,11 +1419,11 @@ edges:
   partner: ortto
   partner_match: domain
   partner_url: https://ortto.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-ortto
   coverage_role:
   - destination
@@ -1505,11 +1505,11 @@ edges:
   partner: pushwoosh
   partner_match: domain
   partner_url: https://pushwoosh.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-pushwoosh
   coverage_role:
   - destination
@@ -1538,11 +1538,11 @@ edges:
   partner: qualified-com
   partner_match: domain
   partner_url: https://qualified.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-qualified
   coverage_role:
   - destination
@@ -1658,11 +1658,11 @@ edges:
   partner: schematic
   partner_match: domain
   partner_url: https://schematichq.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-schematic
   coverage_role:
   - destination
@@ -1687,11 +1687,11 @@ edges:
   partner: survicate
   partner_match: domain
   partner_url: https://survicate.com/integrations/segment-survey/?utm_source=segment&utm_medium=referral
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-survicate
   coverage_role:
   - destination
@@ -1720,11 +1720,11 @@ edges:
   partner: taboola
   partner_match: domain
   partner_url: https://developers.taboola.com/backstage-api/reference/create-a-first-party-audience/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-taboola-actions
   coverage_role:
   - destination
@@ -1745,11 +1745,11 @@ edges:
   partner: talon-one
   partner_match: domain
   partner_url: https://www.talon.one/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-talon-one
   coverage_role:
   - destination
@@ -1833,11 +1833,11 @@ edges:
   partner: vwo
   partner_match: domain
   partner_url: https://vwo.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-vwo-cloud
   coverage_role:
   - destination
@@ -1926,11 +1926,11 @@ edges:
   partner: adquick
   partner_match: domain
   partner_url: https://adquick.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/adquick
   coverage_role:
   - destination
@@ -2104,11 +2104,11 @@ edges:
   partner: amberflo
   partner_match: domain
   partner_url: https://www.amberflo.io/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/amberflo
   coverage_role:
   - destination
@@ -2132,11 +2132,11 @@ edges:
   partner: anodot
   partner_match: domain
   partner_url: https://www.anodot.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/anodot
   coverage_role:
   - destination
@@ -2217,11 +2217,11 @@ edges:
   partner: apptimize
   partner_match: domain
   partner_url: https://apptimize.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/apptimize
   coverage_role:
   - destination
@@ -2279,11 +2279,11 @@ edges:
   partner: beamer
   partner_match: domain
   partner_url: https://www.getbeamer.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/beamer
   coverage_role:
   - destination
@@ -2309,11 +2309,11 @@ edges:
   partner: bloomreach
   partner_match: domain
   partner_url: https://www.bloomreach.com/en/products/engagement?spz=learn_orig/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/bloomreach-engagement
   coverage_role:
   - destination
@@ -2364,11 +2364,11 @@ edges:
   partner: usebutton
   partner_match: domain
   partner_url: https://usebutton.com?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/button
   coverage_role:
   - destination
@@ -2390,11 +2390,11 @@ edges:
   partner: byteplus
   partner_match: domain
   partner_url: https://docs.byteplus.com/data-intelligence/docs/sdk-integration-1
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/byteplus
   coverage_role:
   - destination
@@ -2494,11 +2494,11 @@ edges:
   partner: courier
   partner_match: domain
   partner_url: https://courier.com?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/courier
   coverage_role:
   - destination
@@ -2521,11 +2521,11 @@ edges:
   partner: crisp
   partner_match: domain
   partner_url: https://crisp.chat/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/crisp
   coverage_role:
   - destination
@@ -2546,11 +2546,11 @@ edges:
   partner: crossing-minds
   partner_match: domain
   partner_url: https://crossingminds.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/crossing-minds
   coverage_role:
   - destination
@@ -2604,11 +2604,11 @@ edges:
   partner: dotdigital
   partner_match: domain
   partner_url: https://dotdigital.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/dotdigital
   coverage_role:
   - destination
@@ -2659,11 +2659,11 @@ edges:
   partner: dreamdata
   partner_match: domain
   partner_url: https://dreamdata.io/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/dreamdata-io
   coverage_role:
   - destination
@@ -2718,11 +2718,11 @@ edges:
   partner: encharge
   partner_match: domain
   partner_url: https://encharge.io/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/encharge-cloud-actions
   coverage_role:
   - destination
@@ -2747,11 +2747,11 @@ edges:
   partner: enjoyhq
   partner_match: domain
   partner_url: https://getenjoyhq.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/enjoyhq
   coverage_role:
   - destination
@@ -2773,11 +2773,11 @@ edges:
   partner: extole
   partner_match: domain
   partner_url: https://my.extole.com/tech-center#access-token
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/extole-platform
   coverage_role:
   - destination
@@ -2854,11 +2854,11 @@ edges:
   partner: gleap
   partner_match: domain
   partner_url: https://gleap.io/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/gleap-cloud-actions
   coverage_role:
   - destination
@@ -3024,11 +3024,11 @@ edges:
   partner: impact
   partner_match: domain
   partner_url: https://impact.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/impact-partnership-cloud
   coverage_role:
   - destination
@@ -3052,11 +3052,11 @@ edges:
   partner: inflectionio
   partner_match: domain
   partner_url: https://www.inflection.io/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/inflection
   coverage_role:
   - destination
@@ -3110,11 +3110,11 @@ edges:
   partner: june
   partner_match: domain
   partner_url: https://june.so/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/june
   coverage_role:
   - destination
@@ -3199,11 +3199,11 @@ edges:
   partner: kubit-ai-inc
   partner_match: domain
   partner_url: https://kubit.ai
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/kubit
   coverage_role:
   - destination
@@ -3228,11 +3228,11 @@ edges:
   partner: kustomer
   partner_match: domain
   partner_url: https://www.kustomer.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/kustomer
   coverage_role:
   - destination
@@ -3319,11 +3319,11 @@ edges:
   partner: lou-web-technologies
   partner_match: domain
   partner_url: https://www.louassist.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/lou
   coverage_role:
   - destination
@@ -3346,11 +3346,11 @@ edges:
   partner: mabl
   partner_match: domain
   partner_url: https://mabl.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/mabl
   coverage_role:
   - destination
@@ -3376,11 +3376,11 @@ edges:
   partner: madkudu
   partner_match: domain
   partner_url: http://www.madkudu.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/madkudu
   coverage_role:
   - destination
@@ -3434,11 +3434,11 @@ edges:
   partner: mailmodo
   partner_match: domain
   partner_url: https://www.mailmodo.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/mailmodo
   coverage_role:
   - destination
@@ -3490,11 +3490,11 @@ edges:
   partner: metronome
   partner_match: domain
   partner_url: https://www.metronome.com
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/metronome-actions
   coverage_role:
   - destination
@@ -3519,11 +3519,11 @@ edges:
   partner: moesif
   partner_match: domain
   partner_url: https://www.moesif.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
   coverage_role:
   - destination
@@ -3549,11 +3549,11 @@ edges:
   partner: mutiny
   partner_match: domain+name-among-holders
   partner_url: https://mutinyhq.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/mutiny
   coverage_role:
   - destination
@@ -3654,11 +3654,11 @@ edges:
   partner: onesignal
   partner_match: domain
   partner_url: https://onesignal.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/onesignal-new
   coverage_role:
   - destination
@@ -3685,11 +3685,11 @@ edges:
   partner: orb-billing
   partner_match: domain
   partner_url: https://www.withorb.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/orb
   coverage_role:
   - destination
@@ -3711,11 +3711,11 @@ edges:
   partner: pendoio
   partner_match: domain
   partner_url: http://www.pendo.io/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/pendo
   coverage_role:
   - destination
@@ -3738,11 +3738,11 @@ edges:
   partner: persistiq
   partner_match: domain
   partner_url: https://www.persistiq.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/persistiq
   coverage_role:
   - destination
@@ -3822,11 +3822,11 @@ edges:
   partner: posthog
   partner_match: domain
   partner_url: https://posthog.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/posthog
   coverage_role:
   - destination
@@ -3904,11 +3904,11 @@ edges:
   partner: refersion
   partner_match: domain
   partner_url: https://refersion.com/?utm_source=segment&utm_medium=partner
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/refersion
   coverage_role:
   - destination
@@ -3954,11 +3954,11 @@ edges:
   partner: segmetrics
   partner_match: domain
   partner_url: https://segmetrics.io/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/segmetrics
   coverage_role:
   - destination
@@ -4008,11 +4008,11 @@ edges:
   partner: signl4
   partner_match: domain
   partner_url: https://www.signl4.com
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/signl4-alerting
   coverage_role:
   - destination
@@ -4038,11 +4038,11 @@ edges:
   partner: singular
   partner_match: domain
   partner_url: https://www.singular.net/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/singular
   coverage_role:
   - destination
@@ -4070,11 +4070,11 @@ edges:
   partner: smartlook
   partner_match: domain
   partner_url: https://smartlook.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/smartlook
   coverage_role:
   - destination
@@ -4097,11 +4097,11 @@ edges:
   partner: split
   partner_match: domain
   partner_url: https://split.io/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/split
   coverage_role:
   - destination
@@ -4124,11 +4124,11 @@ edges:
   partner: sprig
   partner_match: domain
   partner_url: https://sprig.com/?&utm_source=segmentio&utm_medium=docs_actions&utm_campaign=integration
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/sprig-cloud
   coverage_role:
   - destination
@@ -4155,11 +4155,11 @@ edges:
   partner: statsig
   partner_match: domain
   partner_url: https://www.statsig.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/statsig
   coverage_role:
   - destination
@@ -4189,11 +4189,11 @@ edges:
   partner: stonly
   partner_match: domain
   partner_url: https://stonly.com
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/stonly
   coverage_role:
   - destination
@@ -4242,11 +4242,11 @@ edges:
   partner: trustpilot
   partner_match: domain
   partner_url: https://www.trustpilot.com/
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/trustpilot
   coverage_role:
   - destination
@@ -4268,11 +4268,11 @@ edges:
   partner: userpilot
   partner_match: domain
   partner_url: https://userpilot.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/userpilot
   coverage_role:
   - destination
@@ -4328,11 +4328,11 @@ edges:
   partner: vespucci
   partner_match: domain
   partner_url: https://vespuccianalytics.com
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/vespucci
   coverage_role:
   - destination
@@ -4356,11 +4356,11 @@ edges:
   partner: vitally
   partner_match: domain
   partner_url: https://vitally.io/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/vitally
   coverage_role:
   - destination
@@ -4384,11 +4384,11 @@ edges:
   partner: walkme
   partner_match: domain
   partner_url: https://www.walkme.com/?utm_source=segmentio&utm_medium=docs&utm_campaign=partners
-  marketplace: coverage
-  channel: provider-built
-  direction: provider-built
-  type: coverage
-  relationship: connector-coverage
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  direction: partner-built
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/walkme
   coverage_role:
   - destination
@@ -4823,11 +4823,40 @@ edges:
       - insert
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/segment/
+  mirror_of: okta/integrations/okta-integration-edges.yml
+  apps:
+  - Segment
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Single Sign-On
+  badges:
+  - OKTA_VERIFIED
+  features:
+  - CREATE
+  - DEACTIVATE
+  - GROUP_LINKING
+  - GROUP_PUSH
+  - IDENTITY_SECURITY_POSTURE_MANAGEMENT
+  - SAML
+  - SWA
+  - UPDATE
 method: searched
 checked:
 - https://hightouch.com/docs/destinations/segment
 - https://www.twilio.com/docs/segment/connections/destinations/catalog
 - https://www.twilio.com/docs/segment/connections/sources/catalog
+- okta/integrations/okta-integration-edges.yml
 marketplace_apps:
 - marketplace: coverage
   channel: coverage-list

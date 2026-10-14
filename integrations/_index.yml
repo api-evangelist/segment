@@ -7,24 +7,24 @@
   label: AB Tasty client side
   partner: ab-tasty
   partner_name: AB Tasty client side
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/ab-tasty-client-side
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-acoustic-actions
   label: Acoustic (Actions)
   partner: acoustic
   partner_name: Acoustic (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-acoustic
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-adobe-target-cloud-mode
@@ -43,24 +43,24 @@
   label: Airship (Actions)
   partner: airship
   partner_name: Airship (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-airship
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-algolia-insights-actions
   label: Algolia Insights (Actions)
   partner: algolia
   partner_name: Algolia Insights (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-algolia-insights
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-amazon-ads-dsp-and-amc
@@ -91,12 +91,12 @@
   label: Attio (Actions)
   partner: attio
   partner_name: Attio (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-attio
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-braze-cloud-mode-actions
@@ -115,24 +115,24 @@
   label: Canny (Actions)
   partner: canny
   partner_name: Canny (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-canny
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-chartmogul
   label: ChartMogul
   partner: chartmogul
   partner_name: ChartMogul
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-chartmogul
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-clevertap-actions
@@ -163,12 +163,12 @@
   label: Contentstack Cloud
   partner: contentstack
   partner_name: Contentstack Cloud
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-contentstack
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-cordial-actions
@@ -187,60 +187,60 @@
   label: Criteo Audiences
   partner: criteo
   partner_name: Criteo Audiences
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-criteo-audiences
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-customer-io-actions
   label: Customer.io (Actions)
   partner: customer-io
   partner_name: Customer.io (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-customerio
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-dynamic-yield-by-mastercard-audiences
   label: Dynamic Yield by Mastercard Audiences
   partner: dynamic-yield
   partner_name: Dynamic Yield by Mastercard Audiences
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-dynamic-yield-audiences
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-emarsys-actions
   label: Emarsys (Actions)
   partner: emarsys
   partner_name: Emarsys (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-emarsys
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-equals
   label: Equals
   partner: equals
   partner_name: Equals
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-equals
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-facebook-conversions-api-actions
@@ -259,48 +259,48 @@
   label: Friendbuy (Web Destination)
   partner: friendbuy
   partner_name: Friendbuy (Web Destination)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-friendbuy
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-fullstory-actions
   label: Fullstory (Actions)
   partner: fullstory
   partner_name: Fullstory (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-fullstory
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-gainsight-px-cloud-actions
   label: Gainsight Px Cloud (Actions)
   partner: gainsight
   partner_name: Gainsight Px Cloud (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-gainsight-px-cloud
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-gameball-actions
   label: Gameball (Actions)
   partner: gameball
   partner_name: Gameball (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-gameball
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-google-analytics-4-cloud
@@ -367,12 +367,12 @@
   label: Iterable (Actions)
   partner: iterable
   partner_name: Iterable (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-iterable
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-kafka
@@ -391,24 +391,24 @@
   label: Kameleoon (Actions)
   partner: kameleoon
   partner_name: Kameleoon (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-kameleoon
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-launchdarkly-actions
   label: LaunchDarkly (Actions)
   partner: launchdarkly
   partner_name: LaunchDarkly (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-launchdarkly
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-linkedin-audiences
@@ -427,24 +427,24 @@
   label: Listrak (Actions)
   partner: listrak
   partner_name: Listrak (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-listrak
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-livelike
   label: LiveLike
   partner: livelike
   partner_name: LiveLike
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-livelike-cloud
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-liveramp-audiences
@@ -463,12 +463,12 @@
   label: LogRocket
   partner: logrocket
   partner_name: LogRocket
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-logrocket
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-loops-actions
@@ -487,72 +487,72 @@
   label: Mixpanel (Actions)
   partner: mixpanel
   partner_name: Mixpanel (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-mixpanel
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-moengage-actions
   label: Moengage (Actions)
   partner: moengage
   partner_name: Moengage (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-moengage
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-moloco-mcm
   label: Moloco MCM
   partner: moloco
   partner_name: Moloco MCM
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-moloco-rmp
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-movable-ink-actions
   label: Movable Ink (Actions)
   partner: movable-ink
   partner_name: Movable Ink (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-movable-ink
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-optimizely-advanced-audience-targeting
   label: Optimizely Advanced Audience Targeting
   partner: optimizely
   partner_name: Optimizely Advanced Audience Targeting
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-optimizely-advanced-audience-targeting
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-ortto-actions
   label: Ortto (Actions)
   partner: ortto
   partner_name: Ortto (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-ortto
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-pardot-actions
@@ -583,24 +583,24 @@
   label: Pushwoosh
   partner: pushwoosh
   partner_name: Pushwoosh
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-pushwoosh
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-qualified
   label: Qualified
   partner: qualified-com
   partner_name: Qualified
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-qualified
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-qualtrics
@@ -643,48 +643,48 @@
   label: Schematic
   partner: schematic
   partner_name: Schematic
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-schematic
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-survicate-actions
   label: Survicate (Actions)
   partner: survicate
   partner_name: Survicate (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-survicate
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-taboola-actions
   label: Taboola (Actions)
   partner: taboola
   partner_name: Taboola (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-taboola-actions
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-talon-one-actions
   label: Talon.One (Actions)
   partner: talon-one
   partner_name: Talon.One (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-talon-one
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-the-trade-desk-crm
@@ -715,12 +715,12 @@
   label: VWO Cloud Mode (Actions)
   partner: vwo
   partner_name: VWO Cloud Mode (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/actions-vwo-cloud
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-activecampaign
@@ -751,12 +751,12 @@
   label: AdQuick
   partner: adquick
   partner_name: AdQuick
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/adquick
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-adroll
@@ -823,24 +823,24 @@
   label: Amberflo
   partner: amberflo
   partner_name: Amberflo
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/amberflo
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-anodot
   label: Anodot
   partner: anodot
   partner_name: Anodot
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/anodot
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-appcues
@@ -871,12 +871,12 @@
   label: Apptimize
   partner: apptimize
   partner_name: Apptimize
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/apptimize
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-azure-function
@@ -895,24 +895,24 @@
   label: Beamer
   partner: beamer
   partner_name: Beamer
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/beamer
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-bloomreach-engagement
   label: Bloomreach Engagement
   partner: bloomreach
   partner_name: Bloomreach Engagement
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/bloomreach-engagement
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-bugsnag
@@ -931,24 +931,24 @@
   label: Button
   partner: usebutton
   partner_name: Button
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/button
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-byteplus
   label: BytePlus
   partner: byteplus
   partner_name: BytePlus
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/byteplus
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-castle
@@ -991,36 +991,36 @@
   label: Courier
   partner: courier
   partner_name: Courier
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/courier
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-crisp
   label: Crisp
   partner: crisp
   partner_name: Crisp
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/crisp
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-crossing-minds
   label: Crossing Minds
   partner: crossing-minds
   partner_name: Crossing Minds
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/crossing-minds
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-delighted
@@ -1039,12 +1039,12 @@
   label: Dotdigital
   partner: dotdigital
   partner_name: Dotdigital
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/dotdigital
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-doubleclick-floodlight
@@ -1063,12 +1063,12 @@
   label: Dreamdata
   partner: dreamdata
   partner_name: Dreamdata
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/dreamdata-io
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-eloqua
@@ -1087,36 +1087,36 @@
   label: Encharge (Actions)
   partner: encharge
   partner_name: Encharge (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/encharge-cloud-actions
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-enjoyhq
   label: EnjoyHQ
   partner: enjoyhq
   partner_name: EnjoyHQ
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/enjoyhq
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-extole-platform
   label: Extole Platform
   partner: extole
   partner_name: Extole Platform
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/extole-platform
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-firebase
@@ -1147,12 +1147,12 @@
   label: Gleap (Action)
   partner: gleap
   partner_name: Gleap (Action)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/gleap-cloud-actions
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-google-cloud-function
@@ -1219,24 +1219,24 @@
   label: Impact Partnership Cloud
   partner: impact
   partner_name: Impact Partnership Cloud
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/impact-partnership-cloud
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-inflection
   label: Inflection
   partner: inflectionio
   partner_name: Inflection
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/inflection
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-iron-io
@@ -1255,12 +1255,12 @@
   label: June
   partner: june
   partner_name: June
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/june
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-kissmetrics
@@ -1291,24 +1291,24 @@
   label: Kubit
   partner: kubit-ai-inc
   partner_name: Kubit
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/kubit
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-kustomer
   label: Kustomer
   partner: kustomer
   partner_name: Kustomer
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/kustomer
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-leanplum
@@ -1339,36 +1339,36 @@
   label: Lou
   partner: lou-web-technologies
   partner_name: Lou
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/lou
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-mabl
   label: mabl
   partner: mabl
   partner_name: mabl
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/mabl
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-madkudu
   label: Madkudu
   partner: madkudu
   partner_name: Madkudu
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/madkudu
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-mailchimp
@@ -1387,12 +1387,12 @@
   label: Mailmodo
   partner: mailmodo
   partner_name: Mailmodo
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/mailmodo
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-matomo
@@ -1411,36 +1411,36 @@
   label: Metronome (Actions)
   partner: metronome
   partner_name: Metronome (Actions)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/metronome-actions
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-moesif-api-analytics
   label: Moesif API Analytics
   partner: moesif
   partner_name: Moesif API Analytics
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/moesif-api-analytics
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-mutiny
   label: Mutiny
   partner: mutiny
   partner_name: Mutiny
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/mutiny
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-new-relic
@@ -1483,48 +1483,48 @@
   label: OneSignal (New)
   partner: onesignal
   partner_name: OneSignal (New)
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/onesignal-new
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-orb
   label: Orb
   partner: orb-billing
   partner_name: Orb
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/orb
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-pendo
   label: Pendo
   partner: pendoio
   partner_name: Pendo
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/pendo
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-persistiq
   label: PersistIQ
   partner: persistiq
   partner_name: PersistIQ
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/persistiq
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-pingdom
@@ -1555,12 +1555,12 @@
   label: PostHog
   partner: posthog
   partner_name: PostHog
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/posthog
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-quantcast
@@ -1591,12 +1591,12 @@
   label: Refersion
   partner: refersion
   partner_name: Refersion
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/refersion
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-rollbar
@@ -1615,12 +1615,12 @@
   label: SegMetrics
   partner: segmetrics
   partner_name: SegMetrics
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/segmetrics
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-sentry
@@ -1639,84 +1639,84 @@
   label: SIGNL4 Alerting
   partner: signl4
   partner_name: SIGNL4 Alerting
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/signl4-alerting
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-singular
   label: Singular
   partner: singular
   partner_name: Singular
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/singular
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-smartlook
   label: Smartlook
   partner: smartlook
   partner_name: Smartlook
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/smartlook
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-split
   label: Split
   partner: split
   partner_name: Split
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/split
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-sprig-cloud
   label: Sprig Cloud
   partner: sprig
   partner_name: Sprig Cloud
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/sprig-cloud
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-statsig
   label: Statsig
   partner: statsig
   partner_name: Statsig
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/statsig
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-stonly
   label: Stonly
   partner: stonly
   partner_name: Stonly
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/stonly
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-talkable
@@ -1735,24 +1735,24 @@
   label: Trustpilot
   partner: trustpilot
   partner_name: Trustpilot
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/trustpilot
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-userpilot-web-plugin
   label: Userpilot Web Plugin
   partner: userpilot
   partner_name: Userpilot Web Plugin
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/userpilot
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-uservoice
@@ -1771,36 +1771,36 @@
   label: Vespucci
   partner: vespucci
   partner_name: Vespucci
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/vespucci
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-vitally
   label: Vitally
   partner: vitally
   partner_name: Vitally
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/vitally
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-walkme
   label: WalkMe
   partner: walkme
   partner_name: WalkMe
-  type: coverage
-  marketplace: coverage
-  channel: provider-built
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/walkme
   source: edge
-  relationship: connector-coverage
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
 - slug: segment-inmoment-formerly-wootric
@@ -2065,5 +2065,18 @@
   evidence: https://hightouch.com/docs/destinations/segment
   source: edge
   relationship: connector-coverage
+  status: not-a-workflow
+  arazzo: null
+- slug: segment-okta-own
+  label: Okta (own)
+  partner: okta
+  partner_name: Okta (own)
+  category: Single Sign-On
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.okta.com/integrations/segment/
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null

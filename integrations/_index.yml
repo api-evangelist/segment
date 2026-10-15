@@ -2103,7 +2103,7 @@
     node_path: Segment
     trigger: false
     builder: n8n (built-in node)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: segment-pipedream
   label: Pipedream
@@ -2129,5 +2129,5 @@
     actions: true
     sources: true
     builder: Pipedream repo (component)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null

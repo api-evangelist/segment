@@ -315,6 +315,62 @@ paths:
     - url: https://api.segmentapis.com
       description: Production Server
 components:
+  parameters:
+    WorkspaceName:
+      name: workspaceName
+      in: path
+      required: true
+      description: The name of the workspace.
+      schema:
+        type: string
+    SourceName:
+      name: sourceName
+      in: path
+      required: true
+      description: The name of the source.
+      schema:
+        type: string
+    PaginationCount:
+      name: pagination[count]
+      in: query
+      description: Number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 10
+    PaginationCursor:
+      name: pagination[cursor]
+      in: query
+      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
+      schema:
+        type: string
+    SourceId:
+      name: sourceId
+      in: path
+      required: true
+      description: The unique identifier of the source.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Source:
       type: object
@@ -350,61 +406,6 @@ components:
         message:
           type: string
           description: A human-readable error message.
-    Source_2:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique identifier of the source.
-        slug:
-          type: string
-          description: The URL-friendly slug of the source.
-        name:
-          type: string
-          description: The display name of the source.
-        enabled:
-          type: boolean
-          description: Whether the source is enabled.
-        writeKeys:
-          type: array
-          items:
-            type: string
-          description: The write keys associated with the source.
-        metadata:
-          $ref: '#/components/schemas/CatalogSource'
-        settings:
-          type: object
-          description: Configuration settings for the source.
-          additionalProperties: true
-        labels:
-          type: array
-          items:
-            $ref: '#/components/schemas/Label'
-          description: Labels applied to the source.
-    Pagination:
-      type: object
-      properties:
-        current:
-          type: string
-          description: Cursor pointing to the current page.
-        next:
-          type: string
-          description: Cursor pointing to the next page. Null if no more pages.
-        totalEntries:
-          type: integer
-          description: Total number of entries across all pages.
-    Label:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The label key.
-        value:
-          type: string
-          description: The label value.
-        description:
-          type: string
-          description: A description of the label.
     CatalogSource:
       type: object
       properties:
@@ -441,6 +442,61 @@ components:
           items:
             type: string
           description: Categories this source belongs to.
+    Pagination:
+      type: object
+      properties:
+        current:
+          type: string
+          description: Cursor pointing to the current page.
+        next:
+          type: string
+          description: Cursor pointing to the next page. Null if no more pages.
+        totalEntries:
+          type: integer
+          description: Total number of entries across all pages.
+    Label:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The label key.
+        value:
+          type: string
+          description: The label value.
+        description:
+          type: string
+          description: A description of the label.
+    Source_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the source.
+        slug:
+          type: string
+          description: The URL-friendly slug of the source.
+        name:
+          type: string
+          description: The display name of the source.
+        enabled:
+          type: boolean
+          description: Whether the source is enabled.
+        writeKeys:
+          type: array
+          items:
+            type: string
+          description: The write keys associated with the source.
+        metadata:
+          $ref: '#/components/schemas/CatalogSource'
+        settings:
+          type: object
+          description: Configuration settings for the source.
+          additionalProperties: true
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Label'
+          description: Labels applied to the source.
     Error_2:
       type: object
       properties:
@@ -462,62 +518,6 @@ components:
                 type: object
                 description: Additional error data.
                 additionalProperties: true
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    WorkspaceName:
-      name: workspaceName
-      in: path
-      required: true
-      description: The name of the workspace.
-      schema:
-        type: string
-    SourceName:
-      name: sourceName
-      in: path
-      required: true
-      description: The name of the source.
-      schema:
-        type: string
-    PaginationCursor:
-      name: pagination[cursor]
-      in: query
-      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
-      schema:
-        type: string
-    PaginationCount:
-      name: pagination[count]
-      in: query
-      description: Number of items to return per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        default: 10
-    SourceId:
-      name: sourceId
-      in: path
-      required: true
-      description: The unique identifier of the source.
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

@@ -61,45 +61,7 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  parameters:
-    ExternalId:
-      name: externalId
-      in: path
-      required: true
-      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
-      schema:
-        type: string
-    Next:
-      name: next
-      in: query
-      description: Pagination cursor to retrieve the next page of results.
-      schema:
-        type: string
-    Limit:
-      name: limit
-      in: query
-      description: The maximum number of items to return per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 200
-        default: 100
   schemas:
-    Cursor:
-      type: object
-      properties:
-        url:
-          type: string
-          description: The URL to retrieve the next page.
-        has_more:
-          type: boolean
-          description: Whether there are more results.
-        next:
-          type: string
-          description: The cursor value for the next page.
-        limit:
-          type: integer
-          description: The number of items per page.
     ExternalId:
       type: object
       properties:
@@ -132,9 +94,24 @@ components:
         encoding:
           type: string
           description: The encoding of the ID value.
+    Cursor:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL to retrieve the next page.
+        has_more:
+          type: boolean
+          description: Whether there are more results.
+        next:
+          type: string
+          description: The cursor value for the next page.
+        limit:
+          type: integer
+          description: The number of items per page.
   responses:
-    NotFound:
-      description: The requested profile was not found.
+    RateLimited:
+      description: Too many requests. The Profile API enforces rate limits per space.
       content:
         application/json:
           schema:
@@ -165,8 +142,8 @@ components:
                   message:
                     type: string
                     description: A human-readable error message.
-    RateLimited:
-      description: Too many requests. The Profile API enforces rate limits per space.
+    NotFound:
+      description: The requested profile was not found.
       content:
         application/json:
           schema:
@@ -181,6 +158,29 @@ components:
                   message:
                     type: string
                     description: A human-readable error message.
+  parameters:
+    Next:
+      name: next
+      in: query
+      description: Pagination cursor to retrieve the next page of results.
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: The maximum number of items to return per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 200
+        default: 100
+    ExternalId:
+      name: externalId
+      in: path
+      required: true
+      description: The external ID used to look up the profile. Format is type:value, such as user_id:abc123, email:user@example.com, or anonymous_id:xyz789.
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

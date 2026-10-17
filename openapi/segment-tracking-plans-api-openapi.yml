@@ -283,13 +283,6 @@ components:
       description: The name of the workspace.
       schema:
         type: string
-    TrackingPlanId:
-      name: trackingPlanId
-      in: path
-      required: true
-      description: The unique identifier of the tracking plan.
-      schema:
-        type: string
     PaginationCursor:
       name: pagination[cursor]
       in: query
@@ -305,23 +298,33 @@ components:
         minimum: 1
         maximum: 200
         default: 10
+    TrackingPlanId:
+      name: trackingPlanId
+      in: path
+      required: true
+      description: The unique identifier of the tracking plan.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was invalid or malformed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error_2'
   schemas:
-    TrackingPlanRule:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The event name this rule applies to.
-        description:
-          type: string
-          description: A description of the event.
-        rules:
-          type: object
-          description: The JSON Schema rules for the event properties.
-          additionalProperties: true
-        version:
-          type: number
-          description: The version of the rule.
     TrackingPlan:
       type: object
       properties:
@@ -348,6 +351,22 @@ components:
           type: string
           format: date-time
           description: When the tracking plan was last updated.
+    TrackingPlanRule:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The event name this rule applies to.
+        description:
+          type: string
+          description: A description of the event.
+        rules:
+          type: object
+          description: The JSON Schema rules for the event properties.
+          additionalProperties: true
+        version:
+          type: number
+          description: The version of the rule.
     Error:
       type: object
       properties:
@@ -357,29 +376,18 @@ components:
         message:
           type: string
           description: A human-readable error message.
-    TrackingPlanRule_2:
+    Pagination:
       type: object
       properties:
-        type:
+        current:
           type: string
-          description: The type of event this rule applies to.
-          enum:
-          - COMMON
-          - GROUP
-          - IDENTIFY
-          - PAGE
-          - SCREEN
-          - TRACK
-        key:
+          description: Cursor pointing to the current page.
+        next:
           type: string
-          description: The event name this rule matches, for track events.
-        jsonSchema:
-          type: object
-          description: The JSON Schema that defines the expected properties.
-          additionalProperties: true
-        version:
-          type: number
-          description: The version of the rule.
+          description: Cursor pointing to the next page. Null if no more pages.
+        totalEntries:
+          type: integer
+          description: Total number of entries across all pages.
     TrackingPlan_2:
       type: object
       properties:
@@ -412,18 +420,29 @@ components:
           type: string
           format: date-time
           description: When the tracking plan was last updated.
-    Pagination:
+    TrackingPlanRule_2:
       type: object
       properties:
-        current:
+        type:
           type: string
-          description: Cursor pointing to the current page.
-        next:
+          description: The type of event this rule applies to.
+          enum:
+          - COMMON
+          - GROUP
+          - IDENTIFY
+          - PAGE
+          - SCREEN
+          - TRACK
+        key:
           type: string
-          description: Cursor pointing to the next page. Null if no more pages.
-        totalEntries:
-          type: integer
-          description: Total number of entries across all pages.
+          description: The event name this rule matches, for track events.
+        jsonSchema:
+          type: object
+          description: The JSON Schema that defines the expected properties.
+          additionalProperties: true
+        version:
+          type: number
+          description: The version of the rule.
     Error_2:
       type: object
       properties:
@@ -445,25 +464,6 @@ components:
                 type: object
                 description: Additional error data.
                 additionalProperties: true
-  responses:
-    BadRequest:
-      description: The request was invalid or malformed.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error_2'
   securitySchemes:
     bearerAuth:
       type: http

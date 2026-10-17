@@ -222,6 +222,18 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Pagination:
+      type: object
+      properties:
+        current:
+          type: string
+          description: Cursor pointing to the current page.
+        next:
+          type: string
+          description: Cursor pointing to the next page. Null if no more pages.
+        totalEntries:
+          type: integer
+          description: Total number of entries across all pages.
     Error:
       type: object
       properties:
@@ -243,18 +255,6 @@ components:
                 type: object
                 description: Additional error data.
                 additionalProperties: true
-    Pagination:
-      type: object
-      properties:
-        current:
-          type: string
-          description: Cursor pointing to the current page.
-        next:
-          type: string
-          description: Cursor pointing to the next page. Null if no more pages.
-        totalEntries:
-          type: integer
-          description: Total number of entries across all pages.
     Transformation:
       type: object
       properties:
@@ -306,6 +306,12 @@ components:
                 type: string
                 description: The new value.
   responses:
+    Unauthorized:
+      description: Authentication credentials were missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     NotFound:
       description: The requested resource was not found.
       content:
@@ -318,24 +324,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials were missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    PaginationCursor:
-      name: pagination[cursor]
-      in: query
-      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
-      schema:
-        type: string
     TransformationId:
       name: transformationId
       in: path
       required: true
       description: The unique identifier of the transformation.
+      schema:
+        type: string
+    PaginationCursor:
+      name: pagination[cursor]
+      in: query
+      description: Cursor for pagination. Use the cursor returned in a previous response to fetch the next page.
       schema:
         type: string
     PaginationCount:

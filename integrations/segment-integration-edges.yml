@@ -1,4 +1,93 @@
-generated: '2026-10-14'
+generated: '2026-10-20'
+method: searched
+source:
+- https://www.twilio.com/docs/segment/connections/destinations/catalog
+- https://www.twilio.com/docs/segment/connections/sources/catalog
+- https://zapier.com/apps/segment/integrations
+- https://n8n.io/integrations/segment/
+- https://composio.dev/toolkits/segment
+checked:
+- https://fivetran.com/docs-sitemap.xml
+- https://fivetran.com/docs/connectors/partner-built-program
+- https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
+- https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
+- https://github.com/meltano/hub
+- https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/
+- https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/
+- https://hightouch.com/docs/destinations/segment
+- https://www.twilio.com/docs/segment/connections/destinations/catalog
+- https://www.twilio.com/docs/segment/connections/sources/catalog
+- https://zapier.com/api/v4/apps/
+- okta/integrations/okta-integration-edges.yml
+- https://composio.dev/toolkits/segment
+- https://monid.ai/tools/segment
+- https://n8n.io/integrations/segment/
+- https://zapier.com/apps/segment/integrations
+summary: null
+marketplace_apps:
+- marketplace: coverage
+  channel: coverage-list
+  app: segment
+  url: https://www.twilio.com/docs/segment/connections/destinations/catalog
+  app_count: 562
+  adapter: sweep-cdp.py:src_segment
+  listed: 541
+  destinations: 448
+  sources: 93
+  linked: 173
+  unlinked: 285
+  identity: domain (first external link on each catalog page)
+  status: ok
+- marketplace: zapier
+  channel: ipaas-listing
+  app: segment
+  url: https://zapier.com/apps/segment/integrations
+  external_url: https://segment.com/
+  partner_tier: BRONZE
+  triggers:
+  - key: newEvent
+    label: New Event
+  actions:
+  - key: createDestination
+    label: Create Destination
+  - key: createSource
+    label: Create Source
+  - key: sendEvent
+    label: Send Event
+  searches: []
+- marketplace: n8n
+  channel: open-source-node
+  app: segment
+  url: https://n8n.io/integrations/segment/
+  identity: title
+  pair_pages: 3
+  pairs:
+  - slack
+  - supabase
+  - telegram
+- marketplace: composio
+  channel: agent-gateway
+  app: segment
+  url: https://composio.dev/toolkits/segment
+  identity: action-prefix
+  actions:
+  - key: SEGMENT_ADD_LABELS_TO_SOURCE
+  - key: SEGMENT_ALIAS
+  - key: SEGMENT_BATCH
+  - key: SEGMENT_DELETE_SOURCE
+  - key: SEGMENT_GET_DAILY_PER_SOURCE_API_CALLS_USAGE
+  - key: SEGMENT_GET_DESTINATION
+  - key: SEGMENT_GROUP
+  - key: SEGMENT_IDENTIFY
+  - key: SEGMENT_IMPORT_HISTORICAL_DATA
+  - key: SEGMENT_LIST_CONNECTED_WAREHOUSES_FROM_SOURCE
+  - key: SEGMENT_LIST_DELIVERY_METRICS_SUMMARY_FROM_DESTINATION
+  - key: SEGMENT_LIST_SCHEMA_SETTINGS_IN_SOURCE
+  - key: SEGMENT_PAGE
+  - key: SEGMENT_REMOVE_SOURCE_WRITE_KEY
+  - key: SEGMENT_SCREEN
+  - key: SEGMENT_TRACK
+  - key: SEGMENT_UPDATE_SOURCE
 edges:
 - partner_name: Okta (own)
   partner: okta
@@ -5039,34 +5128,250 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
-method: searched
-checked:
-- https://fivetran.com/docs-sitemap.xml
-- https://fivetran.com/docs/connectors/partner-built-program
-- https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
-- https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
-- https://github.com/meltano/hub
-- https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/
-- https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/
-- https://hightouch.com/docs/destinations/segment
-- https://www.twilio.com/docs/segment/connections/destinations/catalog
-- https://www.twilio.com/docs/segment/connections/sources/catalog
-- https://zapier.com/api/v4/apps/
-- okta/integrations/okta-integration-edges.yml
-marketplace_apps:
-- marketplace: coverage
-  channel: coverage-list
-  app: segment
-  url: https://www.twilio.com/docs/segment/connections/destinations/catalog
-  app_count: 562
-  adapter: sweep-cdp.py:src_segment
-  listed: 541
-  destinations: 448
-  sources: 93
-  linked: 173
-  unlinked: 285
-  identity: domain (first external link on each catalog page)
-  status: ok
-source:
-- https://www.twilio.com/docs/segment/connections/destinations/catalog
-- https://www.twilio.com/docs/segment/connections/sources/catalog
+- partner_name: Google Forms
+  partner: google-forms
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/google-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://google.com/
+- partner_name: Twilio
+  partner: twilio
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/twilio
+  direction: third-party
+  category: Phone & SMS
+  partner_url: https://www.twilio.com/
+- partner_name: LinkedIn Ads
+  partner: linkedin-ads
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/linkedin-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://www.linkedin.com/
+- partner_name: Intercom
+  partner: intercom
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/intercom
+  direction: third-party
+  category: Customer Support
+  partner_url: https://www.intercom.com/welcome-to-intercom?utm_source=external-website&utm_medium=partner&utm_campaign=20220503_all_oc_all_global_gl_all_all_par_extmktplc&utm_term=zapier
+- partner_name: Gmail
+  partner: gmail
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: Jotform
+  partner: jotform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/jotform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://www.jotform.com/
+- partner_name: WhatsApp Notifications
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/whatsapp-notifications
+  direction: third-party
+  category: Communication
+  partner_url: null
+- partner_name: TikTok Lead Generation
+  partner: tiktok
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/tiktok-lead-generation
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://ads.tiktok.com/
+- partner_name: Smartsheet
+  partner: smartsheet
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/smartsheet
+  direction: third-party
+  category: Spreadsheets
+  partner_url: https://www.smartsheet.com/
+- partner_name: ClickSend SMS
+  partner: clicksend
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/clicksend
+  direction: third-party
+  category: Phone & SMS
+  partner_url: https://www.clicksend.com/?utm_source=zapier&utm_medium=referral&utm_campaign=sms-app&utm_term=sms&utm_content=listing
+- partner_name: Cal.com
+  partner: cal-com
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/calcom
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: http://go.cal.com/zapier
+- partner_name: Clio
+  partner: clio
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/clio
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: http://www.goclio.com/
+- partner_name: Zoho Mail
+  partner: zoho-mail
+  partner_match: domain+name-among-holders
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/zoho-mail
+  direction: third-party
+  category: Email
+  partner_url: https://go.zoho.com/v0i
+- partner_name: Retell AI
+  partner: retell-ai
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/retell-ai
+  direction: third-party
+  category: AI Agents
+  partner_url: https://www.retellai.com/?utm_source=Zapier&utm_medium=Marketplace
+- partner_name: Mixpanel
+  partner: mixpanel
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/mixpanel
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://mixpanel.com/
+- partner_name: Attentive
+  partner: attentive
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/attentive
+  direction: third-party
+  category: Marketing
+  partner_url: https://www.attentivemobile.com/
+- partner_name: BaseLinker
+  partner: baselinker
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/baselinker
+  direction: third-party
+  category: eCommerce
+  partner_url: https://baselinker.com/en-GB/home/
+- partner_name: Amilia
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/amilia
+  direction: third-party
+  category: eCommerce
+  partner_url: https://pages.amilia.com/get-a-demo?utm_campaign=Amilia%20Partner%20Demo%20Page&utm_source=Zapier%20partner%20demo%20page
+- partner_name: LanderLab
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/landerlab
+  direction: third-party
+  category: Website & App Building
+  partner_url: https://landerlab.io/
+- partner_name: WP SMS
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  relationship: ipaas-bridge
+  evidence: https://zapier.com/apps/segment/integrations/wp-sms
+  direction: third-party
+  category: Phone & SMS
+  partner_url: https://wp-sms-pro.com/
+templates:
+- title: Create spreadsheet rows in Google Sheets for new events in Twilio Segment
+  url: https://zapier.com/apps/google-sheets/integrations/twilio-segment/255729687/create-spreadsheet-rows-in-google-sheets-for-new-events-in-twilio-segment
+  apps:
+  - twilio-segment
+  - google-sheets
+template_total: 1

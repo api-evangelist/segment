@@ -35,6 +35,7 @@ checked:
 - https://ecosystem.hubspot.com/marketplace/explore?eco_PRODUCT_TYPE=APP&eco_CERTIFIED=true
 - https://ecosystem.hubspot.com/marketplace/solutions
 - hubspot/integrations/hubspot-integration-edges.yml
+- google-play/integrations/google-play-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: coverage
@@ -5497,6 +5498,25 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: ETL
+- partner_name: Google Play Developer (Google Play SDK Index)
+  partner: google-play
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: Google Play SDK Index
+  evidence: https://play.google.com/sdks/details/com-segment-analytics-android-analytics
+  mirror_of: google-play/integrations/google-play-integration-edges.yml
+  apps:
+  - Segment Analytics Android
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: mobile SDK (analytics, marketing-and-engagement)
+  publisher_verified:
+  - Registered in Google Play SDK Console
 templates:
 - title: Create spreadsheet rows in Google Sheets for new events in Twilio Segment
   url: https://zapier.com/apps/google-sheets/integrations/twilio-segment/255729687/create-spreadsheet-rows-in-google-sheets-for-new-events-in-twilio-segment

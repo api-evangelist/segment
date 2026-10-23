@@ -36,6 +36,7 @@ checked:
 - https://ecosystem.hubspot.com/marketplace/solutions
 - hubspot/integrations/hubspot-integration-edges.yml
 - google-play/integrations/google-play-integration-edges.yml
+- intercom/integrations/intercom-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: coverage
@@ -5517,6 +5518,23 @@ edges:
   category: mobile SDK (analytics, marketing-and-engagement)
   publisher_verified:
   - Registered in Google Play SDK Console
+- partner_name: Intercom (own)
+  partner: intercom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.intercom.com/app-store/?app_package_code=segment
+  mirror_of: intercom/integrations/intercom-integration-edges.yml
+  apps:
+  - Segment
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Customer data & CRM
 templates:
 - title: Create spreadsheet rows in Google Sheets for new events in Twilio Segment
   url: https://zapier.com/apps/google-sheets/integrations/twilio-segment/255729687/create-spreadsheet-rows-in-google-sheets-for-new-events-in-twilio-segment
